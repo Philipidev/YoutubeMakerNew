@@ -1,0 +1,402 @@
+{
+  "slug": "debate-band-2turno-2026--short-pesquisas",
+  "checadoEm": "2026-10-17T23:30:00-03:00",
+  "pedido": "Short derivado de debate-band-2turno-2026: Lula x Flávio: o que dizem as pesquisas antes do debate #Shorts",
+  "fatos": [
+    {
+      "fato": "Debate da Band: domingo, 18/10/2026, às 20h; primeiro com Lula e Flávio na eleição",
+      "fonteIds": [
+        "f-poder-band-regras",
+        "f-gazeta-band",
+        "f-exame-assistir"
+      ],
+      "status": "confirmado",
+      "nota": "Alguns veículos dizem 'primeiro do 2º turno', outros 'primeiro da eleição'; ambos corretos."
+    },
+    {
+      "fato": "Nenhum debate na TV com Lula e Flávio juntos no 1º turno",
+      "fonteIds": [
+        "f-gazeta-debates",
+        "f-gazeta-band",
+        "f-poder-globo"
+      ],
+      "status": "confirmado"
+    },
+    {
+      "fato": "1º turno (4/10): Flávio 47,03% e Lula 45,16% dos votos válidos",
+      "fonteIds": [
+        "f-carta-apuracao",
+        "f-agbr-turno"
+      ],
+      "status": "confirmado",
+      "nota": "Percentuais idênticos em todas as fontes; votos absolutos variam conforme o horário da apuração (usar totalização final)."
+    },
+    {
+      "fato": "Demais candidatos somaram 7,81% dos válidos",
+      "fonteIds": [
+        "f-carta-apuracao"
+      ],
+      "status": "confirmado",
+      "nota": "Soma da tabela final da CartaCapital; SBT News traz o mesmo número."
+    },
+    {
+      "fato": "2º turno em 25/10/2026",
+      "fonteIds": [
+        "f-agbr-turno"
+      ],
+      "status": "confirmado"
+    },
+    {
+      "fato": "4 debates marcados no 1º turno; só o da Band (23/08) aconteceu; SBT/RedeTV!/CNN (14/09), Record (27/09) e Globo (01/10) cancelados",
+      "fonteIds": [
+        "f-gazeta-debates",
+        "f-cnn-1debate",
+        "f-poder-globo"
+      ],
+      "status": "confirmado"
+    },
+    {
+      "fato": "Band, 23/08: três dos seis púlpitos vazios (Lula, Flávio, Zema)",
+      "fonteIds": [
+        "f-cnn-1debate",
+        "f-metropoles-zema",
+        "f-dn-ausentes"
+      ],
+      "status": "confirmado",
+      "nota": "Augusto Cury anunciou que não iria e voltou atrás; participou."
+    },
+    {
+      "fato": "Campanha de Lula: formato sem 'condições equilibradas' e questionamento da lista de convidados",
+      "fonteIds": [
+        "f-gazeta-lula-band",
+        "f-poder-band1"
+      ],
+      "status": "confirmado"
+    },
+    {
+      "fato": "Campanha de Flávio: iria aos debates em que Lula estivesse presente",
+      "fonteIds": [
+        "f-metropoles-zema",
+        "f-cnn-1debate"
+      ],
+      "status": "confirmado"
+    },
+    {
+      "fato": "Zema: sem Lula, a mudança de data perdeu o propósito (nota da assessoria)",
+      "fonteIds": [
+        "f-metropoles-zema",
+        "f-cnn-1debate"
+      ],
+      "status": "confirmado"
+    },
+    {
+      "fato": "TSE (Estela Aranha) proibiu a Globo de manter púlpito vazio com o nome de Lula (01/10)",
+      "fonteIds": [
+        "f-poder-globo",
+        "f-gazeta-flavio-globo"
+      ],
+      "status": "confirmado"
+    },
+    {
+      "fato": "Inclusão de Renan Santos no debate da Globo",
+      "fonteIds": [
+        "f-poder-globo",
+        "f-ncnews-gilmar"
+      ],
+      "status": "divergente",
+      "nota": "CORRIGIDO em relação ao pedido: a ordem foi do STF (Gilmar Mendes), não do TSE. O TSE (Kassio Nunes Marques) havia negado o pedido. Vídeo usa a versão corrigida."
+    },
+    {
+      "fato": "Flávio desistiu do debate da Globo citando 'censura imposta ao evento pelo TSE'",
+      "fonteIds": [
+        "f-gazeta-flavio-globo",
+        "f-poder-globo"
+      ],
+      "status": "confirmado"
+    },
+    {
+      "fato": "Globo cancelou e disse que as decisões causaram insegurança jurídica",
+      "fonteIds": [
+        "f-poder-globo"
+      ],
+      "status": "confirmado",
+      "nota": "Nota lida na GloboNews; Brasil de Fato atribui o cancelamento às ausências (enquadramento divergente, não usado)."
+    },
+    {
+      "fato": "13/10: Flávio disse que não iria ao debate da Band e que a equipe avaliaria o da Globo",
+      "fonteIds": [
+        "f-cnn-flavio-nao",
+        "f-poder-flavio-nao",
+        "f-metropoles-flavio-nao"
+      ],
+      "status": "confirmado"
+    },
+    {
+      "fato": "Band: púlpito vazio se algum candidato faltar",
+      "fonteIds": [
+        "f-metropoles-flavio-nao",
+        "f-cnn-flavio-nao",
+        "f-poder-band-regras"
+      ],
+      "status": "confirmado",
+      "nota": "Não houve nota formal única; cada veículo cita formulação diferente."
+    },
+    {
+      "fato": "13/10: Lula confirmou presença em vídeo",
+      "fonteIds": [
+        "f-cnn-flavio-nao",
+        "f-poder-flavio-sim"
+      ],
+      "status": "confirmado",
+      "nota": "Edinho Silva (PT) já tinha confirmado mais cedo na CBN (Metrópoles)."
+    },
+    {
+      "fato": "14/10: Flávio voltou atrás: 'É claro que eu vou ao debate, eu só queria que você confirmasse'",
+      "fonteIds": [
+        "f-poder-flavio-sim",
+        "f-carta-flavio-sim"
+      ],
+      "status": "confirmado",
+      "nota": "Plataforma diverge (Instagram x X). Motivo da virada diverge entre veículos (estratégia x pressão interna): não usado."
+    },
+    {
+      "fato": "Datafolha: Flávio 47%, Lula 45% (totais); 2.520 entrevistas; margem 2 p.p.; BR-00466/2026",
+      "fonteIds": [
+        "f-poder-pesquisas",
+        "f-sb24-datafolha"
+      ],
+      "status": "divergente",
+      "nota": "Período de campo diverge: 13–15/10 (Metrópoles) x 13–14/10 (Poder360). O vídeo mostra 13–15/10. CONFERIR NO PESQELE ANTES DE PUBLICAR."
+    },
+    {
+      "fato": "Quaest (10–13/10): Flávio 46%, Lula 44%; 2.154 entrevistas; margem 2 p.p.; BR-08729/2026",
+      "fonteIds": [
+        "f-infomoney-quaest",
+        "f-exame-quaest"
+      ],
+      "status": "confirmado"
+    },
+    {
+      "fato": "Ipespe (13–15/10): Flávio 51,2%, Lula 48,8% dos válidos; 1.500 entrevistas; margem 2,6 p.p.; BR-00223/2026",
+      "fonteIds": [
+        "f-oeste-ipespe",
+        "f-carta-ipespe"
+      ],
+      "status": "confirmado",
+      "nota": "Votos totais divergem entre veículos (CartaCapital provavelmente inverteu nomes); por isso o vídeo usa só os válidos."
+    },
+    {
+      "fato": "CNT/MDA (13–15/10): Flávio 50,5%, Lula 49,5% dos válidos; 2.014 entrevistas; margem 2,2 p.p.; BR-00652/2026",
+      "fonteIds": [
+        "f-correio-mda",
+        "f-poder-pesquisas"
+      ],
+      "status": "confirmado"
+    },
+    {
+      "fato": "Diferença diminuiu: Datafolha de 4 para 2 pontos (votos totais: 49x45 → 47x45); Ipespe de 5,4 para 2,4 (válidos); Quaest estável em 2",
+      "fonteIds": [
+        "f-gazeta-datafolha-ant",
+        "f-cnn-datafolha-ant",
+        "f-acritica-ipespe-ant",
+        "f-poder-pesquisas"
+      ],
+      "status": "confirmado",
+      "nota": "A rodada anterior da Quaest é de antes do 1º turno."
+    },
+    {
+      "fato": "MP 1.394/2026 assinada em 25/09 proíbe apostas de quota fixa; sites fora do ar desde 06/10",
+      "fonteIds": [
+        "f-senado-mp",
+        "f-agbr-mp",
+        "f-mj-mp"
+      ],
+      "status": "confirmado"
+    },
+    {
+      "fato": "Justificativa do governo: controles não protegiam saúde e consumidores; Durigan: vício gera 'angústia, vergonha'",
+      "fonteIds": [
+        "f-senado-mp",
+        "f-cnn-mp"
+      ],
+      "status": "confirmado"
+    },
+    {
+      "fato": "Flávio: 'atitude populista, hipócrita, eleitoreira'; se a MP caducar, bets podem voltar",
+      "fonteIds": [
+        "f-istoe-flavio",
+        "f-jp-flavio"
+      ],
+      "status": "confirmado"
+    },
+    {
+      "fato": "Apostas de quota fixa criadas em 2018 (gov. Temer) e regulamentadas em 2023 (Lei 14.790, sancionada por Lula)",
+      "fonteIds": [
+        "f-migalhas-stf",
+        "f-senado-mp"
+      ],
+      "status": "confirmado"
+    },
+    {
+      "fato": "Clubes e entidades pediram ao STF a suspensão da MP; Fux pediu manifestação da AGU",
+      "fonteIds": [
+        "f-migalhas-stf",
+        "f-poder-clubes",
+        "f-agbr-fux"
+      ],
+      "status": "confirmado",
+      "nota": "Sem decisão noticiada até 16/10."
+    },
+    {
+      "fato": "Senado aprovou o fim da 6x1 por 75 a 1 (14/10); Congresso promulgou em 16/10",
+      "fonteIds": [
+        "f-agbr-6x1",
+        "f-exame-6x1",
+        "f-metropoles-promulga"
+      ],
+      "status": "confirmado",
+      "nota": "CORRIGIDO em relação ao pedido: não há próximo passo legislativo; a emenda já foi promulgada."
+    },
+    {
+      "fato": "Jornada: 42h em 60 dias após a publicação; 40h um ano depois; sem redução de salário",
+      "fonteIds": [
+        "f-metropoles-promulga",
+        "f-agbr-6x1"
+      ],
+      "status": "confirmado"
+    },
+    {
+      "fato": "Flávio votou a favor; anunciou a mudança em 13/10; em maio chamou a discussão de 'inoportuna e eleitoreira'",
+      "fonteIds": [
+        "f-opovo-6x1",
+        "f-exame-6x1",
+        "f-times-6x1"
+      ],
+      "status": "confirmado"
+    },
+    {
+      "fato": "Lula atribuiu a mudança do PL à pressão popular; chamou a promulgação de 'vitória da sociedade brasileira'",
+      "fonteIds": [
+        "f-poder-lula-6x1",
+        "f-metropoles-promulga"
+      ],
+      "status": "confirmado"
+    },
+    {
+      "fato": "Pacote MEI (13/10): perdão de ~R$ 12,6 bi e Pix de até R$ 5 mil; Câmara aprovou perdão e teto por 461 a 4 (14/10)",
+      "fonteIds": [
+        "f-agbr-mei",
+        "f-poder-mei"
+      ],
+      "status": "confirmado"
+    },
+    {
+      "fato": "Flávio: 'Ele está achando que o povo é otário?' e 'Vamos fazer tesouraço em impostos, sim'",
+      "fonteIds": [
+        "f-exame-mei"
+      ],
+      "status": "confirmado",
+      "nota": "Fonte única com citação direta (Exame); a acusação de 'compra de votos' tem fonte única (Bahia Notícias, só em busca) e foi DESCARTADA."
+    },
+    {
+      "fato": "Transmissão: Band TV, BandNews TV, BandNews FM, Bandeirantes, YouTube do Band Jornalismo; parceiros TV Cultura, TV Gazeta, Jovem Pan e Estadão; mediação Eduardo Oinegue e Adriana Araújo; Flávio à esquerda e Lula à direita",
+      "fonteIds": [
+        "f-exame-assistir",
+        "f-forum-regras"
+      ],
+      "status": "confirmado",
+      "nota": "Formato do 3º bloco e perguntas de jornalistas divergem entre veículos: não usado no vídeo."
+    },
+    {
+      "fato": "Debate da Globo em 23/10; PT diz que Lula deve participar; Flávio deixou a decisão para a equipe",
+      "fonteIds": [
+        "f-poder-globo23",
+        "f-opovo-globo23",
+        "f-antagonista-edinho",
+        "f-cnn-flavio-nao"
+      ],
+      "status": "confirmado",
+      "nota": "Nenhum dos dois confirmou oficialmente (O Povo, 17/10)."
+    },
+    {
+      "fato": "Boulos chamou a virada de Flávio na 6x1 de 'mentira eleitoreira'",
+      "fonteIds": [],
+      "status": "descartado",
+      "nota": "Fonte única vista só em resultado de busca (O Liberal)."
+    },
+    {
+      "fato": "Caso Banco Master (Flávio–Vorcaro) como tema da semana",
+      "fonteIds": [],
+      "status": "descartado",
+      "nota": "Sem fato novo entre 11 e 17/10."
+    },
+    {
+      "fato": "Caso Meta/TSE (coligação de Lula acusa a plataforma)",
+      "fonteIds": [],
+      "status": "descartado",
+      "nota": "Visto só em resultado de busca, sem segunda fonte."
+    },
+    {
+      "fato": "PoderData/Aya 50% x 50%",
+      "fonteIds": [
+        "f-poder-pesquisas"
+      ],
+      "status": "descartado",
+      "nota": "Metodologia só do próprio contratante; não entrou para manter 4 pesquisas com confirmação externa."
+    },
+    {
+      "fato": "Senado tem 81 senadores (3 por estado); PEC precisa de 3/5 (49 votos) em dois turnos",
+      "fonteIds": [
+        "f-cf88",
+        "f-agbr-6x1"
+      ],
+      "status": "confirmado",
+      "nota": "Agência Brasil: quórum mínimo de 49 votos e 77 presenças na votação de 14/10. 81 - 76 votos = 5 não votaram (inclui ausentes e a presidência)."
+    },
+    {
+      "fato": "Câmara tem 513 deputados (PEC: 308; maioria absoluta: 257)",
+      "fonteIds": [
+        "f-camara-processo",
+        "f-cf88"
+      ],
+      "status": "confirmado"
+    },
+    {
+      "fato": "Medida provisória vale ao ser publicada; Congresso tem 60 + 60 dias (120) para votar",
+      "fonteIds": [
+        "f-cf88",
+        "f-senado-mp"
+      ],
+      "status": "confirmado",
+      "nota": "Flávio cita os mesmos \"quatro meses\" (Terra, 28/09)."
+    },
+    {
+      "fato": "Pacote do MEI aprovado na Câmara segue para o Senado",
+      "fonteIds": [
+        "f-poder-mei"
+      ],
+      "status": "confirmado"
+    },
+    {
+      "fato": "Explicações de termo/instituição de conhecimento geral: votos totais incluem brancos, nulos e indecisos; MP perde a validade se não votada em 120 dias; teto do MEI = limite de faturamento; AGU defende o governo; promulgação incorpora a emenda à Constituição; Flávio é senador",
+      "fonteIds": [
+        "f-cf88",
+        "f-senado-mp",
+        "f-exame-6x1"
+      ],
+      "status": "confirmado",
+      "nota": "Contexto institucional acrescentado pela revisão editorial para o espectador leigo."
+    },
+    {
+      "fato": "Decisões do TSE (Estela Aranha) e do STF (Gilmar Mendes) foram tomadas em 1º/10, antes do debate da Globo",
+      "fonteIds": [
+        "f-poder-globo",
+        "f-ncnews-gilmar"
+      ],
+      "status": "confirmado",
+      "nota": "Liminar de Gilmar cerca de duas horas antes do horário do debate."
+    }
+  ],
+  "fontesExtras": [],
+  "simetria": "Cenas com cada candidato equilibradas pelo validador (diferença de tempo de tela < 25%). Ausências: Lula e Flávio faltaram à Band (23/08); nenhum dos dois foi à Globo; o recuo de Flávio na Band (13–14/10) é mostrado ao lado da confirmação de Lula. Temas: o governo é cobrado em bets e MEI (críticas de Flávio); Flávio é cobrado na 6x1 (leitura de Lula) e no vai-e-vem do debate. Os dois anúncios 'a 12 dias do 2º turno' (virada na 6x1 e pacote MEI) recebem a mesma marcação de tempo."
+}

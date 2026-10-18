@@ -1,0 +1,305 @@
+{
+  "slug": "debate-band-2turno-2026--short-falas",
+  "titulo": "Bets, MEI e 6x1: o que Lula e Flávio disseram #Shorts",
+  "dataPublicacao": "2026-10-18",
+  "resumo": "Bets, microempreendedores e escala 6 por 1: o que Flávio Bolsonaro e Lula disseram sobre cada tema.",
+  "ordemLados": "AB",
+  "posicoesFixas": {
+    "flavio": "esq",
+    "lula": "dir"
+  },
+  "trilha": "rain-over-kyoto-station",
+  "fontes": [
+    {
+      "id": "f-senado-mp",
+      "veiculo": "Agência Senado",
+      "titulo": "MP proíbe bets e determina encerramento das operações em 30 dias",
+      "url": "https://www12.senado.leg.br/noticias/materias/2026/09/28/mp-proibe-bets-e-determina-encerramento-das-operacoes-em-30-dias",
+      "data": "2026-09-28",
+      "tipo": "primaria",
+      "linhaEditorial": "institucional"
+    },
+    {
+      "id": "f-cnn-mp",
+      "veiculo": "CNN Brasil",
+      "titulo": "Entenda como vai funcionar a proibição das bets no Brasil",
+      "url": "https://www.cnnbrasil.com.br/eleicoes/entenda-como-vai-funcionar-a-proibicao-das-bets-no-brasil/",
+      "data": "2026-09-25",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro"
+    },
+    {
+      "id": "f-istoe-flavio",
+      "veiculo": "IstoÉ Dinheiro",
+      "titulo": "Flávio Bolsonaro critica \"MP das bets\" e chama Lula de \"pai do Tigrinho\"",
+      "url": "https://istoedinheiro.com.br/flavio-bolsonaro-critica-mp-bets-lula-tigrinho",
+      "data": "2026-09-25",
+      "tipo": "imprensa"
+    },
+    {
+      "id": "f-jp-flavio",
+      "veiculo": "Jovem Pan",
+      "titulo": "Flávio Bolsonaro sobre MP das bets: 'Estelionato do governo Lula'",
+      "url": "https://jovempan.com.br/politica/flavio-bolsonaro-sobre-mp-das-bets-estelionato-do-governo-lula/",
+      "data": "2026-09-25",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro-direita"
+    },
+    {
+      "id": "f-opovo-6x1",
+      "veiculo": "O Povo",
+      "titulo": "Fim da escala 6x1: contra ou a favor? Veja o que Flávio Bolsonaro já disse sobre o tema",
+      "url": "https://www.opovo.com.br/noticias/economia/2026/10/14/flavio-bolsonaro-muda-voto-sobre-escala-6x1.html",
+      "data": "2026-10-14",
+      "tipo": "imprensa",
+      "linhaEditorial": "regional (CE)"
+    },
+    {
+      "id": "f-metropoles-promulga",
+      "veiculo": "Metrópoles",
+      "titulo": "Com Lula, Congresso promulga fim da escala 6x1; veja regras e prazos",
+      "url": "https://www.metropoles.com/brasil/lula-congresso-pec-escala-6x1",
+      "data": "2026-10-16",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro"
+    },
+    {
+      "id": "f-poder-lula-6x1",
+      "veiculo": "Poder360",
+      "titulo": "Lula diz que pressão popular levou PL a mudar posição sobre escala 6 X 1",
+      "url": "https://www.poder360.com.br/poder-eleicoes/lula-diz-que-pressao-popular-levou-pl-a-mudar-posicao-sobre-escala-6-x-1/",
+      "data": "2026-10-13",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro"
+    },
+    {
+      "id": "f-agbr-mei",
+      "veiculo": "Agência Brasil",
+      "titulo": "Governo anuncia perdão de dívidas e pacote de estímulo para MEIs",
+      "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/governo-anuncia-perdao-de-dividas-e-pacote-de-estimulo-para-meis",
+      "data": "2026-10-13",
+      "tipo": "imprensa",
+      "linhaEditorial": "pública (EBC)"
+    },
+    {
+      "id": "f-exame-mei",
+      "veiculo": "Exame",
+      "titulo": "Flávio Bolsonaro critica Pix para MEI anunciado por Lula: 'Ele acha que o povo é otário'",
+      "url": "https://exame.com/brasil/flavio-bolsonaro-critica-pix-para-mei-anunciado-por-lula-ele-acha-que-o-povo-e-otario/",
+      "data": "2026-10-13",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro-liberal"
+    }
+  ],
+  "personagens": [
+    {
+      "id": "flavio",
+      "rotulo": "Flávio Bolsonaro",
+      "numero": "22",
+      "cor": "PL",
+      "partido": "PL",
+      "roupa": "camisa"
+    },
+    {
+      "id": "lula",
+      "rotulo": "Lula",
+      "numero": "13",
+      "cor": "PT",
+      "partido": "PT",
+      "roupa": "camisa"
+    },
+    {
+      "id": "zema",
+      "rotulo": "Zema",
+      "numero": "",
+      "cor": "neutro",
+      "roupa": "terno"
+    }
+  ],
+  "cenas": [
+    {
+      "id": "gancho",
+      "narracao": "Bets, microempreendedores e escala 6 por 1: o que Flávio Bolsonaro e Lula disseram sobre cada tema.",
+      "cenario": "pulpitos",
+      "personagens": [
+        {
+          "id": "flavio",
+          "acao": "idle",
+          "posicao": "esq"
+        },
+        {
+          "id": "lula",
+          "acao": "idle",
+          "posicao": "dir"
+        }
+      ],
+      "bloco": "Bets, MEI e 6x1: o que Lula e Flávio disseram #Shorts",
+      "tipo": "gancho",
+      "dados": {
+        "manchete": "O que cada um disse",
+        "destaque": "Nas palavras de cada um"
+      }
+    },
+    {
+      "id": "bets-lados",
+      "narracao": "Nas bets, Flávio chamou a medida de “atitude populista, hipócrita, eleitoreira” e disse que, se ela perder a validade, “as bets podem voltar com força total”. O governo Lula justificou que os controles existentes não protegiam a saúde e os consumidores. O ministro da Fazenda, Dario Durigan, afirmou que o vício “está gerando angústia, vergonha”.",
+      "atribuicoes": [
+        {
+          "quem": "flavio",
+          "disse": "É, mais uma vez, uma atitude populista, hipócrita, eleitoreira",
+          "fonteId": "f-istoe-flavio",
+          "termos": [
+            "populista",
+            "eleitoreira"
+          ]
+        },
+        {
+          "quem": "Dario Durigan, ministro da Fazenda",
+          "disse": "O vício está gerando angústia, vergonha",
+          "fonteId": "f-cnn-mp",
+          "termos": [
+            "vergonha"
+          ]
+        }
+      ],
+      "bloco": "Bets, MEI e 6x1: o que Lula e Flávio disseram #Shorts",
+      "rubrica": {
+        "texto": "Bets"
+      },
+      "tipo": "ladoA_ladoB",
+      "dados": {
+        "ladoA": {
+          "titulo": "Governo",
+          "personagemId": "lula",
+          "argumentos": [
+            {
+              "texto": "Controles existentes não protegiam a saúde e os consumidores",
+              "quem": "Governo federal",
+              "fonteId": "f-senado-mp"
+            },
+            {
+              "texto": "O vício “está gerando angústia, vergonha”",
+              "quem": "Dario Durigan, ministro da Fazenda",
+              "fonteId": "f-cnn-mp"
+            }
+          ]
+        },
+        "ladoB": {
+          "titulo": "Flávio Bolsonaro",
+          "personagemId": "flavio",
+          "argumentos": [
+            {
+              "texto": "“Atitude populista, hipócrita, eleitoreira”",
+              "quem": "Flávio Bolsonaro",
+              "fonteId": "f-istoe-flavio"
+            },
+            {
+              "texto": "Se a MP caducar, “as bets podem voltar com força total”",
+              "quem": "Flávio Bolsonaro",
+              "fonteId": "f-jp-flavio"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "mei-lados",
+      "narracao": "No pacote dos MEIs, Flávio perguntou, referindo-se a Lula: “Ele está achando que o povo é otário?”. E afirmou: “Vamos fazer tesouraço em impostos, sim”. Lula disse: “Nós vamos ajudar vocês a saírem do sufoco”. E também: “A palavra prosperidade não é privilégio, é direito de todo mundo”.",
+      "bloco": "Bets, MEI e 6x1: o que Lula e Flávio disseram #Shorts",
+      "rubrica": {
+        "texto": "MEIs"
+      },
+      "tipo": "ladoA_ladoB",
+      "dados": {
+        "ladoA": {
+          "titulo": "Lula",
+          "personagemId": "lula",
+          "argumentos": [
+            {
+              "texto": "“Nós vamos ajudar vocês a saírem do sufoco”",
+              "quem": "Lula",
+              "fonteId": "f-agbr-mei"
+            },
+            {
+              "texto": "“A palavra prosperidade não é privilégio, é direito de todo mundo”",
+              "quem": "Lula",
+              "fonteId": "f-agbr-mei"
+            }
+          ]
+        },
+        "ladoB": {
+          "titulo": "Flávio Bolsonaro",
+          "personagemId": "flavio",
+          "argumentos": [
+            {
+              "texto": "“Ele está achando que o povo é otário?”",
+              "quem": "Flávio Bolsonaro",
+              "fonteId": "f-exame-mei"
+            },
+            {
+              "texto": "“Vamos fazer tesouraço em impostos, sim”",
+              "quem": "Flávio Bolsonaro",
+              "fonteId": "f-exame-mei"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "6x1-lados",
+      "narracao": "Na escala 6 por 1, Flávio defendeu “liberdade para o trabalhador montar sua escala” e disse que “quem vai pagar essa conta vai ter de ser o governo”. Lula atribuiu a mudança de posição do PL, partido de Flávio, à pressão popular, e chamou a promulgação de “vitória da sociedade brasileira”.",
+      "atribuicoes": [
+        {
+          "quem": "lula",
+          "disse": "Vitória da sociedade brasileira",
+          "fonteId": "f-metropoles-promulga"
+        }
+      ],
+      "bloco": "Bets, MEI e 6x1: o que Lula e Flávio disseram #Shorts",
+      "rubrica": {
+        "texto": "Escala 6x1"
+      },
+      "tipo": "ladoA_ladoB",
+      "dados": {
+        "ladoA": {
+          "titulo": "Flávio Bolsonaro",
+          "personagemId": "flavio",
+          "argumentos": [
+            {
+              "texto": "“Quem vai pagar essa conta vai ter de ser o governo”",
+              "quem": "Flávio Bolsonaro",
+              "fonteId": "f-opovo-6x1"
+            },
+            {
+              "texto": "Quer “liberdade para o trabalhador montar sua escala”",
+              "quem": "Flávio Bolsonaro",
+              "fonteId": "f-opovo-6x1"
+            }
+          ]
+        },
+        "ladoB": {
+          "titulo": "Lula",
+          "personagemId": "lula",
+          "argumentos": [
+            {
+              "texto": "Pressão popular levou o PL a mudar de posição",
+              "quem": "Lula",
+              "fonteId": "f-poder-lula-6x1"
+            },
+            {
+              "texto": "“Vitória da sociedade brasileira”",
+              "quem": "Lula",
+              "fonteId": "f-metropoles-promulga"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "fim",
+      "narracao": "O vídeo completo está no canal. As fontes estão na descrição.",
+      "bloco": "Bets, MEI e 6x1: o que Lula e Flávio disseram #Shorts",
+      "tipo": "encerramento"
+    }
+  ]
+}

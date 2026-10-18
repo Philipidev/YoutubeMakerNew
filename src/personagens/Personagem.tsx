@@ -34,6 +34,10 @@ export type PersonagemProps = {
   mostrarRotulo?: boolean;
   /** sobrescreve o acessório do registro nesta cena */
   acessorio?: PersonagemDados["acessorio"];
+  /** semente fixa (imagens estáticas com vários personagens: pose idêntica para todos) */
+  semente?: number;
+  /** false desliga a piscada (thumbnail) */
+  piscar?: boolean;
 };
 
 /** Boneco + rótulo. Entrada com spring, transição idle→ação suave, boca sincronizada se `fala`. */
@@ -47,19 +51,21 @@ export const Personagem: React.FC<PersonagemProps> = ({
   inicioAcao = 0,
   mostrarRotulo = true,
   acessorio,
+  semente: sementeFixa,
+  piscar = true,
 }) => {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
   // semente por personagem + cena: estilo de gesto e microgestos variam de cena para cena
   const { semente: sementeCena } = useContext(MovimentoCena);
-  const ctx = { f, fps, semente: hash(sementeCena + ":" + dados.id) % 997, ladoCentro };
+  const ctx = { f, fps, semente: sementeFixa ?? hash(sementeCena + ":" + dados.id) % 997, ladoCentro };
   const fa = Math.max(0, f - inicioAcao);
   const k = f < inicioAcao ? 0 : spring({ frame: fa, fps, config: movimento.entradaSuave });
   let pose = misturar(ACOES_POSE.idle(ctx), ACOES_POSE[acao]({ ...ctx, f: fa }), k);
   if (fala && palavras?.length) pose = { ...pose, boca: Math.max(pose.boca, aberturaBoca(palavras, f / fps)) };
   // piscada periódica, desfasada por personagem
   const ciclo = (f + ctx.semente * 7) % 110;
-  if (ciclo < 4 && pose.olhos > 0.5) pose = { ...pose, olhos: 0.1 };
+  if (piscar && ciclo < 4 && pose.olhos > 0.5) pose = { ...pose, olhos: 0.1 };
   const entrada = spring({ frame: f, fps, config: movimento.entrada });
   // entrada do boneco (4 variantes): sobe, chega pelo lado, cai com quique, surge em escala
   const vEntrada = useVariante("boneco-entrada:" + dados.id, ["subir", "lado", "cair", "surgir"] as const);

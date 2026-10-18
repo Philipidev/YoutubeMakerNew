@@ -1,0 +1,42 @@
+[
+  {
+    "id": "debates",
+    "titulo": "Por que Lula e Flávio nunca debateram até agora? #Shorts",
+    "gancho": {
+      "narracao": "Lula e Flávio Bolsonaro vão ao primeiro debate da eleição sem nunca terem se enfrentado na TV. Por quê?",
+      "manchete": "Nenhum debate até agora",
+      "destaque": "Debate na Band: domingo, 18/10, 20h"
+    },
+    "cenas": ["debates-1turno", "pulpitos-vazios", "justificativas", "globo-decisoes", "globo-reacoes", "resumo-1turno", "semana", "confirmacoes"]
+  },
+  {
+    "id": "pesquisas",
+    "titulo": "Lula x Flávio: o que dizem as pesquisas antes do debate #Shorts",
+    "gancho": {
+      "narracao": "O que as pesquisas registradas no TSE mostram a uma semana do segundo turno.",
+      "manchete": "As pesquisas do 2º turno",
+      "destaque": "Datafolha, Quaest, Ipespe e MDA"
+    },
+    "cenas": ["datafolha", "quaest", "ipespe", "mda", "empate", "tendencia"]
+  },
+  {
+    "id": "decisoes",
+    "titulo": "Bets, MEI e escala 6x1: as decisões na reta final da eleição #Shorts",
+    "gancho": {
+      "narracao": "Na reta final da eleição, o governo Lula e Flávio Bolsonaro tomaram decisões que devem aparecer no debate.",
+      "manchete": "Decisões na reta final",
+      "destaque": "Bets, MEIs e escala 6x1"
+    },
+    "cenas": ["bets-fato", "bets-justica", "mei-fato", "6x1-flavio", "6x1-votacao"]
+  },
+  {
+    "id": "falas",
+    "titulo": "Bets, MEI e 6x1: o que Lula e Flávio disseram #Shorts",
+    "gancho": {
+      "narracao": "Bets, microempreendedores e escala 6 por 1: o que Flávio Bolsonaro e Lula disseram sobre cada tema.",
+      "manchete": "O que cada um disse",
+      "destaque": "Nas palavras de cada um"
+    },
+    "cenas": ["bets-lados", "mei-lados", "6x1-lados"]
+  }
+]

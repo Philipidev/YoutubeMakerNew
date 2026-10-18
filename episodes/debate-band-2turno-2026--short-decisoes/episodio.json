@@ -1,0 +1,402 @@
+{
+  "slug": "debate-band-2turno-2026--short-decisoes",
+  "titulo": "Bets, MEI e escala 6x1: as decisões na reta final da eleição #Shorts",
+  "dataPublicacao": "2026-10-18",
+  "resumo": "Na reta final da eleição, o governo Lula e Flávio Bolsonaro tomaram decisões que devem aparecer no debate.",
+  "ordemLados": "AB",
+  "posicoesFixas": {
+    "flavio": "esq",
+    "lula": "dir"
+  },
+  "trilha": "rain-over-kyoto-station",
+  "fontes": [
+    {
+      "id": "f-senado-mp",
+      "veiculo": "Agência Senado",
+      "titulo": "MP proíbe bets e determina encerramento das operações em 30 dias",
+      "url": "https://www12.senado.leg.br/noticias/materias/2026/09/28/mp-proibe-bets-e-determina-encerramento-das-operacoes-em-30-dias",
+      "data": "2026-09-28",
+      "tipo": "primaria",
+      "linhaEditorial": "institucional"
+    },
+    {
+      "id": "f-agbr-mp",
+      "veiculo": "Agência Brasil",
+      "titulo": "MP das Bets: veja o que muda e saiba datas para devolução de valores",
+      "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/entenda-medida-provisoria-e-projeto-que-proibem-bets-no-brasil",
+      "data": "2026-09-26",
+      "tipo": "imprensa",
+      "linhaEditorial": "pública (EBC)"
+    },
+    {
+      "id": "f-mj-mp",
+      "veiculo": "Ministério da Justiça (gov.br)",
+      "titulo": "Governo Federal proíbe bets em todo o País e lança pacote de proteção às famílias endividadas",
+      "url": "https://www.gov.br/mj/pt-br/assuntos/noticias-1/governo-federal-proibe-bets-em-todo-o-pais-e-lanca-pacote-de-protecao-as-familias-endividadas-1",
+      "data": "2026-09-25",
+      "tipo": "primaria",
+      "linhaEditorial": "oficial"
+    },
+    {
+      "id": "f-migalhas-stf",
+      "veiculo": "Migalhas",
+      "titulo": "Entidades pedem ao STF suspensão da MP que proíbe bets",
+      "url": "https://www.migalhas.com.br/quentes/465423/entidades-pedem-ao-stf-suspensao-da-mp-que-proibe-bets",
+      "data": "2026-09-28",
+      "tipo": "imprensa",
+      "linhaEditorial": "jurídico"
+    },
+    {
+      "id": "f-poder-clubes",
+      "veiculo": "Poder360",
+      "titulo": "Fluminense, Cruzeiro e mais 14 clubes acionam STF contra MP das Bets",
+      "url": "https://www.poder360.com.br/poder-sportsmkt/fluminense-cruzeiro-e-mais-14-clubes-acionam-stf-contra-mp-das-bets/",
+      "data": "2026-10-02",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro"
+    },
+    {
+      "id": "f-agbr-fux",
+      "veiculo": "Agência Brasil",
+      "titulo": "Fux pede manifestação da AGU sobre pedido para liberar bets",
+      "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/fux-pede-manifestacao-da-agu-sobre-pedido-para-liberar-bets",
+      "data": "2026-10-02",
+      "tipo": "imprensa",
+      "linhaEditorial": "pública (EBC)"
+    },
+    {
+      "id": "f-opovo-6x1",
+      "veiculo": "O Povo",
+      "titulo": "Fim da escala 6x1: contra ou a favor? Veja o que Flávio Bolsonaro já disse sobre o tema",
+      "url": "https://www.opovo.com.br/noticias/economia/2026/10/14/flavio-bolsonaro-muda-voto-sobre-escala-6x1.html",
+      "data": "2026-10-14",
+      "tipo": "imprensa",
+      "linhaEditorial": "regional (CE)"
+    },
+    {
+      "id": "f-agbr-6x1",
+      "veiculo": "Agência Brasil",
+      "titulo": "Senado aprova fim da escala 6x1 e redução da jornada de trabalho",
+      "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/senado-aprova-fim-da-escala-6x1-e-reducao-da-jornada-de-trabalho",
+      "data": "2026-10-14",
+      "tipo": "imprensa",
+      "linhaEditorial": "pública (EBC)"
+    },
+    {
+      "id": "f-exame-6x1",
+      "veiculo": "Exame",
+      "titulo": "Como Flávio Bolsonaro votou sobre o fim da escala 6x1 no Senado?",
+      "url": "https://exame.com/brasil/como-flavio-bolsonaro-votou-sobre-o-fim-da-escala-6x1-no-senado/",
+      "data": "2026-10-15",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro-liberal"
+    },
+    {
+      "id": "f-metropoles-promulga",
+      "veiculo": "Metrópoles",
+      "titulo": "Com Lula, Congresso promulga fim da escala 6x1; veja regras e prazos",
+      "url": "https://www.metropoles.com/brasil/lula-congresso-pec-escala-6x1",
+      "data": "2026-10-16",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro"
+    },
+    {
+      "id": "f-agbr-mei",
+      "veiculo": "Agência Brasil",
+      "titulo": "Governo anuncia perdão de dívidas e pacote de estímulo para MEIs",
+      "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/governo-anuncia-perdao-de-dividas-e-pacote-de-estimulo-para-meis",
+      "data": "2026-10-13",
+      "tipo": "imprensa",
+      "linhaEditorial": "pública (EBC)"
+    },
+    {
+      "id": "f-poder-mei",
+      "veiculo": "Poder360",
+      "titulo": "Câmara aprova aumento no teto do MEI e perdão a dívidas",
+      "url": "https://www.poder360.com.br/poder-congresso/camara-aprova-aumento-no-teto-do-mei-e-perdao-a-dividas/",
+      "data": "2026-10-14",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro"
+    },
+    {
+      "id": "f-cf88",
+      "veiculo": "Constituição Federal",
+      "titulo": "Arts. 46 (3 senadores por estado), 60 (PEC: 3/5 em dois turnos) e 62 (medida provisória: 60 + 60 dias)",
+      "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
+      "data": "1988-10-05",
+      "tipo": "primaria",
+      "linhaEditorial": "oficial"
+    },
+    {
+      "id": "f-camara-processo",
+      "veiculo": "Câmara dos Deputados",
+      "titulo": "Entenda o processo legislativo",
+      "url": "https://www.camara.leg.br/entenda-o-processo-legislativo/",
+      "data": "2026-10-18",
+      "tipo": "primaria",
+      "linhaEditorial": "institucional"
+    }
+  ],
+  "personagens": [
+    {
+      "id": "flavio",
+      "rotulo": "Flávio Bolsonaro",
+      "numero": "22",
+      "cor": "PL",
+      "partido": "PL",
+      "roupa": "camisa"
+    },
+    {
+      "id": "lula",
+      "rotulo": "Lula",
+      "numero": "13",
+      "cor": "PT",
+      "partido": "PT",
+      "roupa": "camisa"
+    },
+    {
+      "id": "zema",
+      "rotulo": "Zema",
+      "numero": "",
+      "cor": "neutro",
+      "roupa": "terno"
+    }
+  ],
+  "cenas": [
+    {
+      "id": "gancho",
+      "narracao": "Na reta final da eleição, o governo Lula e Flávio Bolsonaro tomaram decisões que devem aparecer no debate.",
+      "cenario": "pulpitos",
+      "personagens": [
+        {
+          "id": "flavio",
+          "acao": "idle",
+          "posicao": "esq"
+        },
+        {
+          "id": "lula",
+          "acao": "idle",
+          "posicao": "dir"
+        }
+      ],
+      "bloco": "Bets, MEI e escala 6x1: as decisões na reta final da eleição #Shorts",
+      "tipo": "gancho",
+      "dados": {
+        "manchete": "Decisões na reta final",
+        "destaque": "Bets, MEIs e escala 6x1"
+      }
+    },
+    {
+      "id": "bets-fato",
+      "narracao": "Em 25 de setembro, nove dias antes do primeiro turno, Lula assinou uma medida provisória que proíbe as bets, as apostas de quota fixa. Esse tipo de norma vale assim que é publicada, mas o Congresso tem até 120 dias para votá-la; se não votar, ela perde a validade. Os sites e aplicativos saíram do ar em 6 de outubro.",
+      "cenario": "planalto",
+      "personagens": [
+        {
+          "id": "lula",
+          "acao": "falar",
+          "posicao": "centro",
+          "acessorio": "documento"
+        }
+      ],
+      "fatos": [
+        {
+          "texto": "MP 1.394 proíbe apostas de quota fixa (25/09)",
+          "fonteIds": [
+            "f-senado-mp",
+            "f-agbr-mp",
+            "f-mj-mp"
+          ],
+          "status": "confirmado"
+        },
+        {
+          "texto": "Medida provisória vale na hora; o Congresso tem até 120 dias para votar",
+          "fonteIds": [
+            "f-cf88",
+            "f-senado-mp"
+          ],
+          "status": "confirmado"
+        },
+        {
+          "texto": "Sites e aplicativos fora do ar desde 06/10",
+          "fonteIds": [
+            "f-senado-mp",
+            "f-agbr-mp"
+          ],
+          "status": "confirmado"
+        }
+      ],
+      "bloco": "Bets, MEI e escala 6x1: as decisões na reta final da eleição #Shorts",
+      "rubrica": {
+        "texto": "Governo Lula",
+        "personagemId": "lula"
+      },
+      "tipo": "fato"
+    },
+    {
+      "id": "bets-justica",
+      "narracao": "Até então, as apostas eram legais: foram criadas por lei em 2018, no governo Temer, e regulamentadas em 2023, no governo Lula. Clubes de futebol e entidades pediram ao Supremo que suspendesse a medida. O relator do caso, ministro Luiz Fux, pediu a posição da Advocacia-Geral da União, que defende o governo.",
+      "cenario": "tribunal",
+      "fatos": [
+        {
+          "texto": "Apostas criadas em 2018 e regulamentadas em 2023 (Lei 14.790)",
+          "fonteIds": [
+            "f-migalhas-stf",
+            "f-senado-mp"
+          ],
+          "status": "confirmado"
+        },
+        {
+          "texto": "Clubes e entidades pedem ao STF a suspensão da MP",
+          "fonteIds": [
+            "f-migalhas-stf",
+            "f-poder-clubes"
+          ],
+          "status": "confirmado"
+        },
+        {
+          "texto": "Fux pede manifestação da AGU",
+          "fonteIds": [
+            "f-agbr-fux"
+          ],
+          "status": "confirmado"
+        }
+      ],
+      "bloco": "Bets, MEI e escala 6x1: as decisões na reta final da eleição #Shorts",
+      "rubrica": {
+        "texto": "Governo Lula",
+        "personagemId": "lula"
+      },
+      "cenarioOpcoes": {
+        "rotulo": "STF"
+      },
+      "tipo": "fato"
+    },
+    {
+      "id": "mei-fato",
+      "narracao": "Em 13 de outubro, a 12 dias do segundo turno, o governo Lula anunciou o perdão de cerca de 12,6 bilhões de reais em dívidas de microempreendedores individuais, os MEIs, e um Pix de até 5 mil reais. Na quarta, a Câmara, que tem 513 deputados, aprovou o perdão e o aumento do limite de faturamento do MEI por 461 votos a 4. O texto vai ao Senado.",
+      "cenario": "planalto",
+      "fatos": [
+        {
+          "texto": "Perdão de ~R$ 12,6 bi em dívidas de MEIs e Pix de até R$ 5 mil (13/10)",
+          "fonteIds": [
+            "f-agbr-mei"
+          ],
+          "status": "confirmado"
+        },
+        {
+          "texto": "Câmara (513 deputados) aprova por 461 a 4; segue para o Senado",
+          "fonteIds": [
+            "f-poder-mei",
+            "f-camara-processo"
+          ],
+          "status": "confirmado"
+        }
+      ],
+      "bloco": "Bets, MEI e escala 6x1: as decisões na reta final da eleição #Shorts",
+      "rubrica": {
+        "texto": "Governo Lula",
+        "personagemId": "lula"
+      },
+      "tipo": "fato"
+    },
+    {
+      "id": "6x1-flavio",
+      "narracao": "Também no dia 13, Flávio mudou de posição sobre o fim da escala 6 por 1: seis dias de trabalho para um de folga. Em maio, ele tinha chamado a discussão de “inoportuna e eleitoreira”. Desta vez, disse que “a maioria dos trabalhadores brasileiros quer o fim da 6 por 1”.",
+      "personagens": [
+        {
+          "id": "flavio",
+          "acao": "falar",
+          "posicao": "centro",
+          "fala": true
+        }
+      ],
+      "fatos": [
+        {
+          "texto": "Flávio votou a favor da PEC no Senado",
+          "fonteIds": [
+            "f-exame-6x1",
+            "f-agbr-6x1"
+          ],
+          "status": "confirmado"
+        }
+      ],
+      "atribuicoes": [
+        {
+          "quem": "flavio",
+          "disse": "A maioria dos trabalhadores brasileiros quer o fim da 6 por 1",
+          "fonteId": "f-opovo-6x1"
+        },
+        {
+          "quem": "flavio",
+          "disse": "Inoportuna e eleitoreira",
+          "fonteId": "f-opovo-6x1",
+          "quando": "em maio",
+          "termos": [
+            "eleitoreira"
+          ]
+        }
+      ],
+      "bloco": "Bets, MEI e escala 6x1: as decisões na reta final da eleição #Shorts",
+      "rubrica": {
+        "texto": "Flávio Bolsonaro",
+        "personagemId": "flavio"
+      },
+      "tipo": "fato"
+    },
+    {
+      "id": "6x1-votacao",
+      "narracao": "No dia seguinte, o Senado votou a proposta de emenda à Constituição. São 81 senadores, e mudar a Constituição exige pelo menos 49 votos, três quintos da Casa. Foram 75 a favor, entre eles o de Flávio, que é senador, e 1 contra; 5 não votaram. Na sexta, o Congresso promulgou a emenda, ato que a incorpora à Constituição. A jornada máxima cai para 42 horas semanais em 60 dias, e para 40 um ano depois, sem redução de salário.",
+      "fatos": [
+        {
+          "texto": "Senado: 81 senadores; PEC precisa de 49 votos",
+          "fonteIds": [
+            "f-cf88",
+            "f-agbr-6x1"
+          ],
+          "status": "confirmado"
+        },
+        {
+          "texto": "Aprovada por 75 a 1, com 77 presentes (14/10)",
+          "fonteIds": [
+            "f-agbr-6x1",
+            "f-exame-6x1"
+          ],
+          "status": "confirmado"
+        },
+        {
+          "texto": "Promulgada em 16/10: 42h em 60 dias, 40h um ano depois, sem redução de salário",
+          "fonteIds": [
+            "f-metropoles-promulga",
+            "f-agbr-6x1"
+          ],
+          "status": "confirmado"
+        }
+      ],
+      "bloco": "Bets, MEI e escala 6x1: as decisões na reta final da eleição #Shorts",
+      "rubrica": {
+        "texto": "Flávio Bolsonaro",
+        "personagemId": "flavio"
+      },
+      "tipo": "votacao",
+      "dados": {
+        "orgao": "Senado Federal",
+        "etapa": "Fim da escala 6x1 (PEC)",
+        "casa": "senado",
+        "placar": {
+          "sim": 75,
+          "nao": 1,
+          "abst": 0,
+          "ausentes": 5
+        },
+        "totalCadeiras": 81,
+        "quorum": "49 votos (3/5) para mudar a Constituição"
+      }
+    },
+    {
+      "id": "fim",
+      "narracao": "O vídeo completo está no canal. As fontes estão na descrição.",
+      "bloco": "Bets, MEI e escala 6x1: as decisões na reta final da eleição #Shorts",
+      "tipo": "encerramento"
+    }
+  ]
+}

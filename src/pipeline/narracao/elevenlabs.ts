@@ -179,8 +179,8 @@ export const elevenLabsProvider: NarracaoProvider = {
   nome: "elevenlabs",
   async gerar(episodio, dirSaida, dirEpisodio) {
     const c = configElevenLabs();
-    // cache fora de public/ (não vai para o bundle do render) e fora do git
-    const dirCache = path.join(dirEpisodio, ".cache-tts");
+    // cache compartilhado entre episódios (Shorts reaproveitam trechos do episódio-pai), fora de public/ e do git
+    const dirCache = path.join(dirEpisodio, "..", ".cache-tts");
     await fs.mkdir(dirCache, { recursive: true });
     const trechos = montarTrechos(episodio);
     const arqs = trechos.map((t) => path.join(dirCache, `${chaveCache(t, c)}.json`));

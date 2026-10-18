@@ -1,0 +1,486 @@
+{
+  "slug": "debate-band-2turno-2026--short-debates",
+  "titulo": "Por que Lula e Flávio nunca debateram até agora? #Shorts",
+  "dataPublicacao": "2026-10-18",
+  "resumo": "Lula e Flávio Bolsonaro vão ao primeiro debate da eleição sem nunca terem se enfrentado na TV. Por quê?",
+  "ordemLados": "AB",
+  "posicoesFixas": {
+    "flavio": "esq",
+    "lula": "dir"
+  },
+  "trilha": "rain-over-kyoto-station",
+  "fontes": [
+    {
+      "id": "f-gazeta-lula-band",
+      "veiculo": "Gazeta do Povo",
+      "titulo": "Lula decide não participar de debate na Band",
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/lula-decide-nao-participar-de-debate-na-band/",
+      "data": "2026-08-17",
+      "tipo": "imprensa",
+      "linhaEditorial": "direita"
+    },
+    {
+      "id": "f-metropoles-zema",
+      "veiculo": "Metrópoles",
+      "titulo": "Sem Lula e Flávio, Zema decide não participar de debate na Band",
+      "url": "https://www.metropoles.com/minas-gerais/sem-lula-e-flavio-zema-decide-nao-participar-de-debate-na-band",
+      "data": "2026-08-23",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro"
+    },
+    {
+      "id": "f-cnn-1debate",
+      "veiculo": "CNN Brasil",
+      "titulo": "1º debate presidencial é marcado por ataques aos ausentes Lula e Flávio",
+      "url": "https://www.cnnbrasil.com.br/eleicoes/eleicoes-2026-primeiro-debate-presidencial/",
+      "data": "2026-08-23",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro"
+    },
+    {
+      "id": "f-poder-band1",
+      "veiculo": "Poder360",
+      "titulo": "Em debate esvaziado na 'Band', Renan, Caiado e Cury miram Lula e Flávio",
+      "url": "https://www.poder360.com.br/poder-eleicoes-2026/em-debate-esvaziado-na-band-renan-caiado-e-cury-miram-lula-e-flavio/",
+      "data": "2026-08-23",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro"
+    },
+    {
+      "id": "f-dn-ausentes",
+      "veiculo": "Diário de Notícias (Portugal)",
+      "titulo": "Lula e Flávio (e Romeu Zema também) ausentes do primeiro debate no Brasil",
+      "url": "https://www.dn.pt/internacional/lula-e-flvio-e-romeu-zema-tambm-ausentes-do-primeiro-debate-no-brasil",
+      "data": "2026-08-24",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro (estrangeiro)"
+    },
+    {
+      "id": "f-gazeta-debates",
+      "veiculo": "Gazeta do Povo",
+      "titulo": "Os próximos debates na TV com os candidatos a presidente — se eles aparecerem",
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/proximos-debates-tv-candidatos-presidente/",
+      "data": "2026-09-23",
+      "tipo": "imprensa",
+      "linhaEditorial": "direita"
+    },
+    {
+      "id": "f-poder-globo",
+      "veiculo": "Poder360",
+      "titulo": "'Globo' cancela debate por causa de decisões do TSE e do STF",
+      "url": "https://www.poder360.com.br/poder-eleicoes-2026/lula-e-flavio-desistem-e-globo-cancela-debate-presidencial/",
+      "data": "2026-10-01",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro"
+    },
+    {
+      "id": "f-gazeta-flavio-globo",
+      "veiculo": "Gazeta do Povo",
+      "titulo": "Flávio Bolsonaro fala em censura do TSE e desiste de debate da TV Globo",
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/flavio-bolsonaro-desiste-de-participar-de-debate-da-tv-globo/",
+      "data": "2026-10-01",
+      "tipo": "imprensa",
+      "linhaEditorial": "direita"
+    },
+    {
+      "id": "f-ncnews-gilmar",
+      "veiculo": "NC News",
+      "titulo": "Entenda como Gilmar Mendes autorizou Renan Santos em debate após duas decisões contrárias",
+      "url": "https://ncnews.com.br/2026/10/02/liminar-gilmar-derruba-regras-globo-esvazia-debate/",
+      "data": "2026-10-02",
+      "tipo": "imprensa"
+    },
+    {
+      "id": "f-poder-flavio-nao",
+      "veiculo": "Poder360",
+      "titulo": "Flávio não vai a debate da 'Band' e diz avaliar ida à 'Globo'",
+      "url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-nao-vai-a-debate-da-band-e-diz-avaliar-ida-a-globo/",
+      "data": "2026-10-13",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro"
+    },
+    {
+      "id": "f-cnn-flavio-nao",
+      "veiculo": "CNN Brasil",
+      "titulo": "Flávio diz que não vai a debate da Band e Lula confirma presença",
+      "url": "https://www.cnnbrasil.com.br/eleicoes/flavio-diz-que-nao-vai-a-debate-da-band-e-lula-confirma-presenca/",
+      "data": "2026-10-13",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro"
+    },
+    {
+      "id": "f-metropoles-flavio-nao",
+      "veiculo": "Metrópoles",
+      "titulo": "Após PT confirmar Lula em debate da Band, Flávio diz que não vai participar",
+      "url": "https://www.metropoles.com/sao-paulo/apos-pt-confirmar-lula-em-debate-da-band-flavio-diz-que-nao-vai-participar",
+      "data": "2026-10-13",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro"
+    },
+    {
+      "id": "f-poder-flavio-sim",
+      "veiculo": "Poder360",
+      "titulo": "Flávio confirma presença no debate da 'Band': 'Te espero, Lula'",
+      "url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-confirma-presenca-no-debate-da-band-te-espero-lula/",
+      "data": "2026-10-14",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro"
+    },
+    {
+      "id": "f-carta-flavio-sim",
+      "veiculo": "CartaCapital",
+      "titulo": "Flávio Bolsonaro recua e diz que irá ao debate da 'Band' após Lula confirmar presença",
+      "url": "https://www.cartacapital.com.br/politica/flavio-bolsonaro-recua-diz-que-ira-ao-debate-da-band-apos-lula-confirmar-presenca/",
+      "data": "2026-10-14",
+      "tipo": "imprensa",
+      "linhaEditorial": "esquerda"
+    }
+  ],
+  "personagens": [
+    {
+      "id": "flavio",
+      "rotulo": "Flávio Bolsonaro",
+      "numero": "22",
+      "cor": "PL",
+      "partido": "PL",
+      "roupa": "camisa"
+    },
+    {
+      "id": "lula",
+      "rotulo": "Lula",
+      "numero": "13",
+      "cor": "PT",
+      "partido": "PT",
+      "roupa": "camisa"
+    },
+    {
+      "id": "zema",
+      "rotulo": "Zema",
+      "numero": "",
+      "cor": "neutro",
+      "roupa": "terno"
+    }
+  ],
+  "cenas": [
+    {
+      "id": "gancho",
+      "narracao": "Lula e Flávio Bolsonaro vão ao primeiro debate da eleição sem nunca terem se enfrentado na TV. Por quê?",
+      "cenario": "pulpitos",
+      "personagens": [
+        {
+          "id": "flavio",
+          "acao": "idle",
+          "posicao": "esq"
+        },
+        {
+          "id": "lula",
+          "acao": "idle",
+          "posicao": "dir"
+        }
+      ],
+      "bloco": "Por que Lula e Flávio nunca debateram até agora? #Shorts",
+      "tipo": "gancho",
+      "dados": {
+        "manchete": "Nenhum debate até agora",
+        "destaque": "Debate na Band: domingo, 18/10, 20h"
+      }
+    },
+    {
+      "id": "debates-1turno",
+      "narracao": "Na campanha do primeiro turno, as emissoras marcaram quatro debates. Só um aconteceu: o da Band, em 23 de agosto.",
+      "bloco": "Por que Lula e Flávio nunca debateram até agora? #Shorts",
+      "tipo": "linhaDoTempo",
+      "dados": {
+        "eventos": [
+          {
+            "data": "23/08",
+            "rotulo": "Band: o único debate realizado",
+            "fonteIds": [
+              "f-cnn-1debate",
+              "f-poder-band1"
+            ],
+            "fase": "antes"
+          },
+          {
+            "data": "14/09",
+            "rotulo": "SBT, RedeTV! e CNN: cancelado",
+            "fonteIds": [
+              "f-gazeta-debates"
+            ],
+            "fase": "antes"
+          },
+          {
+            "data": "27/09",
+            "rotulo": "Record: cancelado",
+            "fonteIds": [
+              "f-gazeta-debates"
+            ],
+            "fase": "antes"
+          },
+          {
+            "data": "01/10",
+            "rotulo": "Globo: cancelado horas antes",
+            "fonteIds": [
+              "f-poder-globo"
+            ],
+            "fase": "fato"
+          }
+        ]
+      }
+    },
+    {
+      "id": "pulpitos-vazios",
+      "narracao": "Três dos seis convidados faltaram: Flávio, Lula e Romeu Zema.",
+      "cenario": "pulpitos",
+      "personagens": [],
+      "fatos": [
+        {
+          "texto": "3 de 6 púlpitos vazios: Lula, Flávio e Zema",
+          "fonteIds": [
+            "f-cnn-1debate",
+            "f-metropoles-zema",
+            "f-dn-ausentes"
+          ],
+          "status": "confirmado"
+        }
+      ],
+      "bloco": "Por que Lula e Flávio nunca debateram até agora? #Shorts",
+      "tipo": "debate",
+      "dados": {
+        "ausentes": [
+          "flavio",
+          "lula",
+          "zema"
+        ],
+        "titulo": "23/08: três púlpitos vazios"
+      }
+    },
+    {
+      "id": "justificativas",
+      "narracao": "A campanha de Flávio disse que ele iria aos debates em que Lula estivesse. A de Lula afirmou que o formato não oferecia condições equilibradas. A assessoria de Zema citou a ausência de Lula e de outros concorrentes.",
+      "personagens": [
+        {
+          "id": "flavio",
+          "acao": "idle",
+          "posicao": "esq"
+        },
+        {
+          "id": "lula",
+          "acao": "idle",
+          "posicao": "dir"
+        }
+      ],
+      "atribuicoes": [
+        {
+          "quem": "Campanha de Flávio",
+          "disse": "Ele pretende participar dos debates em que Lula estiver presente",
+          "fonteId": "f-metropoles-zema"
+        },
+        {
+          "quem": "Campanha de Lula",
+          "disse": "O formato não oferece condições equilibradas",
+          "fonteId": "f-gazeta-lula-band"
+        },
+        {
+          "quem": "Assessoria de Zema",
+          "disse": "Diante da ausência de Lula e de outros concorrentes, a alteração de data perdeu o seu propósito inicial",
+          "fonteId": "f-metropoles-zema"
+        }
+      ],
+      "bloco": "Por que Lula e Flávio nunca debateram até agora? #Shorts",
+      "tipo": "fato"
+    },
+    {
+      "id": "globo-decisoes",
+      "narracao": "O último debate marcado, o da Globo, era em 1º de outubro. Antes dele, o Tribunal Superior Eleitoral, o TSE, proibiu a emissora de deixar um púlpito vazio com o nome de Lula. E o Supremo Tribunal Federal, o STF, mandou incluir o candidato Renan Santos.",
+      "cenario": "tribunal",
+      "fatos": [
+        {
+          "texto": "TSE (Estela Aranha) proíbe púlpito vazio com o nome de Lula",
+          "fonteIds": [
+            "f-poder-globo",
+            "f-gazeta-flavio-globo"
+          ],
+          "status": "confirmado"
+        },
+        {
+          "texto": "STF (Gilmar Mendes) manda incluir Renan Santos",
+          "fonteIds": [
+            "f-poder-globo",
+            "f-ncnews-gilmar"
+          ],
+          "status": "confirmado"
+        }
+      ],
+      "bloco": "Por que Lula e Flávio nunca debateram até agora? #Shorts",
+      "cenarioOpcoes": {
+        "rotulo": "TSE · STF"
+      },
+      "tipo": "fato"
+    },
+    {
+      "id": "globo-reacoes",
+      "narracao": "Flávio desistiu, citando “a censura imposta ao evento pelo TSE”. Lula já tinha dito que não iria. A Globo cancelou o debate e afirmou que as decisões causaram insegurança jurídica.",
+      "personagens": [
+        {
+          "id": "flavio",
+          "acao": "falar",
+          "posicao": "esq",
+          "fala": true
+        },
+        {
+          "id": "lula",
+          "acao": "idle",
+          "posicao": "dir"
+        }
+      ],
+      "fatos": [
+        {
+          "texto": "Lula já tinha anunciado que não iria ao debate da Globo",
+          "fonteIds": [
+            "f-poder-globo"
+          ],
+          "status": "confirmado"
+        }
+      ],
+      "atribuicoes": [
+        {
+          "quem": "flavio",
+          "disse": "Acabo de tomar a decisão de não ir ao debate da Globo em função da censura imposta ao evento pelo TSE",
+          "fonteId": "f-gazeta-flavio-globo"
+        },
+        {
+          "quem": "TV Globo",
+          "disse": "As decisões causaram insegurança jurídica e representam uma interferência indevida na liberdade dos veículos de organizar os debates",
+          "fonteId": "f-poder-globo"
+        }
+      ],
+      "bloco": "Por que Lula e Flávio nunca debateram até agora? #Shorts",
+      "tipo": "fato"
+    },
+    {
+      "id": "resumo-1turno",
+      "narracao": "Os dois terminaram o primeiro turno sem participar de nenhum debate.",
+      "personagens": [
+        {
+          "id": "flavio",
+          "acao": "idle",
+          "posicao": "esq"
+        },
+        {
+          "id": "lula",
+          "acao": "idle",
+          "posicao": "dir"
+        }
+      ],
+      "fatos": [
+        {
+          "texto": "Lula e Flávio faltaram ao debate da Band (23/08)",
+          "fonteIds": [
+            "f-cnn-1debate",
+            "f-dn-ausentes"
+          ],
+          "status": "confirmado"
+        },
+        {
+          "texto": "Nenhum dos dois foi ao debate da Globo, que acabou cancelado",
+          "fonteIds": [
+            "f-poder-globo"
+          ],
+          "status": "confirmado"
+        }
+      ],
+      "bloco": "Por que Lula e Flávio nunca debateram até agora? #Shorts",
+      "tipo": "fato"
+    },
+    {
+      "id": "semana",
+      "narracao": "No segundo turno, a Band marcou o debate para este domingo. Na terça, 13, Flávio disse que não iria. A emissora avisou que o púlpito de quem faltasse ficaria vazio. No mesmo dia, Lula confirmou presença em vídeo.",
+      "bloco": "Por que Lula e Flávio nunca debateram até agora? #Shorts",
+      "rubrica": {
+        "texto": "2º turno"
+      },
+      "tipo": "linhaDoTempo",
+      "dados": {
+        "eventos": [
+          {
+            "data": "13/10",
+            "rotulo": "Flávio: “não está previsto ir nesse debate domingo”",
+            "fonteIds": [
+              "f-cnn-flavio-nao",
+              "f-poder-flavio-nao"
+            ],
+            "fase": "antes"
+          },
+          {
+            "data": "13/10",
+            "rotulo": "Band: púlpito vazio para quem faltar",
+            "fonteIds": [
+              "f-metropoles-flavio-nao",
+              "f-cnn-flavio-nao"
+            ],
+            "fase": "antes"
+          },
+          {
+            "data": "13/10",
+            "rotulo": "Lula confirma presença em vídeo",
+            "fonteIds": [
+              "f-cnn-flavio-nao",
+              "f-poder-flavio-sim"
+            ],
+            "fase": "fato"
+          },
+          {
+            "data": "14/10",
+            "rotulo": "Flávio volta atrás e confirma",
+            "fonteIds": [
+              "f-poder-flavio-sim",
+              "f-carta-flavio-sim"
+            ],
+            "fase": "reacao"
+          }
+        ]
+      }
+    },
+    {
+      "id": "confirmacoes",
+      "narracao": "No vídeo, Lula disse: “espero que meu adversário compareça”. Na quarta, 14, Flávio voltou atrás: “É claro que eu vou ao debate, eu só queria que você confirmasse”.",
+      "cenario": "pulpitos",
+      "personagens": [
+        {
+          "id": "flavio",
+          "acao": "idle",
+          "posicao": "esq"
+        },
+        {
+          "id": "lula",
+          "acao": "idle",
+          "posicao": "dir"
+        }
+      ],
+      "atribuicoes": [
+        {
+          "quem": "lula",
+          "disse": "No domingo, eu estarei no debate da TV Bandeirantes e espero que meu adversário compareça",
+          "fonteId": "f-cnn-flavio-nao"
+        },
+        {
+          "quem": "flavio",
+          "disse": "É claro que eu vou ao debate, eu só queria que você confirmasse",
+          "fonteId": "f-poder-flavio-sim"
+        }
+      ],
+      "bloco": "Por que Lula e Flávio nunca debateram até agora? #Shorts",
+      "rubrica": {
+        "texto": "2º turno"
+      },
+      "tipo": "debate"
+    },
+    {
+      "id": "fim",
+      "narracao": "O vídeo completo está no canal. As fontes estão na descrição.",
+      "bloco": "Por que Lula e Flávio nunca debateram até agora? #Shorts",
+      "tipo": "encerramento"
+    }
+  ]
+}

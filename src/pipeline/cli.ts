@@ -106,7 +106,8 @@ const episodioCompleto = async (slug: string, flags: Flags) => {
   await sincronizarPublic(slug, episodio, timestamps);
   await fs.mkdir(c.outDir, { recursive: true });
   const legendaQueimada = Boolean(flags.legendaQueimada);
-  for (const comp of composicoes(flags)) {
+  // --semRender: só narração + legendas + descrição (render depois)
+  for (const comp of flags.semRender ? [] : composicoes(flags)) {
     const nome = comp === "Vertical" ? "video.mp4" : "video-horizontal.mp4";
     await renderizar({ composicao: comp, props: { slug, legendaQueimada, semAudio: false }, saida: path.join(c.outDir, nome) });
   }

@@ -6,6 +6,8 @@ import { EpisodioPropsSchema, calcularMetadataEpisodio, type EpisodioProps } fro
 import { DesignSystem } from "./studio/DesignSystem";
 import { AcaoIsolada, GaleriaAcoes } from "./studio/GaleriaAcoes";
 import { ACOES } from "./schema/episodio";
+import { Thumbnail, ThumbnailSchema, calcularMetadataThumbnail } from "./studio/Thumbnail";
+import { AvatarCanal, BannerCanal, CanalSchema } from "./studio/Canal";
 import { Figurinos } from "./studio/Figurinos";
 import { MAPAS_DEMO, MapaDemo } from "./studio/Mapas";
 import { CENAS_DEMO, CenaIsolada, CenaIsoladaSchema, calcularMetadataCena } from "./studio/CenaIsolada";
@@ -36,6 +38,21 @@ export const Root: React.FC = () => (
       fps={FPS}
       durationInFrames={300}
     />
+    <Composition
+      id="Thumbnail"
+      component={Thumbnail}
+      schema={ThumbnailSchema}
+      defaultProps={{ slug: "exemplo" }}
+      calculateMetadata={calcularMetadataThumbnail}
+      width={1280}
+      height={720}
+      fps={FPS}
+      durationInFrames={90}
+    />
+    <Folder name="Canal">
+      <Composition id="Banner" component={BannerCanal} schema={CanalSchema} defaultProps={{ nome: "Desenhando a Notícia", slogan: "Política com fatos, fontes e os dois lados" }} width={2560} height={1440} fps={FPS} durationInFrames={90} />
+      <Composition id="Avatar" component={AvatarCanal} schema={CanalSchema} defaultProps={{ nome: "Desenhando a Notícia", slogan: "" }} width={800} height={800} fps={FPS} durationInFrames={90} />
+    </Folder>
     <Folder name="Studio">
       <Composition id="DesignSystem" component={DesignSystem} width={1080} height={1920} fps={FPS} durationInFrames={150} />
       <Composition id="DesignSystemHorizontal" component={DesignSystem} width={1920} height={1080} fps={FPS} durationInFrames={150} />

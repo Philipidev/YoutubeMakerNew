@@ -1,0 +1,275 @@
+{
+  "slug": "debate-band-2turno-2026--short-pesquisas",
+  "titulo": "Lula x Flávio: o que dizem as pesquisas antes do debate #Shorts",
+  "dataPublicacao": "2026-10-18",
+  "resumo": "O que as pesquisas registradas no TSE mostram a uma semana do segundo turno.",
+  "ordemLados": "AB",
+  "posicoesFixas": {
+    "flavio": "esq",
+    "lula": "dir"
+  },
+  "trilha": "rain-over-kyoto-station",
+  "fontes": [
+    {
+      "id": "f-poder-pesquisas",
+      "veiculo": "Poder360",
+      "titulo": "Saiba como estão Lula e Flávio nas pesquisas a 8 dias do 2º turno",
+      "url": "https://www.poder360.com.br/poder-eleicoes-2026/leia-como-estao-lula-e-flavio-nas-pesquisas-a-8-dias-do-2o-turno/",
+      "data": "2026-10-17",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro"
+    },
+    {
+      "id": "f-infomoney-quaest",
+      "veiculo": "InfoMoney",
+      "titulo": "Quaest: Flávio Bolsonaro tem 46% e Lula, 44% no 2º turno",
+      "url": "https://www.infomoney.com.br/politica/quaest-2-turno-flavio-lula/",
+      "data": "2026-10-14",
+      "tipo": "imprensa",
+      "linhaEditorial": "econômico"
+    },
+    {
+      "id": "f-oeste-ipespe",
+      "veiculo": "Revista Oeste",
+      "titulo": "Flávio tem 2,4 pontos de vantagem sobre Lula, aponta Ipespe",
+      "url": "https://revistaoeste.com/politica/flavio-tem-24-pontos-de-vantagem-sobre-lula-aponta-ipespe/",
+      "data": "2026-10-17",
+      "tipo": "imprensa",
+      "linhaEditorial": "direita"
+    },
+    {
+      "id": "f-carta-ipespe",
+      "veiculo": "CartaCapital",
+      "titulo": "Pesquisa aponta empate técnico entre Flávio Bolsonaro e Lula a oito dias do 2º turno",
+      "url": "https://www.cartacapital.com.br/cartaexpressa/pesquisa-aponta-empate-tecnico-entre-flavio-bolsonaro-e-lula-a-oito-dias-do-2o-turno/",
+      "data": "2026-10-17",
+      "tipo": "imprensa",
+      "linhaEditorial": "esquerda"
+    },
+    {
+      "id": "f-correio-mda",
+      "veiculo": "Correio 24 Horas",
+      "titulo": "Flávio tem 50,5% e Lula, 49,5% dos votos válidos no segundo turno, aponta pesquisa CNT/MDA",
+      "url": "https://www.correio24horas.com.br/eleicoes/flavio-tem-505-e-lula-495-dos-votos-validos-no-segundo-turno-aponta-pesquisa-cntmda-1026",
+      "data": "2026-10-16",
+      "tipo": "imprensa",
+      "linhaEditorial": "regional (BA)"
+    }
+  ],
+  "personagens": [
+    {
+      "id": "flavio",
+      "rotulo": "Flávio Bolsonaro",
+      "numero": "22",
+      "cor": "PL",
+      "partido": "PL",
+      "roupa": "camisa"
+    },
+    {
+      "id": "lula",
+      "rotulo": "Lula",
+      "numero": "13",
+      "cor": "PT",
+      "partido": "PT",
+      "roupa": "camisa"
+    },
+    {
+      "id": "zema",
+      "rotulo": "Zema",
+      "numero": "",
+      "cor": "neutro",
+      "roupa": "terno"
+    }
+  ],
+  "cenas": [
+    {
+      "id": "gancho",
+      "narracao": "O que as pesquisas registradas no TSE mostram a uma semana do segundo turno.",
+      "cenario": "pulpitos",
+      "personagens": [
+        {
+          "id": "flavio",
+          "acao": "idle",
+          "posicao": "esq"
+        },
+        {
+          "id": "lula",
+          "acao": "idle",
+          "posicao": "dir"
+        }
+      ],
+      "bloco": "Lula x Flávio: o que dizem as pesquisas antes do debate #Shorts",
+      "tipo": "gancho",
+      "dados": {
+        "manchete": "As pesquisas do 2º turno",
+        "destaque": "Datafolha, Quaest, Ipespe e MDA"
+      }
+    },
+    {
+      "id": "datafolha",
+      "narracao": "Nos votos totais, que contam também brancos, nulos e indecisos, o Datafolha registra Flávio com 47% e Lula com 45%.",
+      "bloco": "Lula x Flávio: o que dizem as pesquisas antes do debate #Shorts",
+      "tipo": "pesquisa",
+      "dados": {
+        "instituto": "Datafolha",
+        "campo": {
+          "inicio": "2026-10-13",
+          "fim": "2026-10-15"
+        },
+        "registroTSE": "BR-00466/2026",
+        "margemErro": "2 p.p.",
+        "amostra": 2520,
+        "base": "totais",
+        "fonteId": "f-poder-pesquisas",
+        "resultados": [
+          {
+            "personagemId": "flavio",
+            "pct": 47
+          },
+          {
+            "personagemId": "lula",
+            "pct": 45
+          }
+        ]
+      }
+    },
+    {
+      "id": "quaest",
+      "narracao": "Na Quaest, Flávio tem 46%, e Lula, 44%.",
+      "bloco": "Lula x Flávio: o que dizem as pesquisas antes do debate #Shorts",
+      "tipo": "pesquisa",
+      "dados": {
+        "instituto": "Quaest",
+        "campo": {
+          "inicio": "2026-10-10",
+          "fim": "2026-10-13"
+        },
+        "registroTSE": "BR-08729/2026",
+        "margemErro": "2 p.p.",
+        "amostra": 2154,
+        "base": "totais",
+        "fonteId": "f-infomoney-quaest",
+        "resultados": [
+          {
+            "personagemId": "flavio",
+            "pct": 46
+          },
+          {
+            "personagemId": "lula",
+            "pct": 44
+          }
+        ]
+      }
+    },
+    {
+      "id": "ipespe",
+      "narracao": "Nos votos válidos, a mesma conta do resultado oficial, o Ipespe aponta 51,2% para Flávio e 48,8% para Lula.",
+      "bloco": "Lula x Flávio: o que dizem as pesquisas antes do debate #Shorts",
+      "tipo": "pesquisa",
+      "dados": {
+        "instituto": "Ipespe",
+        "campo": {
+          "inicio": "2026-10-13",
+          "fim": "2026-10-15"
+        },
+        "registroTSE": "BR-00223/2026",
+        "margemErro": "2,6 p.p.",
+        "amostra": 1500,
+        "base": "validos",
+        "fonteId": "f-oeste-ipespe",
+        "resultados": [
+          {
+            "personagemId": "flavio",
+            "pct": 51.2
+          },
+          {
+            "personagemId": "lula",
+            "pct": 48.8
+          }
+        ]
+      }
+    },
+    {
+      "id": "mda",
+      "narracao": "A CNT/MDA, também nos válidos, tem Flávio com 50,5% e Lula com 49,5%.",
+      "bloco": "Lula x Flávio: o que dizem as pesquisas antes do debate #Shorts",
+      "tipo": "pesquisa",
+      "dados": {
+        "instituto": "MDA",
+        "campo": {
+          "inicio": "2026-10-13",
+          "fim": "2026-10-15"
+        },
+        "registroTSE": "BR-00652/2026",
+        "margemErro": "2,2 p.p.",
+        "amostra": 2014,
+        "base": "validos",
+        "contratante": "CNT",
+        "fonteId": "f-correio-mda",
+        "resultados": [
+          {
+            "personagemId": "flavio",
+            "pct": 50.5
+          },
+          {
+            "personagemId": "lula",
+            "pct": 49.5
+          }
+        ]
+      }
+    },
+    {
+      "id": "empate",
+      "narracao": "As quatro pesquisas foram feitas entre 10 e 15 de outubro e estão registradas no TSE. A margem de erro vai de 2 a 2,6 pontos percentuais: é quanto cada número pode variar, para mais ou para menos. Assim, as faixas dos dois se sobrepõem em todas. É o chamado empate técnico.",
+      "fatos": [
+        {
+          "texto": "Empate técnico: a diferença cabe na margem de erro dos dois lados",
+          "fonteIds": [
+            "f-poder-pesquisas",
+            "f-carta-ipespe"
+          ],
+          "status": "confirmado"
+        }
+      ],
+      "bloco": "Lula x Flávio: o que dizem as pesquisas antes do debate #Shorts",
+      "tipo": "fato"
+    },
+    {
+      "id": "tendencia",
+      "narracao": "Em relação à rodada anterior, a diferença diminuiu no Datafolha, de 4 para 2 pontos, e no Ipespe, de 5,4 para 2,4. Na Quaest, ficou em 2, mas a rodada anterior é de antes do primeiro turno.",
+      "bloco": "Lula x Flávio: o que dizem as pesquisas antes do debate #Shorts",
+      "tipo": "grafico",
+      "dados": {
+        "titulo": "Diferença entre os dois, em pontos",
+        "fonteId": "f-poder-pesquisas",
+        "nota": "Rodadas anteriores: Gazeta do Povo e CNN Brasil (8/10), A Crítica (10/10). Datafolha em votos totais.",
+        "grafico": "barras",
+        "unidade": " pts",
+        "pontos": [
+          {
+            "rotulo": "Datafolha · 6 e 7/10 (totais)",
+            "valor": 4
+          },
+          {
+            "rotulo": "Datafolha · 13 a 15/10 (totais)",
+            "valor": 2
+          },
+          {
+            "rotulo": "Ipespe · 6 a 8/10 (válidos)",
+            "valor": 5.4
+          },
+          {
+            "rotulo": "Ipespe · 13 a 15/10 (válidos)",
+            "valor": 2.4
+          }
+        ]
+      }
+    },
+    {
+      "id": "fim",
+      "narracao": "O vídeo completo está no canal. As fontes estão na descrição.",
+      "bloco": "Lula x Flávio: o que dizem as pesquisas antes do debate #Shorts",
+      "tipo": "encerramento"
+    }
+  ]
+}
