@@ -9,6 +9,7 @@ import { BarraProgresso } from "./BarraProgresso";
 import { LegendaQueimada } from "./LegendaQueimada";
 import { TrilhaSfx } from "./Sfx";
 import { Zonas } from "./Zonas";
+import { Chapeu } from "./Chapeu";
 import { MovimentoCena, planejarMovimento, type PlanoCena } from "../movimento/plano";
 import { DURACAO_TRANSICAO, estiloEntrada, estiloSaida, opacidadeFlash } from "../movimento/transicoes";
 
@@ -56,6 +57,7 @@ export const EpisodioVideo: React.FC<EpisodioProps> = ({ dados, legendaQueimada,
           </Sequence>
         );
       })}
+      <Chapeu episodio={episodio} tempos={tempos} />
       <BarraProgresso />
       {zonas ? <Zonas /> : null}
       {legendaQueimada || semAudio ? <LegendaQueimada timestamps={timestamps} /> : null}

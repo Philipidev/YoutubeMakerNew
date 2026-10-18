@@ -1,16 +1,16 @@
 # Roteiro — O primeiro cara a cara: Lula e Flávio no debate da Band
 
 - Publicação: 2026-10-18
-- Narração: 850 palavras · duração 5:38 (estimada, sem áudio)
+- Narração: 1065 palavras · duração 7:08 (estimada, sem áudio)
 - Resumo: Neste domingo, 18/10, às 20h, Lula (PT) e Flávio Bolsonaro (PL) participam do debate da Band, o primeiro com os dois em toda a eleição. O vídeo resume a história dos debates que não aconteceram, as pesquisas mais recentes registradas no TSE e os temas da semana, com a posição de cada lado atribuída a quem disse.
 
 ## 1. Narração por bloco (com minutagem) e 2. sugestão visual
 
-### 1. Gancho (0:00–0:15)
+### 1. Abertura (0:00–0:25)
 
 **[0:00] gancho**
 
-> Neste domingo, 18 de outubro, Lula, do PT, e Flávio Bolsonaro, do PL, se enfrentam num debate na TV, na Band.
+> Neste domingo, 18 de outubro, Flávio Bolsonaro, do PL, e Lula, do PT, se enfrentam no debate da Band.
 
 Visual: **gancho** · cenário pulpitos · Flávio Bolsonaro (acenar, esq) e Lula (acenar, dir) · cards: “Debate na Band: domingo, 18/10, às 20h” · câmera panEsq, entra com corte, composição esq
 
@@ -18,23 +18,21 @@ Fontes: Poder360, Exame
 
 **[0:08] inedito**
 
-> É o primeiro encontro dos dois nesta eleição. No primeiro turno, não houve nenhum.
+> É o primeiro debate com os dois nesta eleição.
 
 Visual: **contexto** · cards: “Nenhum debate na TV com Lula e Flávio no 1º turno” · câmera kenBurns, entra com zoomPunch, composição dir
 
 Fontes: Gazeta do Povo, Poder360
 
-### 2. Onde a disputa está (0:15–0:24)
+**[0:11] resultado-1turno**
 
-**[0:15] resultado-1turno**
-
-> Na votação de 4 de outubro, Flávio teve 47,03% dos votos válidos, e Lula, 45,16%.
+> No primeiro turno, em 4 de outubro, Flávio teve 47,03% dos votos válidos, a conta que exclui brancos e nulos. Lula ficou com 45,16%.
 
 Visual: **grafico** · gráfico barras: 1º turno · votos válidos · câmera panDir, entra com dissolve, composição esq
 
 Fontes: CartaCapital
 
-**[0:20] data-2turno**
+**[0:21] data-2turno**
 
 > O segundo turno é no domingo seguinte, 25 de outubro.
 
@@ -42,83 +40,99 @@ Visual: **contexto** · cards: “2º turno em 25/10” · câmera deriva, entra
 
 Fontes: Agência Brasil
 
-### 3. Os debates que não aconteceram (0:24–1:48)
+### 2. Os debates que não aconteceram (0:25–2:00)
 
-**[0:24] debates-1turno**
+**[0:25] secao-debates**
 
-> Antes da primeira votação, quatro debates foram marcados. Só um aconteceu: o da Band, em 23 de agosto.
+> Os debates que não aconteceram.
 
-Visual: **linhaDoTempo** · 4 eventos · câmera panBaixo, entra com slideEsq, composição topo
+Visual: **secao** · câmera panDir, entra com slideCima, composição esq
+
+Fontes: —
+
+**[0:27] debates-1turno**
+
+> Na campanha do primeiro turno, as emissoras marcaram quatro debates. Só um aconteceu: o da Band, em 23 de agosto.
+
+Visual: **linhaDoTempo** · 4 eventos · câmera kenBurns, entra com wipeDiagonal, composição topo
 
 Fontes: CNN Brasil, Poder360, Gazeta do Povo
 
-**[0:32] pulpitos-vazios**
+**[0:36] pulpitos-vazios**
 
-> Três dos seis convidados faltaram: Lula, Flávio e Romeu Zema.
+> Três dos seis convidados faltaram: Flávio, Lula e Romeu Zema.
 
-Visual: **debate** · cenário pulpitos · púlpitos vazios: Flávio Bolsonaro, Lula, Zema · cards: “3 de 6 púlpitos vazios: Lula, Flávio e Zema” · câmera zoomIn, entra com iris, composição esq
+Visual: **debate** · cenário pulpitos · púlpitos vazios: Flávio Bolsonaro, Lula, Zema · cards: “3 de 6 púlpitos vazios: Lula, Flávio e Zema” · câmera zoomIn, entra com slideCima, composição esq
 
 Fontes: CNN Brasil, Metrópoles, Diário de Notícias (Portugal)
 
-**[0:37] justificativas**
+**[0:40] justificativas**
 
-> A campanha de Lula disse que o formato não oferecia condições equilibradas. A de Flávio, que ele iria aos debates em que Lula estivesse. A assessoria de Zema afirmou que, sem Lula e outros concorrentes, a mudança de data do debate perdeu o propósito.
+> A campanha de Flávio disse que ele iria aos debates em que Lula estivesse. A de Lula afirmou que o formato não oferecia condições equilibradas. A assessoria de Zema citou a ausência de Lula e de outros concorrentes.
 
-Visual: **fato** · Flávio Bolsonaro (idle, esq) e Lula (idle, dir) · citações: Campanha de Lula, Campanha de Flávio, Assessoria de Zema · câmera kenBurns, entra com flash, composição dir
+Visual: **fato** · Flávio Bolsonaro (idle, esq) e Lula (idle, dir) · citações: Campanha de Flávio, Campanha de Lula, Assessoria de Zema · câmera kenBurns, entra com flash, composição dir
 
-Fontes: Gazeta do Povo, Metrópoles
+Fontes: Metrópoles, Gazeta do Povo
 
-**[0:55] globo-decisoes**
+**[0:56] globo-decisoes**
 
-> A Globo marcou o último debate para 1º de outubro. No dia, o TSE proibiu a emissora de deixar um púlpito vazio com o nome de Lula, e o STF mandou incluir o candidato Renan Santos.
+> O último debate marcado, o da Globo, era em 1º de outubro. Antes dele, o Tribunal Superior Eleitoral, o TSE, proibiu a emissora de deixar um púlpito vazio com o nome de Lula. E o Supremo Tribunal Federal, o STF, mandou incluir o candidato Renan Santos.
 
 Visual: **fato** · cenário tribunal · cards: “TSE (Estela Aranha) proíbe púlpito vazio com o nome de Lula”; “STF (Gilmar Mendes) manda incluir Renan Santos” · câmera deriva, entra com iris, composição esq
 
 Fontes: Poder360, Gazeta do Povo, NC News
 
-**[1:07] globo-reacoes**
+**[1:14] globo-reacoes**
 
-> Lula já tinha dito que não iria. Flávio desistiu, citando “a censura imposta ao evento pelo TSE”. A Globo cancelou o debate e disse que as decisões causaram insegurança jurídica.
+> Flávio desistiu, citando “a censura imposta ao evento pelo TSE”. Lula já tinha dito que não iria. A Globo cancelou o debate e afirmou que as decisões causaram insegurança jurídica.
 
 Visual: **fato** · Flávio Bolsonaro (falar, esq) e Lula (idle, dir) · cards: “Lula já tinha anunciado que não iria ao debate da Globo” · citações: Flávio Bolsonaro, TV Globo · câmera kenBurns, entra com push, composição topo
 
 Fontes: Poder360, Gazeta do Povo
 
-**[1:20] resumo-1turno**
+**[1:27] resumo-1turno**
 
-> No segundo turno, a Band marcou o debate deste domingo.
+> Os dois terminaram o primeiro turno sem participar de nenhum debate.
 
-Visual: **fato** · Flávio Bolsonaro (idle, esq) e Lula (idle, dir) · cards: “No 2º turno, Band marca debate para 18/10” · câmera panEsq, entra com wipeDiagonal, composição esq
+Visual: **fato** · Flávio Bolsonaro (idle, esq) e Lula (idle, dir) · cards: “Lula e Flávio faltaram ao debate da Band (23/08)”; “Nenhum dos dois foi ao debate da Globo, que acabou cancelado” · câmera panEsq, entra com wipeDiagonal, composição esq
 
-Fontes: Poder360, Gazeta do Povo
+Fontes: CNN Brasil, Diário de Notícias (Portugal), Poder360
 
-**[1:24] semana**
+**[1:32] semana**
 
-> E, nesta semana, a ausência quase se repetiu. Na terça, Flávio disse que não iria. A Band avisou que o púlpito de quem faltasse ficaria vazio. Lula confirmou presença em vídeo.
+> No segundo turno, a Band marcou o debate para este domingo. Na terça, 13, Flávio disse que não iria. A emissora avisou que o púlpito de quem faltasse ficaria vazio. No mesmo dia, Lula confirmou presença em vídeo.
 
 Visual: **linhaDoTempo** · 4 eventos · câmera deriva, entra com dissolve, composição dir
 
 Fontes: CNN Brasil, Poder360, Metrópoles, CartaCapital
 
-**[1:38] confirmacoes**
+**[1:47] confirmacoes**
 
-> Lula disse: “espero que meu adversário compareça”. Na quarta, Flávio respondeu: “É claro que eu vou ao debate, eu só queria que você confirmasse”.
+> No vídeo, Lula disse: “espero que meu adversário compareça”. Na quarta, 14, Flávio voltou atrás: “É claro que eu vou ao debate, eu só queria que você confirmasse”.
 
 Visual: **debate** · cenário pulpitos · Flávio Bolsonaro (idle, esq) e Lula (idle, dir) · citações: Lula, Flávio Bolsonaro · câmera panBaixo, entra com slideEsq, composição esq
 
 Fontes: CNN Brasil, Poder360
 
-### 4. Como os dois chegam: pesquisas (1:48–2:36)
+### 3. As pesquisas (2:00–2:58)
 
-**[1:48] datafolha**
+**[2:00] secao-pesquisas**
 
-> Nas pesquisas, o Datafolha mostra Flávio com 47% dos votos totais e Lula com 45%.
+> As pesquisas.
+
+Visual: **secao** · câmera kenBurns, entra com zoomPunch, composição dir
+
+Fontes: —
+
+**[2:01] datafolha**
+
+> Nos votos totais, que contam também brancos, nulos e indecisos, o Datafolha registra Flávio com 47% e Lula com 45%.
 
 Visual: **pesquisa** · gráfico Datafolha (totais) · câmera panCima, entra com corte, composição topo
 
 Fontes: Poder360
 
-**[1:54] quaest**
+**[2:09] quaest**
 
 > Na Quaest, Flávio tem 46%, e Lula, 44%.
 
@@ -126,141 +140,175 @@ Visual: **pesquisa** · gráfico Quaest (totais) · câmera panBaixo, entra com 
 
 Fontes: InfoMoney
 
-**[1:57] ipespe**
+**[2:12] ipespe**
 
-> Nos votos válidos, que excluem brancos e nulos, o Ipespe mostra Flávio com 51,2% e Lula com 48,8%.
+> Nos votos válidos, a mesma conta do resultado oficial, o Ipespe aponta 51,2% para Flávio e 48,8% para Lula.
 
 Visual: **pesquisa** · gráfico Ipespe (validos) · câmera zoomOut, entra com zoomPunch, composição esq
 
 Fontes: Revista Oeste
 
-**[2:04] mda**
+**[2:20] mda**
 
-> Na CNT/MDA, Flávio tem 50,5%, e Lula, 49,5%.
+> A CNT/MDA, também nos válidos, tem Flávio com 50,5% e Lula com 49,5%.
 
 Visual: **pesquisa** · gráfico MDA (validos) · câmera kenBurns, entra com wipeDiagonal, composição topo
 
 Fontes: Correio 24 Horas
 
-**[2:07] empate**
+**[2:24] empate**
 
-> As quatro pesquisas foram feitas entre 10 e 15 de outubro e estão registradas no TSE, com margens de erro de 2 a 2,6 pontos. Em todas, a diferença cabe na margem: é o chamado empate técnico.
+> As quatro pesquisas foram feitas entre 10 e 15 de outubro e estão registradas no TSE. A margem de erro vai de 2 a 2,6 pontos percentuais: é quanto cada número pode variar, para mais ou para menos. Assim, as faixas dos dois se sobrepõem em todas. É o chamado empate técnico.
 
 Visual: **fato** · cards: “Empate técnico: a diferença cabe na margem de erro dos dois lados” · câmera zoomIn, entra com slideDir, composição dir
 
 Fontes: Poder360, CartaCapital
 
-**[2:21] tendencia**
+**[2:44] tendencia**
 
-> Em relação à rodada anterior, a diferença caiu no Datafolha, de 4 para 2 pontos, e no Ipespe, de 5,4 para 2,4 pontos nos válidos. Na Quaest, ficou estável, mas a rodada anterior é de antes do primeiro turno.
+> Em relação à rodada anterior, a diferença diminuiu no Datafolha, de 4 para 2 pontos, e no Ipespe, de 5,4 para 2,4. Na Quaest, ficou em 2, mas a rodada anterior é de antes do primeiro turno.
 
 Visual: **grafico** · gráfico barras: Diferença entre os dois, em pontos · câmera panEsq, entra com dissolve, composição topo
 
 Fontes: Poder360
 
-### 5. Os assuntos que devem aparecer (2:36–4:54)
+### 4. Decisões na reta final (2:58–4:58)
 
-**[2:36] bets-fato**
+**[2:58] secao-decisoes**
 
-> Em 25 de setembro, nove dias antes do primeiro turno, Lula assinou a medida provisória que proíbe as bets, as apostas de quota fixa. Os sites saíram do ar em 6 de outubro.
+> Decisões na reta final.
 
-Visual: **fato** · cenário planalto · Lula (falar, centro) · cards: “MP 1.394 proíbe apostas de quota fixa (25/09)”; “Sites e aplicativos fora do ar desde 06/10” · câmera respirar, entra com corte, composição dir
+Visual: **secao** · câmera panDir, entra com slideDir, composição dir
 
-Fontes: Agência Senado, Agência Brasil, Ministério da Justiça (gov.br)
+Fontes: —
 
-**[2:48] bets-lados**
+**[2:59] bets-fato**
 
-> O governo justificou que os controles existentes não protegiam a saúde e os consumidores. O ministro da Fazenda, Dario Durigan, disse que o vício “está gerando angústia, vergonha”. Flávio chamou a medida de “atitude populista, hipócrita, eleitoreira” e disse que, se ela perder a validade, “as bets podem voltar com força total”.
+> Em 25 de setembro, nove dias antes do primeiro turno, Lula assinou uma medida provisória que proíbe as bets, as apostas de quota fixa. Esse tipo de norma vale assim que é publicada, mas o Congresso tem até 120 dias para votá-la; se não votar, ela perde a validade. Os sites e aplicativos saíram do ar em 6 de outubro.
 
-Visual: **ladoA_ladoB** · Lado A/B: Governo × Flávio Bolsonaro · citações: Flávio Bolsonaro, Dario Durigan, ministro da Fazenda · câmera panCima, entra com wipeDiagonal, composição esq
+Visual: **fato** · cenário planalto · Lula (falar, centro) · cards: “MP 1.394 proíbe apostas de quota fixa (25/09)”; “Medida provisória vale na hora; o Congresso tem até 120 dias para votar”; “Sites e aplicativos fora do ar desde 06/10” · câmera respirar, entra com corte, composição dir
 
-Fontes: IstoÉ Dinheiro, CNN Brasil, Agência Senado, Jovem Pan
+Fontes: Agência Senado, Agência Brasil, Ministério da Justiça (gov.br), Constituição Federal
 
-**[3:11] bets-justica**
+**[3:22] bets-justica**
 
-> As apostas foram criadas em 2018, no governo Temer, e regulamentadas em 2023, no governo Lula. Clubes e entidades pediram ao Supremo a suspensão da medida, e o ministro Luiz Fux pediu a manifestação da AGU.
+> Até então, as apostas eram legais: foram criadas por lei em 2018, no governo Temer, e regulamentadas em 2023, no governo Lula. Clubes de futebol e entidades pediram ao Supremo que suspendesse a medida. O relator do caso, ministro Luiz Fux, pediu a posição da Advocacia-Geral da União, que defende o governo.
 
-Visual: **fato** · cenário tribunal · cards: “Apostas criadas em 2018 e regulamentadas em 2023 (Lei 14.790)”; “Clubes e entidades pedem ao STF a suspensão da MP”; “Fux pede manifestação da AGU” · câmera zoomIn, entra com corte, composição dir
+Visual: **fato** · cenário tribunal · cards: “Apostas criadas em 2018 e regulamentadas em 2023 (Lei 14.790)”; “Clubes e entidades pedem ao STF a suspensão da MP”; “Fux pede manifestação da AGU” · câmera zoomIn, entra com slideEsq, composição esq
 
 Fontes: Migalhas, Agência Senado, Poder360, Agência Brasil
 
-**[3:26] 6x1-votacao**
+**[3:44] mei-fato**
 
-> O fim da escala 6 por 1 foi aprovado no Senado por 75 votos a 1 e promulgado pelo Congresso na sexta, 16. A jornada cai para 42 horas em 60 dias, e para 40 um ano depois, sem redução de salário.
+> Em 13 de outubro, a 12 dias do segundo turno, o governo Lula anunciou o perdão de cerca de 12,6 bilhões de reais em dívidas de microempreendedores individuais, os MEIs, e um Pix de até 5 mil reais. Na quarta, a Câmara, que tem 513 deputados, aprovou o perdão e o aumento do limite de faturamento do MEI por 461 votos a 4. O texto vai ao Senado.
 
-Visual: **votacao** · cards: “Senado aprova por 75 a 1 (14/10)”; “Emenda promulgada em 16/10”; “42h em 60 dias; 40h um ano depois; sem redução de salário” · câmera zoomOut, entra com wipeDiagonal, composição esq
+Visual: **fato** · cenário planalto · cards: “Perdão de ~R$ 12,6 bi em dívidas de MEIs e Pix de até R$ 5 mil (13/10)”; “Câmara (513 deputados) aprova por 461 a 4; segue para o Senado” · câmera deriva, entra com zoomPunch, composição dir
 
-Fontes: Agência Brasil, Exame, Metrópoles
+Fontes: Agência Brasil, Poder360, Câmara dos Deputados
 
-**[3:39] 6x1-flavio**
+**[4:08] 6x1-flavio**
 
-> Flávio votou a favor. Em maio, ele tinha chamado a discussão de “inoportuna e eleitoreira”. Em 13 de outubro, a 12 dias do segundo turno, mudou de posição e disse que “a maioria dos trabalhadores brasileiros quer o fim da 6 por 1”.
+> Também no dia 13, Flávio mudou de posição sobre o fim da escala 6 por 1: seis dias de trabalho para um de folga. Em maio, ele tinha chamado a discussão de “inoportuna e eleitoreira”. Desta vez, disse que “a maioria dos trabalhadores brasileiros quer o fim da 6 por 1”.
 
-Visual: **fato** · Flávio Bolsonaro (falar, centro) · cards: “Flávio votou a favor da PEC no Senado” · citações: Flávio Bolsonaro, Flávio Bolsonaro · câmera panBaixo, entra com dissolve, composição dir
+Visual: **fato** · Flávio Bolsonaro (falar, centro) · cards: “Flávio votou a favor da PEC no Senado” · citações: Flávio Bolsonaro, Flávio Bolsonaro · câmera panCima, entra com dissolve, composição esq
 
 Fontes: Exame, Agência Brasil, O Povo
 
-**[3:56] 6x1-lados**
+**[4:27] 6x1-votacao**
 
-> Flávio também disse que “quem vai pagar essa conta vai ter de ser o governo”. Lula atribuiu a mudança do PL à pressão popular e chamou a promulgação de “vitória da sociedade brasileira”.
+> No dia seguinte, o Senado votou a proposta de emenda à Constituição. São 81 senadores, e mudar a Constituição exige pelo menos 49 votos, três quintos da Casa. Foram 75 a favor, entre eles o de Flávio, que é senador, e 1 contra; 5 não votaram. Na sexta, o Congresso promulgou a emenda, ato que a incorpora à Constituição. A jornada máxima cai para 42 horas semanais em 60 dias, e para 40 um ano depois, sem redução de salário.
 
-Visual: **ladoA_ladoB** · Lado A/B: Flávio Bolsonaro × Lula · citações: Lula · câmera panDir, entra com slideDir, composição topo
+Visual: **votacao** · cards: “Senado: 81 senadores; PEC precisa de 49 votos”; “Aprovada por 75 a 1, com 77 presentes (14/10)”; “Promulgada em 16/10: 42h em 60 dias, 40h um ano depois, sem redução de salário” · câmera zoomIn, entra com push, composição dir
 
-Fontes: Metrópoles, O Povo, Poder360
+Fontes: Constituição Federal, Agência Brasil, Exame, Metrópoles
 
-**[4:08] mei-fato**
+### 5. O que cada um disse (4:58–6:05)
 
-> No mesmo dia, o governo anunciou o perdão de cerca de 12,6 bilhões de reais em dívidas de microempreendedores individuais, os MEIs, e um Pix de até 5 mil reais. No dia seguinte, a Câmara aprovou o perdão e o aumento do teto do MEI, por 461 votos a 4.
+**[4:58] secao-falas**
 
-Visual: **fato** · cenário planalto · cards: “Perdão de ~R$ 12,6 bi em dívidas de MEIs e Pix de até R$ 5 mil”; “Câmara aprova perdão e novo teto por 461 a 4 (14/10)” · câmera deriva, entra com zoomPunch, composição esq
+> O que cada um disse.
 
-Fontes: Agência Brasil, Poder360
+Visual: **secao** · câmera panDir, entra com dissolve, composição topo
 
-**[4:26] mei-lados**
+Fontes: —
 
-> Lula disse: “Nós vamos ajudar vocês a saírem do sufoco”. E completou: “A palavra prosperidade não é privilégio, é direito de todo mundo”. Flávio perguntou: “Ele está achando que o povo é otário?”. E afirmou: “Vamos fazer tesouraço em impostos, sim”.
+**[5:00] bets-lados**
 
-Visual: **ladoA_ladoB** · Lado A/B: Lula × Flávio Bolsonaro · câmera panBaixo, entra com push, composição topo
+> Nas bets, Flávio chamou a medida de “atitude populista, hipócrita, eleitoreira” e disse que, se ela perder a validade, “as bets podem voltar com força total”. O governo Lula justificou que os controles existentes não protegiam a saúde e os consumidores. O ministro da Fazenda, Dario Durigan, afirmou que o vício “está gerando angústia, vergonha”.
+
+Visual: **ladoA_ladoB** · Lado A/B: Governo × Flávio Bolsonaro · citações: Flávio Bolsonaro, Dario Durigan, ministro da Fazenda · câmera panBaixo, entra com push, composição esq
+
+Fontes: IstoÉ Dinheiro, CNN Brasil, Agência Senado, Jovem Pan
+
+**[5:24] mei-lados**
+
+> No pacote dos MEIs, Flávio perguntou, referindo-se a Lula: “Ele está achando que o povo é otário?”. E afirmou: “Vamos fazer tesouraço em impostos, sim”. Lula disse: “Nós vamos ajudar vocês a saírem do sufoco”. E também: “A palavra prosperidade não é privilégio, é direito de todo mundo”.
+
+Visual: **ladoA_ladoB** · Lado A/B: Lula × Flávio Bolsonaro · câmera kenBurns, entra com iris, composição topo
 
 Fontes: Agência Brasil, Exame
 
-**[4:44] nao-se-sabe**
+**[5:45] 6x1-lados**
 
-> Ainda não se sabe se o Supremo vai suspender a medida das bets, quando o Congresso vai votá-la, nem que efeito o debate terá nas pesquisas.
+> Na escala 6 por 1, Flávio defendeu “liberdade para o trabalhador montar sua escala” e disse que “quem vai pagar essa conta vai ter de ser o governo”. Lula atribuiu a mudança de posição do PL, partido de Flávio, à pressão popular, e chamou a promulgação de “vitória da sociedade brasileira”.
 
-Visual: **naoSeSabe** · câmera zoomIn, entra com iris, composição esq
+Visual: **ladoA_ladoB** · Lado A/B: Flávio Bolsonaro × Lula · citações: Lula · câmera panDir, entra com slideDir, composição dir
+
+Fontes: Metrópoles, O Povo, Poder360
+
+### 6. O que observar (6:05–6:28)
+
+**[6:05] secao-observar**
+
+> O que observar.
+
+Visual: **secao** · câmera respirar, entra com flash, composição esq
 
 Fontes: —
 
-### 6. O que observar no debate (4:54–5:06)
+**[6:06] nao-se-sabe**
 
-**[4:54] observar**
+> Ainda não se sabe se o Supremo vai suspender a medida das bets, quando o Congresso vai votá-la e se o debate vai mudar as pesquisas.
 
-> No debate, vale observar quem traz proposta com número e prazo, quais dados cada um cita e quais perguntas ficam sem resposta. Na segunda, a gente checa o que cada um disse.
-
-Visual: **checklist** · câmera panCima, entra com zoomPunch, composição dir
+Visual: **naoSeSabe** · câmera zoomIn, entra com slideCima, composição dir
 
 Fontes: —
 
-### 7. Serviço e encerramento (5:06–5:38)
+**[6:15] observar**
 
-**[5:06] servico**
+> No debate, vale observar quem apresenta proposta com número e prazo, que dados cada um cita e quais perguntas ficam sem resposta. Na segunda, o canal checa o que os dois disseram.
 
-> O debate começa às 20h, na Band, na BandNews TV, nas rádios BandNews FM e Bandeirantes e no YouTube do Band Jornalismo. A mediação é de Eduardo Oinegue e Adriana Araújo.
+Visual: **checklist** · câmera panCima, entra com dissolve, composição esq
+
+Fontes: —
+
+### 7. Onde e quando (6:28–7:08)
+
+**[6:28] secao-servico**
+
+> Onde e quando.
+
+Visual: **secao** · câmera deriva, entra com push, composição dir
+
+Fontes: —
+
+**[6:30] servico**
+
+> O debate começa às 20h. Além da Band, transmitem a BandNews TV, as rádios BandNews FM e Bandeirantes e o canal do Band Jornalismo no YouTube. A mediação é de Eduardo Oinegue e Adriana Araújo. Por sorteio, Flávio fica à esquerda, e Lula, à direita.
 
 Visual: **servico** · câmera panEsq, entra com dissolve, composição esq
 
 Fontes: Poder360, Exame, Revista Fórum
 
-**[5:19] proximos**
+**[6:48] proximos**
 
-> O próximo debate é na sexta, 23, na Globo. Edinho Silva, do PT, disse que Lula deve participar. Flávio afirmou que a palavra final será da equipe técnica dele. Nenhum dos dois confirmou oficialmente.
+> A Globo marcou outro debate para sexta, dia 23. Flávio disse que a palavra final será da equipe técnica dele. Edinho Silva, do PT, afirmou que Lula deve participar. Nenhum dos dois confirmou oficialmente.
 
-Visual: **fato** · cenário urna · cards: “Debate na Globo: sexta, 23/10”; “Nenhum dos dois confirmou oficialmente” · citações: PT (Edinho Silva), Flávio Bolsonaro · câmera panDir, entra com zoomPunch, composição dir
+Visual: **fato** · cenário urna · cards: “Debate na Globo: sexta, 23/10”; “Nenhum dos dois confirmou oficialmente” · citações: Flávio Bolsonaro, PT (Edinho Silva) · câmera panDir, entra com zoomPunch, composição dir
 
-Fontes: Poder360, O Povo, O Antagonista, CNN Brasil
+Fontes: Poder360, O Povo, CNN Brasil, O Antagonista
 
-**[5:33] fim**
+**[7:03] fim**
 
 > Assista, compare e decida. As fontes estão na descrição.
 
@@ -321,6 +369,8 @@ Fontes: —
 - **Poder360** — Câmara aprova aumento no teto do MEI e perdão a dívidas (14/10/2026) — https://www.poder360.com.br/poder-congresso/camara-aprova-aumento-no-teto-do-mei-e-perdao-a-dividas/
 - **Exame** — Flávio Bolsonaro critica Pix para MEI anunciado por Lula: 'Ele acha que o povo é otário' (13/10/2026) — https://exame.com/brasil/flavio-bolsonaro-critica-pix-para-mei-anunciado-por-lula-ele-acha-que-o-povo-e-otario/
 - **Gazeta do Povo** — O que mostra a primeira pesquisa Datafolha para presidente no 2º turno (08/10/2026) — https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-outubro-2026-segundo-turno/
+- **Constituição Federal** — Arts. 46 (3 senadores por estado), 60 (PEC: 3/5 em dois turnos) e 62 (medida provisória: 60 + 60 dias) (05/10/1988) — https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm
+- **Câmara dos Deputados** — Entenda o processo legislativo (18/10/2026) — https://www.camara.leg.br/entenda-o-processo-legislativo/
 
 ## 4. Tabela de checagem
 
@@ -366,16 +416,22 @@ Fontes: —
 | Caso Banco Master (Flávio–Vorcaro) como tema da semana | — | descartado | Sem fato novo entre 11 e 17/10. |
 | Caso Meta/TSE (coligação de Lula acusa a plataforma) | — | descartado | Visto só em resultado de busca, sem segunda fonte. |
 | PoderData/Aya 50% x 50% | Poder360 | descartado | Metodologia só do próprio contratante; não entrou para manter 4 pesquisas com confirmação externa. |
+| Senado tem 81 senadores (3 por estado); PEC precisa de 3/5 (49 votos) em dois turnos | Constituição Federal, Agência Brasil | confirmado | Agência Brasil: quórum mínimo de 49 votos e 77 presenças na votação de 14/10. 81 - 76 votos = 5 não votaram (inclui ausentes e a presidência). |
+| Câmara tem 513 deputados (PEC: 308; maioria absoluta: 257) | Câmara dos Deputados, Constituição Federal | confirmado |  |
+| Medida provisória vale ao ser publicada; Congresso tem 60 + 60 dias (120) para votar | Constituição Federal, Agência Senado | confirmado | Flávio cita os mesmos "quatro meses" (Terra, 28/09). |
+| Pacote do MEI aprovado na Câmara segue para o Senado | Poder360 | confirmado |  |
+| Explicações de termo/instituição de conhecimento geral: votos totais incluem brancos, nulos e indecisos; MP perde a validade se não votada em 120 dias; teto do MEI = limite de faturamento; AGU defende o governo; promulgação incorpora a emenda à Constituição; Flávio é senador | Constituição Federal, Agência Senado, Exame | confirmado | Contexto institucional acrescentado pela revisão editorial para o espectador leigo. |
+| Decisões do TSE (Estela Aranha) e do STF (Gilmar Mendes) foram tomadas em 1º/10, antes do debate da Globo | Poder360, NC News | confirmado | Liminar de Gilmar cerca de duas horas antes do horário do debate. |
 
 ## 5. Revisão de simetria
 
 | Personagem | Cenas na tela | Caracteres de narração com ele na tela | Argumentos em Lado A/B |
 |---|---|---|---|
-| Flávio Bolsonaro | 6 | 600 | 6 |
-| Lula | 6 | 540 | 6 |
+| Flávio Bolsonaro | 6 | 632 | 6 |
+| Lula | 6 | 681 | 6 |
 | Zema | 0 | 0 | 0 |
 
-Menções na narração: Lula 19 · Flávio 16
+Menções na narração: Lula 23 · Flávio 19
 
 Cenas com cada candidato equilibradas pelo validador (diferença de tempo de tela < 25%). Ausências: Lula e Flávio faltaram à Band (23/08); nenhum dos dois foi à Globo; o recuo de Flávio na Band (13–14/10) é mostrado ao lado da confirmação de Lula. Temas: o governo é cobrado em bets e MEI (críticas de Flávio); Flávio é cobrado na 6x1 (leitura de Lula) e no vai-e-vem do debate. Os dois anúncios 'a 12 dias do 2º turno' (virada na 6x1 e pacote MEI) recebem a mesma marcação de tempo.
 

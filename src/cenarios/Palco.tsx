@@ -32,7 +32,9 @@ const CenarioMapa: React.FC<{ modo: ModoMapa; opcoes: CenarioOpcoes }> = ({ modo
 /** Cenários que ocupam o centro: no 16:9 vão para a direita, liberando a coluna de cards à esquerda. */
 const CENTRAIS: CenarioId[] = ["planalto", "urna", "plenarioCamara", "plenarioSenado", "martelo", "congresso", "banco", "cpi", "policia", "tribunal"];
 
-export const CenarioFundo: React.FC<{ id?: CenarioId; opcoes?: CenarioOpcoes; placar?: { sim: number; nao: number; abst: number }; comPersonagens?: boolean }> = (props) => {
+type PlacarFundo = { sim: number; nao: number; abst: number; ausentes?: number };
+
+export const CenarioFundo: React.FC<{ id?: CenarioId; opcoes?: CenarioOpcoes; placar?: PlacarFundo; totalCadeiras?: number; comPersonagens?: boolean }> = (props) => {
   const { formato, ajusteCenario, escalaCenarioTopo, palcoY } = useFormato();
   const desloca = formato === "horizontal" && props.id && CENTRAIS.includes(props.id) && !props.comPersonagens;
   // composição da cena: cards à esquerda → cenário à direita; à direita → cenário à esquerda; no topo → cenário menor
@@ -46,7 +48,7 @@ export const CenarioFundo: React.FC<{ id?: CenarioId; opcoes?: CenarioOpcoes; pl
   );
 };
 
-const CenarioFundoBase: React.FC<{ id?: CenarioId; opcoes?: CenarioOpcoes; placar?: { sim: number; nao: number; abst: number } }> = ({ id, opcoes = {}, placar }) => {
+const CenarioFundoBase: React.FC<{ id?: CenarioId; opcoes?: CenarioOpcoes; placar?: PlacarFundo; totalCadeiras?: number }> = ({ id, opcoes = {}, placar, totalCadeiras }) => {
   switch (id) {
     case "pulpitos":
     case "pulpitoVazio":
@@ -54,9 +56,9 @@ const CenarioFundoBase: React.FC<{ id?: CenarioId; opcoes?: CenarioOpcoes; placa
     case "urna":
       return <CenarioUrna />;
     case "plenarioCamara":
-      return <CenarioPlenario casa="camara" placar={placar} />;
+      return <CenarioPlenario casa="camara" placar={placar} totalCadeiras={totalCadeiras} />;
     case "plenarioSenado":
-      return <CenarioPlenario casa="senado" placar={placar} />;
+      return <CenarioPlenario casa="senado" placar={placar} totalCadeiras={totalCadeiras} />;
     case "martelo":
       return <CenarioMartelo rotulo={opcoes.rotulo} />;
     case "planalto":
@@ -115,7 +117,9 @@ export const Palco: React.FC<{
       {presentes.map((p) => {
         const dados = episodio.personagens.find((x) => x.id === p.id);
         if (!dados) return null;
-        const x = xPersonagem(p.posicao, presentes.length + ausentes.length);
+        // lado fixo do candidato no episódio vence a posição da cena
+        const pos = episodio.posicoesFixas?.[p.id] ?? p.posicao;
+        const x = xPersonagem(pos, presentes.length + ausentes.length);
         return (
           <React.Fragment key={p.id}>
             <div style={{ position: "absolute", left: x - (altura * 400) / 720 / 2, top: palcoY - altura }}>
@@ -123,7 +127,7 @@ export const Palco: React.FC<{
                 dados={dados}
                 acao={p.acao}
                 altura={altura}
-                ladoCentro={ladoCentro(p.posicao)}
+                ladoCentro={ladoCentro(pos)}
                 palavras={palavras}
                 fala={p.fala}
                 acessorio={p.acessorio}
@@ -138,7 +142,12 @@ export const Palco: React.FC<{
       })}
       {ausentes.map((id, i) => {
         const dados = episodio.personagens.find((x) => x.id === id);
-        const pos = livres[i] ?? "centro";
+        // quem tem lado fixo vai para o seu lado; os demais ocupam as posições que sobraram, em ordem
+        const fixos = episodio.posicoesFixas ?? {};
+        const livresSemFixos = livres.filter((l) => !Object.values(fixos).includes(l as "esq" | "dir"));
+        const semLado = ausentes.filter((a) => !fixos[a]);
+        const pos = fixos[id] ?? livresSemFixos[semLado.indexOf(id)] ?? "centro";
+        void i;
         return (
           <React.Fragment key={id}>
             <PulpitoFrente x={xPersonagem(pos, presentes.length + ausentes.length)} largura={largPulpito} vazio rotulo="AUSENTE" />

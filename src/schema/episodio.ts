@@ -103,6 +103,8 @@ const Atribuicao = z.object({
   quem: z.string().min(1),
   disse: z.string().min(1),
   fonteId: id,
+  /** Quando foi dito, se não for na data do fato (ex.: "em maio"). Aparece fora das aspas. */
+  quando: z.string().optional(),
   /** Termos opinativos que esta atribuição cobre na narração. */
   termos: z.array(z.string()).optional(),
 });
@@ -123,8 +125,10 @@ const base = {
   sfx: z.array(Sfx).optional(),
   /** Momento da biblioteca que originou a cena (rastreio de reuso). */
   momento: z.string().optional(),
-  /** Bloco do roteiro (agrupamento no roteiro.md). */
+  /** Bloco do roteiro: vira o "chapéu" fixo no canto da tela e agrupa o roteiro.md. */
   bloco: z.string().optional(),
+  /** Sub-rubrica do bloco (ex.: "Governo Lula"); com personagemId, aparece na cor do candidato. */
+  rubrica: z.object({ texto: z.string().min(1), personagemId: id.optional() }).optional(),
   cenarioOpcoes: CenarioOpcoesSchema.optional(),
   /** Sobrescreve o sorteio de câmera/transição (src/movimento). */
   camera: z.enum(["zoomIn", "zoomOut", "panEsq", "panDir", "panCima", "panBaixo", "kenBurns", "respirar", "deriva"]).optional(),
@@ -196,7 +200,13 @@ export const CenaSchema = z.discriminatedUnion("tipo", [
       orgao: z.string().min(1),
       etapa: z.string().optional(),
       casa: z.enum(["camara", "senado", "stf", "tse", "outro"]).default("outro"),
-      placar: z.object({ sim: z.number().int(), nao: z.number().int(), abst: z.number().int() }).optional(),
+      placar: z
+        .object({ sim: z.number().int(), nao: z.number().int(), abst: z.number().int(), ausentes: z.number().int().optional() })
+        .optional(),
+      /** Contexto para leigo: total de cadeiras da casa (ex.: 81 no Senado, 513 na Câmara). */
+      totalCadeiras: z.number().int().positive().optional(),
+      /** Votos necessários para aprovar (ex.: "49 votos (3/5) para mudar a Constituição"). */
+      quorum: z.string().optional(),
     }),
   }),
   z.object({ ...base, tipo: z.literal("naoSeSabe"), dados: z.object({ itens: z.array(z.string().min(1)).min(1) }) }),
@@ -224,6 +234,11 @@ export const CenaSchema = z.discriminatedUnion("tipo", [
       linhas: z.array(z.object({ rotulo: z.string().min(1), valor: z.string().min(1), fonteId: id.optional() })).min(1),
     }),
   }),
+  z.object({
+    ...base,
+    tipo: z.literal("secao"),
+    dados: z.object({ numero: z.string().min(1), titulo: z.string().min(1), subtitulo: z.string().optional() }),
+  }),
   z.object({ ...base, tipo: z.literal("encerramento") }),
 ]);
 export type Cena = z.infer<typeof CenaSchema>;
@@ -237,6 +252,11 @@ export const EpisodioSchema = z.object({
   resumo: z.string().min(1),
   /** Lado que aparece à esquerda no card A/B; alternado entre episódios. */
   ordemLados: z.enum(["AB", "BA"]).default("AB"),
+  /**
+   * Lado fixo de cada candidato no episódio inteiro (púlpito, boneco sozinho, Lado A/B, citações).
+   * Evita o espectador perder quem é quem. Ex.: { "flavio": "esq", "lula": "dir" }.
+   */
+  posicoesFixas: z.record(z.string(), z.enum(["esq", "dir"])).optional(),
   fontes: z.array(FonteSchema).min(1),
   personagens: z.array(PersonagemSchema),
   cenas: z.array(CenaSchema).min(1),

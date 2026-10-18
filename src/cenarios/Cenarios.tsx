@@ -95,7 +95,13 @@ export const CenarioUrna: React.FC<{ escala?: number }> = ({ escala = 1 }) => {
 };
 
 /** Plenário em semicírculo. Com placar, as cadeiras acendem nas cores de status. */
-export const CenarioPlenario: React.FC<{ casa?: "camara" | "senado"; placar?: { sim: number; nao: number; abst: number } }> = ({ casa = "camara", placar }) => {
+type Placar = { sim: number; nao: number; abst: number; ausentes?: number };
+
+/**
+ * Plenário em semicírculo. Com `totalCadeiras`, desenha exatamente esse número de lugares
+ * (81 no Senado, 513 na Câmara) e pinta sim/não/abstenção/ausentes: o espectador vê quem não votou.
+ */
+export const CenarioPlenario: React.FC<{ casa?: "camara" | "senado"; placar?: Placar; totalCadeiras?: number }> = ({ casa = "camara", placar, totalCadeiras }) => {
   const f = useCurrentFrame();
   const { width, height, palcoY } = useFormato();
   const fileiras = casa === "camara" ? 9 : 5;
@@ -103,16 +109,22 @@ export const CenarioPlenario: React.FC<{ casa?: "camara" | "senado"; placar?: { 
   const cx = width / 2;
   const cy = palcoY - 40;
   const cadeiras: { x: number; y: number }[] = [];
+  // distribui o total de cadeiras pelas fileiras proporcionalmente ao raio (fileiras de fora têm mais lugares)
+  const pesos = Array.from({ length: fileiras }, (_, r) => 0.45 + (0.55 * r) / Math.max(1, fileiras - 1));
+  const somaPesos = pesos.reduce((a, b) => a + b, 0);
+  const totalLugares = totalCadeiras ?? Math.round(fileiras * 8 + (fileiras * (fileiras - 1) * (casa === "camara" ? 6 : 5)) / 2);
+  const porFileira = pesos.map((p) => Math.round((p / somaPesos) * totalLugares));
+  porFileira[fileiras - 1] += totalLugares - porFileira.reduce((a, b) => a + b, 0);
   for (let r = 0; r < fileiras; r++) {
-    const raio = raioMax * (0.45 + (0.55 * r) / Math.max(1, fileiras - 1));
-    const n = Math.round(8 + r * (casa === "camara" ? 6 : 5));
+    const raio = raioMax * pesos[r];
+    const n = porFileira[r];
     for (let i = 0; i < n; i++) {
       const a = Math.PI - (Math.PI * (i + 0.5)) / n;
       cadeiras.push({ x: cx + Math.cos(a) * raio, y: cy - Math.sin(a) * raio });
     }
   }
   cadeiras.sort((a, b) => Math.atan2(cy - a.y, a.x - cx) - Math.atan2(cy - b.y, b.x - cx)).reverse();
-  const total = placar ? placar.sim + placar.nao + placar.abst : 0;
+  const total = placar ? (totalCadeiras ?? placar.sim + placar.nao + placar.abst + (placar.ausentes ?? 0)) : 0;
   const prog = interpolate(f, [10, 70], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const corDe = (i: number) => {
     if (!placar || total === 0) return casa === "camara" ? "#3F6B5A" : "#3F566B";
@@ -120,14 +132,16 @@ export const CenarioPlenario: React.FC<{ casa?: "camara" | "senado"; placar?: { 
     if (frac > prog) return cores.linha;
     if (frac < placar.sim / total) return cores.status.confirmado;
     if (frac < (placar.sim + placar.nao) / total) return cores.status.divergente;
-    return cores.status.naoSeSabe;
+    if (frac < (placar.sim + placar.nao + placar.abst) / total) return cores.status.naoSeSabe;
+    // ausentes / não votaram: cadeira vazia (contorno)
+    return cores.fundo;
   };
   return (
     <AbsoluteFill>
       <Piso cor={casa === "camara" ? "#1E2B26" : "#1E2530"} />
       <svg width={width} height={height} style={{ position: "absolute" }}>
         {cadeiras.map((c, i) => (
-          <circle key={i} cx={c.x} cy={c.y} r={casa === "camara" ? 9 : 13} fill={corDe(i)} />
+          <circle key={i} cx={c.x} cy={c.y} r={casa === "camara" ? 9 : 13} fill={corDe(i)} stroke={corDe(i) === cores.fundo ? cores.textoSecundario : "none"} strokeWidth={2} />
         ))}
         <rect x={cx - 120} y={cy - 30} width={240} height={50} rx={10} fill={cores.superficieAlta} stroke={cores.contorno} strokeWidth={5} />
       </svg>

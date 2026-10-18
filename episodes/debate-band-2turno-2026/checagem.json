@@ -343,6 +343,58 @@
       ],
       "status": "descartado",
       "nota": "Metodologia só do próprio contratante; não entrou para manter 4 pesquisas com confirmação externa."
+    },
+    {
+      "fato": "Senado tem 81 senadores (3 por estado); PEC precisa de 3/5 (49 votos) em dois turnos",
+      "fonteIds": [
+        "f-cf88",
+        "f-agbr-6x1"
+      ],
+      "status": "confirmado",
+      "nota": "Agência Brasil: quórum mínimo de 49 votos e 77 presenças na votação de 14/10. 81 - 76 votos = 5 não votaram (inclui ausentes e a presidência)."
+    },
+    {
+      "fato": "Câmara tem 513 deputados (PEC: 308; maioria absoluta: 257)",
+      "fonteIds": [
+        "f-camara-processo",
+        "f-cf88"
+      ],
+      "status": "confirmado"
+    },
+    {
+      "fato": "Medida provisória vale ao ser publicada; Congresso tem 60 + 60 dias (120) para votar",
+      "fonteIds": [
+        "f-cf88",
+        "f-senado-mp"
+      ],
+      "status": "confirmado",
+      "nota": "Flávio cita os mesmos \"quatro meses\" (Terra, 28/09)."
+    },
+    {
+      "fato": "Pacote do MEI aprovado na Câmara segue para o Senado",
+      "fonteIds": [
+        "f-poder-mei"
+      ],
+      "status": "confirmado"
+    },
+    {
+      "fato": "Explicações de termo/instituição de conhecimento geral: votos totais incluem brancos, nulos e indecisos; MP perde a validade se não votada em 120 dias; teto do MEI = limite de faturamento; AGU defende o governo; promulgação incorpora a emenda à Constituição; Flávio é senador",
+      "fonteIds": [
+        "f-cf88",
+        "f-senado-mp",
+        "f-exame-6x1"
+      ],
+      "status": "confirmado",
+      "nota": "Contexto institucional acrescentado pela revisão editorial para o espectador leigo."
+    },
+    {
+      "fato": "Decisões do TSE (Estela Aranha) e do STF (Gilmar Mendes) foram tomadas em 1º/10, antes do debate da Globo",
+      "fonteIds": [
+        "f-poder-globo",
+        "f-ncnews-gilmar"
+      ],
+      "status": "confirmado",
+      "nota": "Liminar de Gilmar cerca de duas horas antes do horário do debate."
     }
   ],
   "fontesExtras": [],

@@ -1,0 +1,45 @@
+{
+  "id": "instituicoes-regras",
+  "descricao": "Regras institucionais estáveis para dar contexto ao espectador leigo (Congresso, quóruns, medida provisória, pesquisas). Reusar em qualquer episódio; rechecar quando vencer.",
+  "fatos": [
+    {
+      "texto": "O Senado tem 81 senadores: 3 por estado e 3 pelo Distrito Federal.",
+      "fontes": [{ "veiculo": "Constituição Federal, art. 46", "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm", "data": "1988-10-05" }]
+    },
+    {
+      "texto": "A Câmara tem 513 deputados federais. Maioria absoluta: 257. PEC: 3/5, ou 308 votos, em dois turnos.",
+      "fontes": [{ "veiculo": "Câmara dos Deputados — Entenda o processo legislativo", "url": "https://www.camara.leg.br/entenda-o-processo-legislativo/", "data": "2026-10-18" }]
+    },
+    {
+      "texto": "PEC (emenda à Constituição) precisa de 3/5 dos votos em cada Casa, em dois turnos: 308 deputados e 49 senadores. Aprovada nas duas Casas, é promulgada pelo Congresso, sem sanção do presidente.",
+      "fontes": [
+        { "veiculo": "Constituição Federal, art. 60", "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm", "data": "1988-10-05" },
+        { "veiculo": "Agência Brasil — votação da PEC da escala 6x1 (quórum de 49)", "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/senado-aprova-fim-da-escala-6x1-e-reducao-da-jornada-de-trabalho", "data": "2026-10-14" }
+      ]
+    },
+    {
+      "texto": "Medida provisória: norma do presidente que vale assim que é publicada; o Congresso tem 60 dias, prorrogáveis por mais 60 (120 no total), para aprovar, senão ela perde a validade.",
+      "fontes": [
+        { "veiculo": "Constituição Federal, art. 62", "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm", "data": "1988-10-05" },
+        { "veiculo": "Agência Senado — MP das bets", "url": "https://www12.senado.leg.br/noticias/materias/2026/09/28/mp-proibe-bets-e-determina-encerramento-das-operacoes-em-30-dias", "data": "2026-09-28" }
+      ]
+    },
+    {
+      "texto": "Pesquisa eleitoral divulgada precisa estar registrada no TSE (sistema PesqEle) e informar instituto, contratante, período de campo, número de entrevistas, margem de erro, nível de confiança e número de registro.",
+      "fontes": [
+        { "veiculo": "TSE — Resolução 23.727/2024 (pesquisas eleitorais)", "url": "https://www.tse.jus.br/eleicoes/eleicoes-2024-content/normas-e-documentacoes/arquivos/res-tse-23-727-pesquisas-eleitorais", "data": "2024-02-27" },
+        { "veiculo": "TRE-MT — guia rápido de pesquisas 2026", "url": "https://www.tre-mt.jus.br/eleicoes/2026/arquivos/tre-mt-guia-rapido-pesquisas-eleitorais", "data": "2026-01-01" }
+      ]
+    },
+    {
+      "texto": "Margem de erro indica quanto cada número da pesquisa pode variar para mais ou para menos. Empate técnico: quando as faixas dos dois candidatos se sobrepõem (diferença menor ou igual à soma das margens).",
+      "fontes": [{ "veiculo": "Poder360 — pesquisas a 8 dias do 2º turno", "url": "https://www.poder360.com.br/poder-eleicoes-2026/leia-como-estao-lula-e-flavio-nas-pesquisas-a-8-dias-do-2o-turno/", "data": "2026-10-17" }]
+    },
+    {
+      "texto": "Votos válidos excluem brancos e nulos; votos totais incluem brancos, nulos e indecisos.",
+      "fontes": [{ "veiculo": "Revista Oeste / CartaCapital — Ipespe 17/10 (válidos x totais)", "url": "https://revistaoeste.com/politica/flavio-tem-24-pontos-de-vantagem-sobre-lula-aponta-ipespe/", "data": "2026-10-17" }]
+    }
+  ],
+  "checadoEm": "2026-10-18",
+  "validadeDias": 365
+}

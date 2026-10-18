@@ -86,7 +86,7 @@ const SequenciaItens: React.FC<{ cena: Cena; props: CenaProps; comPalco: boolean
               {it.tipo === "fato" ? (
                 <CardFato fato={it.fato} episodio={props.episodio} />
               ) : (
-                <CardCitacao quem={p?.rotulo ?? it.a.quem} disse={it.a.disse} cor={p ? corDoPersonagem(p.cor) : undefined} />
+                <CardCitacao quem={p?.rotulo ?? it.a.quem} disse={it.a.disse} quando={it.a.quando} cor={p ? corDoPersonagem(p.cor) : undefined} />
               )}
             </AreaConteudo>
             <FonteLowerThird episodio={props.episodio} fonteIds={fonteIds} status={it.tipo === "fato" ? it.fato.status : undefined} />
@@ -398,7 +398,7 @@ export const CenaVotacao: React.FC<P<"votacao">> = (props) => {
   const temItens = (cena.fatos?.length ?? 0) + (cena.atribuicoes?.length ?? 0) > 0;
   return (
     <Camera duracao={props.duracaoFrames}>
-      <CenarioFundo id={cenario} placar={d.placar} opcoes={{ rotulo: d.casa === "stf" || d.casa === "tse" ? d.orgao : undefined, ...cena.cenarioOpcoes }} />
+      <CenarioFundo id={cenario} placar={d.placar} totalCadeiras={d.totalCadeiras} opcoes={{ rotulo: d.casa === "stf" || d.casa === "tse" ? d.orgao : undefined, ...cena.cenarioOpcoes }} />
       <ColunaTopo>
         <Card chave="placar" style={{ padding: 30 }}>
           <Rotulo>{d.orgao}</Rotulo>
@@ -410,6 +410,7 @@ export const CenaVotacao: React.FC<P<"votacao">> = (props) => {
                   ["sim", d.placar.sim, cores.status.confirmado],
                   ["não", d.placar.nao, cores.status.divergente],
                   ["abst.", d.placar.abst, cores.status.naoSeSabe],
+                  ...(d.placar.ausentes !== undefined ? ([["não votaram", d.placar.ausentes, cores.textoSecundario]] as const) : []),
                 ] as const
               ).map(([n, v, c]) => (
                 <div key={n} style={{ textAlign: "center" }}>
@@ -417,6 +418,13 @@ export const CenaVotacao: React.FC<P<"votacao">> = (props) => {
                   <div style={{ fontFamily: fontes.corpo, fontWeight: 800, fontSize: t.legenda, color: cores.textoSecundario, textTransform: "uppercase" }}>{n}</div>
                 </div>
               ))}
+            </div>
+          ) : null}
+          {d.totalCadeiras || d.quorum ? (
+            <div style={{ marginTop: 14, fontFamily: fontes.corpo, fontWeight: 600, fontSize: t.legenda, color: cores.textoSecundario, lineHeight: 1.4 }}>
+              {d.totalCadeiras ? d.totalCadeiras + " cadeiras" : ""}
+              {d.totalCadeiras && d.quorum ? " · " : ""}
+              {d.quorum ? "Precisa de " + d.quorum : ""}
             </div>
           ) : null}
         </Card>
@@ -557,6 +565,58 @@ export const CenaServico: React.FC<P<"servico">> = (props) => {
         </Card>
       </AreaConteudo>
       {ids.length ? <FonteLowerThird episodio={episodio} fonteIds={ids.slice(0, 2)} /> : null}
+    </Camera>
+  );
+};
+
+/** Abertura de seção: número + título. Entrada sorteada entre 3 estilos (barra, empilhar, cortina). */
+export const CenaSecao: React.FC<P<"secao">> = (props) => {
+  const { cena } = props;
+  const f = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const { width, t } = useFormato();
+  const estilo = useVariante("secao", ["barra", "empilhar", "cortina"] as const);
+  const k = spring({ frame: f, fps, config: movimento.entrada });
+  const kNum = spring({ frame: f - (estilo === "empilhar" ? 0 : 6), fps, config: movimento.pop });
+  const barra = interpolate(f, [0, 18], [0, 1], { extrapolateRight: "clamp", easing: movimento.easingPadrao });
+  const cortina = interpolate(f, [0, 14], [-width, 0], { extrapolateRight: "clamp", easing: movimento.easingPadrao });
+  return (
+    <Camera duracao={props.duracaoFrames}>
+      {estilo === "cortina" ? <AbsoluteFill style={{ background: cores.superficie, transform: "translateX(" + cortina + "px)", opacity: 0.85 }} /> : null}
+      <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", gap: 24 }}>
+        <div
+          style={{
+            width: t.numero * 1.1,
+            height: t.numero * 1.1,
+            borderRadius: "50%",
+            background: cores.acento,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontFamily: fontes.display,
+            fontSize: t.numero * 0.7,
+            color: cores.contorno,
+            transform: "scale(" + kNum + ")",
+          }}
+        >
+          {cena.dados.numero}
+        </div>
+        <div style={{ opacity: estilo === "barra" ? 1 : k, transform: estilo === "empilhar" ? "translateY(" + (1 - k) * 50 + "px)" : undefined, textAlign: "center", padding: "0 6%" }}>
+          <TextoPop
+            texto={cena.dados.titulo}
+            atraso={8}
+            passo={3}
+            variante={estilo === "empilhar" ? "subida" : estilo === "barra" ? "pop" : "desfoque"}
+            style={{ fontFamily: fontes.display, fontSize: t.manchete * 1.1, color: cores.texto, lineHeight: 1.05, textTransform: "uppercase" }}
+          />
+        </div>
+        <div style={{ height: 12, width: barra * Math.min(width * 0.4, 640), background: cores.acento, borderRadius: 6 }} />
+        {cena.dados.subtitulo ? (
+          <div style={{ opacity: interpolate(f, [16, 30], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }), fontFamily: fontes.corpo, fontWeight: 600, fontSize: t.destaque, color: cores.textoSecundario, textAlign: "center", padding: "0 8%" }}>
+            {cena.dados.subtitulo}
+          </div>
+        ) : null}
+      </AbsoluteFill>
     </Camera>
   );
 };

@@ -49,8 +49,10 @@ export const planejarMovimento = (ep: Episodio): PlanoCena[] => {
     const entrada: Transicao = i === 0 ? "corte" : ((c.transicao as Transicao | undefined) ?? sortearPeso(`${semente}:transicao`, trAnt));
     // com 1 personagem não existe "topo" (o boneco ocupa a altura): sorteia só entre os lados
     const um = (c.personagens?.length ?? 0) === 1;
+    // boneco sozinho com lado fixo no episódio: a composição segue o lado dele (cards do lado oposto)
+    const ladoFixo = um ? ep.posicoesFixas?.[c.personagens![0].id] : undefined;
     const opcoesComp = um ? (["esq", "dir"] as const) : COMPOSICOES;
-    const composicao = escolher(opcoesComp, `${semente}:composicao`, compAnt);
+    const composicao: Composicao = ladoFixo === "esq" ? "esq" : ladoFixo === "dir" ? "dir" : escolher(opcoesComp, `${semente}:composicao`, compAnt);
     plano.push({ cenaId: c.id, camera, entrada, saida: null, semente, composicao });
     camAnt = camera;
     compAnt = composicao;

@@ -459,6 +459,24 @@
       "data": "2026-10-08",
       "tipo": "imprensa",
       "linhaEditorial": "direita"
+    },
+    {
+      "id": "f-cf88",
+      "veiculo": "Constituição Federal",
+      "titulo": "Arts. 46 (3 senadores por estado), 60 (PEC: 3/5 em dois turnos) e 62 (medida provisória: 60 + 60 dias)",
+      "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
+      "data": "1988-10-05",
+      "tipo": "primaria",
+      "linhaEditorial": "oficial"
+    },
+    {
+      "id": "f-camara-processo",
+      "veiculo": "Câmara dos Deputados",
+      "titulo": "Entenda o processo legislativo",
+      "url": "https://www.camara.leg.br/entenda-o-processo-legislativo/",
+      "data": "2026-10-18",
+      "tipo": "primaria",
+      "linhaEditorial": "institucional"
     }
   ],
   "personagens": [
@@ -491,7 +509,7 @@
       "id": "gancho",
       "tipo": "gancho",
       "cenario": "pulpitos",
-      "narracao": "Neste domingo, 18 de outubro, Lula, do PT, e Flávio Bolsonaro, do PL, se enfrentam num debate na TV, na Band.",
+      "narracao": "Neste domingo, 18 de outubro, Flávio Bolsonaro, do PL, e Lula, do PT, se enfrentam no debate da Band.",
       "personagens": [
         {
           "id": "flavio",
@@ -517,12 +535,12 @@
           ]
         }
       ],
-      "bloco": "1. Gancho"
+      "bloco": "1. Abertura"
     },
     {
       "id": "inedito",
       "tipo": "contexto",
-      "narracao": "É o primeiro encontro dos dois nesta eleição. No primeiro turno, não houve nenhum.",
+      "narracao": "É o primeiro debate com os dois nesta eleição.",
       "dados": {
         "numero": "0",
         "rotulo": "debates com os dois no 1º turno"
@@ -537,12 +555,12 @@
           ]
         }
       ],
-      "bloco": "1. Gancho"
+      "bloco": "1. Abertura"
     },
     {
       "id": "resultado-1turno",
       "tipo": "grafico",
-      "narracao": "Na votação de 4 de outubro, Flávio teve 47,03% dos votos válidos, e Lula, 45,16%.",
+      "narracao": "No primeiro turno, em 4 de outubro, Flávio teve 47,03% dos votos válidos, a conta que exclui brancos e nulos. Lula ficou com 45,16%.",
       "dados": {
         "grafico": "barras",
         "titulo": "1º turno · votos válidos",
@@ -564,7 +582,7 @@
           }
         ]
       },
-      "bloco": "2. Onde a disputa está"
+      "bloco": "1. Abertura"
     },
     {
       "id": "data-2turno",
@@ -582,12 +600,22 @@
           ]
         }
       ],
-      "bloco": "2. Onde a disputa está"
+      "bloco": "1. Abertura"
+    },
+    {
+      "id": "secao-debates",
+      "tipo": "secao",
+      "narracao": "Os debates que não aconteceram.",
+      "bloco": "2. Os debates que não aconteceram",
+      "dados": {
+        "numero": "2",
+        "titulo": "Os debates que não aconteceram"
+      }
     },
     {
       "id": "debates-1turno",
       "tipo": "linhaDoTempo",
-      "narracao": "Antes da primeira votação, quatro debates foram marcados. Só um aconteceu: o da Band, em 23 de agosto.",
+      "narracao": "Na campanha do primeiro turno, as emissoras marcaram quatro debates. Só um aconteceu: o da Band, em 23 de agosto.",
       "dados": {
         "eventos": [
           {
@@ -625,13 +653,13 @@
           }
         ]
       },
-      "bloco": "3. Os debates que não aconteceram"
+      "bloco": "2. Os debates que não aconteceram"
     },
     {
       "id": "pulpitos-vazios",
       "tipo": "debate",
       "cenario": "pulpitos",
-      "narracao": "Três dos seis convidados faltaram: Lula, Flávio e Romeu Zema.",
+      "narracao": "Três dos seis convidados faltaram: Flávio, Lula e Romeu Zema.",
       "personagens": [],
       "dados": {
         "ausentes": [
@@ -651,12 +679,12 @@
           ]
         }
       ],
-      "bloco": "3. Os debates que não aconteceram"
+      "bloco": "2. Os debates que não aconteceram"
     },
     {
       "id": "justificativas",
       "tipo": "fato",
-      "narracao": "A campanha de Lula disse que o formato não oferecia condições equilibradas. A de Flávio, que ele iria aos debates em que Lula estivesse. A assessoria de Zema afirmou que, sem Lula e outros concorrentes, a mudança de data do debate perdeu o propósito.",
+      "narracao": "A campanha de Flávio disse que ele iria aos debates em que Lula estivesse. A de Lula afirmou que o formato não oferecia condições equilibradas. A assessoria de Zema citou a ausência de Lula e de outros concorrentes.",
       "personagens": [
         {
           "id": "flavio",
@@ -671,14 +699,14 @@
       ],
       "atribuicoes": [
         {
-          "quem": "Campanha de Lula",
-          "disse": "O formato não oferece condições equilibradas",
-          "fonteId": "f-gazeta-lula-band"
-        },
-        {
           "quem": "Campanha de Flávio",
           "disse": "Ele pretende participar dos debates em que Lula estiver presente",
           "fonteId": "f-metropoles-zema"
+        },
+        {
+          "quem": "Campanha de Lula",
+          "disse": "O formato não oferece condições equilibradas",
+          "fonteId": "f-gazeta-lula-band"
         },
         {
           "quem": "Assessoria de Zema",
@@ -686,7 +714,7 @@
           "fonteId": "f-metropoles-zema"
         }
       ],
-      "bloco": "3. Os debates que não aconteceram"
+      "bloco": "2. Os debates que não aconteceram"
     },
     {
       "id": "globo-decisoes",
@@ -695,7 +723,7 @@
       "cenarioOpcoes": {
         "rotulo": "TSE · STF"
       },
-      "narracao": "A Globo marcou o último debate para 1º de outubro. No dia, o TSE proibiu a emissora de deixar um púlpito vazio com o nome de Lula, e o STF mandou incluir o candidato Renan Santos.",
+      "narracao": "O último debate marcado, o da Globo, era em 1º de outubro. Antes dele, o Tribunal Superior Eleitoral, o TSE, proibiu a emissora de deixar um púlpito vazio com o nome de Lula. E o Supremo Tribunal Federal, o STF, mandou incluir o candidato Renan Santos.",
       "fatos": [
         {
           "texto": "TSE (Estela Aranha) proíbe púlpito vazio com o nome de Lula",
@@ -712,12 +740,12 @@
           ]
         }
       ],
-      "bloco": "3. Os debates que não aconteceram"
+      "bloco": "2. Os debates que não aconteceram"
     },
     {
       "id": "globo-reacoes",
       "tipo": "fato",
-      "narracao": "Lula já tinha dito que não iria. Flávio desistiu, citando “a censura imposta ao evento pelo TSE”. A Globo cancelou o debate e disse que as decisões causaram insegurança jurídica.",
+      "narracao": "Flávio desistiu, citando “a censura imposta ao evento pelo TSE”. Lula já tinha dito que não iria. A Globo cancelou o debate e afirmou que as decisões causaram insegurança jurídica.",
       "personagens": [
         {
           "id": "flavio",
@@ -751,12 +779,12 @@
           "fonteId": "f-poder-globo"
         }
       ],
-      "bloco": "3. Os debates que não aconteceram"
+      "bloco": "2. Os debates que não aconteceram"
     },
     {
       "id": "resumo-1turno",
       "tipo": "fato",
-      "narracao": "No segundo turno, a Band marcou o debate deste domingo.",
+      "narracao": "Os dois terminaram o primeiro turno sem participar de nenhum debate.",
       "personagens": [
         {
           "id": "flavio",
@@ -771,19 +799,25 @@
       ],
       "fatos": [
         {
-          "texto": "No 2º turno, Band marca debate para 18/10",
+          "texto": "Lula e Flávio faltaram ao debate da Band (23/08)",
           "fonteIds": [
-            "f-poder-band-regras",
-            "f-gazeta-band"
+            "f-cnn-1debate",
+            "f-dn-ausentes"
+          ]
+        },
+        {
+          "texto": "Nenhum dos dois foi ao debate da Globo, que acabou cancelado",
+          "fonteIds": [
+            "f-poder-globo"
           ]
         }
       ],
-      "bloco": "3. Os debates que não aconteceram"
+      "bloco": "2. Os debates que não aconteceram"
     },
     {
       "id": "semana",
       "tipo": "linhaDoTempo",
-      "narracao": "E, nesta semana, a ausência quase se repetiu. Na terça, Flávio disse que não iria. A Band avisou que o púlpito de quem faltasse ficaria vazio. Lula confirmou presença em vídeo.",
+      "narracao": "No segundo turno, a Band marcou o debate para este domingo. Na terça, 13, Flávio disse que não iria. A emissora avisou que o púlpito de quem faltasse ficaria vazio. No mesmo dia, Lula confirmou presença em vídeo.",
       "dados": {
         "eventos": [
           {
@@ -824,13 +858,16 @@
           }
         ]
       },
-      "bloco": "3. Os debates que não aconteceram"
+      "bloco": "2. Os debates que não aconteceram",
+      "rubrica": {
+        "texto": "2º turno"
+      }
     },
     {
       "id": "confirmacoes",
       "tipo": "debate",
       "cenario": "pulpitos",
-      "narracao": "Lula disse: “espero que meu adversário compareça”. Na quarta, Flávio respondeu: “É claro que eu vou ao debate, eu só queria que você confirmasse”.",
+      "narracao": "No vídeo, Lula disse: “espero que meu adversário compareça”. Na quarta, 14, Flávio voltou atrás: “É claro que eu vou ao debate, eu só queria que você confirmasse”.",
       "personagens": [
         {
           "id": "flavio",
@@ -855,12 +892,25 @@
           "fonteId": "f-poder-flavio-sim"
         }
       ],
-      "bloco": "3. Os debates que não aconteceram"
+      "bloco": "2. Os debates que não aconteceram",
+      "rubrica": {
+        "texto": "2º turno"
+      }
+    },
+    {
+      "id": "secao-pesquisas",
+      "tipo": "secao",
+      "narracao": "As pesquisas.",
+      "bloco": "3. As pesquisas",
+      "dados": {
+        "numero": "3",
+        "titulo": "As pesquisas"
+      }
     },
     {
       "id": "datafolha",
       "tipo": "pesquisa",
-      "narracao": "Nas pesquisas, o Datafolha mostra Flávio com 47% dos votos totais e Lula com 45%.",
+      "narracao": "Nos votos totais, que contam também brancos, nulos e indecisos, o Datafolha registra Flávio com 47% e Lula com 45%.",
       "dados": {
         "instituto": "Datafolha",
         "campo": {
@@ -883,7 +933,7 @@
           }
         ]
       },
-      "bloco": "4. Como os dois chegam: pesquisas"
+      "bloco": "3. As pesquisas"
     },
     {
       "id": "quaest",
@@ -911,12 +961,12 @@
           }
         ]
       },
-      "bloco": "4. Como os dois chegam: pesquisas"
+      "bloco": "3. As pesquisas"
     },
     {
       "id": "ipespe",
       "tipo": "pesquisa",
-      "narracao": "Nos votos válidos, que excluem brancos e nulos, o Ipespe mostra Flávio com 51,2% e Lula com 48,8%.",
+      "narracao": "Nos votos válidos, a mesma conta do resultado oficial, o Ipespe aponta 51,2% para Flávio e 48,8% para Lula.",
       "dados": {
         "instituto": "Ipespe",
         "campo": {
@@ -939,12 +989,12 @@
           }
         ]
       },
-      "bloco": "4. Como os dois chegam: pesquisas"
+      "bloco": "3. As pesquisas"
     },
     {
       "id": "mda",
       "tipo": "pesquisa",
-      "narracao": "Na CNT/MDA, Flávio tem 50,5%, e Lula, 49,5%.",
+      "narracao": "A CNT/MDA, também nos válidos, tem Flávio com 50,5% e Lula com 49,5%.",
       "dados": {
         "instituto": "MDA",
         "contratante": "CNT",
@@ -968,12 +1018,12 @@
           }
         ]
       },
-      "bloco": "4. Como os dois chegam: pesquisas"
+      "bloco": "3. As pesquisas"
     },
     {
       "id": "empate",
       "tipo": "fato",
-      "narracao": "As quatro pesquisas foram feitas entre 10 e 15 de outubro e estão registradas no TSE, com margens de erro de 2 a 2,6 pontos. Em todas, a diferença cabe na margem: é o chamado empate técnico.",
+      "narracao": "As quatro pesquisas foram feitas entre 10 e 15 de outubro e estão registradas no TSE. A margem de erro vai de 2 a 2,6 pontos percentuais: é quanto cada número pode variar, para mais ou para menos. Assim, as faixas dos dois se sobrepõem em todas. É o chamado empate técnico.",
       "fatos": [
         {
           "texto": "Empate técnico: a diferença cabe na margem de erro dos dois lados",
@@ -983,12 +1033,12 @@
           ]
         }
       ],
-      "bloco": "4. Como os dois chegam: pesquisas"
+      "bloco": "3. As pesquisas"
     },
     {
       "id": "tendencia",
       "tipo": "grafico",
-      "narracao": "Em relação à rodada anterior, a diferença caiu no Datafolha, de 4 para 2 pontos, e no Ipespe, de 5,4 para 2,4 pontos nos válidos. Na Quaest, ficou estável, mas a rodada anterior é de antes do primeiro turno.",
+      "narracao": "Em relação à rodada anterior, a diferença diminuiu no Datafolha, de 4 para 2 pontos, e no Ipespe, de 5,4 para 2,4. Na Quaest, ficou em 2, mas a rodada anterior é de antes do primeiro turno.",
       "dados": {
         "grafico": "barras",
         "titulo": "Diferença entre os dois, em pontos",
@@ -1014,13 +1064,24 @@
           }
         ]
       },
-      "bloco": "4. Como os dois chegam: pesquisas"
+      "bloco": "3. As pesquisas"
+    },
+    {
+      "id": "secao-decisoes",
+      "tipo": "secao",
+      "narracao": "Decisões na reta final.",
+      "bloco": "4. Decisões na reta final",
+      "dados": {
+        "numero": "4",
+        "titulo": "Decisões na reta final",
+        "subtitulo": "Atos e mudanças de posição perto das votações"
+      }
     },
     {
       "id": "bets-fato",
       "tipo": "fato",
       "cenario": "planalto",
-      "narracao": "Em 25 de setembro, nove dias antes do primeiro turno, Lula assinou a medida provisória que proíbe as bets, as apostas de quota fixa. Os sites saíram do ar em 6 de outubro.",
+      "narracao": "Em 25 de setembro, nove dias antes do primeiro turno, Lula assinou uma medida provisória que proíbe as bets, as apostas de quota fixa. Esse tipo de norma vale assim que é publicada, mas o Congresso tem até 120 dias para votá-la; se não votar, ela perde a validade. Os sites e aplicativos saíram do ar em 6 de outubro.",
       "personagens": [
         {
           "id": "lula",
@@ -1039,6 +1100,13 @@
           ]
         },
         {
+          "texto": "Medida provisória vale na hora; o Congresso tem até 120 dias para votar",
+          "fonteIds": [
+            "f-cf88",
+            "f-senado-mp"
+          ]
+        },
+        {
           "texto": "Sites e aplicativos fora do ar desde 06/10",
           "fonteIds": [
             "f-senado-mp",
@@ -1046,12 +1114,177 @@
           ]
         }
       ],
-      "bloco": "5. Os assuntos que devem aparecer"
+      "bloco": "4. Decisões na reta final",
+      "rubrica": {
+        "texto": "Governo Lula",
+        "personagemId": "lula"
+      }
+    },
+    {
+      "id": "bets-justica",
+      "tipo": "fato",
+      "cenario": "tribunal",
+      "cenarioOpcoes": {
+        "rotulo": "STF"
+      },
+      "narracao": "Até então, as apostas eram legais: foram criadas por lei em 2018, no governo Temer, e regulamentadas em 2023, no governo Lula. Clubes de futebol e entidades pediram ao Supremo que suspendesse a medida. O relator do caso, ministro Luiz Fux, pediu a posição da Advocacia-Geral da União, que defende o governo.",
+      "fatos": [
+        {
+          "texto": "Apostas criadas em 2018 e regulamentadas em 2023 (Lei 14.790)",
+          "fonteIds": [
+            "f-migalhas-stf",
+            "f-senado-mp"
+          ]
+        },
+        {
+          "texto": "Clubes e entidades pedem ao STF a suspensão da MP",
+          "fonteIds": [
+            "f-migalhas-stf",
+            "f-poder-clubes"
+          ]
+        },
+        {
+          "texto": "Fux pede manifestação da AGU",
+          "fonteIds": [
+            "f-agbr-fux"
+          ]
+        }
+      ],
+      "bloco": "4. Decisões na reta final",
+      "rubrica": {
+        "texto": "Governo Lula",
+        "personagemId": "lula"
+      }
+    },
+    {
+      "id": "mei-fato",
+      "tipo": "fato",
+      "cenario": "planalto",
+      "narracao": "Em 13 de outubro, a 12 dias do segundo turno, o governo Lula anunciou o perdão de cerca de 12,6 bilhões de reais em dívidas de microempreendedores individuais, os MEIs, e um Pix de até 5 mil reais. Na quarta, a Câmara, que tem 513 deputados, aprovou o perdão e o aumento do limite de faturamento do MEI por 461 votos a 4. O texto vai ao Senado.",
+      "fatos": [
+        {
+          "texto": "Perdão de ~R$ 12,6 bi em dívidas de MEIs e Pix de até R$ 5 mil (13/10)",
+          "fonteIds": [
+            "f-agbr-mei"
+          ]
+        },
+        {
+          "texto": "Câmara (513 deputados) aprova por 461 a 4; segue para o Senado",
+          "fonteIds": [
+            "f-poder-mei",
+            "f-camara-processo"
+          ]
+        }
+      ],
+      "bloco": "4. Decisões na reta final",
+      "rubrica": {
+        "texto": "Governo Lula",
+        "personagemId": "lula"
+      }
+    },
+    {
+      "id": "6x1-flavio",
+      "tipo": "fato",
+      "narracao": "Também no dia 13, Flávio mudou de posição sobre o fim da escala 6 por 1: seis dias de trabalho para um de folga. Em maio, ele tinha chamado a discussão de “inoportuna e eleitoreira”. Desta vez, disse que “a maioria dos trabalhadores brasileiros quer o fim da 6 por 1”.",
+      "personagens": [
+        {
+          "id": "flavio",
+          "acao": "falar",
+          "posicao": "centro",
+          "fala": true
+        }
+      ],
+      "fatos": [
+        {
+          "texto": "Flávio votou a favor da PEC no Senado",
+          "fonteIds": [
+            "f-exame-6x1",
+            "f-agbr-6x1"
+          ]
+        }
+      ],
+      "atribuicoes": [
+        {
+          "quem": "flavio",
+          "disse": "A maioria dos trabalhadores brasileiros quer o fim da 6 por 1",
+          "fonteId": "f-opovo-6x1"
+        },
+        {
+          "quem": "flavio",
+          "disse": "Inoportuna e eleitoreira",
+          "fonteId": "f-opovo-6x1",
+          "termos": [
+            "eleitoreira"
+          ],
+          "quando": "em maio"
+        }
+      ],
+      "bloco": "4. Decisões na reta final",
+      "rubrica": {
+        "texto": "Flávio Bolsonaro",
+        "personagemId": "flavio"
+      }
+    },
+    {
+      "id": "6x1-votacao",
+      "tipo": "votacao",
+      "narracao": "No dia seguinte, o Senado votou a proposta de emenda à Constituição. São 81 senadores, e mudar a Constituição exige pelo menos 49 votos, três quintos da Casa. Foram 75 a favor, entre eles o de Flávio, que é senador, e 1 contra; 5 não votaram. Na sexta, o Congresso promulgou a emenda, ato que a incorpora à Constituição. A jornada máxima cai para 42 horas semanais em 60 dias, e para 40 um ano depois, sem redução de salário.",
+      "dados": {
+        "orgao": "Senado Federal",
+        "etapa": "Fim da escala 6x1 (PEC)",
+        "casa": "senado",
+        "totalCadeiras": 81,
+        "quorum": "49 votos (3/5) para mudar a Constituição",
+        "placar": {
+          "sim": 75,
+          "nao": 1,
+          "abst": 0,
+          "ausentes": 5
+        }
+      },
+      "fatos": [
+        {
+          "texto": "Senado: 81 senadores; PEC precisa de 49 votos",
+          "fonteIds": [
+            "f-cf88",
+            "f-agbr-6x1"
+          ]
+        },
+        {
+          "texto": "Aprovada por 75 a 1, com 77 presentes (14/10)",
+          "fonteIds": [
+            "f-agbr-6x1",
+            "f-exame-6x1"
+          ]
+        },
+        {
+          "texto": "Promulgada em 16/10: 42h em 60 dias, 40h um ano depois, sem redução de salário",
+          "fonteIds": [
+            "f-metropoles-promulga",
+            "f-agbr-6x1"
+          ]
+        }
+      ],
+      "bloco": "4. Decisões na reta final",
+      "rubrica": {
+        "texto": "Flávio Bolsonaro",
+        "personagemId": "flavio"
+      }
+    },
+    {
+      "id": "secao-falas",
+      "tipo": "secao",
+      "narracao": "O que cada um disse.",
+      "bloco": "5. O que cada um disse",
+      "dados": {
+        "numero": "5",
+        "titulo": "O que cada um disse"
+      }
     },
     {
       "id": "bets-lados",
       "tipo": "ladoA_ladoB",
-      "narracao": "O governo justificou que os controles existentes não protegiam a saúde e os consumidores. O ministro da Fazenda, Dario Durigan, disse que o vício “está gerando angústia, vergonha”. Flávio chamou a medida de “atitude populista, hipócrita, eleitoreira” e disse que, se ela perder a validade, “as bets podem voltar com força total”.",
+      "narracao": "Nas bets, Flávio chamou a medida de “atitude populista, hipócrita, eleitoreira” e disse que, se ela perder a validade, “as bets podem voltar com força total”. O governo Lula justificou que os controles existentes não protegiam a saúde e os consumidores. O ministro da Fazenda, Dario Durigan, afirmou que o vício “está gerando angústia, vergonha”.",
       "atribuicoes": [
         {
           "quem": "flavio",
@@ -1105,188 +1338,15 @@
           ]
         }
       },
-      "bloco": "5. Os assuntos que devem aparecer"
-    },
-    {
-      "id": "bets-justica",
-      "tipo": "fato",
-      "cenario": "tribunal",
-      "cenarioOpcoes": {
-        "rotulo": "STF"
-      },
-      "narracao": "As apostas foram criadas em 2018, no governo Temer, e regulamentadas em 2023, no governo Lula. Clubes e entidades pediram ao Supremo a suspensão da medida, e o ministro Luiz Fux pediu a manifestação da AGU.",
-      "fatos": [
-        {
-          "texto": "Apostas criadas em 2018 e regulamentadas em 2023 (Lei 14.790)",
-          "fonteIds": [
-            "f-migalhas-stf",
-            "f-senado-mp"
-          ]
-        },
-        {
-          "texto": "Clubes e entidades pedem ao STF a suspensão da MP",
-          "fonteIds": [
-            "f-migalhas-stf",
-            "f-poder-clubes"
-          ]
-        },
-        {
-          "texto": "Fux pede manifestação da AGU",
-          "fonteIds": [
-            "f-agbr-fux"
-          ]
-        }
-      ],
-      "bloco": "5. Os assuntos que devem aparecer"
-    },
-    {
-      "id": "6x1-votacao",
-      "tipo": "votacao",
-      "narracao": "O fim da escala 6 por 1 foi aprovado no Senado por 75 votos a 1 e promulgado pelo Congresso na sexta, 16. A jornada cai para 42 horas em 60 dias, e para 40 um ano depois, sem redução de salário.",
-      "dados": {
-        "orgao": "Senado Federal",
-        "etapa": "PEC do fim da escala 6x1",
-        "casa": "senado",
-        "placar": {
-          "sim": 75,
-          "nao": 1,
-          "abst": 0
-        }
-      },
-      "fatos": [
-        {
-          "texto": "Senado aprova por 75 a 1 (14/10)",
-          "fonteIds": [
-            "f-agbr-6x1",
-            "f-exame-6x1"
-          ]
-        },
-        {
-          "texto": "Emenda promulgada em 16/10",
-          "fonteIds": [
-            "f-metropoles-promulga"
-          ]
-        },
-        {
-          "texto": "42h em 60 dias; 40h um ano depois; sem redução de salário",
-          "fonteIds": [
-            "f-metropoles-promulga",
-            "f-agbr-6x1"
-          ]
-        }
-      ],
-      "bloco": "5. Os assuntos que devem aparecer"
-    },
-    {
-      "id": "6x1-flavio",
-      "tipo": "fato",
-      "narracao": "Flávio votou a favor. Em maio, ele tinha chamado a discussão de “inoportuna e eleitoreira”. Em 13 de outubro, a 12 dias do segundo turno, mudou de posição e disse que “a maioria dos trabalhadores brasileiros quer o fim da 6 por 1”.",
-      "personagens": [
-        {
-          "id": "flavio",
-          "acao": "falar",
-          "posicao": "centro",
-          "fala": true
-        }
-      ],
-      "fatos": [
-        {
-          "texto": "Flávio votou a favor da PEC no Senado",
-          "fonteIds": [
-            "f-exame-6x1",
-            "f-agbr-6x1"
-          ]
-        }
-      ],
-      "atribuicoes": [
-        {
-          "quem": "flavio",
-          "disse": "A maioria dos trabalhadores brasileiros quer o fim da 6 por 1",
-          "fonteId": "f-opovo-6x1"
-        },
-        {
-          "quem": "flavio",
-          "disse": "(em maio) A discussão é inoportuna e eleitoreira",
-          "fonteId": "f-opovo-6x1",
-          "termos": [
-            "eleitoreira"
-          ]
-        }
-      ],
-      "bloco": "5. Os assuntos que devem aparecer"
-    },
-    {
-      "id": "6x1-lados",
-      "tipo": "ladoA_ladoB",
-      "narracao": "Flávio também disse que “quem vai pagar essa conta vai ter de ser o governo”. Lula atribuiu a mudança do PL à pressão popular e chamou a promulgação de “vitória da sociedade brasileira”.",
-      "dados": {
-        "ladoA": {
-          "titulo": "Flávio Bolsonaro",
-          "personagemId": "flavio",
-          "argumentos": [
-            {
-              "texto": "“Quem vai pagar essa conta vai ter de ser o governo”",
-              "quem": "Flávio Bolsonaro",
-              "fonteId": "f-opovo-6x1"
-            },
-            {
-              "texto": "Quer “liberdade para o trabalhador montar sua escala”",
-              "quem": "Flávio Bolsonaro",
-              "fonteId": "f-opovo-6x1"
-            }
-          ]
-        },
-        "ladoB": {
-          "titulo": "Lula",
-          "personagemId": "lula",
-          "argumentos": [
-            {
-              "texto": "Pressão popular levou o PL a mudar de posição",
-              "quem": "Lula",
-              "fonteId": "f-poder-lula-6x1"
-            },
-            {
-              "texto": "“Vitória da sociedade brasileira”",
-              "quem": "Lula",
-              "fonteId": "f-metropoles-promulga"
-            }
-          ]
-        }
-      },
-      "bloco": "5. Os assuntos que devem aparecer",
-      "atribuicoes": [
-        {
-          "quem": "lula",
-          "disse": "Vitória da sociedade brasileira",
-          "fonteId": "f-metropoles-promulga"
-        }
-      ]
-    },
-    {
-      "id": "mei-fato",
-      "tipo": "fato",
-      "cenario": "planalto",
-      "narracao": "No mesmo dia, o governo anunciou o perdão de cerca de 12,6 bilhões de reais em dívidas de microempreendedores individuais, os MEIs, e um Pix de até 5 mil reais. No dia seguinte, a Câmara aprovou o perdão e o aumento do teto do MEI, por 461 votos a 4.",
-      "fatos": [
-        {
-          "texto": "Perdão de ~R$ 12,6 bi em dívidas de MEIs e Pix de até R$ 5 mil",
-          "fonteIds": [
-            "f-agbr-mei"
-          ]
-        },
-        {
-          "texto": "Câmara aprova perdão e novo teto por 461 a 4 (14/10)",
-          "fonteIds": [
-            "f-poder-mei"
-          ]
-        }
-      ],
-      "bloco": "5. Os assuntos que devem aparecer"
+      "bloco": "5. O que cada um disse",
+      "rubrica": {
+        "texto": "Bets"
+      }
     },
     {
       "id": "mei-lados",
       "tipo": "ladoA_ladoB",
-      "narracao": "Lula disse: “Nós vamos ajudar vocês a saírem do sufoco”. E completou: “A palavra prosperidade não é privilégio, é direito de todo mundo”. Flávio perguntou: “Ele está achando que o povo é otário?”. E afirmou: “Vamos fazer tesouraço em impostos, sim”.",
+      "narracao": "No pacote dos MEIs, Flávio perguntou, referindo-se a Lula: “Ele está achando que o povo é otário?”. E afirmou: “Vamos fazer tesouraço em impostos, sim”. Lula disse: “Nós vamos ajudar vocês a saírem do sufoco”. E também: “A palavra prosperidade não é privilégio, é direito de todo mundo”.",
       "dados": {
         "ladoA": {
           "titulo": "Lula",
@@ -1321,25 +1381,88 @@
           ]
         }
       },
-      "bloco": "5. Os assuntos que devem aparecer"
+      "bloco": "5. O que cada um disse",
+      "rubrica": {
+        "texto": "MEIs"
+      }
+    },
+    {
+      "id": "6x1-lados",
+      "tipo": "ladoA_ladoB",
+      "narracao": "Na escala 6 por 1, Flávio defendeu “liberdade para o trabalhador montar sua escala” e disse que “quem vai pagar essa conta vai ter de ser o governo”. Lula atribuiu a mudança de posição do PL, partido de Flávio, à pressão popular, e chamou a promulgação de “vitória da sociedade brasileira”.",
+      "dados": {
+        "ladoA": {
+          "titulo": "Flávio Bolsonaro",
+          "personagemId": "flavio",
+          "argumentos": [
+            {
+              "texto": "“Quem vai pagar essa conta vai ter de ser o governo”",
+              "quem": "Flávio Bolsonaro",
+              "fonteId": "f-opovo-6x1"
+            },
+            {
+              "texto": "Quer “liberdade para o trabalhador montar sua escala”",
+              "quem": "Flávio Bolsonaro",
+              "fonteId": "f-opovo-6x1"
+            }
+          ]
+        },
+        "ladoB": {
+          "titulo": "Lula",
+          "personagemId": "lula",
+          "argumentos": [
+            {
+              "texto": "Pressão popular levou o PL a mudar de posição",
+              "quem": "Lula",
+              "fonteId": "f-poder-lula-6x1"
+            },
+            {
+              "texto": "“Vitória da sociedade brasileira”",
+              "quem": "Lula",
+              "fonteId": "f-metropoles-promulga"
+            }
+          ]
+        }
+      },
+      "bloco": "5. O que cada um disse",
+      "atribuicoes": [
+        {
+          "quem": "lula",
+          "disse": "Vitória da sociedade brasileira",
+          "fonteId": "f-metropoles-promulga"
+        }
+      ],
+      "rubrica": {
+        "texto": "Escala 6x1"
+      }
+    },
+    {
+      "id": "secao-observar",
+      "tipo": "secao",
+      "narracao": "O que observar.",
+      "bloco": "6. O que observar",
+      "dados": {
+        "numero": "6",
+        "titulo": "O que observar"
+      }
     },
     {
       "id": "nao-se-sabe",
       "tipo": "naoSeSabe",
-      "narracao": "Ainda não se sabe se o Supremo vai suspender a medida das bets, quando o Congresso vai votá-la, nem que efeito o debate terá nas pesquisas.",
+      "narracao": "Ainda não se sabe se o Supremo vai suspender a medida das bets, quando o Congresso vai votá-la e se o debate vai mudar as pesquisas.",
       "dados": {
         "itens": [
           "Se o STF vai suspender a MP das bets",
           "Quando o Congresso vai votar a MP",
-          "O efeito do debate nas pesquisas"
+          "Se o debate vai mudar as pesquisas"
         ]
       },
-      "bloco": "5. Os assuntos que devem aparecer"
+      "bloco": "6. O que observar"
     },
     {
       "id": "observar",
       "tipo": "checklist",
-      "narracao": "No debate, vale observar quem traz proposta com número e prazo, quais dados cada um cita e quais perguntas ficam sem resposta. Na segunda, a gente checa o que cada um disse.",
+      "narracao": "No debate, vale observar quem apresenta proposta com número e prazo, que dados cada um cita e quais perguntas ficam sem resposta. Na segunda, o canal checa o que os dois disseram.",
       "dados": {
         "titulo": "O que observar no debate",
         "itens": [
@@ -1348,12 +1471,22 @@
           "Quais perguntas ficam sem resposta"
         ]
       },
-      "bloco": "6. O que observar no debate"
+      "bloco": "6. O que observar"
+    },
+    {
+      "id": "secao-servico",
+      "tipo": "secao",
+      "narracao": "Onde e quando.",
+      "bloco": "7. Onde e quando",
+      "dados": {
+        "numero": "7",
+        "titulo": "Onde e quando"
+      }
     },
     {
       "id": "servico",
       "tipo": "servico",
-      "narracao": "O debate começa às 20h, na Band, na BandNews TV, nas rádios BandNews FM e Bandeirantes e no YouTube do Band Jornalismo. A mediação é de Eduardo Oinegue e Adriana Araújo.",
+      "narracao": "O debate começa às 20h. Além da Band, transmitem a BandNews TV, as rádios BandNews FM e Bandeirantes e o canal do Band Jornalismo no YouTube. A mediação é de Eduardo Oinegue e Adriana Araújo. Por sorteio, Flávio fica à esquerda, e Lula, à direita.",
       "dados": {
         "titulo": "Debate Band · 2º turno",
         "linhas": [
@@ -1384,13 +1517,13 @@
           }
         ]
       },
-      "bloco": "7. Serviço e encerramento"
+      "bloco": "7. Onde e quando"
     },
     {
       "id": "proximos",
       "tipo": "fato",
       "cenario": "urna",
-      "narracao": "O próximo debate é na sexta, 23, na Globo. Edinho Silva, do PT, disse que Lula deve participar. Flávio afirmou que a palavra final será da equipe técnica dele. Nenhum dos dois confirmou oficialmente.",
+      "narracao": "A Globo marcou outro debate para sexta, dia 23. Flávio disse que a palavra final será da equipe técnica dele. Edinho Silva, do PT, afirmou que Lula deve participar. Nenhum dos dois confirmou oficialmente.",
       "fatos": [
         {
           "texto": "Debate na Globo: sexta, 23/10",
@@ -1408,23 +1541,27 @@
       ],
       "atribuicoes": [
         {
-          "quem": "PT (Edinho Silva)",
-          "disse": "Lula deverá participar do debate da Globo",
-          "fonteId": "f-antagonista-edinho"
-        },
-        {
           "quem": "flavio",
           "disse": "Quem vai dar a palavra final será minha equipe técnica",
           "fonteId": "f-cnn-flavio-nao"
+        },
+        {
+          "quem": "PT (Edinho Silva)",
+          "disse": "Lula deverá participar do debate da Globo",
+          "fonteId": "f-antagonista-edinho"
         }
       ],
-      "bloco": "7. Serviço e encerramento"
+      "bloco": "7. Onde e quando"
     },
     {
       "id": "fim",
       "tipo": "encerramento",
       "narracao": "Assista, compare e decida. As fontes estão na descrição.",
-      "bloco": "7. Serviço e encerramento"
+      "bloco": "7. Onde e quando"
     }
-  ]
+  ],
+  "posicoesFixas": {
+    "flavio": "esq",
+    "lula": "dir"
+  }
 }

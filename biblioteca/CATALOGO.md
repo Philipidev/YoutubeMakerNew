@@ -75,4 +75,4 @@ _Gerado por `npx tsx scripts/biblioteca.ts`. Não editar à mão._
 
 ## Contexto
 
-_vazio_
+- **instituicoes-regras**: Regras institucionais estáveis para dar contexto ao espectador leigo (Congresso, quóruns, medida provisória, pesquisas). Reusar em qualquer episódio; rechecar quando vencer. (checado em 2026-10-18)

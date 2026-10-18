@@ -18,14 +18,26 @@ const fontesDe = (ep: Episodio, ids: string[]) => ids.map((id) => ep.fontes.find
  * Sempre visível enquanto há fato na tela.
  */
 export const FonteLowerThird: React.FC<{ episodio: Episodio; fonteIds: string[]; status?: Fato["status"] }> = ({ episodio, fonteIds, status }) => {
-  const { width, seloY: top, t } = useFormato();
+  const { width, formato, seloY: top, t } = useFormato();
   const e = useEntrada(4);
   const fs = fontesDe(episodio, fonteIds);
   if (!fs.length) return null;
   const texto = fs.map((f) => `${f.veiculo} · ${formatarData(f.data)}`).join("  |  ");
   return (
     <NaCamadaFixa>
-    <div style={{ position: "absolute", top, left: width * 0.06, right: width * 0.06, display: "flex", justifyContent: "center", opacity: e, transform: `translateY(${(1 - e) * -30}px)` }}>
+    <div
+      style={{
+        position: "absolute",
+        top,
+        // 16:9: fonte no canto direito (o chapéu da seção fica no esquerdo); vertical: centralizada
+        left: formato === "horizontal" ? width * 0.36 : width * 0.06,
+        right: width * 0.05,
+        display: "flex",
+        justifyContent: formato === "horizontal" ? "flex-end" : "center",
+        opacity: e,
+        transform: `translateY(${(1 - e) * -30}px)`,
+      }}
+    >
       <div style={{ display: "flex", alignItems: "center", gap: 14, background: `${cores.fundo}F0`, border: `2px solid ${cores.linha}`, borderRadius: raio.chip, padding: "10px 22px", maxWidth: "100%" }}>
         <span style={{ fontFamily: fontes.corpo, fontWeight: 800, fontSize: t.legenda * 0.85, color: cores.acento, letterSpacing: 2 }}>FONTE</span>
         <span style={{ fontFamily: fontes.corpo, fontWeight: 600, fontSize: t.legenda, color: cores.texto, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{texto}</span>
@@ -65,13 +77,15 @@ export const CardFato: React.FC<{ fato: Fato; episodio: Episodio; atraso?: numbe
 };
 
 /** Citação atribuída: quem disse + o quê, com aspas. */
-export const CardCitacao: React.FC<{ quem: string; disse: string; cor?: string; atraso?: number }> = ({ quem, disse, cor = cores.acento, atraso = 0 }) => {
+export const CardCitacao: React.FC<{ quem: string; disse: string; cor?: string; atraso?: number; quando?: string }> = ({ quem, disse, cor = cores.acento, atraso = 0, quando }) => {
   const { t } = useFormato();
   const e = useEntrada(atraso);
   const entrada = useEntradaElemento("citacao:" + disse, e);
   return (
     <Card borda={cor} style={entrada}>
-      <Rotulo cor={cor}>{quem} disse</Rotulo>
+      <Rotulo cor={cor}>
+        {quem} disse{quando ? " · " + quando : ""}
+      </Rotulo>
       <div style={{ fontFamily: fontes.corpo, fontWeight: 700, fontStyle: "italic", fontSize: t.destaque * 0.9, color: cores.texto, marginTop: 12, lineHeight: 1.25 }}>“{disse}”</div>
     </Card>
   );
@@ -96,7 +110,7 @@ const MetadeLado: React.FC<{ lado: Lado; letra: string; episodio: Episodio; atra
         ) : null}
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-            <Chip cor={cor}>Lado {letra}</Chip>
+            <Chip cor={cor}>{pers ? `${pers.rotulo}${pers.numero ? " · " + pers.numero : ""}` : `Lado ${letra}`}</Chip>
           </div>
           <div style={{ fontFamily: fontes.display, fontSize: t.titulo * 0.75, color: cores.texto, marginTop: 10, lineHeight: 1.05 }}>{lado.titulo}</div>
           <div style={{ display: "flex", flexDirection: "column", gap: 14, marginTop: 14 }}>
@@ -123,8 +137,11 @@ const MetadeLado: React.FC<{ lado: Lado; letra: string; episodio: Episodio; atra
 export const CardLadoALadoB: React.FC<{ cena: Extract<Cena, { tipo: "ladoA_ladoB" }>; episodio: Episodio; duracao: number }> = ({ cena, episodio, duracao }) => {
   const { formato } = useFormato();
   const vertical = formato === "vertical";
-  const [primeiro, segundo] = episodio.ordemLados === "BA" ? [cena.dados.ladoB, cena.dados.ladoA] : [cena.dados.ladoA, cena.dados.ladoB];
-  const [l1, l2] = episodio.ordemLados === "BA" ? ["B", "A"] : ["A", "B"];
+  // com lado fixo, cada candidato fica sempre na mesma metade (esq/topo = lado "esq"), em todo o episódio
+  const ladoDe = (l: Lado) => (l.personagemId ? episodio.posicoesFixas?.[l.personagemId] : undefined);
+  const inverter = episodio.posicoesFixas ? ladoDe(cena.dados.ladoA) === "dir" || ladoDe(cena.dados.ladoB) === "esq" : episodio.ordemLados === "BA";
+  const [primeiro, segundo] = inverter ? [cena.dados.ladoB, cena.dados.ladoA] : [cena.dados.ladoA, cena.dados.ladoB];
+  const [l1, l2] = inverter ? ["B", "A"] : ["A", "B"];
   // tempo igual: o segundo lado entra na metade da cena
   const meio = Math.round(duracao * 0.45);
   return (
