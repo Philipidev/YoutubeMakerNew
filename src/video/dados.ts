@@ -10,6 +10,8 @@ export const EpisodioPropsSchema = z.object({
   legendaQueimada: z.boolean(),
   /** Prévia: sem voz e sem SFX. */
   semAudio: z.boolean(),
+  /** Overlay de revisão com as zonas proibidas (UI das plataformas, legenda). */
+  zonas: z.boolean().optional(),
 });
 export type EpisodioPropsBase = z.infer<typeof EpisodioPropsSchema>;
 

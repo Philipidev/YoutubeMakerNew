@@ -4,6 +4,7 @@ import "../fontes";
 import { cores, coresPersonagem, fontes, movimento, raio, safe, tipos } from "../theme";
 import { useFormato } from "../layout/useFormato";
 import { Fundo } from "../video/Fundo";
+import { Zonas } from "../video/Zonas";
 
 const Amostra: React.FC<{ nome: string; cor: string }> = ({ nome, cor }) => (
   <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8, width: 150 }}>
@@ -69,11 +70,7 @@ export const DesignSystem: React.FC = () => {
           ))}
         </div>
       </AbsoluteFill>
-      {/* safe zones */}
-      <div style={{ position: "absolute", left: 0, right: 0, top: 0, height: height * s.topo, background: "#ff3d6b22", borderBottom: "2px dashed #ff3d6b88" }} />
-      <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: height * s.base, background: "#ff3d6b22", borderTop: "2px dashed #ff3d6b88", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: fontes.corpo, color: "#ff8fa8", fontSize: 24 }}>
-        zona da UI da plataforma (sem conteúdo essencial)
-      </div>
+      <Zonas />
     </AbsoluteFill>
   );
 };

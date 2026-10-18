@@ -10,7 +10,7 @@ import { useFormato } from "../layout/useFormato";
 
 const Holofotes: React.FC = () => {
   const f = useCurrentFrame();
-  const { width, height } = useFormato();
+  const { width, height, xPersonagem } = useFormato();
   const osc = Math.sin(f / 40) * 0.04;
   return (
     <svg width={width} height={height} style={{ position: "absolute" }}>
@@ -20,7 +20,7 @@ const Holofotes: React.FC = () => {
           <stop offset="1" stopColor={cores.acento} stopOpacity={0} />
         </linearGradient>
       </defs>
-      {[0.27, 0.73].map((x, i) => (
+      {[xPersonagem("esq", 2) / width, xPersonagem("dir", 2) / width].map((x, i) => (
         <polygon
           key={i}
           points={`${width * (x - 0.03)},0 ${width * (x + 0.03)},0 ${width * (x + 0.2 + (i ? -osc : osc))},${height * 0.8} ${width * (x - 0.2 + (i ? -osc : osc))},${height * 0.8}`}
@@ -34,7 +34,7 @@ const Holofotes: React.FC = () => {
 const Piso: React.FC<{ cor?: string }> = ({ cor = cores.superficie }) => {
   const { width, height, palcoY } = useFormato();
   return (
-    <div style={{ position: "absolute", left: 0, top: palcoY - 10, width, height: height - palcoY + 10, background: `linear-gradient(${cor}, ${cores.fundo})`, borderTop: `4px solid ${cores.linha}` }} />
+    <div style={{ position: "absolute", left: -width * 0.3, top: palcoY - 10, width: width * 1.6, height: height - palcoY + 10, background: `linear-gradient(${cor}, ${cores.fundo})`, borderTop: `4px solid ${cores.linha}` }} />
   );
 };
 
@@ -71,8 +71,8 @@ export const CenarioPulpitos: React.FC = () => (
 /** Urna eletrônica estilizada (sem marca do TSE). */
 export const CenarioUrna: React.FC<{ escala?: number }> = ({ escala = 1 }) => {
   const f = useCurrentFrame();
-  const { width, palcoY } = useFormato();
-  const larg = Math.min(width * 0.7, 760) * escala;
+  const { width, palcoY, alturaCenario } = useFormato();
+  const larg = Math.min(width * 0.7, 760, alturaCenario / 0.64) * escala;
   const tecla = Math.floor(f / 12) % 12;
   return (
     <AbsoluteFill>
@@ -139,10 +139,10 @@ export const CenarioPlenario: React.FC<{ casa?: "camara" | "senado"; placar?: { 
 export const CenarioMartelo: React.FC<{ rotulo?: string }> = ({ rotulo }) => {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const { width, palcoY, t } = useFormato();
+  const { width, palcoY, alturaCenario, t } = useFormato();
   const batida = (n: number) => spring({ frame: f - 8 - n * 14, fps, config: movimento.pop });
   const ang = -35 + 35 * Math.min(batida(0), 1) - (f > 20 && f < 30 ? 18 * Math.sin(((f - 20) / 10) * Math.PI) : 0);
-  const larg = Math.min(width * 0.55, 600);
+  const larg = Math.min(width * 0.55, 600, alturaCenario / 0.75);
   return (
     <AbsoluteFill>
       <Piso cor="#2A2420" />
@@ -162,8 +162,8 @@ export const CenarioMartelo: React.FC<{ rotulo?: string }> = ({ rotulo }) => {
 
 /** Sede do Executivo estilizada (pano de fundo): laje fina, fachada de vidro, colunas afinadas e rampa. */
 export const CenarioPlanalto: React.FC = () => {
-  const { width, palcoY } = useFormato();
-  const larg = width * 1.1;
+  const { width, palcoY, alturaCenario } = useFormato();
+  const larg = Math.min(width * 1.1, alturaCenario / 0.34);
   const e = spring({ frame: useCurrentFrame(), fps: useVideoConfig().fps, config: movimento.entradaSuave });
   const base = palcoY - 140;
   return (

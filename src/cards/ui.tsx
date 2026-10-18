@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useId } from "react";
 import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { cores, fontes, movimento, raio } from "../theme";
 import { useFormato } from "../layout/useFormato";
-import { Brilho, useFlutuar } from "../movimento/vida";
+import { Brilho, useVariante, useVidaCard } from "../movimento/vida";
 
 /** Progresso de entrada (0..1) com atraso em frames. */
 export const useEntrada = (atraso = 0, config: keyof typeof movimento & ("entrada" | "entradaSuave" | "pop") = "entrada") => {
@@ -22,37 +22,42 @@ export const useSaida = (duracao: number) => {
 };
 
 /**
- * Card base. Depois de entrar, flutua de leve e recebe um reflexo periódico (src/movimento/vida).
- * `chave` diferencia cards da mesma cena para cada um ter sua fase.
+ * Card base. Depois de entrar, ganha uma "vida" sorteada entre 5 variantes (flutuar, balanço, borda viva,
+ * sombra viva, reflexo). `chave` diferencia cards da mesma cena.
  */
 export const Card: React.FC<{ children: React.ReactNode; style?: React.CSSProperties; borda?: string; chave?: string; vivo?: boolean }> = ({
   children,
   style,
   borda,
-  chave = "card",
+  chave,
   vivo = true,
 }) => {
-  const flutuar = useFlutuar(chave, 4);
+  // sem chave explícita, cada card ganha uma chave estável pela posição na árvore
+  const id = useId();
+  const k = chave ?? id;
+  const corBorda = borda ?? cores.linha;
+  const vida = useVidaCard(k, corBorda === cores.linha ? cores.acento : corBorda);
   // props de layout ficam no wrapper externo (que é o filho do flex do pai)
   const { height, flex, minWidth, ...resto } = style ?? {};
   return (
-    <div style={{ transform: vivo ? flutuar : undefined, height, flex, minWidth }}>
+    <div style={{ ...(vivo ? vida.externo : {}), height, flex, minWidth }}>
       <div
         style={{
           position: "relative",
           overflow: "hidden",
           background: cores.superficie,
-          border: `3px solid ${borda ?? cores.linha}`,
+          border: `3px solid ${corBorda}`,
           borderRadius: raio.card,
           padding: 40,
           boxShadow: "0 24px 60px rgba(0,0,0,0.45)",
           height: height ? "100%" : undefined,
           boxSizing: "border-box",
           ...resto,
+          ...(vivo ? vida.interno : {}),
         }}
       >
         {children}
-        {vivo ? <Brilho chave={chave} /> : null}
+        {vivo && vida.brilho ? <Brilho chave={k} /> : null}
       </div>
     </div>
   );
@@ -91,33 +96,40 @@ export const Rotulo: React.FC<{ children: React.ReactNode; cor?: string }> = ({ 
 };
 
 /** Texto que entra palavra por palavra com pop. */
-export const TextoPop: React.FC<{ texto: string; atraso?: number; passo?: number; style?: React.CSSProperties; destaque?: string[] }> = ({
-  texto,
-  atraso = 0,
-  passo = 3,
-  style,
-  destaque = [],
-}) => {
+/**
+ * Texto que entra palavra por palavra. Estilo sorteado por texto (pop, subida, máquina de escrever, desfoque),
+ * ou fixado em `variante`.
+ */
+export const TextoPop: React.FC<{
+  texto: string;
+  atraso?: number;
+  passo?: number;
+  style?: React.CSSProperties;
+  destaque?: string[];
+  variante?: "pop" | "subida" | "maquina" | "desfoque";
+}> = ({ texto, atraso = 0, passo = 3, style, destaque = [], variante }) => {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const sorteada = useVariante("texto:" + texto, ["pop", "subida", "maquina", "desfoque"] as const);
+  const v = variante ?? sorteada;
   const palavras = texto.split(/\s+/);
   const alvo = destaque.map((d) => d.toLowerCase());
   return (
     <div style={style}>
       {palavras.map((p, i) => {
-        const k = spring({ frame: f - atraso - i * passo, fps, config: movimento.pop });
+        const k = spring({ frame: f - atraso - i * passo, fps, config: v === "pop" ? movimento.pop : movimento.entrada });
         const limpo = p.toLowerCase().replace(/[^\p{L}\p{N}]/gu, "");
+        const q = 1 - k;
+        const efeito: React.CSSProperties =
+          v === "pop"
+            ? { transform: `translateY(${q * 40}px) scale(${0.7 + 0.3 * k})`, opacity: k }
+            : v === "subida"
+              ? { transform: `translateY(${q * 70}px)`, opacity: k, clipPath: `inset(0 0 ${q * 100}% 0)` }
+              : v === "maquina"
+                ? { opacity: f - atraso >= i * passo ? 1 : 0 }
+                : { opacity: k, filter: q > 0.01 ? `blur(${q * 12}px)` : undefined };
         return (
-          <span
-            key={i}
-            style={{
-              display: "inline-block",
-              transform: `translateY(${(1 - k) * 40}px) scale(${0.7 + 0.3 * k})`,
-              opacity: k,
-              marginRight: "0.25em",
-              color: alvo.includes(limpo) ? cores.acento : undefined,
-            }}
-          >
+          <span key={i} style={{ display: "inline-block", marginRight: "0.25em", color: alvo.includes(limpo) ? cores.acento : undefined, ...efeito }}>
             {p}
           </span>
         );
@@ -125,6 +137,7 @@ export const TextoPop: React.FC<{ texto: string; atraso?: number; passo?: number
     </div>
   );
 };
+
 
 export const formatarData = (iso: string) => {
   const m = iso.match(/^(\d{4})-(\d{2})-(\d{2})/);

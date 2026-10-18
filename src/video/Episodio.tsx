@@ -8,6 +8,7 @@ import { CenaRouter } from "./CenaRouter";
 import { BarraProgresso } from "./BarraProgresso";
 import { LegendaQueimada } from "./LegendaQueimada";
 import { TrilhaSfx } from "./Sfx";
+import { Zonas } from "./Zonas";
 import { MovimentoCena, planejarMovimento, type PlanoCena } from "../movimento/plano";
 import { DURACAO_TRANSICAO, estiloEntrada, estiloSaida, opacidadeFlash } from "../movimento/transicoes";
 
@@ -33,7 +34,7 @@ const CenaComTransicao: React.FC<{ plano: PlanoCena; duracao: number; inicioAbs:
   );
 };
 
-export const EpisodioVideo: React.FC<EpisodioProps> = ({ dados, legendaQueimada, semAudio }) => {
+export const EpisodioVideo: React.FC<EpisodioProps> = ({ dados, legendaQueimada, semAudio, zonas }) => {
   const plano = useMemo(() => (dados ? planejarMovimento(dados.episodio) : []), [dados]);
   if (!dados) return null;
   const { episodio, timestamps, tempos, audioSrc } = dados;
@@ -56,6 +57,7 @@ export const EpisodioVideo: React.FC<EpisodioProps> = ({ dados, legendaQueimada,
         );
       })}
       <BarraProgresso />
+      {zonas ? <Zonas /> : null}
       {legendaQueimada || semAudio ? <LegendaQueimada timestamps={timestamps} /> : null}
       {audioSrc && !semAudio ? <Audio src={audioSrc} volume={audioTheme.volumeVoz} /> : null}
       {!semAudio ? <TrilhaSfx episodio={episodio} tempos={tempos} plano={plano} timestamps={timestamps} /> : null}

@@ -89,10 +89,14 @@ export const movimento = {
 export const transicoes = ["corte", "slide", "wipeDiagonal", "zoomPunch"] as const;
 export type Transicao = (typeof transicoes)[number];
 
-/** Safe zones em fração da tela (UI das plataformas cobre topo/base). */
+/**
+ * Safe zones em fração da altura/largura.
+ * - topo/base/lados: cobertos pela UI das plataformas (busca, botões, título, controles do player).
+ * - legenda: faixa reservada para a legenda (a .srt que o YouTube exibe, ou a queimada). Nada essencial entra nela.
+ */
 export const safe = {
-  vertical: { topo: 0.08, base: 0.22, lados: 0.06 },
-  horizontal: { topo: 0.06, base: 0.1, lados: 0.05 },
+  vertical: { topo: 0.08, base: 0.22, lados: 0.06, legenda: { inicio: 0.68, fim: 0.78 } },
+  horizontal: { topo: 0.06, base: 0.08, lados: 0.05, legenda: { inicio: 0.8, fim: 0.92 } },
 } as const;
 
 export const audio = {

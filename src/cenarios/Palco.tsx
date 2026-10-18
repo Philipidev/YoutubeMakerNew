@@ -13,19 +13,37 @@ import type { CenarioOpcoes } from "../schema/episodio";
 
 /** Mapa ocupando a área útil acima do rodapé. */
 const CenarioMapa: React.FC<{ modo: ModoMapa; opcoes: CenarioOpcoes }> = ({ modo, opcoes }) => {
-  const { width, area, palcoY } = useFormato();
-  const lado = Math.min(area.w, palcoY - area.y);
+  const { width, height, formato, area, palcoY, conteudoTopo } = useFormato();
+  // vertical: faixa de cima livre para o card; 16:9: card na coluna esquerda, mapa à direita
+  const topo = formato === "horizontal" ? conteudoTopo : area.y + height * 0.13;
+  const lado = Math.min(area.w, palcoY - topo);
+  const centroX = formato === "horizontal" ? width * 0.64 : width / 2;
   const destaque = Object.fromEntries((opcoes.ufs ?? []).map((uf) => [uf, cores.acento]));
   return (
     <AbsoluteFill>
-      <div style={{ position: "absolute", left: (width - lado) / 2, top: area.y + 20 }}>
+      <div style={{ position: "absolute", left: centroX - lado / 2, top: topo }}>
         <MapaBrasil modo={modo} largura={lado} destaque={destaque} valores={opcoes.valores} uf={opcoes.uf} regioes={opcoes.regioes} siglas={modo !== "capitais"} />
       </div>
     </AbsoluteFill>
   );
 };
 
-export const CenarioFundo: React.FC<{ id?: CenarioId; opcoes?: CenarioOpcoes; placar?: { sim: number; nao: number; abst: number } }> = ({ id, opcoes = {}, placar }) => {
+/** Cenários que ocupam o centro: no 16:9 vão para a direita, liberando a coluna de cards à esquerda. */
+const CENTRAIS: CenarioId[] = ["urna", "plenarioCamara", "plenarioSenado", "martelo", "congresso", "banco", "cpi", "policia", "tribunal"];
+
+export const CenarioFundo: React.FC<{ id?: CenarioId; opcoes?: CenarioOpcoes; placar?: { sim: number; nao: number; abst: number }; comPersonagens?: boolean }> = (props) => {
+  const { formato, width } = useFormato();
+  const desloca = formato === "horizontal" && props.id && CENTRAIS.includes(props.id) && !props.comPersonagens;
+  return desloca ? (
+    <AbsoluteFill style={{ transform: `translateX(${width * 0.14}px)` }}>
+      <CenarioFundoBase {...props} />
+    </AbsoluteFill>
+  ) : (
+    <CenarioFundoBase {...props} />
+  );
+};
+
+const CenarioFundoBase: React.FC<{ id?: CenarioId; opcoes?: CenarioOpcoes; placar?: { sim: number; nao: number; abst: number } }> = ({ id, opcoes = {}, placar }) => {
   switch (id) {
     case "pulpitos":
     case "pulpitoVazio":
@@ -82,7 +100,7 @@ export const Palco: React.FC<{
   deslocY?: number;
   escala?: number;
 }> = ({ cena, episodio, palavras, ausentes = [], deslocY = 0, escala = 1 }) => {
-  const { posX, palcoY, alturaBoneco } = useFormato();
+  const { xPersonagem, palcoY, alturaBoneco } = useFormato();
   const pulpitos = cena.cenario === "pulpitos" || cena.cenario === "pulpitoVazio";
   const altura = alturaBoneco * escala;
   const largPulpito = altura * 0.5;
@@ -94,7 +112,7 @@ export const Palco: React.FC<{
       {presentes.map((p) => {
         const dados = episodio.personagens.find((x) => x.id === p.id);
         if (!dados) return null;
-        const x = posX[p.posicao];
+        const x = xPersonagem(p.posicao, presentes.length + ausentes.length);
         return (
           <React.Fragment key={p.id}>
             <div style={{ position: "absolute", left: x - (altura * 400) / 720 / 2, top: palcoY - altura }}>
@@ -120,8 +138,8 @@ export const Palco: React.FC<{
         const pos = livres[i] ?? "centro";
         return (
           <React.Fragment key={id}>
-            <PulpitoFrente x={posX[pos]} largura={largPulpito} vazio rotulo="AUSENTE" />
-            <RotuloPulpito x={posX[pos]} texto={dados?.rotulo ?? id} />
+            <PulpitoFrente x={xPersonagem(pos, presentes.length + ausentes.length)} largura={largPulpito} vazio rotulo="AUSENTE" />
+            <RotuloPulpito x={xPersonagem(pos, presentes.length + ausentes.length)} texto={dados?.rotulo ?? id} />
           </React.Fragment>
         );
       })}

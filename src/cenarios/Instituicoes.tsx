@@ -10,7 +10,7 @@ import { useFormato } from "../layout/useFormato";
 
 const PisoBase: React.FC<{ cor?: string }> = ({ cor = cores.superficie }) => {
   const { width, height, palcoY } = useFormato();
-  return <div style={{ position: "absolute", left: 0, top: palcoY - 10, width, height: height - palcoY + 10, background: `linear-gradient(${cor}, ${cores.fundo})`, borderTop: `4px solid ${cores.linha}` }} />;
+  return <div style={{ position: "absolute", left: -width * 0.3, top: palcoY - 10, width: width * 1.6, height: height - palcoY + 10, background: `linear-gradient(${cor}, ${cores.fundo})`, borderTop: `4px solid ${cores.linha}` }} />;
 };
 
 const useSubida = () => spring({ frame: useCurrentFrame(), fps: useVideoConfig().fps, config: movimento.entradaSuave });
@@ -19,18 +19,19 @@ const useSubida = () => spring({ frame: useCurrentFrame(), fps: useVideoConfig()
 export const PlacaInstituicao: React.FC<{ texto: string; y?: number }> = ({ texto, y }) => {
   const { palcoY, t } = useFormato();
   const e = useSubida();
+  // logo abaixo do piso, sempre acima da zona da legenda
   return (
-    <div style={{ position: "absolute", width: "100%", top: y ?? palcoY + 24, textAlign: "center", opacity: e }}>
-      <span style={{ fontFamily: fontes.display, fontSize: t.destaque, color: cores.texto, background: `${cores.fundo}CC`, padding: "6px 22px", borderRadius: 12, letterSpacing: 2 }}>{texto}</span>
+    <div style={{ position: "absolute", width: "100%", top: y ?? palcoY + 6, textAlign: "center", opacity: e }}>
+      <span style={{ fontFamily: fontes.display, fontSize: t.corpo, color: cores.texto, background: `${cores.fundo}CC`, padding: "6px 22px", borderRadius: 12, letterSpacing: 2 }}>{texto}</span>
     </div>
   );
 };
 
 /** Congresso Nacional estilizado: duas torres, cúpula côncava (Câmara) e convexa (Senado). */
 export const CenarioCongresso: React.FC<{ rotulo?: string; destaque?: "camara" | "senado" }> = ({ rotulo = "CONGRESSO NACIONAL", destaque }) => {
-  const { width, palcoY } = useFormato();
+  const { width, palcoY, alturaCenario } = useFormato();
   const e = useSubida();
-  const larg = width * 0.95;
+  const larg = Math.min(width * 0.95, alturaCenario / 0.56);
   const base = palcoY - 30;
   const corCupula = (c: "camara" | "senado") => (destaque === c ? cores.acento : "#E9E5DC");
   return (
@@ -68,9 +69,9 @@ export const CenarioCongresso: React.FC<{ rotulo?: string; destaque?: "camara" |
 /** Fachada de banco genérica (casos do sistema financeiro). Nome vem do rótulo. */
 export const CenarioBanco: React.FC<{ rotulo?: string }> = ({ rotulo = "BANCO" }) => {
   const f = useCurrentFrame();
-  const { width, palcoY } = useFormato();
+  const { width, palcoY, alturaCenario } = useFormato();
   const e = useSubida();
-  const larg = width * 0.85;
+  const larg = Math.min(width * 0.85, alturaCenario / 0.75);
   const brilho = interpolate(Math.sin(f / 25), [-1, 1], [0.6, 1]);
   return (
     <AbsoluteFill>
@@ -93,9 +94,9 @@ export const CenarioBanco: React.FC<{ rotulo?: string }> = ({ rotulo = "BANCO" }
 
 /** Sala de comissão (CPI/CPMI): mesa em U, microfones, telão. */
 export const CenarioCPI: React.FC<{ rotulo?: string }> = ({ rotulo = "CPI" }) => {
-  const { width, palcoY } = useFormato();
+  const { width, palcoY, alturaCenario } = useFormato();
   const e = useSubida();
-  const larg = width * 0.95;
+  const larg = Math.min(width * 0.95, alturaCenario / 0.5);
   return (
     <AbsoluteFill>
       <PisoBase cor="#1E2B26" />
@@ -120,9 +121,9 @@ export const CenarioCPI: React.FC<{ rotulo?: string }> = ({ rotulo = "CPI" }) =>
 /** Sede de polícia genérica (operações). Sem distintivo oficial; giroflex animado. */
 export const CenarioPolicia: React.FC<{ rotulo?: string }> = ({ rotulo = "OPERAÇÃO" }) => {
   const f = useCurrentFrame();
-  const { width, palcoY } = useFormato();
+  const { width, palcoY, alturaCenario } = useFormato();
   const e = useSubida();
-  const larg = width * 0.9;
+  const larg = Math.min(width * 0.9, alturaCenario / 0.5);
   const pisca = Math.floor(f / 6) % 2;
   return (
     <AbsoluteFill>
@@ -152,8 +153,8 @@ export const CenarioPolicia: React.FC<{ rotulo?: string }> = ({ rotulo = "OPERA�
 export const CenarioTribunal: React.FC<{ rotulo?: string; cadeiras?: number; votos?: ("sim" | "nao" | "pendente")[] }> = ({ rotulo = "STF", cadeiras = 11, votos }) => {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const { width, palcoY } = useFormato();
-  const larg = width * 0.95;
+  const { width, palcoY, alturaCenario } = useFormato();
+  const larg = Math.min(width * 0.95, alturaCenario / 0.5);
   const corVoto = (i: number) => {
     const v = votos?.[i];
     if (!v || v === "pendente") return "#1D2129";

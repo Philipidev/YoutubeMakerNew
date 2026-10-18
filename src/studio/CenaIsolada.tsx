@@ -6,13 +6,14 @@ import { FPS } from "../theme";
 import { Fundo } from "../video/Fundo";
 import { CenaRouter } from "../video/CenaRouter";
 import { LegendaQueimada } from "../video/LegendaQueimada";
+import { Zonas } from "../video/Zonas";
 import { carregarDados, type DadosEpisodio } from "../video/dados";
 
-export const CenaIsoladaSchema = z.object({ slug: z.string(), cenaId: z.string(), legenda: z.boolean() });
+export const CenaIsoladaSchema = z.object({ slug: z.string(), cenaId: z.string(), legenda: z.boolean(), zonas: z.boolean().optional() });
 type Props = z.infer<typeof CenaIsoladaSchema> & { dados?: DadosEpisodio };
 
 /** Uma cena de um episódio, isolada, para revisão no Studio. */
-export const CenaIsolada: React.FC<Props> = ({ cenaId, dados, legenda }) => {
+export const CenaIsolada: React.FC<Props> = ({ cenaId, dados, legenda, zonas }) => {
   if (!dados) return null;
   const cena = dados.episodio.cenas.find((c) => c.id === cenaId);
   const tempo = dados.tempos.find((t) => t.cenaId === cenaId);
@@ -26,6 +27,7 @@ export const CenaIsolada: React.FC<Props> = ({ cenaId, dados, legenda }) => {
       <Fundo />
       <CenaRouter cena={cena} episodio={dados.episodio} palavras={palavras} duracaoFrames={tempo.duracaoFrames} />
       {legenda ? <LegendaQueimada timestamps={tsLocal} /> : null}
+      {zonas ? <Zonas /> : null}
     </AbsoluteFill>
   );
 };

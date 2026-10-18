@@ -2,7 +2,7 @@ import React from "react";
 import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { cores, fontes, movimento } from "../theme";
 import dados from "./brasil.json";
-import { Ondas } from "../movimento/vida";
+import { Ondas, useVariante } from "../movimento/vida";
 
 /** Malha do IBGE projetada (scripts/gerar-mapas.ts). viewBox 1000×1000. */
 type UF = { sigla: string; nome: string; regiao: string; path: string; centro: number[]; caixa: number[] };
@@ -67,14 +67,26 @@ export const MapaBrasil: React.FC<MapaBrasilProps> = ({ modo = "estados", destaq
     if (foco) return u.sigla === foco.sigla ? cores.acento : cores.superficie;
     return cores.superficieAlta;
   };
+  // vida (3 variantes cada): fundo do mapa e estados em destaque
+  const vidaFundo = useVariante("mapa-fundo", ["ondaLeste", "varreduraSul", "cintilar"] as const);
+  const vidaDestaque = useVariante("mapa-destaque", ["halo", "contornoAndando", "respiroCor"] as const);
+  const brilhoFundo = (u: UF, i: number) => {
+    if (f <= 40) return 0;
+    const [cx, cy] = u.centro;
+    if (vidaFundo === "ondaLeste") return Math.max(0, Math.sin((f - 40) / 22 - cx / 140)) ** 4;
+    if (vidaFundo === "varreduraSul") return Math.max(0, Math.sin((f - 40) / 26 - cy / 150)) ** 4;
+    // cintilar: um estado por vez acende, em ordem embaralhada
+    const vez = Math.floor((f - 40) / 9);
+    return (vez * 11) % UFS.length === (i * 7) % UFS.length ? 1 : 0;
+  };
+  const vidaCapital = useVariante("mapa-capital", ["ondas", "pulso", "anel"] as const);
   const textoUF = (u: UF) => !!destaque[u.sigla] || (modo === "regioes") || (foco && u.sigla === foco.sigla);
   return (
     <svg viewBox={vb.join(" ")} width={largura} height={largura} style={{ overflow: foco ? "hidden" : "visible", borderRadius: foco ? 40 : 0 }}>
       {ordem.map((u, i) => {
         const k = spring({ frame: f - i * 0.8, fps, config: movimento.entradaSuave });
         const [cx, cy] = u.centro;
-        // vida: onda de brilho atravessando o mapa (oeste → leste) depois da entrada
-        const onda = f > 40 ? Math.max(0, Math.sin((f - 40) / 22 - cx / 140)) ** 4 : 0;
+        const onda = destaque[u.sigla] ? 0 : brilhoFundo(u, i);
         return (
           <path
             key={u.sigla}
@@ -89,15 +101,33 @@ export const MapaBrasil: React.FC<MapaBrasilProps> = ({ modo = "estados", destaq
           />
         );
       })}
-      {/* vida: halo pulsante nos estados em destaque (no lugar de escalar o estado) */}
-      {UFS.filter((u) => destaque[u.sigla] || (foco && u.sigla === foco.sigla)).map((u) => {
-        const p = f > 25 ? 0.5 - 0.5 * Math.cos(((f - 25) / 40) * 2 * Math.PI) : 0;
+      {/* vida dos destacados: halo, contorno andando ou cor respirando (nunca escala o estado) */}
+      {UFS.filter((u) => destaque[u.sigla] || (foco && u.sigla === foco.sigla)).map((u, i) => {
+        const p = f > 25 ? 0.5 - 0.5 * Math.cos(((f - 25) / 40 + i * 0.15) * 2 * Math.PI) : 0;
+        const cor = destaque[u.sigla] ?? cores.acento;
+        if (vidaDestaque === "contornoAndando") {
+          return (
+            <path
+              key={`vida-${u.sigla}`}
+              d={u.path}
+              fill="none"
+              stroke={cores.texto}
+              strokeWidth={3 * escalaTraco}
+              strokeDasharray={`${14 * escalaTraco} ${10 * escalaTraco}`}
+              strokeDashoffset={-f * 1.5 * escalaTraco}
+              opacity={f > 25 ? 0.9 : 0}
+            />
+          );
+        }
+        if (vidaDestaque === "respiroCor") {
+          return <path key={`vida-${u.sigla}`} d={u.path} fill="#FFFFFF" opacity={0.18 * p} />;
+        }
         return (
           <path
-            key={`halo-${u.sigla}`}
+            key={`vida-${u.sigla}`}
             d={u.path}
             fill="none"
-            stroke={destaque[u.sigla] ?? cores.acento}
+            stroke={cor}
             strokeWidth={(3 + 7 * p) * escalaTraco}
             strokeLinejoin="round"
             opacity={0.25 + 0.5 * p}
@@ -147,8 +177,11 @@ export const MapaBrasil: React.FC<MapaBrasilProps> = ({ modo = "estados", destaq
             const brasilia = c.uf === "DF";
             return (
               <g key={c.uf} opacity={k}>
-                {foco || brasilia ? <Ondas cx={c.x} cy={c.y} raio={r * 1.6} cor={brasilia && !foco ? cores.acento : cores.texto} chave={"cap-" + c.uf} espessura={3 * escalaTraco} /> : null}
-                <circle cx={c.x} cy={c.y} r={r * (brasilia ? 1.6 : 1) * k} fill={brasilia ? cores.acento : cores.texto} stroke={cores.contorno} strokeWidth={2 * escalaTraco} />
+                {(foco || brasilia) && vidaCapital === "ondas" ? <Ondas cx={c.x} cy={c.y} raio={r * 1.6} cor={brasilia && !foco ? cores.acento : cores.texto} chave={"cap-" + c.uf} espessura={3 * escalaTraco} /> : null}
+                {(foco || brasilia) && vidaCapital === "anel" ? (
+                  <circle cx={c.x} cy={c.y} r={r * 3} fill="none" stroke={cores.acento} strokeWidth={2.5 * escalaTraco} strokeDasharray={`${4 * escalaTraco} ${4 * escalaTraco}`} transform={`rotate(${f * 3} ${c.x} ${c.y})`} />
+                ) : null}
+                <circle cx={c.x} cy={c.y} r={r * (brasilia ? 1.6 : 1) * k * ((foco || brasilia) && vidaCapital === "pulso" && f > 40 ? 1 + 0.35 * Math.abs(Math.sin((f - 40) / 10)) : 1)} fill={brasilia ? cores.acento : cores.texto} stroke={cores.contorno} strokeWidth={2 * escalaTraco} />
                 <text
                   x={c.x + r * 1.6}
                   y={c.y}

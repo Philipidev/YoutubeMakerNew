@@ -40,24 +40,26 @@ export const Root: React.FC = () => (
       <Composition id="DesignSystem" component={DesignSystem} width={1080} height={1920} fps={FPS} durationInFrames={150} />
       <Composition id="DesignSystemHorizontal" component={DesignSystem} width={1920} height={1080} fps={FPS} durationInFrames={150} />
     </Folder>
-    {CENAS_DEMO.map(({ slug, ids }) => (
-      <Folder key={slug} name={slug}>
-        {ids.map((cenaId) => (
-          <Composition
-            key={cenaId}
-            id={`${slug}--${cenaId}`}
-            component={CenaIsolada}
-            schema={CenaIsoladaSchema}
-            defaultProps={{ slug, cenaId, legenda: false }}
-            calculateMetadata={calcularMetadataCena}
-            width={1080}
-            height={1920}
-            fps={FPS}
-            durationInFrames={90}
-          />
-        ))}
-      </Folder>
-    ))}
+    {CENAS_DEMO.flatMap(({ slug, ids }) =>
+      (["v", "h"] as const).map((fmt) => (
+        <Folder key={`${slug}-${fmt}`} name={`${slug}-${fmt === "v" ? "vertical" : "horizontal"}`}>
+          {ids.map((cenaId) => (
+            <Composition
+              key={cenaId}
+              id={`${slug}--${fmt}--${cenaId}`}
+              component={CenaIsolada}
+              schema={CenaIsoladaSchema}
+              defaultProps={{ slug, cenaId, legenda: false, zonas: false }}
+              calculateMetadata={calcularMetadataCena}
+              width={fmt === "v" ? 1080 : 1920}
+              height={fmt === "v" ? 1920 : 1080}
+              fps={FPS}
+              durationInFrames={90}
+            />
+          ))}
+        </Folder>
+      )),
+    )}
     <Folder name="Mapas">
       {MAPAS_DEMO.map((m) => (
         <Composition key={m.id} id={`Mapa-${m.id}`} component={MapaDemo} defaultProps={m.props} width={1080} height={1920} fps={FPS} durationInFrames={90} />

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AbsoluteFill, Sequence, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { cores, fontes, movimento } from "../theme";
 import { useFormato } from "../layout/useFormato";
@@ -17,6 +17,8 @@ import {
 } from "../cards/Cards";
 import { Card, Chip, Rotulo, TextoPop } from "../cards/ui";
 import { MovimentoCena } from "../movimento/plano";
+import { useVariante } from "../movimento/vida";
+import { CamadaFixa } from "../movimento/camadaFixa";
 import { estiloCamera } from "../movimento/camera";
 import { DURACAO_TRANSICAO } from "../movimento/transicoes";
 import { Personagem, corDoPersonagem } from "../personagens/Personagem";
@@ -28,18 +30,36 @@ type P<T extends Cena["tipo"]> = CenaProps<Extract<Cena, { tipo: T }>>;
 const Camera: React.FC<{ duracao: number; children: React.ReactNode }> = ({ duracao, children }) => {
   const f = useCurrentFrame();
   const { camera } = useContext(MovimentoCena);
-  return <AbsoluteFill style={estiloCamera(camera, f, duracao + DURACAO_TRANSICAO)}>{children}</AbsoluteFill>;
+  const [fixa, setFixa] = useState<HTMLDivElement | null>(null);
+  return (
+    <AbsoluteFill>
+      <CamadaFixa.Provider value={fixa}>
+        <AbsoluteFill style={estiloCamera(camera, f, duracao + DURACAO_TRANSICAO)}>{children}</AbsoluteFill>
+      </CamadaFixa.Provider>
+      {/* interface fixa (selo de fonte): fora do movimento de câmera, acima do conteúdo */}
+      <AbsoluteFill ref={setFixa} style={{ pointerEvents: "none" }} />
+    </AbsoluteFill>
+  );
 };
 
 /** Área de conteúdo acima do palco (ou a tela útil inteira, sem personagens). */
-const AreaConteudo: React.FC<{ comPalco: boolean; children: React.ReactNode; centralizar?: boolean; semZoom?: boolean }> = ({ comPalco, children, centralizar = true, semZoom }) => {
-  const { height, area, palcoY, alturaBoneco, formato } = useFormato();
-  // sem palco, o card ocupa a tela: escala maior no vertical para não sobrar vazio
-  const zoom = !comPalco && !semZoom && formato === "vertical" ? 1.3 : 1;
-  const topo = height * (formato === "vertical" ? 0.1 : 0.12);
-  const fim = comPalco ? palcoY - alturaBoneco - 24 : area.y + area.h;
+/**
+ * Área de conteúdo. `comPalco`: false (sem personagens), true (2) ou o número de personagens no palco.
+ * O retângulo vem do layout (vertical: acima das cabeças; 16:9: coluna ao lado/entre os bonecos).
+ */
+const AreaConteudo: React.FC<{ comPalco: boolean | number; children: React.ReactNode; centralizar?: boolean; semZoom?: boolean }> = ({
+  comPalco,
+  children,
+  centralizar = true,
+  semZoom,
+}) => {
+  const { width, formato, conteudoTopo, alturaConteudo, larguraConteudo, colunaComPalco } = useFormato();
+  const n = comPalco === true ? 2 : comPalco === false ? 0 : comPalco;
+  // sem palco, no vertical o card ganha escala para não sobrar vazio
+  const zoom = n === 0 && !semZoom && formato === "vertical" ? 1.3 : 1;
+  const r = n > 0 ? colunaComPalco(n) : { x: (width - larguraConteudo) / 2, y: conteudoTopo, w: larguraConteudo, h: alturaConteudo };
   return (
-    <div style={{ position: "absolute", left: area.x, width: area.w, top: topo, height: fim - topo, display: "flex", flexDirection: "column", justifyContent: centralizar ? "center" : "flex-start" }}>
+    <div style={{ position: "absolute", left: r.x, width: r.w, top: r.y, height: r.h, display: "flex", flexDirection: "column", justifyContent: centralizar ? "center" : "flex-start" }}>
       <div style={{ zoom }}>{children}</div>
     </div>
   );
@@ -48,7 +68,7 @@ const AreaConteudo: React.FC<{ comPalco: boolean; children: React.ReactNode; cen
 type Item = { tipo: "fato"; fato: NonNullable<Cena["fatos"]>[number] } | { tipo: "citacao"; a: NonNullable<Cena["atribuicoes"]>[number] };
 
 /** Fatos e citações da cena, um de cada vez, com tempo igual (mudança visual a cada 2–3 s). */
-const SequenciaItens: React.FC<{ cena: Cena; props: CenaProps; comPalco: boolean }> = ({ cena, props, comPalco }) => {
+const SequenciaItens: React.FC<{ cena: Cena; props: CenaProps; comPalco: boolean | number }> = ({ cena, props, comPalco }) => {
   const itens: Item[] = [
     ...(cena.fatos ?? []).map((fato) => ({ tipo: "fato" as const, fato })),
     ...(cena.atribuicoes ?? []).map((a) => ({ tipo: "citacao" as const, a })),
@@ -77,7 +97,8 @@ const SequenciaItens: React.FC<{ cena: Cena; props: CenaProps; comPalco: boolean
   );
 };
 
-const temPalco = (c: Cena) => (c.personagens?.length ?? 0) > 0;
+/** Quantos personagens ocupam o palco (0 = sem palco). */
+const temPalco = (c: Cena) => c.personagens?.length ?? 0;
 
 export const CenaGancho: React.FC<P<"gancho">> = (props) => {
   const { cena, duracaoFrames } = props;
@@ -132,7 +153,16 @@ export const CenaContexto: React.FC<P<"contexto">> = (props) => {
   const meio = numero ? (temItens ? Math.round(props.duracaoFrames * 0.45) : props.duracaoFrames) : 0;
   const f = useCurrentFrame();
   // vida do número: respiração lenta depois do pop
-  const resp = f > 20 ? 1 + 0.025 * Math.sin((f - 20) / 14) : 1;
+  // vida do número (3 variantes): respira, balança ou ganha sublinhado que vai e volta
+  const vidaNumero = useVariante("numero", ["respirar", "balancar", "sublinhado"] as const);
+  const ativo = f > 20;
+  const estiloNumero: React.CSSProperties =
+    vidaNumero === "respirar" && ativo
+      ? { transform: "scale(" + (1 + 0.025 * Math.sin((f - 20) / 14)) + ")" }
+      : vidaNumero === "balancar" && ativo
+        ? { transform: "rotate(" + Math.sin((f - 20) / 18) * 2 + "deg)" }
+        : {};
+  const sublinhado = vidaNumero === "sublinhado" && ativo ? 30 + 40 * (0.5 - 0.5 * Math.cos((f - 20) / 20)) : 0;
   return (
     <Camera duracao={props.duracaoFrames}>
       <CenarioFundo id={cena.cenario} opcoes={cena.cenarioOpcoes} />
@@ -141,9 +171,10 @@ export const CenaContexto: React.FC<P<"contexto">> = (props) => {
         <Sequence durationInFrames={temItens ? meio || 1 : undefined} layout="none">
           <AreaConteudo comPalco={comPalco}>
             <div style={{ textAlign: "center" }}>
-              <div style={{ transform: "scale(" + resp + ")" }}>
+              <div style={estiloNumero}>
                 <TextoPop texto={numero} style={{ fontFamily: fontes.display, fontSize: t.numero, color: cores.acento, lineHeight: 1 }} />
               </div>
+              {sublinhado ? <div style={{ height: 10, width: sublinhado + "%", margin: "8px auto 0", background: cores.acento, borderRadius: 5 }} /> : null}
               {cena.dados?.rotulo ? <TextoPop texto={cena.dados.rotulo} atraso={8} style={{ fontFamily: fontes.corpo, fontWeight: 800, fontSize: t.destaque, color: cores.texto, marginTop: 10 }} /> : null}
             </div>
           </AreaConteudo>
@@ -179,11 +210,10 @@ export const CenaLinhaDoTempo: React.FC<P<"linhaDoTempo">> = (props) => {
 
 export const CenaLadoALadoB: React.FC<P<"ladoA_ladoB">> = (props) => {
   const { cena } = props;
-  const { area, height, formato } = useFormato();
-  const topo = height * (formato === "vertical" ? 0.1 : 0.12);
+  const { area, conteudoTopo, alturaConteudo } = useFormato();
   return (
     <Camera duracao={props.duracaoFrames}>
-      <div style={{ position: "absolute", left: area.x, width: area.w, top: topo, height: area.y + area.h - topo }}>
+      <div style={{ position: "absolute", left: area.x, width: area.w, top: conteudoTopo, height: alturaConteudo }}>
         <CardLadoALadoB cena={cena} episodio={props.episodio} duracao={props.duracaoFrames} />
       </div>
     </Camera>
@@ -366,8 +396,8 @@ export const CenaVotacao: React.FC<P<"votacao">> = (props) => {
   return (
     <Camera duracao={props.duracaoFrames}>
       <CenarioFundo id={cenario} placar={d.placar} opcoes={{ rotulo: d.casa === "stf" || d.casa === "tse" ? d.orgao : undefined, ...cena.cenarioOpcoes }} />
-      <AreaConteudo comPalco centralizar={false}>
-        <Card style={{ padding: 30 }}>
+      <ColunaTopo>
+        <Card chave="placar" style={{ padding: 30 }}>
           <Rotulo>{d.orgao}</Rotulo>
           {d.etapa ? <div style={{ fontFamily: fontes.display, fontSize: t.titulo * 0.8, color: cores.texto, marginTop: 8, lineHeight: 1.05 }}>{d.etapa}</div> : null}
           {d.placar ? (
@@ -387,30 +417,46 @@ export const CenaVotacao: React.FC<P<"votacao">> = (props) => {
             </div>
           ) : null}
         </Card>
-      </AreaConteudo>
-      {temItens ? (
-        <Sequence from={Math.round(props.duracaoFrames * 0.35)} layout="none">
-          <SequenciaItensRodape cena={cena} props={{ ...props, duracaoFrames: Math.round(props.duracaoFrames * 0.65) }} />
-        </Sequence>
-      ) : null}
+        {/* fatos/citações entram abaixo do placar, na mesma coluna (nunca sobrepostos) */}
+        {temItens ? (
+          <Sequence from={Math.round(props.duracaoFrames * 0.35)} layout="none">
+            <SequenciaItensRodape cena={cena} props={{ ...props, duracaoFrames: Math.round(props.duracaoFrames * 0.65) }} emColuna />
+          </Sequence>
+        ) : null}
+      </ColunaTopo>
     </Camera>
   );
 };
 
-/** Variante dos itens para cenas com cenário grande: só o selo de fonte + citação compacta no rodapé útil. */
-const SequenciaItensRodape: React.FC<{ cena: Cena; props: CenaProps }> = ({ cena, props }) => {
-  const { area, palcoY } = useFormato();
-  const itens = [...(cena.fatos ?? []).map((f) => ({ texto: f.texto, ids: f.fonteIds })), ...(cena.atribuicoes ?? []).map((a) => ({ texto: `${a.quem}: “${a.disse}”`, ids: [a.fonteId] }))];
+/** Coluna no topo da área de conteúdo (abaixo do selo de fonte), largura de conteúdo centralizada. */
+const ColunaTopo: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const { width, formato, area, conteudoTopo, alturaConteudo, larguraConteudo } = useFormato();
+  // 16:9: o cenário ocupa o centro; os cards vão para uma coluna lateral, centralizada na altura
+  if (formato === "horizontal") {
+    return (
+      <div style={{ position: "absolute", left: area.x, width: width * 0.3, top: conteudoTopo, height: alturaConteudo, display: "flex", flexDirection: "column", justifyContent: "center", gap: 18 }}>
+        {children}
+      </div>
+    );
+  }
+  return <div style={{ position: "absolute", left: (width - larguraConteudo) / 2, width: larguraConteudo, top: conteudoTopo, display: "flex", flexDirection: "column", gap: 18 }}>{children}</div>;
+};
+
+/** Itens para cenas com cenário grande: card compacto no topo (ou na coluna, com `emColuna`) + selo de fonte. */
+const SequenciaItensRodape: React.FC<{ cena: Cena; props: CenaProps; emColuna?: boolean }> = ({ cena, props, emColuna }) => {
+  const { t } = useFormato();
+  const itens = [...(cena.fatos ?? []).map((f) => ({ texto: f.texto, ids: f.fonteIds })), ...(cena.atribuicoes ?? []).map((a) => ({ texto: a.quem + ": “" + a.disse + "”", ids: [a.fonteId] }))];
   const dur = Math.ceil(props.duracaoFrames / Math.max(1, itens.length));
+  const conteudo = (it: (typeof itens)[number]) => (
+    <Card style={{ padding: "18px 26px" }}>
+      <TextoPop texto={it.texto} passo={1} style={{ fontFamily: fontes.corpo, fontWeight: 700, fontSize: t.destaque * 0.9, color: cores.texto, lineHeight: 1.25 }} />
+    </Card>
+  );
   return (
     <>
       {itens.map((it, i) => (
         <Sequence key={i} from={i * dur} durationInFrames={i === itens.length - 1 ? undefined : dur} layout="none">
-          <div style={{ position: "absolute", left: area.x, width: area.w, top: palcoY + 10 }}>
-            <Card style={{ padding: "18px 26px" }}>
-              <TextoPop texto={it.texto} passo={1} style={{ fontFamily: fontes.corpo, fontWeight: 700, fontSize: 40, color: cores.texto, lineHeight: 1.25 }} />
-            </Card>
-          </div>
+          {emColuna ? conteudo(it) : <ColunaTopo>{conteudo(it)}</ColunaTopo>}
           <FonteLowerThird episodio={props.episodio} fonteIds={it.ids} />
         </Sequence>
       ))}

@@ -9,6 +9,7 @@ import { misturar } from "./pose";
 import { aberturaBoca } from "./useLipSync";
 import { uriBandeira } from "../mundo/Mundo";
 import { MovimentoCena } from "../movimento/plano";
+import { useVariante } from "../movimento/vida";
 import { hash } from "../movimento/aleatorio";
 
 const paletas: Record<string, string> = { ...coresPersonagem, ...coresGenericas, ...coresPartido };
@@ -60,6 +61,17 @@ export const Personagem: React.FC<PersonagemProps> = ({
   const ciclo = (f + ctx.semente * 7) % 110;
   if (ciclo < 4 && pose.olhos > 0.5) pose = { ...pose, olhos: 0.1 };
   const entrada = spring({ frame: f, fps, config: movimento.entrada });
+  // entrada do boneco (4 variantes): sobe, chega pelo lado, cai com quique, surge em escala
+  const vEntrada = useVariante("boneco-entrada:" + dados.id, ["subir", "lado", "cair", "surgir"] as const);
+  const q = 1 - entrada;
+  const estiloEntradaBoneco: React.CSSProperties =
+    vEntrada === "subir"
+      ? { transform: `translateY(${q * 120}px)`, opacity: entrada }
+      : vEntrada === "lado"
+        ? { transform: `translateX(${-q * 160 * ladoCentro}px)`, opacity: entrada }
+        : vEntrada === "cair"
+          ? { transform: `translateY(${-q * 160}px)`, opacity: Math.min(1, entrada * 2) }
+          : { transform: `scale(${0.6 + 0.4 * entrada})`, transformOrigin: "50% 100%", opacity: entrada };
   const cor = corDoPersonagem(dados.cor);
   const largura = (altura * BONECO_W) / BONECO_H;
   return (
@@ -69,8 +81,7 @@ export const Personagem: React.FC<PersonagemProps> = ({
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        transform: `translateY(${(1 - entrada) * 120}px)`,
-        opacity: entrada,
+        ...estiloEntradaBoneco,
       }}
     >
       <div style={{ width: largura, height: altura }}>

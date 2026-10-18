@@ -5,10 +5,12 @@ import type { Episodio } from "../schema/episodio";
 import type { TempoCena, Timestamps } from "../schema/timestamps";
 import type { PlanoCena } from "../movimento/plano";
 import { DURACAO_TRANSICAO } from "../movimento/transicoes";
+import { hash } from "../movimento/aleatorio";
 
 /** SFX gerados por scripts/gerar-sfx.py (síntese própria, sem licença de terceiros). */
 export type TipoSfx = "whoosh" | "pop" | "ding";
-const ARQUIVO: Record<TipoSfx, string> = { whoosh: "sfx/whoosh.wav", pop: "sfx/pop.wav", ding: "sfx/ding.wav" };
+/** 3 variações por tipo, sorteadas por evento (nada de som idêntico repetido). */
+const arquivo = (tipo: TipoSfx, frame: number, slug: string) => `sfx/${tipo}-${(hash(slug + ":" + frame) % 3) + 1}.wav`;
 const DURACAO_SFX = 45;
 
 type Evento = { frame: number; tipo: TipoSfx };
@@ -43,7 +45,7 @@ export const TrilhaSfx: React.FC<{ episodio: Episodio; tempos: TempoCena[]; plan
     <>
       {ev.map((e, i) => (
         <Sequence key={i} from={e.frame} durationInFrames={DURACAO_SFX + DURACAO_TRANSICAO} layout="none">
-          <Audio src={staticFile(ARQUIVO[e.tipo])} volume={audio.volumeSfx * (e.tipo === "whoosh" ? 0.8 : 1)} />
+          <Audio src={staticFile(arquivo(e.tipo, e.frame, episodio.slug))} volume={audio.volumeSfx * (e.tipo === "whoosh" ? 0.8 : 1)} />
         </Sequence>
       ))}
     </>

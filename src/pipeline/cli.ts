@@ -75,7 +75,7 @@ const previa = async (slug: string, flags: Flags) => {
   if (!flags.semRender) {
     for (const comp of composicoes(flags)) {
       const nome = comp === "Vertical" ? "previa.mp4" : "previa-horizontal.mp4";
-      await renderizar({ composicao: comp, props: { slug, legendaQueimada: true, semAudio: true }, saida: path.join(c.previaDir, nome), semAudio: true, crf: 28 });
+      await renderizar({ composicao: comp, props: { slug, legendaQueimada: true, semAudio: true, zonas: Boolean(flags.zonas) }, saida: path.join(c.previaDir, nome), semAudio: true, crf: 28 });
     }
   }
   await gerarSaidasTexto({ slug, episodio, timestamps, problemas, dir: c.previaDir, previa: true });
@@ -116,7 +116,7 @@ const episodioCompleto = async (slug: string, flags: Flags) => {
 
 const main = async () => {
   const { comando, slug, flags } = parseArgs(process.argv.slice(2));
-  if (!slug) throw new Error("uso: <validar|previa|aprovar|episodio> <slug> [--narracao=elevenlabs|gravada|mock] [--formato=vertical|horizontal|ambos] [--legendaQueimada] [--forcar] [--semRender]");
+  if (!slug) throw new Error("uso: <validar|previa|aprovar|episodio> <slug> [--narracao=elevenlabs|gravada|mock] [--formato=vertical|horizontal|ambos] [--legendaQueimada] [--forcar] [--semRender] [--zonas]");
   if (comando === "validar") await etapaValidar(slug);
   else if (comando === "previa") await previa(slug, flags);
   else if (comando === "aprovar") await aprovar(slug);

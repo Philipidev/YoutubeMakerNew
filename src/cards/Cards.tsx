@@ -5,6 +5,8 @@ import { useFormato } from "../layout/useFormato";
 import type { Cena, Episodio, Fonte } from "../schema/episodio";
 import { Personagem, corDoPersonagem } from "../personagens/Personagem";
 import { Card, Chip, Rotulo, TextoPop, formatarData, useEntrada } from "./ui";
+import { NaCamadaFixa } from "../movimento/camadaFixa";
+import { useEntradaElemento } from "../movimento/vida";
 
 type Fato = NonNullable<Cena["fatos"]>[number];
 const fontesDe = (ep: Episodio, ids: string[]) => ids.map((id) => ep.fontes.find((f) => f.id === id)).filter(Boolean) as Fonte[];
@@ -14,13 +16,13 @@ const fontesDe = (ep: Episodio, ids: string[]) => ids.map((id) => ep.fontes.find
  * Sempre visível enquanto há fato na tela.
  */
 export const FonteLowerThird: React.FC<{ episodio: Episodio; fonteIds: string[]; status?: Fato["status"] }> = ({ episodio, fonteIds, status }) => {
-  const { formato, width, height, t } = useFormato();
+  const { width, seloY: top, t } = useFormato();
   const e = useEntrada(4);
   const fs = fontesDe(episodio, fonteIds);
   if (!fs.length) return null;
-  const top = height * (formato === "vertical" ? 0.045 : 0.05);
   const texto = fs.map((f) => `${f.veiculo} · ${formatarData(f.data)}`).join("  |  ");
   return (
+    <NaCamadaFixa>
     <div style={{ position: "absolute", top, left: width * 0.06, right: width * 0.06, display: "flex", justifyContent: "center", opacity: e, transform: `translateY(${(1 - e) * -30}px)` }}>
       <div style={{ display: "flex", alignItems: "center", gap: 14, background: `${cores.fundo}F0`, border: `2px solid ${cores.linha}`, borderRadius: raio.chip, padding: "10px 22px", maxWidth: "100%" }}>
         <span style={{ fontFamily: fontes.corpo, fontWeight: 800, fontSize: t.legenda * 0.85, color: cores.acento, letterSpacing: 2 }}>FONTE</span>
@@ -28,6 +30,7 @@ export const FonteLowerThird: React.FC<{ episodio: Episodio; fonteIds: string[];
         {status === "divergente" ? <Chip cor={cores.status.divergente} style={{ fontSize: t.legenda * 0.75 }}>fontes divergem</Chip> : null}
       </div>
     </div>
+    </NaCamadaFixa>
   );
 };
 
@@ -35,9 +38,10 @@ export const FonteLowerThird: React.FC<{ episodio: Episodio; fonteIds: string[];
 export const CardFato: React.FC<{ fato: Fato; episodio: Episodio; atraso?: number }> = ({ fato, episodio, atraso = 0 }) => {
   const { t } = useFormato();
   const e = useEntrada(atraso);
+  const entrada = useEntradaElemento("fato:" + fato.texto, e);
   const div = fato.status === "divergente";
   return (
-    <Card borda={div ? cores.status.divergente : cores.linha} style={{ transform: `translateY(${(1 - e) * 60}px) scale(${0.94 + 0.06 * e})`, opacity: e }}>
+    <Card borda={div ? cores.status.divergente : cores.linha} style={entrada}>
       <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
         <Rotulo cor={div ? cores.status.divergente : cores.status.confirmado}>{div ? "Fontes divergem" : "Fato"}</Rotulo>
       </div>
@@ -62,8 +66,9 @@ export const CardFato: React.FC<{ fato: Fato; episodio: Episodio; atraso?: numbe
 export const CardCitacao: React.FC<{ quem: string; disse: string; cor?: string; atraso?: number }> = ({ quem, disse, cor = cores.acento, atraso = 0 }) => {
   const { t } = useFormato();
   const e = useEntrada(atraso);
+  const entrada = useEntradaElemento("citacao:" + disse, e);
   return (
-    <Card borda={cor} style={{ opacity: e, transform: `translateX(${(1 - e) * 80}px)` }}>
+    <Card borda={cor} style={entrada}>
       <Rotulo cor={cor}>{quem} disse</Rotulo>
       <div style={{ fontFamily: fontes.corpo, fontWeight: 700, fontStyle: "italic", fontSize: t.destaque * 0.9, color: cores.texto, marginTop: 12, lineHeight: 1.25 }}>“{disse}”</div>
     </Card>
@@ -186,7 +191,7 @@ export const LinhaDoTempo: React.FC<{ cena: Extract<Cena, { tipo: "linhaDoTempo"
           const k = spring({ frame: f - i * passo, fps, config: movimento.entrada });
           return (
             <div key={i} style={{ position: "relative", opacity: k, transform: `translateX(${(1 - k) * 60}px)` }}>
-              <div style={{ position: "absolute", left: -60, top: 16, width: 28, height: 28, borderRadius: 14, background: corFase[e.fase], border: `5px solid ${cores.fundo}` }} />
+              <div style={{ position: "absolute", boxSizing: "border-box", left: -57, top: 14, width: 34, height: 34, borderRadius: 17, background: corFase[e.fase], border: `5px solid ${cores.fundo}` }} />
               <Card chave={"ev-" + i} style={{ padding: "20px 28px" }} borda={e.fase === "fato" ? cores.acento : cores.linha}>
                 <div style={{ display: "flex", gap: 14, alignItems: "baseline" }}>
                   <span style={{ fontFamily: fontes.display, fontSize: t.destaque, color: corFase[e.fase] }}>{e.data}</span>
