@@ -1,0 +1,17 @@
+{
+  "id": "operacao-policial",
+  "descricao": "Operação policial: mandados, alvos, estados. Investigado não é culpado: sempre 'investigado', 'suspeito', 'segundo a PF'.",
+  "tipo": "fato",
+  "cenario": "policia",
+  "personagens": [],
+  "narracaoModelo": "Segundo a {{orgao}}, a operação {{nomeOperacao}} cumpriu {{mandados}} mandados em {{locais}}. {{alvo}} é investigado por {{suspeita}}.",
+  "slots": [
+    "orgao",
+    "nomeOperacao",
+    "mandados",
+    "locais",
+    "alvo",
+    "suspeita"
+  ],
+  "usadoEm": []
+}

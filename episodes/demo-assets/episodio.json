@@ -1,0 +1,142 @@
+{
+  "slug": "demo-assets",
+  "titulo": "Demonstração dos assets da biblioteca (dados fictícios)",
+  "dataPublicacao": "2026-10-17",
+  "resumo": "Episódio de revisão visual dos cenários, figurinos, mapas e gráficos. Números ilustrativos, sem valor informativo.",
+  "ordemLados": "AB",
+  "fontes": [
+    { "id": "f1", "veiculo": "Fonte oficial (exemplo)", "titulo": "Documento fictício", "url": "https://example.com/oficial", "data": "2026-10-10", "tipo": "primaria" },
+    { "id": "f2", "veiculo": "Veículo A (exemplo)", "titulo": "Reportagem fictícia", "url": "https://example.com/a", "data": "2026-10-11", "tipo": "imprensa" },
+    { "id": "f3", "veiculo": "Veículo B (exemplo)", "titulo": "Reportagem fictícia", "url": "https://example.com/b", "data": "2026-10-12", "tipo": "imprensa" },
+    { "id": "ibge", "veiculo": "Instituto de estatística (exemplo)", "titulo": "Série fictícia", "url": "https://example.com/ibge", "data": "2026-10-01", "tipo": "primaria" }
+  ],
+  "personagens": [
+    { "id": "c13", "rotulo": "Candidato 13", "numero": "13", "cor": "PT", "partido": "PT" },
+    { "id": "c22", "rotulo": "Candidato 22", "numero": "22", "cor": "PL", "partido": "PL" },
+    { "id": "ministro", "rotulo": "Ministro", "numero": "", "cor": "servidor", "roupa": "terno" },
+    { "id": "stf", "rotulo": "Ministro do STF", "numero": "", "cor": "neutro", "roupa": "toga" },
+    { "id": "aposentado", "rotulo": "Aposentado", "numero": "", "cor": "cidadao", "roupa": "simples", "idade": "idoso", "acessorio": "bengala" },
+    { "id": "eua", "rotulo": "Presidente dos EUA", "numero": "", "cor": "neutro", "roupa": "terno", "pais": "US" },
+    { "id": "china", "rotulo": "Presidente da China", "numero": "", "cor": "neutro", "roupa": "terno", "pais": "CN" }
+  ],
+  "cenas": [
+    { "id": "gancho", "tipo": "gancho", "narracao": "Tudo que o canal já tem pronto para contar uma notícia.", "dados": { "manchete": "Biblioteca do canal" } },
+    {
+      "id": "congresso", "tipo": "fato", "cenario": "congresso", "cenarioOpcoes": { "casa": "camara" },
+      "narracao": "O texto chegou à Câmara dos Deputados nesta semana.",
+      "fatos": [{ "texto": "Texto enviado à Câmara", "fonteIds": ["f1"] }]
+    },
+    {
+      "id": "ministro", "tipo": "fato", "cenario": "planalto",
+      "narracao": "O ministro apresentou o documento em entrevista.",
+      "personagens": [{ "id": "ministro", "acao": "falar", "posicao": "centro", "fala": true, "acessorio": "documento" }],
+      "fatos": [{ "texto": "Ministro apresentou documento", "fonteIds": ["f2"] }]
+    },
+    {
+      "id": "banco", "tipo": "fato", "cenario": "banco", "cenarioOpcoes": { "rotulo": "BANCO EXEMPLO" },
+      "narracao": "Segundo o Banco Central, a instituição teve a liquidação decretada.",
+      "fatos": [{ "texto": "Liquidação decretada", "fonteIds": ["f1"] }]
+    },
+    {
+      "id": "policia", "tipo": "fato", "cenario": "policia", "cenarioOpcoes": { "rotulo": "OPERAÇÃO EXEMPLO" },
+      "narracao": "A operação cumpriu mandados em três estados.",
+      "fatos": [{ "texto": "Mandados em 3 estados", "fonteIds": ["f2"] }]
+    },
+    {
+      "id": "cpi", "tipo": "fato", "cenario": "cpi", "cenarioOpcoes": { "rotulo": "CPMI" },
+      "narracao": "A comissão ouviu o primeiro depoente.",
+      "fatos": [{ "texto": "Primeiro depoimento na comissão", "fonteIds": ["f3"] }]
+    },
+    {
+      "id": "inss", "tipo": "fato", "cenario": "neutro",
+      "narracao": "Aposentados relataram descontos que não autorizaram.",
+      "personagens": [{ "id": "aposentado", "acao": "pensativo", "posicao": "centro" }],
+      "fatos": [{ "texto": "Descontos não autorizados relatados", "fonteIds": ["f2"] }]
+    },
+    {
+      "id": "tribunal", "tipo": "votacao", "cenarioOpcoes": { "votos": ["sim", "sim", "sim", "nao", "sim", "pendente", "nao", "sim", "pendente", "sim", "sim"] },
+      "narracao": "No Supremo, sete ministros votaram a favor e dois contra.",
+      "dados": { "orgao": "STF", "etapa": "Julgamento em andamento", "casa": "stf", "placar": { "sim": 7, "nao": 2, "abst": 0 } }
+    },
+    {
+      "id": "capitais", "tipo": "fato", "cenario": "mapaCapitais",
+      "narracao": "As vinte e sete capitais terão o mesmo calendário.",
+      "fatos": [{ "texto": "Mesmo calendário nas 27 capitais", "fonteIds": ["f1"] }]
+    },
+    {
+      "id": "regioes", "tipo": "fato", "cenario": "mapaRegioes", "cenarioOpcoes": { "regioes": ["NE", "N"] },
+      "narracao": "A medida começa pelas regiões Norte e Nordeste.",
+      "fatos": [{ "texto": "Começa por Norte e Nordeste", "fonteIds": ["f1"] }]
+    },
+    {
+      "id": "estado", "tipo": "fato", "cenario": "mapaEstado", "cenarioOpcoes": { "uf": "BA" },
+      "narracao": "Na Bahia, o primeiro posto abre em Salvador.",
+      "fatos": [{ "texto": "Primeiro posto em Salvador", "fonteIds": ["f2"] }]
+    },
+    {
+      "id": "mundo", "tipo": "fato", "cenario": "mundo", "cenarioOpcoes": { "paises": ["BR", "US", "CN"] },
+      "narracao": "Brasil, Estados Unidos e China assinaram o acordo.",
+      "fatos": [{ "texto": "Acordo entre Brasil, EUA e China", "fonteIds": ["f3"] }]
+    },
+    {
+      "id": "lideres", "tipo": "fato",
+      "narracao": "Os presidentes dos dois países se reuniram.",
+      "personagens": [{ "id": "eua", "acao": "acenar", "posicao": "esq" }, { "id": "china", "acao": "acenar", "posicao": "dir" }],
+      "fatos": [{ "texto": "Reunião bilateral", "fonteIds": ["f3"] }]
+    },
+    {
+      "id": "debate", "tipo": "debate", "cenario": "pulpitos",
+      "narracao": "No debate, o Candidato 13 defendeu a medida. O Candidato 22 disse que vai rever o texto.",
+      "personagens": [{ "id": "c13", "acao": "idle", "posicao": "esq" }, { "id": "c22", "acao": "idle", "posicao": "dir" }],
+      "atribuicoes": [
+        { "quem": "c13", "disse": "A medida protege as famílias", "fonteId": "f2" },
+        { "quem": "c22", "disse": "Vamos rever o texto no Congresso", "fonteId": "f3" }
+      ]
+    },
+    {
+      "id": "propostas", "tipo": "propostas",
+      "narracao": "As três principais propostas de cada candidato para a economia.",
+      "dados": { "titulo": "Propostas: economia", "lados": [
+        { "personagemId": "c13", "propostas": [{ "texto": "Proposta fictícia A1", "fonteId": "f2" }, { "texto": "Proposta fictícia A2", "fonteId": "f2" }, { "texto": "Proposta fictícia A3", "fonteId": "f2" }] },
+        { "personagemId": "c22", "propostas": [{ "texto": "Proposta fictícia B1", "fonteId": "f3" }, { "texto": "Proposta fictícia B2", "fonteId": "f3" }, { "texto": "Proposta fictícia B3", "fonteId": "f3" }] }
+      ] }
+    },
+    {
+      "id": "g-barras", "tipo": "grafico", "narracao": "População por região, em milhões, valores ilustrativos.",
+      "dados": { "grafico": "barras", "titulo": "População por região", "unidade": " mi", "fonteId": "ibge", "pontos": [
+        { "rotulo": "Sudeste", "valor": 84, "destaque": true }, { "rotulo": "Nordeste", "valor": 55 }, { "rotulo": "Sul", "valor": 30 }, { "rotulo": "Norte", "valor": 17 }, { "rotulo": "Centro-Oeste", "valor": 16 }
+      ] }
+    },
+    {
+      "id": "g-linha", "tipo": "grafico", "narracao": "A taxa de natalidade caiu nas últimas décadas, em números ilustrativos.",
+      "dados": { "grafico": "linha", "titulo": "Filhos por mulher", "fonteId": "ibge", "pontos": [
+        { "rotulo": "1980", "valor": 4.1 }, { "rotulo": "1990", "valor": 2.9 }, { "rotulo": "2000", "valor": 2.4 }, { "rotulo": "2010", "valor": 1.9 }, { "rotulo": "2020", "valor": 1.7 }, { "rotulo": "2025", "valor": 1.6 }
+      ] }
+    },
+    {
+      "id": "g-piramide", "tipo": "grafico", "narracao": "Esta é a pirâmide etária, com valores ilustrativos.",
+      "dados": { "grafico": "piramide", "titulo": "Pirâmide etária", "fonteId": "ibge", "nota": "Percentual da população", "faixas": [
+        { "faixa": "0-9", "homens": 6.5, "mulheres": 6.2 }, { "faixa": "10-19", "homens": 7.2, "mulheres": 7.0 }, { "faixa": "20-29", "homens": 8.0, "mulheres": 8.0 }, { "faixa": "30-39", "homens": 8.2, "mulheres": 8.4 },
+        { "faixa": "40-49", "homens": 7.0, "mulheres": 7.4 }, { "faixa": "50-59", "homens": 5.6, "mulheres": 6.1 }, { "faixa": "60-69", "homens": 3.9, "mulheres": 4.5 }, { "faixa": "70+", "homens": 2.6, "mulheres": 3.6 }
+      ] }
+    },
+    {
+      "id": "g-pictograma", "tipo": "grafico", "narracao": "Em números ilustrativos, vinte e sete em cada cem pessoas estariam abaixo da linha de pobreza.",
+      "dados": { "grafico": "pictograma", "titulo": "Linha de pobreza", "fonteId": "ibge", "percentual": 27, "rotuloDestaque": "abaixo da linha de pobreza" }
+    },
+    {
+      "id": "g-rosca", "tipo": "grafico", "narracao": "A divisão do orçamento, em valores ilustrativos.",
+      "dados": { "grafico": "rosca", "titulo": "Divisão do orçamento", "fonteId": "f1", "pontos": [
+        { "rotulo": "Previdência", "valor": 45 }, { "rotulo": "Saúde", "valor": 20 }, { "rotulo": "Educação", "valor": 15 }, { "rotulo": "Outros", "valor": 20 }
+      ] }
+    },
+    {
+      "id": "g-mapa", "tipo": "grafico", "narracao": "A renda média por estado, em valores ilustrativos.",
+      "dados": { "grafico": "mapa", "titulo": "Renda média por estado", "unidade": " mil", "fonteId": "ibge", "valores": {
+        "SP": 3.9, "DF": 4.6, "RJ": 3.6, "SC": 3.5, "RS": 3.4, "PR": 3.3, "MG": 2.8, "ES": 2.9, "GO": 2.9, "MS": 3.0, "MT": 3.1, "RO": 2.4, "TO": 2.3, "AC": 2.1,
+        "AM": 2.0, "RR": 2.4, "AP": 2.2, "PA": 1.9, "MA": 1.5, "PI": 1.8, "CE": 1.7, "RN": 2.0, "PB": 1.8, "PE": 1.8, "AL": 1.6, "SE": 1.9, "BA": 1.8
+      } }
+    },
+    { "id": "fim", "tipo": "encerramento", "narracao": "As fontes estão na descrição." }
+  ]
+}

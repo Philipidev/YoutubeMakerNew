@@ -39,6 +39,22 @@ export const coresPersonagem = {
   violeta: "oklch(0.74 0.12 290)",
   oliva: "oklch(0.74 0.12 115)",
 } as const;
+/**
+ * Cores de partido (camisa do boneco). Regra de simetria: se um personagem usa a cor do partido,
+ * todos os personagens do episódio usam a cor do próprio partido. Valores aproximados da identidade visual de cada sigla.
+ */
+export const coresPartido = {
+  PT: "#C8102E",
+  PL: "#1F4FA0",
+} as const;
+
+/** Cores de figuras genéricas (sem partido). */
+export const coresGenericas = {
+  cidadao: "#6B8299",
+  servidor: "#7A6F99",
+  neutro: "#8A8F98",
+} as const;
+
 export type CorPersonagem = keyof typeof coresPersonagem;
 
 export const fontes = {

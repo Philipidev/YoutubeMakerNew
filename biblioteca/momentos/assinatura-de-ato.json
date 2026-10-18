@@ -1,0 +1,23 @@
+{
+  "id": "assinatura-de-ato",
+  "descricao": "Autoridade do Executivo assina/anuncia um ato (MP, decreto, sanção).",
+  "tipo": "fato",
+  "cenario": "planalto",
+  "personagens": [
+    {
+      "slot": "autor",
+      "acao": "falar",
+      "posicao": "centro",
+      "fala": true
+    }
+  ],
+  "narracaoModelo": "{{autor}} assinou {{ato}} em {{data}}. Segundo o texto publicado no {{veiculoOficial}}, {{efeito}}.",
+  "slots": [
+    "autor",
+    "ato",
+    "data",
+    "veiculoOficial",
+    "efeito"
+  ],
+  "usadoEm": []
+}

@@ -19,6 +19,11 @@ export const PersonagemSchema = z.object({
   numero: z.string().max(3),
   cor: z.string().min(1),
   partido: z.string().optional(),
+  roupa: z.enum(["camisa", "terno", "toga", "simples"]).optional(),
+  /** ISO 3166-1 alfa-2: crachá com bandeira em vez de número (líderes estrangeiros) */
+  pais: z.string().length(2).optional(),
+  idade: z.enum(["adulto", "idoso"]).optional(),
+  acessorio: z.enum(["nenhum", "carteiraVazia", "carteiraCheia", "maletaDinheiro", "documento", "bengala"]).optional(),
 });
 
 export const ACOES = [
@@ -48,7 +53,29 @@ export const CENARIOS = [
   "martelo",
   "planalto",
   "mapaBrasil",
+  "mapaCapitais",
+  "mapaRegioes",
+  "mapaEstado",
+  "congresso",
+  "banco",
+  "cpi",
+  "policia",
+  "tribunal",
+  "mundo",
 ] as const;
+
+/** Parâmetros do cenário (rótulo da instituição, UFs em destaque, valores do coroplético etc.). */
+export const CenarioOpcoesSchema = z.object({
+  rotulo: z.string().optional(),
+  uf: z.string().length(2).optional(),
+  ufs: z.array(z.string().length(2)).optional(),
+  valores: z.record(z.string(), z.number()).optional(),
+  regioes: z.array(z.enum(["N", "NE", "CO", "SE", "S"])).optional(),
+  casa: z.enum(["camara", "senado"]).optional(),
+  votos: z.array(z.enum(["sim", "nao", "pendente"])).optional(),
+  paises: z.array(z.string().length(2)).optional(),
+});
+export type CenarioOpcoes = z.infer<typeof CenarioOpcoesSchema>;
 export const CenarioSchema = z.enum(CENARIOS);
 export type CenarioId = z.infer<typeof CenarioSchema>;
 
@@ -58,6 +85,8 @@ const PersonagemEmCena = z.object({
   posicao: PosicaoSchema,
   /** Boca sincroniza com a narração desta cena. */
   fala: z.boolean().optional(),
+  /** Acessório só nesta cena (ex.: documento ao anunciar um ato). */
+  acessorio: z.enum(["nenhum", "carteiraVazia", "carteiraCheia", "maletaDinheiro", "documento", "bengala"]).optional(),
 });
 
 const Fato = z.object({
@@ -94,6 +123,7 @@ const base = {
   sfx: z.array(Sfx).optional(),
   /** Momento da biblioteca que originou a cena (rastreio de reuso). */
   momento: z.string().optional(),
+  cenarioOpcoes: CenarioOpcoesSchema.optional(),
 };
 
 const Argumento = z.object({ texto: z.string().min(1), quem: z.string().min(1), fonteId: id });
@@ -102,6 +132,18 @@ const Lado = z.object({
   personagemId: id.optional(),
   argumentos: z.array(Argumento).min(1),
 });
+
+const Ponto = z.object({ rotulo: z.string(), valor: z.number(), destaque: z.boolean().optional() });
+const baseGrafico = { titulo: z.string().min(1), fonteId: id, nota: z.string().optional() };
+export const GraficoSchema = z.discriminatedUnion("grafico", [
+  z.object({ ...baseGrafico, grafico: z.literal("barras"), unidade: z.string().optional(), pontos: z.array(Ponto).min(1) }),
+  z.object({ ...baseGrafico, grafico: z.literal("linha"), unidade: z.string().optional(), zeroNoEixo: z.boolean().optional(), pontos: z.array(Ponto).min(2) }),
+  z.object({ ...baseGrafico, grafico: z.literal("piramide"), faixas: z.array(z.object({ faixa: z.string(), homens: z.number(), mulheres: z.number() })).min(2) }),
+  z.object({ ...baseGrafico, grafico: z.literal("pictograma"), percentual: z.number().min(0).max(100), rotuloDestaque: z.string() }),
+  z.object({ ...baseGrafico, grafico: z.literal("rosca"), pontos: z.array(Ponto).min(2) }),
+  z.object({ ...baseGrafico, grafico: z.literal("mapa"), unidade: z.string().optional(), valores: z.record(z.string().length(2), z.number()) }),
+]);
+export type Grafico = z.infer<typeof GraficoSchema>;
 
 export const CenaSchema = z.discriminatedUnion("tipo", [
   z.object({ ...base, tipo: z.literal("gancho"), dados: z.object({ manchete: z.string(), destaque: z.string().optional() }) }),
@@ -148,6 +190,17 @@ export const CenaSchema = z.discriminatedUnion("tipo", [
     }),
   }),
   z.object({ ...base, tipo: z.literal("naoSeSabe"), dados: z.object({ itens: z.array(z.string().min(1)).min(1) }) }),
+  z.object({ ...base, tipo: z.literal("grafico"), dados: GraficoSchema }),
+  z.object({
+    ...base,
+    tipo: z.literal("propostas"),
+    dados: z.object({
+      titulo: z.string().min(1),
+      lados: z
+        .array(z.object({ personagemId: id, propostas: z.array(z.object({ texto: z.string().min(1), fonteId: id })).min(1) }))
+        .min(1),
+    }),
+  }),
   z.object({ ...base, tipo: z.literal("encerramento") }),
 ]);
 export type Cena = z.infer<typeof CenaSchema>;

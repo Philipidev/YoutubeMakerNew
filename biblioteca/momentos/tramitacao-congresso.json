@@ -1,0 +1,15 @@
+{
+  "id": "tramitacao-congresso",
+  "descricao": "Etapa de tramitação no Congresso (prazo, comissão, votação).",
+  "tipo": "votacao",
+  "cenario": "congresso",
+  "personagens": [],
+  "narracaoModelo": "{{proposicao}} está na {{casa}}. O prazo para {{etapa}} termina em {{prazo}}.",
+  "slots": [
+    "proposicao",
+    "casa",
+    "etapa",
+    "prazo"
+  ],
+  "usadoEm": []
+}

@@ -1,0 +1,14 @@
+{
+  "id": "dado-demografico",
+  "descricao": "Indicador social (pobreza, natalidade, população, idade) com gráfico e fonte oficial.",
+  "tipo": "grafico",
+  "personagens": [],
+  "narracaoModelo": "Segundo o {{fonte}}, {{indicador}} foi de {{valor}} em {{periodo}}.",
+  "slots": [
+    "fonte",
+    "indicador",
+    "valor",
+    "periodo"
+  ],
+  "usadoEm": []
+}

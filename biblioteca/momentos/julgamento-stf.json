@@ -1,0 +1,15 @@
+{
+  "id": "julgamento-stf",
+  "descricao": "Julgamento no STF/TSE com placar de votos.",
+  "tipo": "votacao",
+  "cenario": "tribunal",
+  "personagens": [],
+  "narracaoModelo": "No {{tribunal}}, {{votosSim}} ministros votaram a favor e {{votosNao}} contra. {{situacao}}.",
+  "slots": [
+    "tribunal",
+    "votosSim",
+    "votosNao",
+    "situacao"
+  ],
+  "usadoEm": []
+}

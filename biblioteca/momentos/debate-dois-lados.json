@@ -1,0 +1,26 @@
+{
+  "id": "debate-dois-lados",
+  "descricao": "Debate em púlpitos com falas alternadas (atribuicoes), tempo igual por fala.",
+  "tipo": "debate",
+  "cenario": "pulpitos",
+  "personagens": [
+    {
+      "slot": "ladoA",
+      "acao": "idle",
+      "posicao": "esq"
+    },
+    {
+      "slot": "ladoB",
+      "acao": "idle",
+      "posicao": "dir"
+    }
+  ],
+  "narracaoModelo": "No debate, {{ladoA}} disse que {{falaA}}. {{ladoB}} respondeu que {{falaB}}.",
+  "slots": [
+    "ladoA",
+    "falaA",
+    "ladoB",
+    "falaB"
+  ],
+  "usadoEm": []
+}

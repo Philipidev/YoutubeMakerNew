@@ -1,0 +1,12 @@
+[
+  { "id": "candidato", "descricao": "Candidato: camisa na cor do partido, número no peito.", "roupa": "camisa", "cor": "<partido>", "numero": "<numero>", "regra": "Todos os candidatos do episódio usam a cor do próprio partido." },
+  { "id": "ministro", "descricao": "Ministro de Estado / autoridade do Executivo.", "roupa": "terno", "cor": "servidor", "numero": "" },
+  { "id": "ministro-stf", "descricao": "Ministro do STF ou do TSE.", "roupa": "toga", "cor": "neutro", "numero": "" },
+  { "id": "parlamentar", "descricao": "Deputado ou senador com partido: terno com gravata na cor do partido.", "roupa": "terno", "cor": "<partido>", "numero": "" },
+  { "id": "aposentado", "descricao": "Aposentado/pensionista (INSS).", "roupa": "simples", "idade": "idoso", "acessorio": "bengala", "cor": "cidadao", "numero": "" },
+  { "id": "cidadao", "descricao": "Cidadão genérico.", "roupa": "simples", "cor": "cidadao", "numero": "" },
+  { "id": "renda-baixa", "descricao": "Indicador de pobreza/renda baixa. Usar só junto de um dado com fonte.", "roupa": "simples", "acessorio": "carteiraVazia", "cor": "cidadao", "numero": "" },
+  { "id": "renda-alta", "descricao": "Indicador de riqueza/renda alta. Par simétrico do renda-baixa.", "roupa": "terno", "acessorio": "carteiraCheia", "cor": "cidadao", "numero": "" },
+  { "id": "investigado", "descricao": "Pessoa investigada com dinheiro apreendido. Só quando a apreensão é fato com fonte; nunca para sugerir culpa.", "roupa": "terno", "acessorio": "maletaDinheiro", "cor": "neutro", "numero": "" },
+  { "id": "lider-estrangeiro", "descricao": "Chefe de Estado/governo estrangeiro: crachá com bandeira (campo pais, ISO alfa-2).", "roupa": "terno", "cor": "neutro", "pais": "<ISO>", "numero": "" }
+]

@@ -5,18 +5,27 @@ import type { Palavra } from "../schema/timestamps";
 import { useFormato } from "../layout/useFormato";
 import { cores, fontes } from "../theme";
 import { Personagem, corDoPersonagem } from "../personagens/Personagem";
-import {
-  CenarioMapaBrasil,
-  CenarioMartelo,
-  CenarioNeutro,
-  CenarioPlanalto,
-  CenarioPlenario,
-  CenarioPulpitos,
-  CenarioUrna,
-  PulpitoFrente,
-} from "./Cenarios";
+import { CenarioMartelo, CenarioNeutro, CenarioPlanalto, CenarioPlenario, CenarioPulpitos, CenarioUrna, PulpitoFrente } from "./Cenarios";
+import { CenarioBanco, CenarioCPI, CenarioCongresso, CenarioPolicia, CenarioTribunal } from "./Instituicoes";
+import { MapaBrasil, type ModoMapa } from "../mapas/MapaBrasil";
+import { CenarioMundo } from "../mundo/Mundo";
+import type { CenarioOpcoes } from "../schema/episodio";
 
-export const CenarioFundo: React.FC<{ id?: CenarioId; rotulo?: string; placar?: { sim: number; nao: number; abst: number }; destaqueUfs?: Record<string, string> }> = ({ id, rotulo, placar, destaqueUfs }) => {
+/** Mapa ocupando a área útil acima do rodapé. */
+const CenarioMapa: React.FC<{ modo: ModoMapa; opcoes: CenarioOpcoes }> = ({ modo, opcoes }) => {
+  const { width, area, palcoY } = useFormato();
+  const lado = Math.min(area.w, palcoY - area.y);
+  const destaque = Object.fromEntries((opcoes.ufs ?? []).map((uf) => [uf, cores.acento]));
+  return (
+    <AbsoluteFill>
+      <div style={{ position: "absolute", left: (width - lado) / 2, top: area.y + 20 }}>
+        <MapaBrasil modo={modo} largura={lado} destaque={destaque} valores={opcoes.valores} uf={opcoes.uf} regioes={opcoes.regioes} siglas={modo !== "capitais"} />
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+export const CenarioFundo: React.FC<{ id?: CenarioId; opcoes?: CenarioOpcoes; placar?: { sim: number; nao: number; abst: number } }> = ({ id, opcoes = {}, placar }) => {
   switch (id) {
     case "pulpitos":
     case "pulpitoVazio":
@@ -28,11 +37,29 @@ export const CenarioFundo: React.FC<{ id?: CenarioId; rotulo?: string; placar?: 
     case "plenarioSenado":
       return <CenarioPlenario casa="senado" placar={placar} />;
     case "martelo":
-      return <CenarioMartelo rotulo={rotulo} />;
+      return <CenarioMartelo rotulo={opcoes.rotulo} />;
     case "planalto":
       return <CenarioPlanalto />;
     case "mapaBrasil":
-      return <CenarioMapaBrasil destaque={destaqueUfs} />;
+      return <CenarioMapa modo={opcoes.valores ? "estados" : "estados"} opcoes={opcoes} />;
+    case "mapaCapitais":
+      return <CenarioMapa modo="capitais" opcoes={opcoes} />;
+    case "mapaRegioes":
+      return <CenarioMapa modo="regioes" opcoes={opcoes} />;
+    case "mapaEstado":
+      return <CenarioMapa modo="estado" opcoes={opcoes} />;
+    case "congresso":
+      return <CenarioCongresso rotulo={opcoes.rotulo} destaque={opcoes.casa} />;
+    case "banco":
+      return <CenarioBanco rotulo={opcoes.rotulo} />;
+    case "cpi":
+      return <CenarioCPI rotulo={opcoes.rotulo} />;
+    case "policia":
+      return <CenarioPolicia rotulo={opcoes.rotulo} />;
+    case "tribunal":
+      return <CenarioTribunal rotulo={opcoes.rotulo} votos={opcoes.votos} />;
+    case "mundo":
+      return <CenarioMundo paises={opcoes.paises ?? []} />;
     case "neutro":
       return <CenarioNeutro />;
     default:
@@ -78,6 +105,7 @@ export const Palco: React.FC<{
                 ladoCentro={ladoCentro(p.posicao)}
                 palavras={palavras}
                 fala={p.fala}
+                acessorio={p.acessorio}
                 inicioAcao={8}
                 mostrarRotulo={!pulpitos}
               />

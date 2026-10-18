@@ -1,0 +1,22 @@
+{
+  "id": "cpi-depoimento",
+  "descricao": "Sessão de CPI/CPMI: quem depôs, o que disse, próximo passo.",
+  "tipo": "fato",
+  "cenario": "cpi",
+  "personagens": [
+    {
+      "slot": "depoente",
+      "acao": "falar",
+      "posicao": "centro",
+      "fala": true
+    }
+  ],
+  "narracaoModelo": "Na {{comissao}}, {{depoente}} afirmou que {{declaracao}}. A próxima sessão é em {{data}}.",
+  "slots": [
+    "comissao",
+    "depoente",
+    "declaracao",
+    "data"
+  ],
+  "usadoEm": []
+}

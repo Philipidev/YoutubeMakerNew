@@ -1,20 +1,23 @@
 import React from "react";
 import { spring, useCurrentFrame, useVideoConfig } from "remotion";
-import { cores, coresPersonagem, fontes, movimento, type CorPersonagem } from "../theme";
+import { cores, coresGenericas, coresPartido, coresPersonagem, fontes, movimento } from "../theme";
 import type { Acao, Personagem as PersonagemDados } from "../schema/episodio";
 import type { Palavra } from "../schema/timestamps";
 import { Boneco, BONECO_H, BONECO_W } from "./Boneco";
 import { ACOES_POSE } from "./acoes";
 import { misturar } from "./pose";
 import { aberturaBoca } from "./useLipSync";
+import { uriBandeira } from "../mundo/Mundo";
 
-export const corDoPersonagem = (cor: string) =>
-  cor in coresPersonagem ? coresPersonagem[cor as CorPersonagem] : cor;
+const paletas: Record<string, string> = { ...coresPersonagem, ...coresGenericas, ...coresPartido };
+
+/** Resolve a cor: chave de paleta (ciano, PT, cidadao…) ou CSS literal. */
+export const corDoPersonagem = (cor: string) => paletas[cor] ?? cor;
 
 const semente = (id: string) => [...id].reduce((a, c) => a + c.charCodeAt(0), 0) % 17;
 
 export type PersonagemProps = {
-  dados: Pick<PersonagemDados, "id" | "rotulo" | "numero" | "cor">;
+  dados: Pick<PersonagemDados, "id" | "rotulo" | "numero" | "cor" | "roupa" | "idade" | "acessorio" | "pais">;
   acao: Acao;
   /** altura em px do boneco (sem o rótulo) */
   altura: number;
@@ -26,6 +29,8 @@ export type PersonagemProps = {
   /** frame (relativo) em que a ação começa; antes disso fica em idle */
   inicioAcao?: number;
   mostrarRotulo?: boolean;
+  /** sobrescreve o acessório do registro nesta cena */
+  acessorio?: PersonagemDados["acessorio"];
 };
 
 /** Boneco + rótulo. Entrada com spring, transição idle→ação suave, boca sincronizada se `fala`. */
@@ -38,6 +43,7 @@ export const Personagem: React.FC<PersonagemProps> = ({
   fala,
   inicioAcao = 0,
   mostrarRotulo = true,
+  acessorio,
 }) => {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -64,7 +70,7 @@ export const Personagem: React.FC<PersonagemProps> = ({
       }}
     >
       <div style={{ width: largura, height: altura }}>
-        <Boneco pose={pose} numero={dados.numero} cor={cor} />
+        <Boneco pose={pose} numero={dados.numero} cor={cor} roupa={dados.roupa} idade={dados.idade} acessorio={acessorio ?? dados.acessorio} bandeira={dados.pais ? uriBandeira(dados.pais) : undefined} />
       </div>
       {mostrarRotulo ? (
         <div

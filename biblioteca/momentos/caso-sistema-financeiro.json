@@ -1,0 +1,16 @@
+{
+  "id": "caso-sistema-financeiro",
+  "descricao": "Caso de instituição financeira (liquidação, fraude, intervenção do Banco Central).",
+  "tipo": "fato",
+  "cenario": "banco",
+  "personagens": [],
+  "narracaoModelo": "Segundo o {{orgao}}, {{instituicao}} {{fato}} em {{data}}. O valor envolvido é de {{valor}}.",
+  "slots": [
+    "orgao",
+    "instituicao",
+    "fato",
+    "data",
+    "valor"
+  ],
+  "usadoEm": []
+}

@@ -1,0 +1,19 @@
+[
+  { "id": "neutro", "uso": "Piso simples; qualquer fato com personagens." },
+  { "id": "pulpitos", "uso": "Debates, entrevistas coletivas. Personagens ganham púlpito; ausentes viram púlpito vazio (dados.ausentes)." },
+  { "id": "urna", "uso": "Votação, apuração, calendário eleitoral." },
+  { "id": "plenarioCamara", "uso": "Votações na Câmara; cadeiras acendem conforme o placar." },
+  { "id": "plenarioSenado", "uso": "Votações no Senado." },
+  { "id": "congresso", "uso": "Tramitação no Congresso. cenarioOpcoes.casa destaca a cúpula (camara|senado)." },
+  { "id": "planalto", "uso": "Atos do Executivo (MP, decreto, sanção, veto)." },
+  { "id": "tribunal", "uso": "Julgamentos no STF/TSE. cenarioOpcoes.votos colore as cadeiras (sim|nao|pendente)." },
+  { "id": "martelo", "uso": "Decisão judicial pontual (liminar, sentença)." },
+  { "id": "banco", "uso": "Sistema financeiro (liquidação, intervenção, fraude bancária). Nome no rótulo, nunca logo." },
+  { "id": "cpi", "uso": "CPI/CPMI, depoimentos, convocações." },
+  { "id": "policia", "uso": "Operações policiais (mandados, prisões). Rótulo com o nome da operação." },
+  { "id": "mapaBrasil", "uso": "Estados em destaque (cenarioOpcoes.ufs) ou coroplético (valores)." },
+  { "id": "mapaCapitais", "uso": "Fatos que envolvem capitais." },
+  { "id": "mapaRegioes", "uso": "Regiões (cenarioOpcoes.regioes para destacar)." },
+  { "id": "mapaEstado", "uso": "Um estado isolado com a capital (cenarioOpcoes.uf)." },
+  { "id": "mundo", "uso": "Internacional: bandeiras tremulando (cenarioOpcoes.paises, ISO alfa-2)." }
+]

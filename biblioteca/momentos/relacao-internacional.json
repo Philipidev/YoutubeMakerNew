@@ -1,0 +1,16 @@
+{
+  "id": "relacao-internacional",
+  "descricao": "Fato entre países: bandeiras + líderes com crachá de bandeira.",
+  "tipo": "fato",
+  "cenario": "mundo",
+  "personagens": [],
+  "narracaoModelo": "{{paisA}} e {{paisB}} {{fato}} em {{data}}, segundo {{fonte}}.",
+  "slots": [
+    "paisA",
+    "paisB",
+    "fato",
+    "data",
+    "fonte"
+  ],
+  "usadoEm": []
+}

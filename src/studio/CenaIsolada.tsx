@@ -37,7 +37,17 @@ export const calcularMetadataCena: CalculateMetadataFunction<Props> = async ({ p
   return { durationInFrames: tempo.duracaoFrames, props: { ...props, dados } };
 };
 
-/** Cenas do episódio de demonstração (episodes/demo-cenas). */
-export const CENAS_DEMO = [
-  "gancho", "fato", "divergencia", "contexto", "linha", "lados", "pesquisa", "debate", "debate-vazio", "votacao", "mapa", "stf", "urna", "nao-se-sabe", "fim",
-] as const;
+/** Cenas dos episódios de demonstração (episodes/demo-*), isoladas no Studio. */
+export const CENAS_DEMO: { slug: string; ids: string[] }[] = [
+  {
+    slug: "demo-cenas",
+    ids: ["gancho", "fato", "divergencia", "contexto", "linha", "lados", "pesquisa", "debate", "debate-vazio", "votacao", "mapa", "stf", "urna", "nao-se-sabe", "fim"],
+  },
+  {
+    slug: "demo-assets",
+    ids: [
+      "congresso", "ministro", "banco", "policia", "cpi", "inss", "tribunal", "capitais", "regioes", "estado", "mundo", "lideres", "debate", "propostas",
+      "g-barras", "g-linha", "g-piramide", "g-pictograma", "g-rosca", "g-mapa",
+    ],
+  },
+];

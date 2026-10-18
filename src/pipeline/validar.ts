@@ -1,3 +1,4 @@
+import { coresPartido } from "../theme";
 import { EpisodioSchema, type Cena, type Episodio } from "../schema/episodio";
 
 export type Problema = { nivel: "erro" | "aviso"; cenaId?: string; msg: string };
@@ -29,6 +30,8 @@ const idsFonte = (c: Cena): string[] => [
   ...(c.atribuicoes ?? []).map((a) => a.fonteId),
   ...(c.tipo === "linhaDoTempo" ? c.dados.eventos.flatMap((e) => e.fonteIds) : []),
   ...(c.tipo === "ladoA_ladoB" ? [...c.dados.ladoA.argumentos, ...c.dados.ladoB.argumentos].map((a) => a.fonteId) : []),
+  ...(c.tipo === "grafico" ? [c.dados.fonteId] : []),
+  ...(c.tipo === "propostas" ? c.dados.lados.flatMap((l) => l.propostas.map((p) => p.fonteId)) : []),
 ];
 
 export const validarEpisodio = (bruto: unknown): { episodio: Episodio | null; problemas: Problema[] } => {
@@ -81,8 +84,21 @@ export const validarEpisodio = (bruto: unknown): { episodio: Episodio | null; pr
     for (const { re, msg } of PROIBIDOS) {
       if (re.test(c.narracao)) problemas.push({ nivel: "erro", cenaId: c.id, msg: `${msg}: "${c.narracao}"` });
     }
+    if (c.tipo === "propostas") {
+      const ns = c.dados.lados.map((l) => l.propostas.length);
+      if (Math.max(...ns) !== Math.min(...ns)) problemas.push({ nivel: "aviso", cenaId: c.id, msg: `propostas com quantidades diferentes por lado: ${ns.join(" x ")}` });
+    }
     if (c.tipo === "fato" && !(c.fatos?.length)) {
       problemas.push({ nivel: "erro", cenaId: c.id, msg: "cena de fato sem fatos[] com fonte" });
+    }
+  }
+
+  // cor de partido: se um ator político usa cor de partido, todos com partido devem usar a do próprio partido
+  const partidos = new Set(Object.keys(coresPartido));
+  const comPartido = ep.personagens.filter((p) => p.partido);
+  if (comPartido.some((p) => partidos.has(p.cor))) {
+    for (const p of comPartido) {
+      if (p.cor !== p.partido) problemas.push({ nivel: "aviso", msg: `simetria de cor: ${p.id} (${p.partido}) não usa a cor do próprio partido (cor=${p.cor})` });
     }
   }
 
@@ -117,7 +133,9 @@ export const placarSimetria = (ep: Episodio) => {
 
 const checarSimetria = (ep: Episodio): Problema[] => {
   const out: Problema[] = [];
-  const placar = Object.entries(placarSimetria(ep)).filter(([, v]) => v.cenas > 0);
+  // só atores políticos (com partido ou número) entram na comparação de tempo de tela
+  const politicos = new Set(ep.personagens.filter((p) => p.partido || p.numero).map((p) => p.id));
+  const placar = Object.entries(placarSimetria(ep)).filter(([id, v]) => v.cenas > 0 && politicos.has(id));
   if (placar.length >= 2) {
     const chars = placar.map(([, v]) => v.chars);
     const max = Math.max(...chars);

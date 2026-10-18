@@ -22,8 +22,17 @@ Nenhum componente define cor, fonte, duração ou spring fora do `theme.ts`.
 | `status.naoSeSabe` | `#A7B1C2` | card "O que ainda não se sabe" |
 
 ## Cores de personagem
-`oklch(0.74 0.12 H)`: ciano (200), magenta (330), menta (160), violeta (290), oliva (115).
-Sem vermelho (~25°) nem azul (~255°), que carregam associação partidária no Brasil. A cor é fixada no registro `biblioteca/personagens.json` e não muda entre episódios.
+- **Atores políticos com partido:** camisa (ou gravata, no terno) na cor do partido (`coresPartido` no theme: PT `#C8102E`, PL `#1F4FA0`). Regra de simetria validada automaticamente: se um usa a cor do partido, todos os personagens com partido no episódio usam a do próprio partido.
+- **Sem partido:** paleta neutra de mesma luminância `oklch(0.74 0.12 H)` (ciano, magenta, menta, violeta, oliva) ou genéricas (`cidadao`, `servidor`, `neutro`).
+- A cor fica no registro `biblioteca/personagens.json` e não muda entre episódios.
+
+## Figurinos
+Mesmo rig para todos; muda só a roupa, a idade e o acessório (ver `biblioteca/figurinos.json` e a composição **Bonecos/Figurinos**).
+- Roupas: `camisa` (candidato), `terno` (ministro, parlamentar, líder estrangeiro), `toga` (STF/TSE), `simples` (cidadão).
+- Idade: `adulto` ou `idoso` (cabelo grisalho e óculos).
+- Acessórios: `documento`, `bengala`, `carteiraVazia`/`carteiraCheia` (par simétrico para renda, só com dado e fonte), `maletaDinheiro` (só quando há apreensão com fonte).
+- O crachá mostra o número; com `pais` (ISO alfa-2), mostra a bandeira.
+- Nada de caricatura: pobreza e riqueza aparecem como indicador de dado, não como estereótipo.
 
 ## Tipografia
 - **Display:** Anton (OFL). Manchetes, números grandes, rótulos de personagem.
@@ -46,7 +55,7 @@ Transições permitidas entre cenas: **corte, slide, wipe diagonal, zoom-punch**
 - Grid de 12 colunas, margens laterais = safe zone.
 - **Safe zones** vertical: topo 8% (barra de progresso), base 22% (UI de Shorts/Reels/TikTok), laterais 6%. Horizontal: 6% / 10% / 5%.
 - Posições fixas do palco: `esq`, `centro`, `dir`.
-- Lower third de fonte: sempre no mesmo slot, acima da safe zone inferior.
+- Selo de fonte ("lower third"): slot fixo logo abaixo da barra de progresso. No vertical a base fica coberta pela UI das plataformas, então a fonte sobe.
 - Card Lado A / Lado B: metades iguais. A ordem (quem fica à esquerda) vem de `episodio.ordemLados` e alterna entre episódios.
 - Legenda queimada (prévia ou `--legendaQueimada`): logo acima da safe zone inferior, palavra ativa em `acento`.
 
@@ -63,3 +72,12 @@ Transições permitidas entre cenas: **corte, slide, wipe diagonal, zoom-punch**
 | votacao | plenário/urna + placar |
 | naoSeSabe | lista com ícone de interrogação |
 | encerramento | lista de fontes + aviso de IA fixo |
+
+## Mapas
+Malha oficial do IBGE (`scripts/gerar-mapas.ts` gera `src/mapas/brasil.json`). Modos: estados, capitais, regiões, estado isolado e coroplético. Cores de região com mesma luminância. Capitais usam o centroide do município.
+
+## Gráficos
+Barras, linha, pirâmide etária, pictograma (x em cada 100), rosca e mapa coroplético. Regras: fonte e período sempre no rodapé, barras começam em zero, destaque só no item citado na narração.
+
+## Internacional
+Bandeiras de `country-flag-icons` (MIT), tremulando no cenário `mundo`. Nomes de país via `Intl.DisplayNames` em pt-BR.

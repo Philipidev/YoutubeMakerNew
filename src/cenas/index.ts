@@ -7,6 +7,8 @@ import {
   CenaEncerramento,
   CenaFato,
   CenaGancho,
+  CenaGrafico,
+  CenaPropostas,
   CenaLadoALadoB,
   CenaLinhaDoTempo,
   CenaNaoSeSabe,
@@ -27,5 +29,7 @@ export const componentesCena: Mapa = {
   debate: CenaDebate,
   votacao: CenaVotacao,
   naoSeSabe: CenaNaoSeSabe,
+  grafico: CenaGrafico,
+  propostas: CenaPropostas,
   encerramento: CenaEncerramento,
 };

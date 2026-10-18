@@ -1,0 +1,16 @@
+{
+  "id": "pesquisa-nova",
+  "descricao": "Pesquisa registrada, com metodologia na tela. Sem previsão.",
+  "tipo": "pesquisa",
+  "personagens": [],
+  "narracaoModelo": "Pesquisa {{instituto}}, registrada no TSE sob {{registro}}, ouviu {{amostra}} pessoas entre {{inicio}} e {{fim}}. Margem de erro de {{margem}}.",
+  "slots": [
+    "instituto",
+    "registro",
+    "amostra",
+    "inicio",
+    "fim",
+    "margem"
+  ],
+  "usadoEm": []
+}

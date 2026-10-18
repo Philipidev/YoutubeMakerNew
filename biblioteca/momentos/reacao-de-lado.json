@@ -1,0 +1,21 @@
+{
+  "id": "reacao-de-lado",
+  "descricao": "Um lado reage a um fato; fala sempre atribuída.",
+  "tipo": "fato",
+  "cenario": "neutro",
+  "personagens": [
+    {
+      "slot": "quem",
+      "acao": "falar",
+      "posicao": "centro",
+      "fala": true
+    }
+  ],
+  "narracaoModelo": "{{quem}} reagiu. Em {{meio}}, disse que {{declaracao}}.",
+  "slots": [
+    "quem",
+    "meio",
+    "declaracao"
+  ],
+  "usadoEm": []
+}

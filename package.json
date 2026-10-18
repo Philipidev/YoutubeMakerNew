@@ -21,6 +21,7 @@
     "@remotion/media-utils": "4.0.532",
     "@remotion/renderer": "4.0.532",
     "@remotion/zod-types": "4.0.532",
+    "country-flag-icons": "^1.6.20",
     "dotenv": "16.4.7",
     "react": "19.2.8",
     "react-dom": "19.2.8",
@@ -28,8 +29,10 @@
     "zod": "4.5.4"
   },
   "devDependencies": {
+    "@types/d3-geo": "^3.1.0",
     "@types/node": "22.10.2",
     "@types/react": "19.2.18",
+    "d3-geo": "^3.1.1",
     "tsx": "4.23.15",
     "typescript": "5.9.3",
     "vitest": "4.1.11"

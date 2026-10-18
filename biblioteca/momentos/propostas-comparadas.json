@@ -1,0 +1,11 @@
+{
+  "id": "propostas-comparadas",
+  "descricao": "Propostas numeradas por candidato, mesmo número de itens por lado.",
+  "tipo": "propostas",
+  "personagens": [],
+  "narracaoModelo": "As principais propostas de cada candidato para {{tema}}, segundo os planos de governo registrados no TSE.",
+  "slots": [
+    "tema"
+  ],
+  "usadoEm": []
+}
