@@ -2,7 +2,7 @@
 import fs from "node:fs";
 import { EpisodioSchema } from "../src/schema/episodio";
 import { TimestampsSchema } from "../src/schema/timestamps";
-import { gerarDescricao } from "../src/pipeline/saidas";
+import { gerarComentarioFontes, gerarDescricao } from "../src/pipeline/saidas";
 
 const slug = process.argv[2];
 const short = process.argv.includes("--short");
@@ -15,4 +15,6 @@ if (short) {
   texto = texto.replace(ep.resumo.trim(), `${ep.resumo.trim()}\n\n▶ Vídeo completo, com todas as seções: [cole aqui o link do vídeo principal]`);
 }
 fs.writeFileSync(`out/${slug}/descricao.txt`, texto);
+fs.writeFileSync(`out/${slug}/comentario-fontes.txt`, gerarComentarioFontes(ep).join("\n\n----- (novo comentário) -----\n\n") + "\n");
+console.log(`  descrição: ${texto.length} caracteres (limite do YouTube: 5.000)`);
 console.log(`✔ out/${slug}/descricao.txt`);

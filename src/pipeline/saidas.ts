@@ -1,6 +1,5 @@
 import fs from "node:fs/promises";
 import path from "node:path";
-import { AVISO_IA } from "../theme";
 import { trilhaPorId } from "../video/trilhas";
 import type { Episodio } from "../schema/episodio";
 import type { Timestamps } from "../schema/timestamps";
@@ -38,13 +37,70 @@ export const capitulos = (ep: Episodio, ts: Timestamps | null): string => {
   return lista.length >= 3 ? "CAPÍTULOS\n" + lista.map(([s, t]) => `${mmss(s)} ${t}`).join("\n") : "";
 };
 
-export const gerarDescricao = (ep: Episodio, ts: Timestamps | null = null) => {
-  const fontes = ep.fontes.map((f) => `• ${f.veiculo} — ${f.titulo} (${fmtData(f.data)})\n  ${f.url}`).join("\n");
+/** Limites do YouTube: descrição 5.000 caracteres; comentário 10.000. Margem de segurança. */
+const LIMITE_DESCRICAO = 4800;
+const LIMITE_COMENTARIO = 9500;
+
+const linhaCompacta = (f: Episodio["fontes"][number]) => `• ${f.veiculo} (${fmtData(f.data)}): ${f.url}`;
+const linhaCompleta = (f: Episodio["fontes"][number]) => `• ${f.veiculo} — ${f.titulo} (${fmtData(f.data)})\n  ${f.url}`;
+
+/**
+ * Descrição dentro do limite do YouTube. Se as fontes não couberem, entram as principais
+ * (oficiais primeiro) e a lista completa vai para o comentário fixado (gerarComentarioFontes).
+ * Retorna também se a lista ficou incompleta.
+ */
+export const gerarDescricaoComLimite = (ep: Episodio, ts: Timestamps | null = null): { texto: string; fontesCompletas: boolean } => {
   const t = trilhaPorId(ep.trilha);
-  const musica = t ? `\n\nMúsica: ${t.titulo} — ${t.artista}${t.atribuicao ? ". " + t.atribuicao : " (Biblioteca de Áudio do YouTube)"}` : "";
+  const musica = t ? `Música: ${t.titulo} — ${t.artista}${t.atribuicao ? ". " + t.atribuicao : " (Biblioteca de Áudio do YouTube)"}` : "";
   const caps = capitulos(ep, ts);
+  // hashtags dos candidatos em par; a ordem segue o lado fixo do episódio
   const tags = ["#Eleições2026", ...ep.personagens.filter((p) => p.partido).map((p) => "#" + p.rotulo.replace(/\s+/g, ""))].join(" ");
-  return [ep.titulo, ep.resumo.trim(), caps, `FONTES\n${fontes}${musica}`, COMO_E_FEITO, AVISO_IA, tags].filter(Boolean).join("\n\n") + "\n";
+  const montar = (fontes: string, aviso: string) => [ep.resumo.trim(), caps, fontes, musica, COMO_E_FEITO, tags].filter(Boolean).join("\n\n").replace("{{AVISO}}", aviso) + "\n";
+
+  const todasCompletas = "FONTES\n" + ep.fontes.map(linhaCompleta).join("\n");
+  if (montar(todasCompletas, "").length <= LIMITE_DESCRICAO) return { texto: montar(todasCompletas, ""), fontesCompletas: true };
+
+  // prioridade: oficiais → uma fonte por cena (todo assunto do vídeo tem ao menos uma) → o resto
+  const primeiraDaCena = ep.cenas.flatMap((c) => {
+    const ids = [
+      ...(c.tipo === "pesquisa" && c.dados.fonteId ? [c.dados.fonteId] : []),
+      ...(c.tipo === "grafico" ? [c.dados.fonteId] : []),
+      ...(c.fatos ?? []).flatMap((f) => f.fonteIds),
+      ...(c.atribuicoes ?? []).map((a) => a.fonteId),
+      ...(c.tipo === "ladoA_ladoB" ? [...c.dados.ladoA.argumentos, ...c.dados.ladoB.argumentos].map((a) => a.fonteId) : []),
+      ...(c.tipo === "linhaDoTempo" ? c.dados.eventos.flatMap((e) => e.fonteIds) : []),
+    ];
+    return ids.slice(0, 1);
+  });
+  const porId = new Map(ep.fontes.map((f) => [f.id, f]));
+  const ordemIds = [...ep.fontes.filter((f) => f.tipo === "primaria").map((f) => f.id), ...primeiraDaCena, ...ep.fontes.map((f) => f.id)];
+  const ordenadas = [...new Set(ordemIds)].map((id) => porId.get(id)).filter((f): f is Episodio["fontes"][number] => !!f);
+  const rodape = `(+ lista completa com ${ep.fontes.length} fontes no comentário fixado)`;
+  const escolhidas: string[] = [];
+  for (const f of ordenadas) {
+    const tentativa = `PRINCIPAIS FONTES\n${[...escolhidas, linhaCompacta(f)].join("\n")}\n${rodape}`;
+    if (montar(tentativa, "").length > LIMITE_DESCRICAO) break;
+    escolhidas.push(linhaCompacta(f));
+  }
+  return { texto: montar(`PRINCIPAIS FONTES\n${escolhidas.join("\n")}\n${rodape}`, ""), fontesCompletas: false };
+};
+
+export const gerarDescricao = (ep: Episodio, ts: Timestamps | null = null) => gerarDescricaoComLimite(ep, ts).texto;
+
+/** Lista completa de fontes para o comentário fixado; divide em partes de até 10 mil caracteres. */
+export const gerarComentarioFontes = (ep: Episodio): string[] => {
+  const partes: string[] = [];
+  let atual = "FONTES COMPLETAS DO VÍDEO";
+  for (const f of ep.fontes) {
+    const linha = linhaCompleta(f);
+    if ((atual + "\n" + linha).length > LIMITE_COMENTARIO) {
+      partes.push(atual);
+      atual = "FONTES (continuação)";
+    }
+    atual += "\n" + linha;
+  }
+  partes.push(atual);
+  return partes;
 };
 
 const esc = (s: string) => s.replace(/\|/g, "\|").replace(/\n/g, " ");
@@ -93,5 +149,7 @@ export const gerarSaidasTexto = async (o: { slug: string; episodio: Episodio; ti
   await fs.writeFile(path.join(o.dir, `${pref}.srt`), gerarSrt(o.timestamps), "utf8");
   await fs.writeFile(path.join(o.dir, `${pref}.vtt`), gerarVtt(o.timestamps), "utf8");
   await fs.writeFile(path.join(o.dir, "descricao.txt"), gerarDescricao(o.episodio, o.previa ? null : o.timestamps), "utf8");
+  const comentarios = gerarComentarioFontes(o.episodio);
+  await fs.writeFile(path.join(o.dir, "comentario-fontes.txt"), comentarios.join("\n\n----- (novo comentário) -----\n\n") + "\n", "utf8");
   await fs.writeFile(path.join(o.dir, "relatorio-checagem.md"), gerarRelatorio(o.episodio, o.problemas, checagem, o.timestamps), "utf8");
 };
