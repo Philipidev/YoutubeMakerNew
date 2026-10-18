@@ -1,0 +1,109 @@
+{
+  "slug": "demo-cenas",
+  "titulo": "Demonstração de todas as cenas (dados fictícios)",
+  "dataPublicacao": "2026-10-17",
+  "resumo": "Episódio de revisão visual. Todos os nomes, números e fontes são fictícios.",
+  "ordemLados": "AB",
+  "fontes": [
+    { "id": "f1", "veiculo": "Diário Oficial (exemplo)", "titulo": "Ato fictício nº 1", "url": "https://example.com/ato", "data": "2026-09-25", "tipo": "primaria" },
+    { "id": "f2", "veiculo": "Veículo A (exemplo)", "titulo": "Reportagem fictícia", "url": "https://example.com/a", "data": "2026-09-26", "tipo": "imprensa" },
+    { "id": "f3", "veiculo": "Veículo B (exemplo)", "titulo": "Reportagem fictícia", "url": "https://example.com/b", "data": "2026-09-26", "tipo": "imprensa" }
+  ],
+  "personagens": [
+    { "id": "p13", "rotulo": "Personagem 13", "numero": "13", "cor": "ciano" },
+    { "id": "p22", "rotulo": "Personagem 22", "numero": "22", "cor": "magenta" }
+  ],
+  "cenas": [
+    {
+      "id": "gancho", "tipo": "gancho", "narracao": "Um ato publicado nove dias antes da votação muda as regras. O que muda?",
+      "dados": { "manchete": "O que muda com o novo ato?", "destaque": "9 dias antes da votação" }
+    },
+    {
+      "id": "fato", "tipo": "fato", "cenario": "planalto",
+      "narracao": "O Personagem 13 assinou o ato no dia vinte e cinco. Segundo o texto publicado, a regra vale em todo o país.",
+      "personagens": [{ "id": "p13", "acao": "falar", "posicao": "centro", "fala": true }],
+      "fatos": [
+        { "texto": "Ato assinado em 25/09", "fonteIds": ["f1"] },
+        { "texto": "Regra vale em todo o país", "fonteIds": ["f1", "f2"] }
+      ]
+    },
+    {
+      "id": "divergencia", "tipo": "fato",
+      "narracao": "Sobre o prazo de transição, as fontes divergem: o Veículo A fala em trinta dias, o Veículo B em sessenta.",
+      "fatos": [{
+        "texto": "Prazo de transição", "fonteIds": ["f2", "f3"], "status": "divergente",
+        "divergencia": [{ "fonteId": "f2", "versao": "30 dias" }, { "fonteId": "f3", "versao": "60 dias" }]
+      }]
+    },
+    {
+      "id": "contexto", "tipo": "contexto",
+      "narracao": "O ato foi assinado nove dias antes do primeiro turno.",
+      "dados": { "numero": "9 dias", "rotulo": "antes do 1º turno" },
+      "fatos": [{ "texto": "Assinatura ocorreu 9 dias antes do 1º turno", "fonteIds": ["f1"] }]
+    },
+    {
+      "id": "linha", "tipo": "linhaDoTempo",
+      "narracao": "Antes, em dois mil e vinte e três, a atividade foi regulamentada. Em setembro veio o ato. No dia seguinte, a reação.",
+      "dados": { "eventos": [
+        { "data": "2023", "rotulo": "Atividade regulamentada por lei", "fonteIds": ["f2"], "fase": "antes" },
+        { "data": "25/09", "rotulo": "Ato assinado", "fonteIds": ["f1"], "fase": "fato" },
+        { "data": "26/09", "rotulo": "Reações de governo e oposição", "fonteIds": ["f3"], "fase": "reacao" }
+      ] }
+    },
+    {
+      "id": "lados", "tipo": "ladoA_ladoB",
+      "narracao": "Para o governo, a medida protege as famílias. Para a oposição, segundo o Personagem 22, a medida é eleitoreira.",
+      "atribuicoes": [{ "quem": "p22", "disse": "A medida é eleitoreira", "fonteId": "f3", "termos": ["eleitoreira"] }],
+      "dados": {
+        "ladoA": { "titulo": "Governo", "personagemId": "p13", "argumentos": [{ "texto": "Protege as famílias do endividamento", "quem": "Personagem 13", "fonteId": "f2" }] },
+        "ladoB": { "titulo": "Oposição", "personagemId": "p22", "argumentos": [{ "texto": "Medida tomada em período eleitoral", "quem": "Personagem 22", "fonteId": "f3" }] }
+      }
+    },
+    {
+      "id": "pesquisa", "tipo": "pesquisa",
+      "narracao": "Uma pesquisa fictícia mostra os dois empatados dentro da margem de erro.",
+      "dados": { "instituto": "Instituto Exemplo", "campo": { "inicio": "2026-10-10", "fim": "2026-10-12" }, "registroTSE": "BR-00000/2026", "margemErro": "2 p.p.", "amostra": 2000,
+        "resultados": [{ "personagemId": "p13", "pct": 47 }, { "personagemId": "p22", "pct": 45 }] }
+    },
+    {
+      "id": "debate", "tipo": "debate", "cenario": "pulpitos",
+      "narracao": "O debate está marcado para quinta-feira.",
+      "personagens": [{ "id": "p13", "acao": "acenar", "posicao": "esq" }, { "id": "p22", "acao": "acenar", "posicao": "dir" }],
+      "dados": { "titulo": "Debate na quinta" }
+    },
+    {
+      "id": "debate-vazio", "tipo": "debate", "cenario": "pulpitos",
+      "narracao": "Em outro debate, o Personagem 22 não compareceu.",
+      "personagens": [{ "id": "p13", "acao": "idle", "posicao": "esq" }],
+      "dados": { "ausentes": ["p22"], "titulo": "Púlpito vazio" }
+    },
+    {
+      "id": "votacao", "tipo": "votacao",
+      "narracao": "Na Câmara, o texto foi aprovado por trezentos e dez votos a cento e quarenta.",
+      "dados": { "orgao": "Câmara dos Deputados", "etapa": "Votação em plenário", "casa": "camara", "placar": { "sim": 310, "nao": 140, "abst": 5 } },
+      "fatos": [{ "texto": "Aprovado por 310 a 140", "fonteIds": ["f2"] }]
+    },
+    {
+      "id": "mapa", "tipo": "fato", "cenario": "mapaBrasil",
+      "narracao": "A regra começa por cinco estados.",
+      "dados": { "ufs": ["SP", "RJ", "MG", "BA", "RS"] },
+      "fatos": [{ "texto": "Começa por 5 estados", "fonteIds": ["f1"] }]
+    },
+    {
+      "id": "stf", "tipo": "votacao",
+      "narracao": "O caso também chegou ao Supremo.",
+      "dados": { "orgao": "STF", "etapa": "Ação protocolada", "casa": "stf" }
+    },
+    {
+      "id": "urna", "tipo": "fato", "cenario": "urna",
+      "narracao": "O segundo turno é no dia vinte e cinco de outubro.",
+      "fatos": [{ "texto": "2º turno em 25/10", "fonteIds": ["f1"] }]
+    },
+    {
+      "id": "nao-se-sabe", "tipo": "naoSeSabe",
+      "narracao": "Ainda não se sabe se o Congresso vai manter o ato, nem como será a fiscalização.",
+      "dados": { "itens": ["Se o Congresso vai manter o ato", "Como será a fiscalização"] }
+    },
+    { "id": "fim", "tipo": "encerramento", "narracao": "As fontes estão na descrição." }
+  ]
+}

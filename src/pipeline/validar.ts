@@ -66,7 +66,7 @@ export const validarEpisodio = (bruto: unknown): { episodio: Episodio | null; pr
     for (const fr of frases(c.narracao)) {
       const frl = normal(fr);
       for (const termo of TERMOS_OPINATIVOS) {
-        if (!frl.includes(termo)) continue;
+        if (!new RegExp(String.raw`(^|[^\p{L}])` + termo, "u").test(frl)) continue;
         const temMarcador = MARCADORES_ATRIBUICAO.some((m) => frl.includes(m));
         const coberto = termosCobertos.some((t) => t.includes(termo) || termo.includes(t) || frl.includes(t));
         if (!temMarcador || !coberto) {

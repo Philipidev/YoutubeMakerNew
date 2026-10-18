@@ -60,7 +60,14 @@ const PersonagemEmCena = z.object({
   fala: z.boolean().optional(),
 });
 
-const Fato = z.object({ texto: z.string().min(1), fonteIds: z.array(id).min(1) });
+const Fato = z.object({
+  texto: z.string().min(1),
+  fonteIds: z.array(id).min(1),
+  /** "divergente" = fontes discordam; o vídeo mostra a divergência explicitamente. */
+  status: z.enum(["confirmado", "divergente"]).default("confirmado"),
+  /** Para divergência: o que cada fonte diz. */
+  divergencia: z.array(z.object({ fonteId: id, versao: z.string().min(1) })).optional(),
+});
 
 const Atribuicao = z.object({
   /** personagemId ou texto livre ("Associação X", "analista Y, do veículo Z") */
@@ -98,7 +105,7 @@ const Lado = z.object({
 
 export const CenaSchema = z.discriminatedUnion("tipo", [
   z.object({ ...base, tipo: z.literal("gancho"), dados: z.object({ manchete: z.string(), destaque: z.string().optional() }) }),
-  z.object({ ...base, tipo: z.literal("fato") }),
+  z.object({ ...base, tipo: z.literal("fato"), dados: z.object({ ufs: z.array(z.string().length(2)).optional(), rotuloCenario: z.string().optional() }).optional() }),
   z.object({ ...base, tipo: z.literal("contexto"), dados: z.object({ numero: z.string().optional(), rotulo: z.string().optional() }).optional() }),
   z.object({
     ...base,
@@ -129,13 +136,14 @@ export const CenaSchema = z.discriminatedUnion("tipo", [
       resultados: z.array(z.object({ personagemId: id, pct: z.number().min(0).max(100) })).min(1),
     }),
   }),
-  z.object({ ...base, tipo: z.literal("debate"), dados: z.object({ ausentes: z.array(id).optional() }).optional() }),
+  z.object({ ...base, tipo: z.literal("debate"), dados: z.object({ ausentes: z.array(id).optional(), titulo: z.string().optional() }).optional() }),
   z.object({
     ...base,
     tipo: z.literal("votacao"),
     dados: z.object({
       orgao: z.string().min(1),
       etapa: z.string().optional(),
+      casa: z.enum(["camara", "senado", "stf", "tse", "outro"]).default("outro"),
       placar: z.object({ sim: z.number().int(), nao: z.number().int(), abst: z.number().int() }).optional(),
     }),
   }),

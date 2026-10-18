@@ -19,5 +19,9 @@ export const useFormato = () => {
     formato === "vertical"
       ? { esq: width * 0.27, centro: width * 0.5, dir: width * 0.73 }
       : { esq: width * 0.25, centro: width * 0.5, dir: width * 0.75 };
-  return { formato, width, height, area, posX, t: tipos[formato] };
+  /** Linha dos pés dos personagens. */
+  const palcoY = formato === "vertical" ? height * 0.66 : height * 0.74;
+  /** Altura padrão do boneco (sem rótulo). Igual para todos. */
+  const alturaBoneco = formato === "vertical" ? 600 : 470;
+  return { formato, width, height, area, posX, palcoY, alturaBoneco, t: tipos[formato] };
 };
