@@ -124,6 +124,9 @@ const base = {
   /** Momento da biblioteca que originou a cena (rastreio de reuso). */
   momento: z.string().optional(),
   cenarioOpcoes: CenarioOpcoesSchema.optional(),
+  /** Sobrescreve o sorteio de câmera/transição (src/movimento). */
+  camera: z.enum(["zoomIn", "zoomOut", "panEsq", "panDir", "panCima", "panBaixo", "kenBurns", "respirar", "deriva"]).optional(),
+  transicao: z.enum(["corte", "slideEsq", "slideDir", "slideCima", "push", "wipeDiagonal", "iris", "zoomPunch", "dissolve", "flash"]).optional(),
 };
 
 const Argumento = z.object({ texto: z.string().min(1), quem: z.string().min(1), fonteId: id });

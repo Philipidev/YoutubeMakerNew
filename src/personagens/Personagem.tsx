@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { cores, coresGenericas, coresPartido, coresPersonagem, fontes, movimento } from "../theme";
 import type { Acao, Personagem as PersonagemDados } from "../schema/episodio";
@@ -8,13 +8,15 @@ import { ACOES_POSE } from "./acoes";
 import { misturar } from "./pose";
 import { aberturaBoca } from "./useLipSync";
 import { uriBandeira } from "../mundo/Mundo";
+import { MovimentoCena } from "../movimento/plano";
+import { hash } from "../movimento/aleatorio";
 
 const paletas: Record<string, string> = { ...coresPersonagem, ...coresGenericas, ...coresPartido };
 
 /** Resolve a cor: chave de paleta (ciano, PT, cidadao…) ou CSS literal. */
 export const corDoPersonagem = (cor: string) => paletas[cor] ?? cor;
 
-const semente = (id: string) => [...id].reduce((a, c) => a + c.charCodeAt(0), 0) % 17;
+
 
 export type PersonagemProps = {
   dados: Pick<PersonagemDados, "id" | "rotulo" | "numero" | "cor" | "roupa" | "idade" | "acessorio" | "pais">;
@@ -47,7 +49,9 @@ export const Personagem: React.FC<PersonagemProps> = ({
 }) => {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const ctx = { f, fps, semente: semente(dados.id), ladoCentro };
+  // semente por personagem + cena: estilo de gesto e microgestos variam de cena para cena
+  const { semente: sementeCena } = useContext(MovimentoCena);
+  const ctx = { f, fps, semente: hash(sementeCena + ":" + dados.id) % 997, ladoCentro };
   const fa = Math.max(0, f - inicioAcao);
   const k = f < inicioAcao ? 0 : spring({ frame: fa, fps, config: movimento.entradaSuave });
   let pose = misturar(ACOES_POSE.idle(ctx), ACOES_POSE[acao]({ ...ctx, f: fa }), k);

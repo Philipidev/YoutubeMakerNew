@@ -4,6 +4,7 @@ import { cores, fontes, movimento } from "../theme";
 import { useFormato } from "../layout/useFormato";
 import { Card, Rotulo } from "../cards/ui";
 import { MapaBrasil } from "../mapas/MapaBrasil";
+import { Brilho, Ondas } from "../movimento/vida";
 
 /**
  * Gráficos de dados (demografia, economia, pobreza). Regras:
@@ -63,7 +64,9 @@ export const GraficoBarras: React.FC<{ titulo: string; fonte: string; nota?: str
                 </span>
               </div>
               <div style={{ height: 26, background: cores.fundo, borderRadius: 8, marginTop: 6 }}>
-                <div style={{ width: `${(p.valor / max) * 100 * k}%`, height: "100%", borderRadius: 8, background: p.destaque ? cores.acento : cores.textoSecundario }} />
+                <div style={{ position: "relative", overflow: "hidden", width: `${(p.valor / max) * 100 * k}%`, height: "100%", borderRadius: 8, background: p.destaque ? cores.acento : cores.textoSecundario }}>
+                  {p.destaque ? <Brilho chave={"barra-" + p.rotulo} atraso={50} intensidade={0.45} /> : null}
+                </div>
               </div>
             </div>
           );
@@ -95,6 +98,7 @@ export const GraficoLinha: React.FC<{ titulo: string; fonte: string; nota?: stri
         {pontos.map((p, i) =>
           i <= visiveis ? (
             <g key={i}>
+              {i === pontos.length - 1 && prog >= 1 ? <Ondas cx={x(i)} cy={y(p.valor)} raio={13} cor={cores.acento} chave="linha-ultimo" /> : null}
               <circle cx={x(i)} cy={y(p.valor)} r={i === pontos.length - 1 ? 13 : 8} fill={i === pontos.length - 1 ? cores.acento : cores.texto} stroke={cores.contorno} strokeWidth={3} />
               {i === 0 || i === pontos.length - 1 || p.destaque ? (
                 <text x={x(i)} y={y(p.valor) - 22} textAnchor="middle" fontFamily={fontes.display} fontSize={t.corpo} fill={cores.texto}>
@@ -161,7 +165,10 @@ export const Pictograma: React.FC<{ titulo: string; fonte: string; nota?: string
     <Moldura titulo={titulo} fonte={fonte} nota={nota}>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(10, 1fr)", gap: 2 }}>
         {Array.from({ length: 100 }).map((_, i) => (
-          <svg key={i} viewBox="0 0 40 60" width={lado - 8} height={(lado - 8) * 0.95} preserveAspectRatio="xMidYMid meet">
+          <svg
+            key={i}
+            style={{ transform: acesos >= n && i < n ? `translateY(${Math.min(0, Math.sin((f - 60) / 5 - (i % 10) * 0.5 - Math.floor(i / 10) * 0.9)) * 6}px)` : undefined }}
+            viewBox="0 0 40 60" width={lado - 8} height={(lado - 8) * 0.95} preserveAspectRatio="xMidYMid meet">
             <circle cx={20} cy={13} r={10} fill={i < acesos ? cores.acento : cores.linha} />
             <path d="M 6 58 L 6 34 Q 6 24 20 24 Q 34 24 34 34 L 34 58 Z" fill={i < acesos ? cores.acento : cores.linha} />
           </svg>
@@ -178,6 +185,7 @@ export const Pictograma: React.FC<{ titulo: string; fonte: string; nota?: string
 export const GraficoRosca: React.FC<{ titulo: string; fonte: string; nota?: string; pontos: Ponto[] }> = ({ titulo, fonte, nota, pontos }) => {
   const { t } = useFormato();
   const prog = useProg(8, 45);
+  const f = useCurrentFrame();
   const total = pontos.reduce((s, p) => s + p.valor, 0);
   const paleta = [cores.acento, "oklch(0.70 0.10 230)", "oklch(0.70 0.10 160)", "oklch(0.70 0.10 330)", cores.textoSecundario, "oklch(0.70 0.10 40)"];
   const R = 160;
@@ -187,7 +195,7 @@ export const GraficoRosca: React.FC<{ titulo: string; fonte: string; nota?: stri
     <Moldura titulo={titulo} fonte={fonte} nota={nota}>
       <div style={{ display: "flex", alignItems: "center", gap: 30 }}>
         <svg width={2 * R + 60} height={2 * R + 60} viewBox={`${-R - 30} ${-R - 30} ${2 * R + 60} ${2 * R + 60}`} style={{ flexShrink: 0 }}>
-          <g transform="rotate(-90)">
+          <g transform={`rotate(${-90 + Math.sin(f / 70) * 4})`}>
             {pontos.map((p, i) => {
               const frac = (p.valor / total) * prog;
               const el = <circle key={p.rotulo} r={R} fill="none" stroke={paleta[i % paleta.length]} strokeWidth={56} strokeDasharray={`${frac * C} ${C}`} strokeDashoffset={-acum * C * prog} />;

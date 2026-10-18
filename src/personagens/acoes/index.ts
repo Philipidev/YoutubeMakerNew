@@ -8,7 +8,8 @@ import { POSE_BASE, type ContextoAcao, type Pose } from "../pose";
 const sen = Math.sin;
 const tempo = (c: ContextoAcao) => c.f / c.fps;
 
-const idle = (c: ContextoAcao): Pose => {
+/** Respiração e balanço contínuos (base de todas as ações). */
+const respirar = (c: ContextoAcao): Pose => {
   const t = tempo(c) + c.semente;
   return {
     ...POSE_BASE,
@@ -18,6 +19,35 @@ const idle = (c: ContextoAcao): Pose => {
     ombroD: 6 + sen(t * 1.3 + 1) * 1.5,
     olharX: sen(t * 0.5) * 0.3,
   };
+};
+
+/**
+ * Microgestos do idle: a cada ~3–4 s um gesto curto sorteado (olhar para o lado, ajeitar a gola,
+ * balançar, sorriso breve, mãos para trás). Envelope senoidal: entra e sai sem tranco.
+ */
+const MICROGESTOS: ((p: Pose, lado: number) => Partial<Pose>)[] = [
+  (p, lado) => ({ olharX: 0.9 * lado, cabecaRot: 7 * lado }),
+  (p, lado) => ({ olharX: -0.9 * lado, cabecaRot: -6 * lado }),
+  () => ({ ombroD: -40, cotoveloD: 175, cabecaRot: -3 }),
+  () => ({ corpoY: -6, ombroE: 14, ombroD: 14, cabecaRot: 4 }),
+  () => ({ sorriso: 0.6, sobrancelhaY: 0.3 }),
+  () => ({ ombroE: -12, cotoveloE: -20, ombroD: -12, cotoveloD: -20 }),
+  () => ({ cabecaY: 4, olharX: 0, sobrancelhaAng: 4, sorriso: 0 }),
+];
+const PERIODO_GESTO = 105;
+const DURACAO_GESTO = 40;
+
+const idle = (c: ContextoAcao): Pose => {
+  const base = respirar(c);
+  const off = (c.semente * 13) % PERIODO_GESTO;
+  const ciclo = Math.floor((c.f + off) / PERIODO_GESTO);
+  const dentro = (c.f + off) % PERIODO_GESTO;
+  if (c.f < 20 || dentro >= DURACAO_GESTO) return base;
+  const gesto = MICROGESTOS[(ciclo * 7 + c.semente) % MICROGESTOS.length](base, c.ladoCentro);
+  const env = sen((dentro / DURACAO_GESTO) * Math.PI);
+  const out = { ...base };
+  for (const k of Object.keys(gesto) as (keyof Pose)[]) out[k] = base[k] + ((gesto[k] as number) - base[k]) * env;
+  return out;
 };
 
 const acenar = (c: ContextoAcao): Pose => {
@@ -38,20 +68,27 @@ const sorrir = (c: ContextoAcao): Pose => ({
   olhos: 0.85,
 });
 
+/** Três estilos de gesticular; o estilo sai da semente (personagem + cena), então varia entre cenas. */
 const falar = (c: ContextoAcao): Pose => {
   const t = tempo(c) + c.semente;
   const g = sen(t * 2.4);
-  return {
-    ...idle(c),
+  const base = {
+    ...respirar(c),
     sorriso: 0.2,
     sobrancelhaY: Math.max(0, sen(t * 1.7)) * 0.3,
-    ombroD: 18 + g * 8,
-    cotoveloD: -55 + sen(t * 3.1) * 18,
-    ombroE: 12 - g * 5,
-    cotoveloE: -25 + sen(t * 2.7 + 1) * 10,
     cabecaRot: sen(t * 1.9) * 3,
     olharX: 0.2 * c.ladoCentro,
   };
+  const estilo = c.semente % 3;
+  if (estilo === 1) {
+    // mãos abertas alternadas, como quem explica
+    return { ...base, ombroE: 24 + g * 10, cotoveloE: -60 - sen(t * 2.4 + 1.6) * 20, ombroD: 24 - g * 10, cotoveloD: -60 - sen(t * 2.4) * 20 };
+  }
+  if (estilo === 2) {
+    // mão marcando o ritmo + aceno de cabeça
+    return { ...base, ombroD: 30, cotoveloD: -95 + Math.abs(sen(t * 3.2)) * 35, ombroE: 8, cotoveloE: -30, cabecaY: Math.abs(sen(t * 3.2)) * 4 };
+  }
+  return { ...base, ombroD: 18 + g * 8, cotoveloD: -55 + sen(t * 3.1) * 18, ombroE: 12 - g * 5, cotoveloE: -25 + sen(t * 2.7 + 1) * 10 };
 };
 
 const apontar = (c: ContextoAcao): Pose => {

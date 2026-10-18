@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { AbsoluteFill, Sequence, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { cores, fontes, movimento } from "../theme";
 import { useFormato } from "../layout/useFormato";
@@ -15,18 +15,20 @@ import {
   GraficoPesquisa,
   LinhaDoTempo,
 } from "../cards/Cards";
-import { Card, Chip, Rotulo, TextoPop, useSaida } from "../cards/ui";
+import { Card, Chip, Rotulo, TextoPop } from "../cards/ui";
+import { MovimentoCena } from "../movimento/plano";
+import { estiloCamera } from "../movimento/camera";
+import { DURACAO_TRANSICAO } from "../movimento/transicoes";
 import { Personagem, corDoPersonagem } from "../personagens/Personagem";
 import { GraficoBarras, GraficoLinha, GraficoRosca, MapaDados, Pictograma, PiramideEtaria } from "../graficos/Graficos";
 
 type P<T extends Cena["tipo"]> = CenaProps<Extract<Cena, { tipo: T }>>;
 
-/** Câmera viva: zoom lento em toda cena + saída suave. */
+/** Câmera viva: movimento sorteado do pool (src/movimento/camera.ts), contínuo até o fim da transição de saída. */
 const Camera: React.FC<{ duracao: number; children: React.ReactNode }> = ({ duracao, children }) => {
   const f = useCurrentFrame();
-  const z = interpolate(f, [0, duracao], [movimento.zoomLento.de, movimento.zoomLento.ate]);
-  const saida = useSaida(duracao);
-  return <AbsoluteFill style={{ transform: `scale(${z})`, opacity: 0.25 + 0.75 * saida }}>{children}</AbsoluteFill>;
+  const { camera } = useContext(MovimentoCena);
+  return <AbsoluteFill style={estiloCamera(camera, f, duracao + DURACAO_TRANSICAO)}>{children}</AbsoluteFill>;
 };
 
 /** Área de conteúdo acima do palco (ou a tela útil inteira, sem personagens). */
@@ -59,7 +61,7 @@ const SequenciaItens: React.FC<{ cena: Cena; props: CenaProps; comPalco: boolean
         const fonteIds = it.tipo === "fato" ? it.fato.fonteIds : [it.a.fonteId];
         const p = it.tipo === "citacao" ? props.episodio.personagens.find((x) => x.id === it.a.quem) : undefined;
         return (
-          <Sequence key={i} from={i * dur} durationInFrames={i === itens.length - 1 ? props.duracaoFrames - i * dur : dur} layout="none">
+          <Sequence key={i} from={i * dur} durationInFrames={i === itens.length - 1 ? undefined : dur} layout="none">
             <AreaConteudo comPalco={comPalco}>
               {it.tipo === "fato" ? (
                 <CardFato fato={it.fato} episodio={props.episodio} />
@@ -125,26 +127,34 @@ export const CenaContexto: React.FC<P<"contexto">> = (props) => {
   const { t } = useFormato();
   const comPalco = temPalco(cena);
   const numero = cena.dados?.numero;
-  // com número: número ocupa a primeira metade, depois fatos/citações
-  const meio = numero ? Math.round(props.duracaoFrames * 0.45) : 0;
+  const temItens = (cena.fatos?.length ?? 0) + (cena.atribuicoes?.length ?? 0) > 0;
+  // com número: número ocupa a primeira metade, depois fatos/citações (sem itens, o número fica a cena toda)
+  const meio = numero ? (temItens ? Math.round(props.duracaoFrames * 0.45) : props.duracaoFrames) : 0;
+  const f = useCurrentFrame();
+  // vida do número: respiração lenta depois do pop
+  const resp = f > 20 ? 1 + 0.025 * Math.sin((f - 20) / 14) : 1;
   return (
     <Camera duracao={props.duracaoFrames}>
       <CenarioFundo id={cena.cenario} opcoes={cena.cenarioOpcoes} />
       {comPalco ? <Palco cena={cena} episodio={props.episodio} palavras={props.palavras} /> : null}
       {numero ? (
-        <Sequence durationInFrames={meio || 1} layout="none">
+        <Sequence durationInFrames={temItens ? meio || 1 : undefined} layout="none">
           <AreaConteudo comPalco={comPalco}>
             <div style={{ textAlign: "center" }}>
-              <TextoPop texto={numero} style={{ fontFamily: fontes.display, fontSize: t.numero, color: cores.acento, lineHeight: 1 }} />
+              <div style={{ transform: "scale(" + resp + ")" }}>
+                <TextoPop texto={numero} style={{ fontFamily: fontes.display, fontSize: t.numero, color: cores.acento, lineHeight: 1 }} />
+              </div>
               {cena.dados?.rotulo ? <TextoPop texto={cena.dados.rotulo} atraso={8} style={{ fontFamily: fontes.corpo, fontWeight: 800, fontSize: t.destaque, color: cores.texto, marginTop: 10 }} /> : null}
             </div>
           </AreaConteudo>
           {cena.fatos?.[0] ? <FonteLowerThird episodio={props.episodio} fonteIds={cena.fatos[0].fonteIds} /> : null}
         </Sequence>
       ) : null}
+      {temItens ? (
       <Sequence from={meio} layout="none">
         <SequenciaItens cena={cena} props={{ ...props, duracaoFrames: props.duracaoFrames - meio }} comPalco={comPalco} />
       </Sequence>
+      ) : null}
     </Camera>
   );
 };
@@ -214,7 +224,7 @@ export const CenaDebate: React.FC<P<"debate">> = (props) => {
           const pos = c.personagens?.find((p) => p.id === fala.quem)?.posicao ?? "centro";
           const desloc = (i * dur) / fps;
           return (
-            <Sequence key={i} from={i * dur} durationInFrames={i === falas.length - 1 ? props.duracaoFrames - i * dur : dur} layout="none">
+            <Sequence key={i} from={i * dur} durationInFrames={i === falas.length - 1 ? undefined : dur} layout="none">
               <Palco cena={turno} episodio={props.episodio} palavras={props.palavras.map((p) => ({ ...p, inicio: p.inicio - desloc, fim: p.fim - desloc }))} />
               <AreaConteudo comPalco>
                 <BalaoFala lado={pos}>
@@ -281,7 +291,7 @@ export const CenaPropostas: React.FC<P<"propostas">> = (props) => {
             const p = episodio.personagens.find((x) => x.id === l.personagemId);
             const cor = p ? corDoPersonagem(p.cor) : cores.textoSecundario;
             return (
-              <Card key={l.personagemId} borda={cor} style={{ flex: 1, padding: 24, minWidth: 0 }}>
+              <Card key={l.personagemId} chave={"prop-" + l.personagemId} borda={cor} style={{ flex: 1, padding: 24, minWidth: 0 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
                   {p ? <Personagem dados={p} acao="idle" altura={120} mostrarRotulo={false} /> : null}
                   <div style={{ fontFamily: fontes.display, fontSize: t.destaque, color: cores.texto, lineHeight: 1 }}>{p?.rotulo ?? l.personagemId}</div>
@@ -395,7 +405,7 @@ const SequenciaItensRodape: React.FC<{ cena: Cena; props: CenaProps }> = ({ cena
   return (
     <>
       {itens.map((it, i) => (
-        <Sequence key={i} from={i * dur} durationInFrames={dur} layout="none">
+        <Sequence key={i} from={i * dur} durationInFrames={i === itens.length - 1 ? undefined : dur} layout="none">
           <div style={{ position: "absolute", left: area.x, width: area.w, top: palcoY + 10 }}>
             <Card style={{ padding: "18px 26px" }}>
               <TextoPop texto={it.texto} passo={1} style={{ fontFamily: fontes.corpo, fontWeight: 700, fontSize: 40, color: cores.texto, lineHeight: 1.25 }} />

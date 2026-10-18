@@ -2,6 +2,7 @@ import React from "react";
 import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { cores, fontes, movimento } from "../theme";
 import dados from "./brasil.json";
+import { Ondas } from "../movimento/vida";
 
 /** Malha do IBGE projetada (scripts/gerar-mapas.ts). viewBox 1000×1000. */
 type UF = { sigla: string; nome: string; regiao: string; path: string; centro: number[]; caixa: number[] };
@@ -71,18 +72,36 @@ export const MapaBrasil: React.FC<MapaBrasilProps> = ({ modo = "estados", destaq
     <svg viewBox={vb.join(" ")} width={largura} height={largura} style={{ overflow: foco ? "hidden" : "visible", borderRadius: foco ? 40 : 0 }}>
       {ordem.map((u, i) => {
         const k = spring({ frame: f - i * 0.8, fps, config: movimento.entradaSuave });
-        const pulso = destaque[u.sigla] ? 1 + 0.03 * Math.sin(f / 6) : 1;
         const [cx, cy] = u.centro;
+        // vida: onda de brilho atravessando o mapa (oeste → leste) depois da entrada
+        const onda = f > 40 ? Math.max(0, Math.sin((f - 40) / 22 - cx / 140)) ** 4 : 0;
         return (
           <path
             key={u.sigla}
             d={u.path}
             fill={corUF(u)}
-            stroke={modo === "regioes" ? cores.fundo : cores.fundo}
+            stroke={cores.fundo}
             strokeWidth={(modo === "regioes" ? 1.2 : 2.2) * escalaTraco}
             strokeLinejoin="round"
             opacity={k}
-            transform={`translate(${cx} ${cy}) scale(${(0.85 + 0.15 * k) * pulso}) translate(${-cx} ${-cy})`}
+            style={{ filter: onda > 0.01 ? `brightness(${1 + 0.22 * onda})` : undefined }}
+            transform={`translate(${cx} ${cy}) scale(${0.85 + 0.15 * k}) translate(${-cx} ${-cy})`}
+          />
+        );
+      })}
+      {/* vida: halo pulsante nos estados em destaque (no lugar de escalar o estado) */}
+      {UFS.filter((u) => destaque[u.sigla] || (foco && u.sigla === foco.sigla)).map((u) => {
+        const p = f > 25 ? 0.5 - 0.5 * Math.cos(((f - 25) / 40) * 2 * Math.PI) : 0;
+        return (
+          <path
+            key={`halo-${u.sigla}`}
+            d={u.path}
+            fill="none"
+            stroke={destaque[u.sigla] ?? cores.acento}
+            strokeWidth={(3 + 7 * p) * escalaTraco}
+            strokeLinejoin="round"
+            opacity={0.25 + 0.5 * p}
+            style={{ filter: `blur(${2 * escalaTraco}px)` }}
           />
         );
       })}
@@ -128,6 +147,7 @@ export const MapaBrasil: React.FC<MapaBrasilProps> = ({ modo = "estados", destaq
             const brasilia = c.uf === "DF";
             return (
               <g key={c.uf} opacity={k}>
+                {foco || brasilia ? <Ondas cx={c.x} cy={c.y} raio={r * 1.6} cor={brasilia && !foco ? cores.acento : cores.texto} chave={"cap-" + c.uf} espessura={3 * escalaTraco} /> : null}
                 <circle cx={c.x} cy={c.y} r={r * (brasilia ? 1.6 : 1) * k} fill={brasilia ? cores.acento : cores.texto} stroke={cores.contorno} strokeWidth={2 * escalaTraco} />
                 <text
                   x={c.x + r * 1.6}

@@ -81,7 +81,7 @@ const MetadeLado: React.FC<{ lado: Lado; letra: string; episodio: Episodio; atra
   const cor = pers ? corDoPersonagem(pers.cor) : cores.textoSecundario;
   return (
     <div style={{ flex: 1, minWidth: 0, minHeight: 0, opacity: e, transform: vertical ? `translateX(${(1 - e) * (letra === "A" ? -90 : 90)}px)` : `translateY(${(1 - e) * 90}px)` }}>
-      <Card borda={cor} style={{ height: "100%", boxSizing: "border-box", display: "flex", gap: 24, padding: 32 }}>
+      <Card chave={"lado-" + letra} borda={cor} style={{ height: "100%", display: "flex", gap: 24, padding: 32 }}>
         {pers ? (
           <div style={{ flexShrink: 0 }}>
             <Personagem dados={pers} acao={"idle"} altura={vertical ? 260 : 220} mostrarRotulo={false} />
@@ -187,7 +187,7 @@ export const LinhaDoTempo: React.FC<{ cena: Extract<Cena, { tipo: "linhaDoTempo"
           return (
             <div key={i} style={{ position: "relative", opacity: k, transform: `translateX(${(1 - k) * 60}px)` }}>
               <div style={{ position: "absolute", left: -60, top: 16, width: 28, height: 28, borderRadius: 14, background: corFase[e.fase], border: `5px solid ${cores.fundo}` }} />
-              <Card style={{ padding: "20px 28px" }} borda={e.fase === "fato" ? cores.acento : cores.linha}>
+              <Card chave={"ev-" + i} style={{ padding: "20px 28px" }} borda={e.fase === "fato" ? cores.acento : cores.linha}>
                 <div style={{ display: "flex", gap: 14, alignItems: "baseline" }}>
                   <span style={{ fontFamily: fontes.display, fontSize: t.destaque, color: corFase[e.fase] }}>{e.data}</span>
                   <span style={{ fontFamily: fontes.corpo, fontWeight: 800, fontSize: t.legenda * 0.8, color: cores.textoSecundario, letterSpacing: 2, textTransform: "uppercase" }}>{nomeFase[e.fase]}</span>
