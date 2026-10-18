@@ -40,16 +40,23 @@ Mesmo rig para todos; muda só a roupa, a idade e o acessório (ver `biblioteca/
 - Escala vertical (px): número 180, manchete 96, título 64, destaque 44, corpo 32, legenda 24. Horizontal: 150/84/56/38/28/20.
 
 ## Movimento
-| Token | Config | Uso |
-|---|---|---|
-| `entrada` | spring damping 14, mass 0.8, stiffness 140 | entrada padrão de card/personagem |
-| `entradaSuave` | spring damping 20, mass 1, stiffness 90 | elementos grandes, cenários |
-| `pop` | spring damping 9, mass 0.6, stiffness 180 | números, selos, SFX "pop" |
-| `saida` | 8 frames, ease-in cúbico | saída de elementos |
-| `zoomLento` | escala 1 → 1.05 ao longo da cena | câmera viva em toda cena |
-| `enfase` | escala 1 → 1.08 → 1 | palavra/número chave |
+Tokens de spring em `theme.movimento` (entrada, entradaSuave, pop, saída). Por cima deles, três camadas sorteadas por semente
+(`src/movimento/`, determinístico: re-renderizar dá o mesmo vídeo). Ver o plano de um episódio: `npx tsx scripts/plano.ts <slug>`.
 
-Transições permitidas entre cenas: **corte, slide, wipe diagonal, zoom-punch**. Ritmo: alguma mudança visual a cada 60–90 frames (2–3 s).
+**Câmera (contínua, cena inteira):** zoomIn, zoomOut, panEsq, panDir, panCima, panBaixo, kenBurns, respirar, deriva. Nunca repete a câmera da cena anterior.
+
+**Transição (14 frames, com sobreposição):** corte, slideEsq, slideDir, slideCima, push, wipeDiagonal, iris, zoomPunch, dissolve, flash.
+A cena que sai faz a saída casada (push empurra as duas, dissolve cruza). Pesos favorecem as discretas; o sorteio evita repetir a mesma família (desliza, máscara, escala, fade).
+A primeira cena entra seca (o gancho tem impacto próprio). `cena.camera` e `cena.transicao` no JSON sobrescrevem o sorteio.
+
+**Vida (depois da entrada, nada parado):**
+- cards flutuam (fase e período por card) e recebem um reflexo diagonal periódico;
+- barra em destaque com reflexo; último ponto da linha com ondas; pictograma faz "ola"; rosca deriva;
+- mapa: onda de brilho atravessando os estados, halo pulsante nos destacados, ondas na capital em foco/Brasília;
+- número de contexto respira;
+- bonecos: respiração + microgestos sorteados no idle (olhar para os lados, ajeitar a gola, balançar, sorriso breve, mãos para trás) e três estilos de gesto ao falar, que variam de cena para cena.
+
+**Som:** whoosh nas transições, pop na entrada de fatos/citações, ding em números. Mixagem ~18 dB abaixo da voz. Origem em `assets/sfx/LICENSES.md`.
 
 ## Telas e layout
 - Grid de 12 colunas, margens laterais = safe zone.

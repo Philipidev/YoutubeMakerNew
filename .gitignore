@@ -4,3 +4,4 @@ public/episodes/
 .env
 *.log
 __pycache__/
+.cache-tts/
