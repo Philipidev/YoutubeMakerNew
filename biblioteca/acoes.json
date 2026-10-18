@@ -1,0 +1,11 @@
+[
+  { "id": "idle", "descricao": "Respiração leve, piscadas.", "quandoUsar": "Personagem presente sem ação no fato.", "quandoNaoUsar": "Quando o fato descreve uma ação dele.", "duracaoMinFrames": 30 },
+  { "id": "falar", "descricao": "Boca sincronizada com a narração, gestos discretos.", "quandoUsar": "A narração relata o que o personagem disse/anunciou.", "quandoNaoUsar": "Quando a fala é de outra pessoa.", "duracaoMinFrames": 30 },
+  { "id": "acenar", "descricao": "Aceno com a mão direita.", "quandoUsar": "Apresentação do personagem, chegada a evento.", "quandoNaoUsar": "Para sugerir simpatia ou vitória.", "duracaoMinFrames": 45 },
+  { "id": "sorrir", "descricao": "Sorriso neutro.", "quandoUsar": "Apresentação; mesmo uso para todos.", "quandoNaoUsar": "Para reagir a número bom/ruim.", "duracaoMinFrames": 30 },
+  { "id": "apontar", "descricao": "Aponta para card/gráfico ao lado.", "quandoUsar": "Personagem autor do documento/medida mostrado.", "quandoNaoUsar": "Acusação.", "duracaoMinFrames": 40 },
+  { "id": "pensativo", "descricao": "Mão no queixo.", "quandoUsar": "Posição ainda não declarada (fato verificável).", "quandoNaoUsar": "Para sugerir dúvida sobre o caráter.", "duracaoMinFrames": 45 },
+  { "id": "surpreso", "descricao": "Sobrancelhas e boca abertas.", "quandoUsar": "Raramente; só se o fato for reação pública registrada.", "quandoNaoUsar": "Como comentário editorial.", "duracaoMinFrames": 30 },
+  { "id": "bracosCruzados", "descricao": "Braços cruzados.", "quandoUsar": "Personagem declarou oposição/rejeição a algo.", "quandoNaoUsar": "Para sugerir teimosia.", "duracaoMinFrames": 40 },
+  { "id": "comemorar", "descricao": "Braços para cima.", "quandoUsar": "Comemoração pública registrada (ex.: resultado oficial).", "quandoNaoUsar": "Pesquisa, previsão.", "duracaoMinFrames": 45 }
+]

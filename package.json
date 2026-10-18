@@ -1,0 +1,37 @@
+{
+  "name": "canal-noticias-imparcial",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "episodio": "tsx src/pipeline/cli.ts episodio",
+    "previa": "tsx src/pipeline/cli.ts previa",
+    "aprovar": "tsx src/pipeline/cli.ts aprovar",
+    "validar": "tsx src/pipeline/cli.ts validar",
+    "still": "remotion still src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.532",
+    "@remotion/cli": "4.0.532",
+    "@remotion/fonts": "4.0.532",
+    "@remotion/google-fonts": "4.0.532",
+    "@remotion/media-utils": "4.0.532",
+    "@remotion/renderer": "4.0.532",
+    "@remotion/zod-types": "4.0.532",
+    "dotenv": "16.4.7",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "remotion": "4.0.532",
+    "zod": "4.5.4"
+  },
+  "devDependencies": {
+    "@types/node": "22.10.2",
+    "@types/react": "19.2.18",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3",
+    "vitest": "4.1.11"
+  }
+}

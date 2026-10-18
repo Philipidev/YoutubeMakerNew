@@ -1,0 +1,24 @@
+{
+  "slug": "exemplo",
+  "titulo": "Episódio de exemplo (dados fictícios)",
+  "dataPublicacao": "2026-10-17",
+  "resumo": "Episódio de teste do pipeline. Os dados são fictícios e servem só para validar render, legenda e descrição.",
+  "ordemLados": "AB",
+  "fontes": [
+    { "id": "f-exemplo", "veiculo": "Fonte Exemplo", "titulo": "Documento fictício de teste", "url": "https://example.com/doc", "data": "2026-10-17", "tipo": "primaria" }
+  ],
+  "personagens": [
+    { "id": "a", "rotulo": "Candidato A", "numero": "00", "cor": "ciano" },
+    { "id": "b", "rotulo": "Candidata B", "numero": "99", "cor": "magenta" }
+  ],
+  "cenas": [
+    { "id": "gancho", "tipo": "gancho", "narracao": "Uma decisão foi publicada hoje. O que muda?", "dados": { "manchete": "O que muda?" } },
+    {
+      "id": "fato-1", "tipo": "fato",
+      "narracao": "Segundo o documento oficial, a regra vale a partir de primeiro de novembro, para todo o país.",
+      "fatos": [{ "texto": "Regra vale a partir de 01/11", "fonteIds": ["f-exemplo"] }],
+      "personagens": [{ "id": "a", "acao": "falar", "posicao": "esq", "fala": true }, { "id": "b", "acao": "idle", "posicao": "dir" }]
+    },
+    { "id": "fim", "tipo": "encerramento", "narracao": "As fontes estão na descrição." }
+  ]
+}
