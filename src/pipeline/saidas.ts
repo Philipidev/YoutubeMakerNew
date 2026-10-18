@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { AVISO_IA } from "../theme";
+import { trilhaPorId } from "../video/trilhas";
 import type { Episodio } from "../schema/episodio";
 import type { Timestamps } from "../schema/timestamps";
 import { ChecagemSchema, type Checagem } from "../schema/checagem";
@@ -15,7 +16,9 @@ const fmtData = (iso: string) => {
 
 export const gerarDescricao = (ep: Episodio) => {
   const fontes = ep.fontes.map((f) => `• ${f.veiculo} — ${f.titulo} (${fmtData(f.data)})\n  ${f.url}`).join("\n");
-  return `${ep.titulo}\n\n${ep.resumo.trim()}\n\nFontes:\n${fontes}\n\n${AVISO_IA}\n`;
+  const t = trilhaPorId(ep.trilha);
+  const musica = t ? `\n\nMúsica: ${t.titulo} — ${t.artista}${t.atribuicao ? ". " + t.atribuicao : " (Biblioteca de Áudio do YouTube)"}` : "";
+  return `${ep.titulo}\n\n${ep.resumo.trim()}\n\nFontes:\n${fontes}${musica}\n\n${AVISO_IA}\n`;
 };
 
 const esc = (s: string) => s.replace(/\|/g, "\|").replace(/\n/g, " ");

@@ -12,6 +12,8 @@ export const EpisodioPropsSchema = z.object({
   semAudio: z.boolean(),
   /** Overlay de revisão com as zonas proibidas (UI das plataformas, legenda). */
   zonas: z.boolean().optional(),
+  /** Sobrescreve a trilha do episódio (comparativo de músicas). "nenhuma" desliga. */
+  trilha: z.string().optional(),
 });
 export type EpisodioPropsBase = z.infer<typeof EpisodioPropsSchema>;
 

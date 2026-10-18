@@ -257,6 +257,8 @@ export const EpisodioSchema = z.object({
    * Evita o espectador perder quem é quem. Ex.: { "flavio": "esq", "lula": "dir" }.
    */
   posicoesFixas: z.record(z.string(), z.enum(["esq", "dir"])).optional(),
+  /** Trilha de fundo (id em src/video/trilhas.ts). */
+  trilha: z.string().optional(),
   fontes: z.array(FonteSchema).min(1),
   personagens: z.array(PersonagemSchema),
   cenas: z.array(CenaSchema).min(1),

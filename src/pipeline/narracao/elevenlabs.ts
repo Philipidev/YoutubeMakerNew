@@ -33,6 +33,20 @@ export type Alinhamento = { characters: string[]; character_start_times_seconds:
 type Resposta = { audio_base64: string; alignment: Alinhamento | null; normalized_alignment?: Alinhamento | null };
 type EmCache = Resposta & { requestId: string | null; criadoEm: number };
 
+/** fetch com nova tentativa em falha de rede, 429 e 5xx (espera crescente). Erros 4xx de uso não são repetidos. */
+const comRetry = async (url: string, init?: RequestInit, tentativas = 4): Promise<Response> => {
+  for (let i = 1; ; i++) {
+    try {
+      const r = await fetch(url, init);
+      if ((r.status === 429 || r.status >= 500) && i < tentativas) throw new Error(`HTTP ${r.status}`);
+      return r;
+    } catch (e) {
+      if (i >= tentativas) throw e;
+      await new Promise((ok) => setTimeout(ok, 1500 * i));
+    }
+  }
+};
+
 export const configElevenLabs = () => {
   const chave = process.env.ELEVENLABS_API_KEY;
   const voz = process.env.ELEVENLABS_VOICE_ID;
@@ -57,7 +71,7 @@ const erroLegivel = async (r: Response) => {
 /** Saldo de caracteres da conta (null se a chave não tiver permissão de leitura do usuário). */
 export const saldoElevenLabs = async (): Promise<{ plano: string; usados: number; limite: number; restantes: number } | null> => {
   const { chave } = configElevenLabs();
-  const r = await fetch(`${API}/user/subscription`, { headers: { "xi-api-key": chave } });
+  const r = await comRetry(`${API}/user/subscription`, { headers: { "xi-api-key": chave } });
   if (r.status === 401) return null;
   if (!r.ok) throw new Error(await erroLegivel(r));
   const j = (await r.json()) as { tier: string; character_count: number; character_limit: number };
@@ -85,7 +99,7 @@ export const sintetizarTrecho = async (opts: {
     if (opts.previousText) corpo.previous_text = opts.previousText;
     if (opts.nextText) corpo.next_text = opts.nextText;
   }
-  const r = await fetch(`${API}/text-to-speech/${c.voz}/with-timestamps?output_format=${FORMATO}`, {
+  const r = await comRetry(`${API}/text-to-speech/${c.voz}/with-timestamps?output_format=${FORMATO}`, {
     method: "POST",
     headers: { "xi-api-key": c.chave, "Content-Type": "application/json" },
     body: JSON.stringify(corpo),

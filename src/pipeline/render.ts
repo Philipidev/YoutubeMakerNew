@@ -13,7 +13,7 @@ export const obterBundle = async () => {
   return bundleCache;
 };
 
-export const renderizar = async (opts: { composicao: string; props: EpisodioPropsBase; saida: string; semAudio?: boolean; crf?: number }) => {
+export const renderizar = async (opts: { composicao: string; props: EpisodioPropsBase; saida: string; semAudio?: boolean; crf?: number; frameRange?: [number, number] }) => {
   const serveUrl = await obterBundle();
   const comp = await selectComposition({ serveUrl, id: opts.composicao, inputProps: opts.props });
   let ultimo = -1;
@@ -24,6 +24,7 @@ export const renderizar = async (opts: { composicao: string; props: EpisodioProp
     outputLocation: opts.saida,
     inputProps: opts.props,
     muted: opts.semAudio,
+    frameRange: opts.frameRange,
     crf: opts.crf ?? 18,
     onProgress: ({ progress }) => {
       const p = Math.floor(progress * 10);
