@@ -75,7 +75,7 @@ const previa = async (slug: string, flags: Flags) => {
   if (!flags.semRender) {
     for (const comp of composicoes(flags)) {
       const nome = comp === "Vertical" ? "previa.mp4" : "previa-horizontal.mp4";
-      await renderizar({ composicao: comp, props: { slug, legendaQueimada: true, semAudio: true }, saida: path.join(c.previaDir, nome), semAudio: true });
+      await renderizar({ composicao: comp, props: { slug, legendaQueimada: true, semAudio: true }, saida: path.join(c.previaDir, nome), semAudio: true, crf: 28 });
     }
   }
   await gerarSaidasTexto({ slug, episodio, timestamps, problemas, dir: c.previaDir, previa: true });
