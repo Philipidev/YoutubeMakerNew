@@ -9,6 +9,10 @@
     "previa": "tsx src/pipeline/cli.ts previa",
     "aprovar": "tsx src/pipeline/cli.ts aprovar",
     "validar": "tsx src/pipeline/cli.ts validar",
+    "saldo": "tsx src/pipeline/cli.ts saldo",
+    "teste-voz": "tsx src/pipeline/cli.ts teste-voz",
+    "trechos": "tsx scripts/trechos.ts",
+    "configurar-elevenlabs": "powershell -ExecutionPolicy Bypass -File scripts/configurar-elevenlabs.ps1",
     "still": "remotion still src/index.ts",
     "typecheck": "tsc --noEmit",
     "test": "vitest run"

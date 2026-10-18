@@ -10,7 +10,7 @@ export const silencio = (seg: number) => Buffer.alloc(Math.round(seg * TAXA) * 2
 
 export const duracaoPcm = (pcm: Buffer) => pcm.length / 2 / TAXA;
 
-export const escreverWav = async (caminho: string, pcm: Buffer) => {
+export const escreverWav = async (caminho: string, pcm: Buffer, taxa = TAXA) => {
   const h = Buffer.alloc(44);
   h.write("RIFF", 0);
   h.writeUInt32LE(36 + pcm.length, 4);
@@ -19,8 +19,8 @@ export const escreverWav = async (caminho: string, pcm: Buffer) => {
   h.writeUInt32LE(16, 16);
   h.writeUInt16LE(1, 20); // PCM
   h.writeUInt16LE(1, 22); // mono
-  h.writeUInt32LE(TAXA, 24);
-  h.writeUInt32LE(TAXA * 2, 28);
+  h.writeUInt32LE(taxa, 24);
+  h.writeUInt32LE(taxa * 2, 28);
   h.writeUInt16LE(2, 32);
   h.writeUInt16LE(16, 34);
   h.write("data", 36);
@@ -41,7 +41,7 @@ export const lerPcm = async (caminho: string): Promise<Buffer> => {
   throw new Error(`WAV sem chunk data: ${caminho}`);
 };
 
-/** Converte qualquer áudio para WAV PCM 16-bit mono 44.1 kHz via ffmpeg (normaliza volume de fala). */
+/** Converte qualquer áudio para WAV PCM 16-bit mono 44.1 kHz via ffmpeg, com loudness de YouTube (−14 LUFS, pico −1 dBTP). */
 export const normalizarParaWav = async (entrada: string, saida: string) => {
-  await exec("ffmpeg", ["-loglevel", "error", "-y", "-i", entrada, "-ac", "1", "-ar", String(TAXA), "-sample_fmt", "s16", "-af", "loudnorm=I=-16:TP=-1.5:LRA=11", saida]);
+  await exec("ffmpeg", ["-loglevel", "error", "-y", "-i", entrada, "-ac", "1", "-ar", String(TAXA), "-sample_fmt", "s16", "-af", "loudnorm=I=-14:TP=-1:LRA=11", saida]);
 };

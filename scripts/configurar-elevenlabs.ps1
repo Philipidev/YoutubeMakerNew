@@ -20,7 +20,7 @@ $raiz = Split-Path -Parent $PSScriptRoot
 $arquivoEnv = Join-Path $raiz '.env'
 
 $VOZ_PADRAO = 'Qrdut83w0Cr152Yb4Xn3'      # voz escolhida no painel (Paulo)
-$MODELO_PADRAO = 'eleven_multilingual_v2'  # ajustado pela pesquisa de boas práticas (ver docs/narracao.md)
+$MODELO_PADRAO = 'eleven_v4'               # recomendado pela doc oficial para narração (ver docs/narracao.md); plano B: eleven_multilingual_v2
 
 Write-Host ''
 Write-Host '== Configuração da ElevenLabs ==' -ForegroundColor Yellow
@@ -59,15 +59,37 @@ try {
   } else { throw "Falha ao validar a chave (HTTP $codigo): $($_.Exception.Message)" }
 }
 
-# 4) confere a voz
-Write-Host 'Conferindo a voz...'
-try {
-  $v = Invoke-RestMethod -Uri "https://api.elevenlabs.io/v1/voices/$voz" -Headers $headers -Method Get
-  Write-Host ("  OK. Voz: {0} ({1})" -f $v.name, $v.category) -ForegroundColor Green
-} catch {
-  $codigo = $_.Exception.Response.StatusCode.value__
-  Write-Host "  Não consegui ler a voz (HTTP $codigo). Ela pode não estar na sua conta: abra a voz na Voice Library e clique em 'Add to my voices'." -ForegroundColor DarkYellow
+# 4) testa a voz de verdade (gera 13 caracteres: "Teste de voz.")
+#    No plano free, vozes da Voice Library NÃO funcionam pela API (doc oficial): dá erro 402.
+function Testar-Voz([string]$id) {
+  $corpo = @{ text = 'Teste de voz.'; model_id = $modelo } | ConvertTo-Json
+  try {
+    $null = Invoke-WebRequest -Uri "https://api.elevenlabs.io/v1/text-to-speech/$id" -Headers $headers -Method Post -ContentType 'application/json' -Body ([Text.Encoding]::UTF8.GetBytes($corpo)) -UseBasicParsing
+    return 0
+  } catch { return [int]$_.Exception.Response.StatusCode.value__ }
 }
+
+Write-Host 'Testando a voz (gasta ~13 caracteres)...'
+$status = Testar-Voz $voz
+while ($status -ne 0) {
+  if ($status -eq 402) {
+    Write-Host '  Esta voz exige plano pago pela API (no free, vozes da Voice Library não funcionam).' -ForegroundColor DarkYellow
+  } else {
+    Write-Host "  A voz falhou (HTTP $status). Confira o ID e o modelo." -ForegroundColor DarkYellow
+  }
+  try {
+    $lista = (Invoke-RestMethod -Uri 'https://api.elevenlabs.io/v1/voices' -Headers $headers -Method Get).voices |
+      Where-Object { $_.category -in @('premade', 'generated', 'cloned') } |
+      Select-Object name, voice_id, category, @{ n = 'sotaque'; e = { $_.labels.accent } }
+    Write-Host 'Vozes da sua conta (premade = padrão da ElevenLabs; generated = criada por você no Voice Design):'
+    $lista | Format-Table -AutoSize | Out-String | Write-Host
+  } catch { Write-Host '  (não consegui listar as vozes)' }
+  $outra = Read-Host 'Cole outro Voice ID (ou Enter para manter a atual e salvar mesmo assim)'
+  if ([string]::IsNullOrWhiteSpace($outra)) { break }
+  $voz = $outra.Trim()
+  $status = Testar-Voz $voz
+}
+if ($status -eq 0) { Write-Host "  OK. A voz $voz funciona com o modelo $modelo." -ForegroundColor Green }
 
 # 5) salva no .env (substitui as linhas existentes, mantém o resto)
 $linhas = @()

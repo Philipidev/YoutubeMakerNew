@@ -114,9 +114,42 @@ const episodioCompleto = async (slug: string, flags: Flags) => {
   console.log(`✔ episódio em ${c.outDir}`);
 };
 
+/** Saldo de caracteres da conta ElevenLabs. */
+const saldo = async () => {
+  const { saldoElevenLabs, configElevenLabs } = await import("./narracao/elevenlabs");
+  const c = configElevenLabs();
+  const sd = await saldoElevenLabs();
+  console.log(`▸ ElevenLabs · voz ${c.voz} · modelo ${c.modelo}`);
+  console.log(sd ? `  plano ${sd.plano}: ${sd.usados} de ${sd.limite} caracteres usados; restam ${sd.restantes}` : "  chave sem permissão de leitura do saldo");
+};
+
+/** Gera uma frase curta (~150 caracteres) para ouvir a voz e confirmar que ela funciona no plano, sem gastar o episódio. */
+const testeVoz = async (texto?: string) => {
+  const { sintetizarTrecho, configElevenLabs } = await import("./narracao/elevenlabs");
+  const { prepararFala } = await import("./narracao/normalizar");
+  const { tokenizar } = await import("./narracao/estimativa");
+  const { escreverWav, normalizarParaWav } = await import("./narracao/audio");
+  const c = configElevenLabs();
+  const original = texto ?? "Neste domingo, 18/10, às 20h, Flávio e Lula se enfrentam no debate. No 1º turno, Flávio teve 47,03% dos votos válidos, segundo o TSE.";
+  const { texto: falado } = prepararFala(tokenizar(original));
+  console.log(`▸ teste de voz (${c.modelo}, voz ${c.voz}), ${falado.length} caracteres`);
+  console.log(`  texto falado: ${falado}`);
+  const { res } = await sintetizarTrecho({ texto: falado });
+  const dir = path.join(process.cwd(), "out");
+  await fs.mkdir(dir, { recursive: true });
+  const bruto = path.join(dir, "teste-voz-24k.wav");
+  await escreverWav(bruto, Buffer.from(res.audio_base64, "base64"), 24000);
+  const final = path.join(dir, "teste-voz.wav");
+  await normalizarParaWav(bruto, final);
+  await fs.rm(bruto, { force: true });
+  console.log(`✔ ouça: ${final}`);
+};
+
 const main = async () => {
   const { comando, slug, flags } = parseArgs(process.argv.slice(2));
-  if (!slug) throw new Error("uso: <validar|previa|aprovar|episodio> <slug> [--narracao=elevenlabs|gravada|mock] [--formato=vertical|horizontal|ambos] [--legendaQueimada] [--forcar] [--semRender] [--zonas]");
+  if (comando === "saldo") return saldo();
+  if (comando === "teste-voz") return testeVoz(slug);
+  if (!slug) throw new Error("uso: <validar|previa|aprovar|episodio> <slug> | saldo | teste-voz [texto] [--narracao=elevenlabs|gravada|mock] [--formato=vertical|horizontal|ambos] [--legendaQueimada] [--forcar] [--semRender] [--zonas]");
   if (comando === "validar") await etapaValidar(slug);
   else if (comando === "previa") await previa(slug, flags);
   else if (comando === "aprovar") await aprovar(slug);
