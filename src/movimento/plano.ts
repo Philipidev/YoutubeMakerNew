@@ -13,7 +13,13 @@ export type PlanoCena = {
   saida: Transicao | null;
   /** semente estável para variações internas (gestos, brilhos, atrasos) */
   semente: string;
+  /** onde ficam os cards em relação ao cenário/personagem (16:9); nunca repete a da cena anterior */
+  composicao: Composicao;
 };
+
+/** Composição da cena no 16:9: cards à esquerda (cenário à direita), à direita, ou no topo (cenário menor embaixo). */
+export const COMPOSICOES = ["esq", "dir", "topo"] as const;
+export type Composicao = (typeof COMPOSICOES)[number];
 
 const sortearPeso = (semente: string, evitar?: Transicao): Transicao => {
   const opcoes = TRANSICOES.filter((t) => !evitar || FAMILIA_TRANSICAO[t] !== FAMILIA_TRANSICAO[evitar]);
@@ -35,13 +41,19 @@ export const planejarMovimento = (ep: Episodio): PlanoCena[] => {
   const plano: PlanoCena[] = [];
   let camAnt: Camera | undefined;
   let trAnt: Transicao | undefined;
+  let compAnt: Composicao | undefined;
   ep.cenas.forEach((c, i) => {
     const semente = `${ep.slug}:${c.id}`;
     const camera = (c.camera as Camera | undefined) ?? escolher(CAMERAS, `${semente}:camera`, camAnt);
     // primeira cena entra seca: o gancho já tem o próprio impacto
     const entrada: Transicao = i === 0 ? "corte" : ((c.transicao as Transicao | undefined) ?? sortearPeso(`${semente}:transicao`, trAnt));
-    plano.push({ cenaId: c.id, camera, entrada, saida: null, semente });
+    // com 1 personagem não existe "topo" (o boneco ocupa a altura): sorteia só entre os lados
+    const um = (c.personagens?.length ?? 0) === 1;
+    const opcoesComp = um ? (["esq", "dir"] as const) : COMPOSICOES;
+    const composicao = escolher(opcoesComp, `${semente}:composicao`, compAnt);
+    plano.push({ cenaId: c.id, camera, entrada, saida: null, semente, composicao });
     camAnt = camera;
+    compAnt = composicao;
     trAnt = entrada;
   });
   for (let i = 0; i < plano.length - 1; i++) plano[i].saida = plano[i + 1].entrada;
@@ -49,4 +61,4 @@ export const planejarMovimento = (ep: Episodio): PlanoCena[] => {
 };
 
 /** Contexto da cena em renderização (câmera sorteada, semente). */
-export const MovimentoCena = React.createContext<{ camera: Camera; semente: string }>({ camera: "zoomIn", semente: "studio" });
+export const MovimentoCena = React.createContext<{ camera: Camera; semente: string; composicao: Composicao }>({ camera: "zoomIn", semente: "studio", composicao: "esq" });

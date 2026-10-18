@@ -210,10 +210,12 @@ export const CenaLinhaDoTempo: React.FC<P<"linhaDoTempo">> = (props) => {
 
 export const CenaLadoALadoB: React.FC<P<"ladoA_ladoB">> = (props) => {
   const { cena } = props;
-  const { area, conteudoTopo, alturaConteudo } = useFormato();
+  const { area, formato, conteudoTopo, alturaConteudo } = useFormato();
+  // 16:9: as metades são largas e baixas; ampliar o conteúdo evita texto pequeno com espaço sobrando
+  const z = formato === "horizontal" ? 1.3 : 1;
   return (
     <Camera duracao={props.duracaoFrames}>
-      <div style={{ position: "absolute", left: area.x, width: area.w, top: conteudoTopo, height: alturaConteudo }}>
+      <div style={{ position: "absolute", left: area.x / z, width: area.w / z, top: conteudoTopo / z, height: alturaConteudo / z, zoom: z }}>
         <CardLadoALadoB cena={cena} episodio={props.episodio} duracao={props.duracaoFrames} />
       </div>
     </Camera>
@@ -225,6 +227,7 @@ export const CenaPesquisa: React.FC<P<"pesquisa">> = (props) => (
     <AreaConteudo comPalco={false}>
       <GraficoPesquisa cena={props.cena} episodio={props.episodio} />
     </AreaConteudo>
+    {props.cena.dados.fonteId ? <FonteLowerThird episodio={props.episodio} fonteIds={[props.cena.dados.fonteId]} /> : null}
   </Camera>
 );
 
@@ -273,7 +276,7 @@ export const CenaDebate: React.FC<P<"debate">> = (props) => {
       <CenarioFundo id={c.cenario} opcoes={cena.cenarioOpcoes} />
       <Palco cena={c} episodio={props.episodio} palavras={props.palavras} ausentes={cena.dados?.ausentes} />
       {cena.dados?.titulo ? (
-        <AreaConteudo comPalco>
+        <AreaConteudo comPalco={(c.personagens?.length ?? 0) + (cena.dados.ausentes?.length ?? 0) || true}>
           <TextoPop texto={cena.dados.titulo} style={{ fontFamily: fontes.display, fontSize: 84, color: cores.texto, textAlign: "center", lineHeight: 1.05 }} />
         </AreaConteudo>
       ) : (
@@ -430,16 +433,14 @@ export const CenaVotacao: React.FC<P<"votacao">> = (props) => {
 
 /** Coluna no topo da área de conteúdo (abaixo do selo de fonte), largura de conteúdo centralizada. */
 const ColunaTopo: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const { width, formato, area, conteudoTopo, alturaConteudo, larguraConteudo } = useFormato();
-  // 16:9: o cenário ocupa o centro; os cards vão para uma coluna lateral, centralizada na altura
-  if (formato === "horizontal") {
-    return (
-      <div style={{ position: "absolute", left: area.x, width: width * 0.3, top: conteudoTopo, height: alturaConteudo, display: "flex", flexDirection: "column", justifyContent: "center", gap: 18 }}>
-        {children}
-      </div>
-    );
-  }
-  return <div style={{ position: "absolute", left: (width - larguraConteudo) / 2, width: larguraConteudo, top: conteudoTopo, display: "flex", flexDirection: "column", gap: 18 }}>{children}</div>;
+  const { colunaCards } = useFormato();
+  // posição sorteada por cena (esq/dir/topo no 16:9): o cenário se desloca para o lado oposto
+  const r = colunaCards();
+  return (
+    <div style={{ position: "absolute", left: r.x, width: r.w, top: r.y, height: r.centralizar ? r.h : undefined, display: "flex", flexDirection: "column", justifyContent: r.centralizar ? "center" : "flex-start", gap: 18 }}>
+      {children}
+    </div>
+  );
 };
 
 /** Itens para cenas com cenário grande: card compacto no topo (ou na coluna, com `emColuna`) + selo de fonte. */
@@ -479,3 +480,83 @@ export const CenaEncerramento: React.FC<P<"encerramento">> = (props) => (
     </AreaConteudo>
   </Camera>
 );
+
+/** Checklist ("o que observar"): itens marcados em sequência; o estilo do "check" sai de um pool de 3. */
+export const CenaChecklist: React.FC<P<"checklist">> = (props) => {
+  const { cena } = props;
+  const f = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const { t } = useFormato();
+  const itens = cena.dados.itens;
+  const passo = Math.max(14, Math.floor((props.duracaoFrames * 0.75) / itens.length));
+  const estiloCheck = useVariante("checklist", ["traco", "preencher", "carimbo"] as const);
+  return (
+    <Camera duracao={props.duracaoFrames}>
+      <AreaConteudo comPalco={false}>
+        <Card chave="checklist">
+          <div style={{ fontFamily: fontes.display, fontSize: t.titulo * 0.85, color: cores.texto, lineHeight: 1.05 }}>{cena.dados.titulo}</div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 22, marginTop: 26 }}>
+            {itens.map((it, i) => {
+              const ini = 10 + i * passo;
+              const k = spring({ frame: f - ini, fps, config: movimento.entrada });
+              const marca = spring({ frame: f - ini - 12, fps, config: movimento.pop });
+              const L = 44;
+              return (
+                <div key={i} style={{ display: "flex", alignItems: "center", gap: 18, opacity: k, transform: "translateX(" + (1 - k) * 40 + "px)" }}>
+                  <svg width={L} height={L} viewBox="0 0 44 44" style={{ flexShrink: 0, transform: estiloCheck === "carimbo" ? "scale(" + (1.6 - 0.6 * marca) + ") rotate(" + (1 - marca) * -20 + "deg)" : undefined }}>
+                    <rect x={3} y={3} width={38} height={38} rx={10} fill={estiloCheck === "preencher" ? "rgba(255,194,61," + marca + ")" : "none"} stroke={cores.acento} strokeWidth={4} />
+                    <path
+                      d="M 12 23 L 19 30 L 33 14"
+                      fill="none"
+                      stroke={estiloCheck === "preencher" ? cores.contorno : cores.acento}
+                      strokeWidth={5}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeDasharray={36}
+                      strokeDashoffset={estiloCheck === "traco" ? 36 * (1 - marca) : 0}
+                      opacity={estiloCheck === "traco" ? 1 : marca}
+                    />
+                  </svg>
+                  <span style={{ fontFamily: fontes.corpo, fontWeight: 700, fontSize: t.corpo, color: cores.texto, lineHeight: 1.25 }}>{it}</span>
+                </div>
+              );
+            })}
+          </div>
+        </Card>
+      </AreaConteudo>
+    </Camera>
+  );
+};
+
+/** Serviço: data, horário, canais. Linhas entram em sequência; cada linha pode ter fonte própria. */
+export const CenaServico: React.FC<P<"servico">> = (props) => {
+  const { cena, episodio } = props;
+  const f = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const { t } = useFormato();
+  const linhas = cena.dados.linhas;
+  const passo = Math.max(8, Math.floor((props.duracaoFrames * 0.6) / linhas.length));
+  const ids = [...new Set(linhas.flatMap((l) => (l.fonteId ? [l.fonteId] : [])))];
+  return (
+    <Camera duracao={props.duracaoFrames}>
+      <AreaConteudo comPalco={false}>
+        <Card chave="servico">
+          <Rotulo>Serviço</Rotulo>
+          <div style={{ fontFamily: fontes.display, fontSize: t.titulo * 0.85, color: cores.texto, lineHeight: 1.05, marginTop: 8 }}>{cena.dados.titulo}</div>
+          <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", columnGap: 26, rowGap: 16, marginTop: 24 }}>
+            {linhas.map((l, i) => {
+              const k = spring({ frame: f - 8 - i * passo, fps, config: movimento.entrada });
+              return (
+                <React.Fragment key={i}>
+                  <div style={{ opacity: k, fontFamily: fontes.corpo, fontWeight: 800, fontSize: t.legenda, color: cores.acento, textTransform: "uppercase", letterSpacing: 2, paddingTop: 6 }}>{l.rotulo}</div>
+                  <div style={{ opacity: k, transform: "translateY(" + (1 - k) * 16 + "px)", fontFamily: fontes.corpo, fontWeight: 600, fontSize: t.corpo, color: cores.texto, lineHeight: 1.3 }}>{l.valor}</div>
+                </React.Fragment>
+              );
+            })}
+          </div>
+        </Card>
+      </AreaConteudo>
+      {ids.length ? <FonteLowerThird episodio={episodio} fonteIds={ids.slice(0, 2)} /> : null}
+    </Camera>
+  );
+};

@@ -13,7 +13,9 @@ import { Brilho, Ondas, useOnda, usePulso, useVariante } from "../movimento/vida
  * - cores neutras; destaque só no item citado na narração.
  */
 
-const fmt = (v: number, casas = 1) => v.toLocaleString("pt-BR", { maximumFractionDigits: casas });
+const casasDe = (v: number) => (Number.isInteger(v) ? 0 : Math.min(2, String(v).split(".")[1]?.length ?? 0));
+/** Formata no padrão pt-BR com as casas do valor de referência (nunca arredonda 47,03 para 47). */
+const fmt = (v: number, ref: number = v) => v.toLocaleString("pt-BR", { minimumFractionDigits: casasDe(ref), maximumFractionDigits: casasDe(ref) });
 
 const useProg = (atraso = 8, dur = 40) => {
   const f = useCurrentFrame();
@@ -62,7 +64,7 @@ export const GraficoBarras: React.FC<{ titulo: string; fonte: string; nota?: str
               <div style={{ display: "flex", justifyContent: "space-between", fontFamily: fontes.corpo, fontWeight: 700, fontSize: t.corpo * 0.85, color: cores.texto }}>
                 <span>{p.rotulo}</span>
                 <span style={{ fontFamily: fontes.display, color: p.destaque ? cores.acento : cores.texto, display: "inline-block", transform: p.destaque && vida === "pulsoValor" ? `scale(${1 + 0.12 * pulso})` : undefined }}>
-                  {fmt(p.valor * k)}
+                  {fmt(p.valor * k, p.valor)}
                   {unidade}
                 </span>
               </div>

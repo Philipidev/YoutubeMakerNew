@@ -13,11 +13,12 @@ import type { CenarioOpcoes } from "../schema/episodio";
 
 /** Mapa ocupando a área útil acima do rodapé. */
 const CenarioMapa: React.FC<{ modo: ModoMapa; opcoes: CenarioOpcoes }> = ({ modo, opcoes }) => {
-  const { width, height, formato, area, palcoY, conteudoTopo } = useFormato();
-  // vertical: faixa de cima livre para o card; 16:9: card na coluna esquerda, mapa à direita
-  const topo = formato === "horizontal" ? conteudoTopo : area.y + height * 0.13;
+  const { width, height, formato, composicao, area, palcoY, conteudoTopo } = useFormato();
+  // vertical/topo: faixa de cima livre para o card; 16:9 esq/dir: mapa do lado oposto à coluna de cards
+  const lateral = formato === "horizontal" && composicao !== "topo";
+  const topo = lateral ? conteudoTopo : conteudoTopo + height * (formato === "vertical" ? 0.06 : 0.17);
   const lado = Math.min(area.w, palcoY - topo);
-  const centroX = formato === "horizontal" ? width * 0.64 : width / 2;
+  const centroX = lateral ? width * (composicao === "dir" ? 0.36 : 0.64) : width / 2;
   const destaque = Object.fromEntries((opcoes.ufs ?? []).map((uf) => [uf, cores.acento]));
   return (
     <AbsoluteFill>
@@ -29,13 +30,15 @@ const CenarioMapa: React.FC<{ modo: ModoMapa; opcoes: CenarioOpcoes }> = ({ modo
 };
 
 /** Cenários que ocupam o centro: no 16:9 vão para a direita, liberando a coluna de cards à esquerda. */
-const CENTRAIS: CenarioId[] = ["urna", "plenarioCamara", "plenarioSenado", "martelo", "congresso", "banco", "cpi", "policia", "tribunal"];
+const CENTRAIS: CenarioId[] = ["planalto", "urna", "plenarioCamara", "plenarioSenado", "martelo", "congresso", "banco", "cpi", "policia", "tribunal"];
 
 export const CenarioFundo: React.FC<{ id?: CenarioId; opcoes?: CenarioOpcoes; placar?: { sim: number; nao: number; abst: number }; comPersonagens?: boolean }> = (props) => {
-  const { formato, width } = useFormato();
+  const { formato, ajusteCenario, escalaCenarioTopo, palcoY } = useFormato();
   const desloca = formato === "horizontal" && props.id && CENTRAIS.includes(props.id) && !props.comPersonagens;
-  return desloca ? (
-    <AbsoluteFill style={{ transform: `translateX(${width * 0.14}px)` }}>
+  // composição da cena: cards à esquerda → cenário à direita; à direita → cenário à esquerda; no topo → cenário menor
+  const transform = escalaCenarioTopo !== 1 ? `scale(${escalaCenarioTopo})` : ajusteCenario();
+  return desloca && transform ? (
+    <AbsoluteFill style={{ transform, transformOrigin: `50% ${palcoY}px` }}>
       <CenarioFundoBase {...props} />
     </AbsoluteFill>
   ) : (

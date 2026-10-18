@@ -27,7 +27,7 @@ const CenaComTransicao: React.FC<{ plano: PlanoCena; duracao: number; inicioAbs:
     <AbsoluteFill style={estiloEntrada(plano.entrada, pEntrada)}>
       <AbsoluteFill style={plano.saida ? estiloSaida(plano.saida, pSaida) : undefined}>
         <Fundo deslocamento={inicioAbs} />
-        <MovimentoCena.Provider value={{ camera: plano.camera, semente: plano.semente }}>{children}</MovimentoCena.Provider>
+        <MovimentoCena.Provider value={{ camera: plano.camera, semente: plano.semente, composicao: plano.composicao }}>{children}</MovimentoCena.Provider>
       </AbsoluteFill>
       {flash > 0 ? <AbsoluteFill style={{ background: "#FFFFFF", opacity: flash }} /> : null}
     </AbsoluteFill>

@@ -9,6 +9,8 @@ import { NaCamadaFixa } from "../movimento/camadaFixa";
 import { useEntradaElemento } from "../movimento/vida";
 
 type Fato = NonNullable<Cena["fatos"]>[number];
+/** Casas decimais do valor original (47,03 → 2; 51,2 → 1; 47 → 0): a contagem animada mostra sempre o mesmo formato. */
+export const casasDe = (v: number) => (Number.isInteger(v) ? 0 : Math.min(2, String(v).split(".")[1]?.length ?? 0));
 const fontesDe = (ep: Episodio, ids: string[]) => ids.map((id) => ep.fontes.find((f) => f.id === id)).filter(Boolean) as Fonte[];
 
 /**
@@ -143,6 +145,9 @@ export const GraficoPesquisa: React.FC<{ cena: Extract<Cena, { tipo: "pesquisa" 
   return (
     <Card style={{ padding: 44 }}>
       <Rotulo>Pesquisa · {d.instituto}</Rotulo>
+      <div style={{ fontFamily: fontes.corpo, fontWeight: 800, fontSize: t.legenda, color: cores.textoSecundario, marginTop: 6, textTransform: "uppercase", letterSpacing: 2 }}>
+        {d.base === "validos" ? "Votos válidos" : "Votos totais"}
+      </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 26, marginTop: 26 }}>
         {d.resultados.map((r, i) => {
           const p = episodio.personagens.find((x) => x.id === r.personagemId);
@@ -152,7 +157,7 @@ export const GraficoPesquisa: React.FC<{ cena: Extract<Cena, { tipo: "pesquisa" 
             <div key={r.personagemId}>
               <div style={{ display: "flex", justifyContent: "space-between", fontFamily: fontes.corpo, fontWeight: 800, fontSize: t.corpo, color: cores.texto }}>
                 <span>{p ? `${p.rotulo} (${p.numero})` : r.personagemId}</span>
-                <span style={{ fontFamily: fontes.display, fontSize: t.destaque, color: cores.acento }}>{(r.pct * k).toFixed(0)}%</span>
+                <span style={{ fontFamily: fontes.display, fontSize: t.destaque, color: cores.acento }}>{(r.pct * k).toLocaleString("pt-BR", { minimumFractionDigits: casasDe(r.pct), maximumFractionDigits: casasDe(r.pct) })}%</span>
               </div>
               <div style={{ height: 40, background: cores.fundo, borderRadius: 12, marginTop: 8, overflow: "hidden" }}>
                 <div style={{ width: `${(r.pct / max) * 100 * k}%`, height: "100%", background: cor, borderRadius: 12 }} />
@@ -166,6 +171,7 @@ export const GraficoPesquisa: React.FC<{ cena: Extract<Cena, { tipo: "pesquisa" 
         {d.amostra ? ` · ${d.amostra.toLocaleString("pt-BR")} entrevistas` : ""}
         <br />
         Registro TSE: {d.registroTSE}
+        {d.contratante ? ` · Contratante: ${d.contratante}` : ""}
       </div>
     </Card>
   );

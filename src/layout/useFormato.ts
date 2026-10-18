@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import { useVideoConfig } from "remotion";
+import { MovimentoCena } from "../movimento/plano";
 import { safe, tipos } from "../theme";
 import type { Posicao } from "../schema/episodio";
 
@@ -15,6 +17,8 @@ export type Retangulo = { x: number; y: number; w: number; h: number };
  */
 export const useFormato = () => {
   const { width, height } = useVideoConfig();
+  // composição sorteada da cena (16:9): lado dos cards em relação ao cenário/personagem
+  const { composicao } = useContext(MovimentoCena);
   const formato: Formato = height > width ? "vertical" : "horizontal";
   const vertical = formato === "vertical";
   const s = safe[formato];
@@ -52,7 +56,7 @@ export const useFormato = () => {
   /** X do personagem conforme quantos estão no palco (no 16:9 eles vão para as laterais). */
   const xPersonagem = (pos: Posicao, n: number): number => {
     if (vertical || n >= 3) return posXPadrao[pos];
-    if (n === 1) return width * 0.2;
+    if (n === 1) return composicao === "dir" ? width * 0.8 : width * 0.2;
     return pos === "dir" ? width * 0.83 : pos === "esq" ? width * 0.17 : width * 0.5;
   };
 
@@ -61,13 +65,37 @@ export const useFormato = () => {
    * Horizontal: coluna ao lado (1 personagem) ou entre (2 personagens), altura toda.
    */
   const colunaComPalco = (n: number): Retangulo => {
-    if (!vertical && n === 1) return { x: width * 0.38, y: conteudoTopo, w: width * 0.57, h: alturaConteudo };
+    if (!vertical && n === 1) return { x: composicao === "dir" ? width * 0.05 : width * 0.38, y: conteudoTopo, w: width * 0.57, h: alturaConteudo };
     if (!vertical && n === 2) return { x: width * 0.315, y: conteudoTopo, w: width * 0.37, h: alturaConteudo };
     return { x: area.x, y: conteudoTopo, w: area.w, h: palcoY - alturaBoneco - 24 - conteudoTopo };
   };
 
+  /**
+   * Coluna de cards em cenas com cenário grande e sem personagem.
+   * 16:9: lateral esquerda/direita (centralizada na altura) ou faixa no topo; vertical: faixa no topo.
+   */
+  const colunaCards = (): Retangulo & { centralizar: boolean } => {
+    if (vertical || composicao === "topo") return { x: (width - larguraConteudo) / 2, y: conteudoTopo, w: larguraConteudo, h: alturaConteudo, centralizar: false };
+    const w = width * 0.3;
+    return { x: composicao === "dir" ? width - area.x - w : area.x, y: conteudoTopo, w, h: alturaConteudo, centralizar: true };
+  };
+
+  /** Transform do cenário para abrir espaço à coluna de cards (só 16:9). */
+  const ajusteCenario = (): string | undefined => {
+    if (vertical) return undefined;
+    if (composicao === "esq") return `translateX(${width * 0.14}px)`;
+    if (composicao === "dir") return `translateX(${-width * 0.14}px)`;
+    return undefined;
+  };
+  /** Na composição "topo" o cenário encolhe ancorado no chão. */
+  const escalaCenarioTopo = !vertical && composicao === "topo" ? 0.72 : 1;
+
   return {
     formato,
+    composicao,
+    colunaCards,
+    ajusteCenario,
+    escalaCenarioTopo,
     width,
     height,
     area,

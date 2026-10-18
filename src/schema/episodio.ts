@@ -123,6 +123,8 @@ const base = {
   sfx: z.array(Sfx).optional(),
   /** Momento da biblioteca que originou a cena (rastreio de reuso). */
   momento: z.string().optional(),
+  /** Bloco do roteiro (agrupamento no roteiro.md). */
+  bloco: z.string().optional(),
   cenarioOpcoes: CenarioOpcoesSchema.optional(),
   /** Sobrescreve o sorteio de câmera/transição (src/movimento). */
   camera: z.enum(["zoomIn", "zoomOut", "panEsq", "panDir", "panCima", "panBaixo", "kenBurns", "respirar", "deriva"]).optional(),
@@ -178,6 +180,11 @@ export const CenaSchema = z.discriminatedUnion("tipo", [
       registroTSE: z.string().min(1),
       margemErro: z.string().min(1),
       amostra: z.number().int().positive().optional(),
+      /** "totais" (inclui brancos/nulos/indecisos) ou "validos". Sempre mostrado na tela. */
+      base: z.enum(["totais", "validos"]).default("totais"),
+      contratante: z.string().optional(),
+      /** Fonte da pesquisa (matéria/registro) para o selo. */
+      fonteId: id.optional(),
       resultados: z.array(z.object({ personagemId: id, pct: z.number().min(0).max(100) })).min(1),
     }),
   }),
@@ -202,6 +209,19 @@ export const CenaSchema = z.discriminatedUnion("tipo", [
       lados: z
         .array(z.object({ personagemId: id, propostas: z.array(z.object({ texto: z.string().min(1), fonteId: id })).min(1) }))
         .min(1),
+    }),
+  }),
+  z.object({
+    ...base,
+    tipo: z.literal("checklist"),
+    dados: z.object({ titulo: z.string().min(1), itens: z.array(z.string().min(1)).min(2) }),
+  }),
+  z.object({
+    ...base,
+    tipo: z.literal("servico"),
+    dados: z.object({
+      titulo: z.string().min(1),
+      linhas: z.array(z.object({ rotulo: z.string().min(1), valor: z.string().min(1), fonteId: id.optional() })).min(1),
     }),
   }),
   z.object({ ...base, tipo: z.literal("encerramento") }),

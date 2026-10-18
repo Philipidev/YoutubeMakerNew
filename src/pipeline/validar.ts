@@ -14,7 +14,7 @@ export const TERMOS_OPINATIVOS = [
 const MARCADORES_ATRIBUICAO = [
   "segundo", "para o", "para a", "para os", "para as", "de acordo com", "disse", "afirmou", "declarou",
   "avalia", "avaliou", "classificou", "chamou", "criticou", "defendeu", "argumenta", "argumentou",
-  "sustenta", "na visão", "conforme", "alega", "alegou", "acusou", "diz", "dizem", "afirma",
+  "sustenta", "na visão", "nas palavras", "chamad", "citando", "conforme", "alega", "alegou", "acusou", "diz", "dizem", "afirma",
 ];
 
 const PROIBIDOS: { re: RegExp; msg: string }[] = [
@@ -31,6 +31,8 @@ const idsFonte = (c: Cena): string[] => [
   ...(c.tipo === "linhaDoTempo" ? c.dados.eventos.flatMap((e) => e.fonteIds) : []),
   ...(c.tipo === "ladoA_ladoB" ? [...c.dados.ladoA.argumentos, ...c.dados.ladoB.argumentos].map((a) => a.fonteId) : []),
   ...(c.tipo === "grafico" ? [c.dados.fonteId] : []),
+  ...(c.tipo === "pesquisa" && c.dados.fonteId ? [c.dados.fonteId] : []),
+  ...(c.tipo === "servico" ? c.dados.linhas.flatMap((l) => (l.fonteId ? [l.fonteId] : [])) : []),
   ...(c.tipo === "propostas" ? c.dados.lados.flatMap((l) => l.propostas.map((p) => p.fonteId)) : []),
 ];
 
@@ -88,8 +90,8 @@ export const validarEpisodio = (bruto: unknown): { episodio: Episodio | null; pr
       const ns = c.dados.lados.map((l) => l.propostas.length);
       if (Math.max(...ns) !== Math.min(...ns)) problemas.push({ nivel: "aviso", cenaId: c.id, msg: `propostas com quantidades diferentes por lado: ${ns.join(" x ")}` });
     }
-    if (c.tipo === "fato" && !(c.fatos?.length)) {
-      problemas.push({ nivel: "erro", cenaId: c.id, msg: "cena de fato sem fatos[] com fonte" });
+    if (c.tipo === "fato" && !c.fatos?.length && !c.atribuicoes?.length) {
+      problemas.push({ nivel: "erro", cenaId: c.id, msg: "cena de fato sem fatos[] nem atribuicoes[] com fonte" });
     }
   }
 

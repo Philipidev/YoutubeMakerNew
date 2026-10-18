@@ -57,15 +57,17 @@ export const BandeiraTremulando: React.FC<{ iso: string; largura: number }> = ({
 export const CenarioMundo: React.FC<{ paises: string[] }> = ({ paises }) => {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const { width, formato, area, palcoY, conteudoTopo, t } = useFormato();
+  const { width, formato, composicao, area, palcoY, conteudoTopo, t } = useFormato();
+  const lateral = formato === "horizontal" && composicao !== "topo";
   const raioGlobo = Math.min(width * 0.42, 460);
   const rot = (f * 0.6) % 360;
   // bandeiras dimensionadas pela largura E pela altura disponível (16:9 tem pouca altura)
   const porLinha = formato === "horizontal" ? Math.min(paises.length, 4) : paises.length <= 2 ? 1 : 2;
   const linhas = Math.ceil(paises.length / porLinha);
   const altDisp = palcoY - conteudoTopo - 60;
-  const largDisp = formato === "horizontal" ? width * 0.6 : area.w;
-  const larg = Math.min((largDisp * 0.95) / porLinha - 40, ((altDisp / linhas - 90) * 3) / 2, 520);
+  const altFlags = lateral ? altDisp : altDisp - 180;
+  const largDisp = lateral ? width * 0.6 : area.w;
+  const larg = Math.min((largDisp * 0.95) / porLinha - 40, ((altFlags / linhas - 90) * 3) / 2, 520);
   return (
     <AbsoluteFill>
       <svg width={width} height={palcoY} style={{ position: "absolute", opacity: 0.35 }}>
@@ -88,7 +90,7 @@ export const CenarioMundo: React.FC<{ paises: string[] }> = ({ paises }) => {
           })}
         </g>
       </svg>
-      <div style={{ position: "absolute", left: formato === "horizontal" ? width * 0.36 : area.x, width: formato === "horizontal" ? width * 0.6 : area.w, top: conteudoTopo, height: altDisp, display: "flex", flexWrap: "wrap", gap: 30, justifyContent: "center", alignContent: "center" }}>
+      <div style={{ position: "absolute", left: lateral ? (composicao === "dir" ? area.x : width * 0.36) : area.x, width: lateral ? width * 0.6 : area.w, top: lateral ? conteudoTopo : conteudoTopo + 180, height: lateral ? altDisp : altDisp - 180, display: "flex", flexWrap: "wrap", gap: 30, justifyContent: "center", alignContent: "center" }}>
         {paises.map((iso, i) => {
           const k = spring({ frame: f - 6 - i * 5, fps, config: movimento.pop });
           return (

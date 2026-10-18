@@ -1,0 +1,1430 @@
+{
+  "slug": "debate-band-2turno-2026",
+  "titulo": "O primeiro cara a cara: Lula e Flávio no debate da Band",
+  "dataPublicacao": "2026-10-18",
+  "resumo": "Neste domingo, 18/10, às 20h, Lula (PT) e Flávio Bolsonaro (PL) participam do debate da Band, o primeiro com os dois em toda a eleição. O vídeo resume a história dos debates que não aconteceram, as pesquisas mais recentes registradas no TSE e os temas da semana, com a posição de cada lado atribuída a quem disse.",
+  "ordemLados": "AB",
+  "fontes": [
+    {
+      "id": "f-agbr-turno",
+      "veiculo": "Agência Brasil",
+      "titulo": "Flávio e Lula vão disputar 2º turno para presidente da República",
+      "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/flavio-e-lula-vao-disputar-2o-turno-para-presidente-da-republica",
+      "data": "2026-10-04",
+      "tipo": "imprensa",
+      "linhaEditorial": "pública (EBC)"
+    },
+    {
+      "id": "f-carta-apuracao",
+      "veiculo": "CartaCapital",
+      "titulo": "TSE encerra apuração do 1º turno",
+      "url": "https://www.cartacapital.com.br/politica/tse-encerra-apuracao-do-1o-turno/",
+      "data": "2026-10-05",
+      "tipo": "imprensa",
+      "linhaEditorial": "esquerda"
+    },
+    {
+      "id": "f-gazeta-lula-band",
+      "veiculo": "Gazeta do Povo",
+      "titulo": "Lula decide não participar de debate na Band",
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/lula-decide-nao-participar-de-debate-na-band/",
+      "data": "2026-08-17",
+      "tipo": "imprensa",
+      "linhaEditorial": "direita"
+    },
+    {
+      "id": "f-metropoles-zema",
+      "veiculo": "Metrópoles",
+      "titulo": "Sem Lula e Flávio, Zema decide não participar de debate na Band",
+      "url": "https://www.metropoles.com/minas-gerais/sem-lula-e-flavio-zema-decide-nao-participar-de-debate-na-band",
+      "data": "2026-08-23",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro"
+    },
+    {
+      "id": "f-cnn-1debate",
+      "veiculo": "CNN Brasil",
+      "titulo": "1º debate presidencial é marcado por ataques aos ausentes Lula e Flávio",
+      "url": "https://www.cnnbrasil.com.br/eleicoes/eleicoes-2026-primeiro-debate-presidencial/",
+      "data": "2026-08-23",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro"
+    },
+    {
+      "id": "f-poder-band1",
+      "veiculo": "Poder360",
+      "titulo": "Em debate esvaziado na 'Band', Renan, Caiado e Cury miram Lula e Flávio",
+      "url": "https://www.poder360.com.br/poder-eleicoes-2026/em-debate-esvaziado-na-band-renan-caiado-e-cury-miram-lula-e-flavio/",
+      "data": "2026-08-23",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro"
+    },
+    {
+      "id": "f-dn-ausentes",
+      "veiculo": "Diário de Notícias (Portugal)",
+      "titulo": "Lula e Flávio (e Romeu Zema também) ausentes do primeiro debate no Brasil",
+      "url": "https://www.dn.pt/internacional/lula-e-flvio-e-romeu-zema-tambm-ausentes-do-primeiro-debate-no-brasil",
+      "data": "2026-08-24",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro (estrangeiro)"
+    },
+    {
+      "id": "f-gazeta-debates",
+      "veiculo": "Gazeta do Povo",
+      "titulo": "Os próximos debates na TV com os candidatos a presidente — se eles aparecerem",
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/proximos-debates-tv-candidatos-presidente/",
+      "data": "2026-09-23",
+      "tipo": "imprensa",
+      "linhaEditorial": "direita"
+    },
+    {
+      "id": "f-poder-globo",
+      "veiculo": "Poder360",
+      "titulo": "'Globo' cancela debate por causa de decisões do TSE e do STF",
+      "url": "https://www.poder360.com.br/poder-eleicoes-2026/lula-e-flavio-desistem-e-globo-cancela-debate-presidencial/",
+      "data": "2026-10-01",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro"
+    },
+    {
+      "id": "f-gazeta-flavio-globo",
+      "veiculo": "Gazeta do Povo",
+      "titulo": "Flávio Bolsonaro fala em censura do TSE e desiste de debate da TV Globo",
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/flavio-bolsonaro-desiste-de-participar-de-debate-da-tv-globo/",
+      "data": "2026-10-01",
+      "tipo": "imprensa",
+      "linhaEditorial": "direita"
+    },
+    {
+      "id": "f-ncnews-gilmar",
+      "veiculo": "NC News",
+      "titulo": "Entenda como Gilmar Mendes autorizou Renan Santos em debate após duas decisões contrárias",
+      "url": "https://ncnews.com.br/2026/10/02/liminar-gilmar-derruba-regras-globo-esvazia-debate/",
+      "data": "2026-10-02",
+      "tipo": "imprensa"
+    },
+    {
+      "id": "f-poder-band-regras",
+      "veiculo": "Poder360",
+      "titulo": "Debate da 'Band' com Lula e Flávio será dia 18; leia as regras",
+      "url": "https://www.poder360.com.br/poder-eleicoes-2026/debate-da-band-com-lula-e-flavio-sera-dia-18-leia-as-regras/",
+      "data": "2026-10-14",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro"
+    },
+    {
+      "id": "f-gazeta-band",
+      "veiculo": "Gazeta do Povo",
+      "titulo": "Debate na Band promete 1º confronto direto entre Flávio e Lula",
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/lula-flavio-bolsonaro-debate-band-segundo-turno/",
+      "data": "2026-10-16",
+      "tipo": "imprensa",
+      "linhaEditorial": "direita"
+    },
+    {
+      "id": "f-exame-assistir",
+      "veiculo": "Exame",
+      "titulo": "Lula x Flávio: onde assistir e o que esperar do debate de domingo",
+      "url": "https://exame.com/brasil/lula-x-flavio-onde-assistir-e-o-que-esperar-do-debate-de-domingo/",
+      "data": "2026-10-17",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro-liberal"
+    },
+    {
+      "id": "f-forum-regras",
+      "veiculo": "Revista Fórum",
+      "titulo": "Flávio Bolsonaro x Lula: Veja regras do debate da Band",
+      "url": "https://revistaforum.com.br/politica/regras-debate-lula-flavio-bolsonaro-band/",
+      "data": "2026-10-16",
+      "tipo": "imprensa",
+      "linhaEditorial": "esquerda"
+    },
+    {
+      "id": "f-poder-flavio-nao",
+      "veiculo": "Poder360",
+      "titulo": "Flávio não vai a debate da 'Band' e diz avaliar ida à 'Globo'",
+      "url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-nao-vai-a-debate-da-band-e-diz-avaliar-ida-a-globo/",
+      "data": "2026-10-13",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro"
+    },
+    {
+      "id": "f-cnn-flavio-nao",
+      "veiculo": "CNN Brasil",
+      "titulo": "Flávio diz que não vai a debate da Band e Lula confirma presença",
+      "url": "https://www.cnnbrasil.com.br/eleicoes/flavio-diz-que-nao-vai-a-debate-da-band-e-lula-confirma-presenca/",
+      "data": "2026-10-13",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro"
+    },
+    {
+      "id": "f-metropoles-flavio-nao",
+      "veiculo": "Metrópoles",
+      "titulo": "Após PT confirmar Lula em debate da Band, Flávio diz que não vai participar",
+      "url": "https://www.metropoles.com/sao-paulo/apos-pt-confirmar-lula-em-debate-da-band-flavio-diz-que-nao-vai-participar",
+      "data": "2026-10-13",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro"
+    },
+    {
+      "id": "f-poder-flavio-sim",
+      "veiculo": "Poder360",
+      "titulo": "Flávio confirma presença no debate da 'Band': 'Te espero, Lula'",
+      "url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-confirma-presenca-no-debate-da-band-te-espero-lula/",
+      "data": "2026-10-14",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro"
+    },
+    {
+      "id": "f-carta-flavio-sim",
+      "veiculo": "CartaCapital",
+      "titulo": "Flávio Bolsonaro recua e diz que irá ao debate da 'Band' após Lula confirmar presença",
+      "url": "https://www.cartacapital.com.br/politica/flavio-bolsonaro-recua-diz-que-ira-ao-debate-da-band-apos-lula-confirmar-presenca/",
+      "data": "2026-10-14",
+      "tipo": "imprensa",
+      "linhaEditorial": "esquerda"
+    },
+    {
+      "id": "f-poder-globo23",
+      "veiculo": "Poder360",
+      "titulo": "'TV Globo' marca para 23 de outubro o debate entre Lula e Flávio",
+      "url": "https://www.poder360.com.br/poder-eleicoes-2026/tv-globo-marca-para-23-de-outubro-o-debate-entre-lula-e-flavio/",
+      "data": "2026-10-07",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro"
+    },
+    {
+      "id": "f-opovo-globo23",
+      "veiculo": "O Povo",
+      "titulo": "Lula e Flávio no 2º turno: saiba se tem debate presidencial neste sábado, 17",
+      "url": "https://www.opovo.com.br/noticias/politica/eleicoes/2026/10/17/lula-e-flavio-no-2-turno-saiba-se-tem-debate-presidencial-neste-sabado-17.html",
+      "data": "2026-10-17",
+      "tipo": "imprensa",
+      "linhaEditorial": "regional (CE)"
+    },
+    {
+      "id": "f-antagonista-edinho",
+      "veiculo": "O Antagonista",
+      "titulo": "Lula quer 'desmascarar mentiras' de Flávio no debate, diz Edinho",
+      "url": "https://oantagonista.com.br/brasil/lula-quer-desmascarar-mentiras-de-flavio-no-debate-diz-edinho/",
+      "data": "2026-10-17",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro-direita"
+    },
+    {
+      "id": "f-poder-pesquisas",
+      "veiculo": "Poder360",
+      "titulo": "Saiba como estão Lula e Flávio nas pesquisas a 8 dias do 2º turno",
+      "url": "https://www.poder360.com.br/poder-eleicoes-2026/leia-como-estao-lula-e-flavio-nas-pesquisas-a-8-dias-do-2o-turno/",
+      "data": "2026-10-17",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro"
+    },
+    {
+      "id": "f-sb24-datafolha",
+      "veiculo": "SB24Horas",
+      "titulo": "Datafolha mostra Flávio Bolsonaro com 47% e Lula com 45%; outras pesquisas também apontam disputa acirrada",
+      "url": "https://sb24horas.com.br/datafolha-mostra-flavio-bolsonaro-com-47-e-lula-com-45-outras-pesquisas-tambem-apontam-disputa-acirrada/",
+      "data": "2026-10-17",
+      "tipo": "imprensa"
+    },
+    {
+      "id": "f-cnn-datafolha-ant",
+      "veiculo": "CNN Brasil",
+      "titulo": "Datafolha: Flávio tem 52% dos votos válidos no 2º turno; Lula, 48%",
+      "url": "https://www.cnnbrasil.com.br/eleicoes/datafolha-flavio-tem-52-dos-votos-validos-lula-48/",
+      "data": "2026-10-08",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro"
+    },
+    {
+      "id": "f-infomoney-quaest",
+      "veiculo": "InfoMoney",
+      "titulo": "Quaest: Flávio Bolsonaro tem 46% e Lula, 44% no 2º turno",
+      "url": "https://www.infomoney.com.br/politica/quaest-2-turno-flavio-lula/",
+      "data": "2026-10-14",
+      "tipo": "imprensa",
+      "linhaEditorial": "econômico"
+    },
+    {
+      "id": "f-exame-quaest",
+      "veiculo": "Exame",
+      "titulo": "Pesquisa para presidente Quaest: Flávio Bolsonaro tem 46% e Lula, 44%",
+      "url": "https://exame.com/brasil/pesquisa-para-presidente-quaest-flavio-bolsonaro-tem-46-e-lula-44/",
+      "data": "2026-10-14",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro-liberal"
+    },
+    {
+      "id": "f-oeste-ipespe",
+      "veiculo": "Revista Oeste",
+      "titulo": "Flávio tem 2,4 pontos de vantagem sobre Lula, aponta Ipespe",
+      "url": "https://revistaoeste.com/politica/flavio-tem-24-pontos-de-vantagem-sobre-lula-aponta-ipespe/",
+      "data": "2026-10-17",
+      "tipo": "imprensa",
+      "linhaEditorial": "direita"
+    },
+    {
+      "id": "f-carta-ipespe",
+      "veiculo": "CartaCapital",
+      "titulo": "Pesquisa aponta empate técnico entre Flávio Bolsonaro e Lula a oito dias do 2º turno",
+      "url": "https://www.cartacapital.com.br/cartaexpressa/pesquisa-aponta-empate-tecnico-entre-flavio-bolsonaro-e-lula-a-oito-dias-do-2o-turno/",
+      "data": "2026-10-17",
+      "tipo": "imprensa",
+      "linhaEditorial": "esquerda"
+    },
+    {
+      "id": "f-acritica-ipespe-ant",
+      "veiculo": "A Crítica",
+      "titulo": "Ipespe aponta Flávio com 52,7% e Lula com 47,3% no 2º turno",
+      "url": "https://acritica.net/eleicoes-2026/ipespe-flavio-lula-segundo-turno/",
+      "data": "2026-10-10",
+      "tipo": "imprensa"
+    },
+    {
+      "id": "f-correio-mda",
+      "veiculo": "Correio 24 Horas",
+      "titulo": "Flávio tem 50,5% e Lula, 49,5% dos votos válidos no segundo turno, aponta pesquisa CNT/MDA",
+      "url": "https://www.correio24horas.com.br/eleicoes/flavio-tem-505-e-lula-495-dos-votos-validos-no-segundo-turno-aponta-pesquisa-cntmda-1026",
+      "data": "2026-10-16",
+      "tipo": "imprensa",
+      "linhaEditorial": "regional (BA)"
+    },
+    {
+      "id": "f-senado-mp",
+      "veiculo": "Agência Senado",
+      "titulo": "MP proíbe bets e determina encerramento das operações em 30 dias",
+      "url": "https://www12.senado.leg.br/noticias/materias/2026/09/28/mp-proibe-bets-e-determina-encerramento-das-operacoes-em-30-dias",
+      "data": "2026-09-28",
+      "tipo": "primaria",
+      "linhaEditorial": "institucional"
+    },
+    {
+      "id": "f-agbr-mp",
+      "veiculo": "Agência Brasil",
+      "titulo": "MP das Bets: veja o que muda e saiba datas para devolução de valores",
+      "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/entenda-medida-provisoria-e-projeto-que-proibem-bets-no-brasil",
+      "data": "2026-09-26",
+      "tipo": "imprensa",
+      "linhaEditorial": "pública (EBC)"
+    },
+    {
+      "id": "f-mj-mp",
+      "veiculo": "Ministério da Justiça (gov.br)",
+      "titulo": "Governo Federal proíbe bets em todo o País e lança pacote de proteção às famílias endividadas",
+      "url": "https://www.gov.br/mj/pt-br/assuntos/noticias-1/governo-federal-proibe-bets-em-todo-o-pais-e-lanca-pacote-de-protecao-as-familias-endividadas-1",
+      "data": "2026-09-25",
+      "tipo": "primaria",
+      "linhaEditorial": "oficial"
+    },
+    {
+      "id": "f-cnn-mp",
+      "veiculo": "CNN Brasil",
+      "titulo": "Entenda como vai funcionar a proibição das bets no Brasil",
+      "url": "https://www.cnnbrasil.com.br/eleicoes/entenda-como-vai-funcionar-a-proibicao-das-bets-no-brasil/",
+      "data": "2026-09-25",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro"
+    },
+    {
+      "id": "f-istoe-flavio",
+      "veiculo": "IstoÉ Dinheiro",
+      "titulo": "Flávio Bolsonaro critica \"MP das bets\" e chama Lula de \"pai do Tigrinho\"",
+      "url": "https://istoedinheiro.com.br/flavio-bolsonaro-critica-mp-bets-lula-tigrinho",
+      "data": "2026-09-25",
+      "tipo": "imprensa"
+    },
+    {
+      "id": "f-jp-flavio",
+      "veiculo": "Jovem Pan",
+      "titulo": "Flávio Bolsonaro sobre MP das bets: 'Estelionato do governo Lula'",
+      "url": "https://jovempan.com.br/politica/flavio-bolsonaro-sobre-mp-das-bets-estelionato-do-governo-lula/",
+      "data": "2026-09-25",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro-direita"
+    },
+    {
+      "id": "f-migalhas-stf",
+      "veiculo": "Migalhas",
+      "titulo": "Entidades pedem ao STF suspensão da MP que proíbe bets",
+      "url": "https://www.migalhas.com.br/quentes/465423/entidades-pedem-ao-stf-suspensao-da-mp-que-proibe-bets",
+      "data": "2026-09-28",
+      "tipo": "imprensa",
+      "linhaEditorial": "jurídico"
+    },
+    {
+      "id": "f-poder-clubes",
+      "veiculo": "Poder360",
+      "titulo": "Fluminense, Cruzeiro e mais 14 clubes acionam STF contra MP das Bets",
+      "url": "https://www.poder360.com.br/poder-sportsmkt/fluminense-cruzeiro-e-mais-14-clubes-acionam-stf-contra-mp-das-bets/",
+      "data": "2026-10-02",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro"
+    },
+    {
+      "id": "f-agbr-fux",
+      "veiculo": "Agência Brasil",
+      "titulo": "Fux pede manifestação da AGU sobre pedido para liberar bets",
+      "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/fux-pede-manifestacao-da-agu-sobre-pedido-para-liberar-bets",
+      "data": "2026-10-02",
+      "tipo": "imprensa",
+      "linhaEditorial": "pública (EBC)"
+    },
+    {
+      "id": "f-opovo-6x1",
+      "veiculo": "O Povo",
+      "titulo": "Fim da escala 6x1: contra ou a favor? Veja o que Flávio Bolsonaro já disse sobre o tema",
+      "url": "https://www.opovo.com.br/noticias/economia/2026/10/14/flavio-bolsonaro-muda-voto-sobre-escala-6x1.html",
+      "data": "2026-10-14",
+      "tipo": "imprensa",
+      "linhaEditorial": "regional (CE)"
+    },
+    {
+      "id": "f-times-6x1",
+      "veiculo": "Times Brasil/CNBC",
+      "titulo": "DECISÃO 2026: Flávio muda posição e anuncia voto pelo fim da escala 6×1; Lula atribui virada do rival à pressão popular",
+      "url": "https://timesbrasil.com.br/brasil/decisao-2026-flavio-muda-posicao-e-anuncia-voto-pelo-fim-da-escala-6x1-lula-atribui-virada-do-rival-a-pressao-popular-veja-o-dia-dos-candidatos-ao-planalto/",
+      "data": "2026-10-13",
+      "tipo": "imprensa",
+      "linhaEditorial": "econômico"
+    },
+    {
+      "id": "f-agbr-6x1",
+      "veiculo": "Agência Brasil",
+      "titulo": "Senado aprova fim da escala 6x1 e redução da jornada de trabalho",
+      "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/senado-aprova-fim-da-escala-6x1-e-reducao-da-jornada-de-trabalho",
+      "data": "2026-10-14",
+      "tipo": "imprensa",
+      "linhaEditorial": "pública (EBC)"
+    },
+    {
+      "id": "f-exame-6x1",
+      "veiculo": "Exame",
+      "titulo": "Como Flávio Bolsonaro votou sobre o fim da escala 6x1 no Senado?",
+      "url": "https://exame.com/brasil/como-flavio-bolsonaro-votou-sobre-o-fim-da-escala-6x1-no-senado/",
+      "data": "2026-10-15",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro-liberal"
+    },
+    {
+      "id": "f-metropoles-promulga",
+      "veiculo": "Metrópoles",
+      "titulo": "Com Lula, Congresso promulga fim da escala 6x1; veja regras e prazos",
+      "url": "https://www.metropoles.com/brasil/lula-congresso-pec-escala-6x1",
+      "data": "2026-10-16",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro"
+    },
+    {
+      "id": "f-poder-lula-6x1",
+      "veiculo": "Poder360",
+      "titulo": "Lula diz que pressão popular levou PL a mudar posição sobre escala 6 X 1",
+      "url": "https://www.poder360.com.br/poder-eleicoes/lula-diz-que-pressao-popular-levou-pl-a-mudar-posicao-sobre-escala-6-x-1/",
+      "data": "2026-10-13",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro"
+    },
+    {
+      "id": "f-agbr-mei",
+      "veiculo": "Agência Brasil",
+      "titulo": "Governo anuncia perdão de dívidas e pacote de estímulo para MEIs",
+      "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/governo-anuncia-perdao-de-dividas-e-pacote-de-estimulo-para-meis",
+      "data": "2026-10-13",
+      "tipo": "imprensa",
+      "linhaEditorial": "pública (EBC)"
+    },
+    {
+      "id": "f-poder-mei",
+      "veiculo": "Poder360",
+      "titulo": "Câmara aprova aumento no teto do MEI e perdão a dívidas",
+      "url": "https://www.poder360.com.br/poder-congresso/camara-aprova-aumento-no-teto-do-mei-e-perdao-a-dividas/",
+      "data": "2026-10-14",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro"
+    },
+    {
+      "id": "f-exame-mei",
+      "veiculo": "Exame",
+      "titulo": "Flávio Bolsonaro critica Pix para MEI anunciado por Lula: 'Ele acha que o povo é otário'",
+      "url": "https://exame.com/brasil/flavio-bolsonaro-critica-pix-para-mei-anunciado-por-lula-ele-acha-que-o-povo-e-otario/",
+      "data": "2026-10-13",
+      "tipo": "imprensa",
+      "linhaEditorial": "centro-liberal"
+    },
+    {
+      "id": "f-gazeta-datafolha-ant",
+      "veiculo": "Gazeta do Povo",
+      "titulo": "O que mostra a primeira pesquisa Datafolha para presidente no 2º turno",
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-outubro-2026-segundo-turno/",
+      "data": "2026-10-08",
+      "tipo": "imprensa",
+      "linhaEditorial": "direita"
+    }
+  ],
+  "personagens": [
+    {
+      "id": "flavio",
+      "rotulo": "Flávio Bolsonaro",
+      "numero": "22",
+      "cor": "PL",
+      "partido": "PL",
+      "roupa": "camisa"
+    },
+    {
+      "id": "lula",
+      "rotulo": "Lula",
+      "numero": "13",
+      "cor": "PT",
+      "partido": "PT",
+      "roupa": "camisa"
+    },
+    {
+      "id": "zema",
+      "rotulo": "Zema",
+      "numero": "",
+      "cor": "neutro",
+      "roupa": "terno"
+    }
+  ],
+  "cenas": [
+    {
+      "id": "gancho",
+      "tipo": "gancho",
+      "cenario": "pulpitos",
+      "narracao": "Neste domingo, 18 de outubro, Lula, do PT, e Flávio Bolsonaro, do PL, se enfrentam num debate na TV, na Band.",
+      "personagens": [
+        {
+          "id": "flavio",
+          "acao": "acenar",
+          "posicao": "esq"
+        },
+        {
+          "id": "lula",
+          "acao": "acenar",
+          "posicao": "dir"
+        }
+      ],
+      "dados": {
+        "manchete": "Primeiro cara a cara",
+        "destaque": "Domingo, 18/10, 20h, na Band"
+      },
+      "fatos": [
+        {
+          "texto": "Debate na Band: domingo, 18/10, às 20h",
+          "fonteIds": [
+            "f-poder-band-regras",
+            "f-exame-assistir"
+          ]
+        }
+      ],
+      "bloco": "1. Gancho"
+    },
+    {
+      "id": "inedito",
+      "tipo": "contexto",
+      "narracao": "É o primeiro encontro dos dois nesta eleição. No primeiro turno, não houve nenhum.",
+      "dados": {
+        "numero": "0",
+        "rotulo": "debates com os dois no 1º turno"
+      },
+      "fatos": [
+        {
+          "texto": "Nenhum debate na TV com Lula e Flávio no 1º turno",
+          "fonteIds": [
+            "f-gazeta-band",
+            "f-poder-band-regras",
+            "f-gazeta-debates"
+          ]
+        }
+      ],
+      "bloco": "1. Gancho"
+    },
+    {
+      "id": "resultado-1turno",
+      "tipo": "grafico",
+      "narracao": "Na votação de 4 de outubro, Flávio teve 47,03% dos votos válidos, e Lula, 45,16%.",
+      "dados": {
+        "grafico": "barras",
+        "titulo": "1º turno · votos válidos",
+        "unidade": "%",
+        "fonteId": "f-carta-apuracao",
+        "nota": "Totalização do TSE, 4/10/2026",
+        "pontos": [
+          {
+            "rotulo": "Flávio Bolsonaro (PL)",
+            "valor": 47.03
+          },
+          {
+            "rotulo": "Lula (PT)",
+            "valor": 45.16
+          },
+          {
+            "rotulo": "Demais candidatos",
+            "valor": 7.81
+          }
+        ]
+      },
+      "bloco": "2. Onde a disputa está"
+    },
+    {
+      "id": "data-2turno",
+      "tipo": "contexto",
+      "narracao": "O segundo turno é no domingo seguinte, 25 de outubro.",
+      "dados": {
+        "numero": "25/10",
+        "rotulo": "2º turno"
+      },
+      "fatos": [
+        {
+          "texto": "2º turno em 25/10",
+          "fonteIds": [
+            "f-agbr-turno"
+          ]
+        }
+      ],
+      "bloco": "2. Onde a disputa está"
+    },
+    {
+      "id": "debates-1turno",
+      "tipo": "linhaDoTempo",
+      "narracao": "Antes da primeira votação, quatro debates foram marcados. Só um aconteceu: o da Band, em 23 de agosto.",
+      "dados": {
+        "eventos": [
+          {
+            "data": "23/08",
+            "rotulo": "Band: o único debate realizado",
+            "fonteIds": [
+              "f-cnn-1debate",
+              "f-poder-band1"
+            ],
+            "fase": "antes"
+          },
+          {
+            "data": "14/09",
+            "rotulo": "SBT, RedeTV! e CNN: cancelado",
+            "fonteIds": [
+              "f-gazeta-debates"
+            ],
+            "fase": "antes"
+          },
+          {
+            "data": "27/09",
+            "rotulo": "Record: cancelado",
+            "fonteIds": [
+              "f-gazeta-debates"
+            ],
+            "fase": "antes"
+          },
+          {
+            "data": "01/10",
+            "rotulo": "Globo: cancelado horas antes",
+            "fonteIds": [
+              "f-poder-globo"
+            ],
+            "fase": "fato"
+          }
+        ]
+      },
+      "bloco": "3. Os debates que não aconteceram"
+    },
+    {
+      "id": "pulpitos-vazios",
+      "tipo": "debate",
+      "cenario": "pulpitos",
+      "narracao": "Três dos seis convidados faltaram: Lula, Flávio e Romeu Zema.",
+      "personagens": [],
+      "dados": {
+        "ausentes": [
+          "flavio",
+          "lula",
+          "zema"
+        ],
+        "titulo": "23/08: três púlpitos vazios"
+      },
+      "fatos": [
+        {
+          "texto": "3 de 6 púlpitos vazios: Lula, Flávio e Zema",
+          "fonteIds": [
+            "f-cnn-1debate",
+            "f-metropoles-zema",
+            "f-dn-ausentes"
+          ]
+        }
+      ],
+      "bloco": "3. Os debates que não aconteceram"
+    },
+    {
+      "id": "justificativas",
+      "tipo": "fato",
+      "narracao": "A campanha de Lula disse que o formato não oferecia condições equilibradas. A de Flávio, que ele iria aos debates em que Lula estivesse. A assessoria de Zema afirmou que, sem Lula e outros concorrentes, a mudança de data do debate perdeu o propósito.",
+      "personagens": [
+        {
+          "id": "flavio",
+          "acao": "idle",
+          "posicao": "esq"
+        },
+        {
+          "id": "lula",
+          "acao": "idle",
+          "posicao": "dir"
+        }
+      ],
+      "atribuicoes": [
+        {
+          "quem": "Campanha de Lula",
+          "disse": "O formato não oferece condições equilibradas",
+          "fonteId": "f-gazeta-lula-band"
+        },
+        {
+          "quem": "Campanha de Flávio",
+          "disse": "Ele pretende participar dos debates em que Lula estiver presente",
+          "fonteId": "f-metropoles-zema"
+        },
+        {
+          "quem": "Assessoria de Zema",
+          "disse": "Diante da ausência de Lula e de outros concorrentes, a alteração de data perdeu o seu propósito inicial",
+          "fonteId": "f-metropoles-zema"
+        }
+      ],
+      "bloco": "3. Os debates que não aconteceram"
+    },
+    {
+      "id": "globo-decisoes",
+      "tipo": "fato",
+      "cenario": "tribunal",
+      "cenarioOpcoes": {
+        "rotulo": "TSE · STF"
+      },
+      "narracao": "A Globo marcou o último debate para 1º de outubro. No dia, o TSE proibiu a emissora de deixar um púlpito vazio com o nome de Lula, e o STF mandou incluir o candidato Renan Santos.",
+      "fatos": [
+        {
+          "texto": "TSE (Estela Aranha) proíbe púlpito vazio com o nome de Lula",
+          "fonteIds": [
+            "f-poder-globo",
+            "f-gazeta-flavio-globo"
+          ]
+        },
+        {
+          "texto": "STF (Gilmar Mendes) manda incluir Renan Santos",
+          "fonteIds": [
+            "f-poder-globo",
+            "f-ncnews-gilmar"
+          ]
+        }
+      ],
+      "bloco": "3. Os debates que não aconteceram"
+    },
+    {
+      "id": "globo-reacoes",
+      "tipo": "fato",
+      "narracao": "Lula já tinha dito que não iria. Flávio desistiu, citando “a censura imposta ao evento pelo TSE”. A Globo cancelou o debate e disse que as decisões causaram insegurança jurídica.",
+      "personagens": [
+        {
+          "id": "flavio",
+          "acao": "falar",
+          "posicao": "esq",
+          "fala": true
+        },
+        {
+          "id": "lula",
+          "acao": "idle",
+          "posicao": "dir"
+        }
+      ],
+      "fatos": [
+        {
+          "texto": "Lula já tinha anunciado que não iria ao debate da Globo",
+          "fonteIds": [
+            "f-poder-globo"
+          ]
+        }
+      ],
+      "atribuicoes": [
+        {
+          "quem": "flavio",
+          "disse": "Acabo de tomar a decisão de não ir ao debate da Globo em função da censura imposta ao evento pelo TSE",
+          "fonteId": "f-gazeta-flavio-globo"
+        },
+        {
+          "quem": "TV Globo",
+          "disse": "As decisões causaram insegurança jurídica e representam uma interferência indevida na liberdade dos veículos de organizar os debates",
+          "fonteId": "f-poder-globo"
+        }
+      ],
+      "bloco": "3. Os debates que não aconteceram"
+    },
+    {
+      "id": "resumo-1turno",
+      "tipo": "fato",
+      "narracao": "No segundo turno, a Band marcou o debate deste domingo.",
+      "personagens": [
+        {
+          "id": "flavio",
+          "acao": "idle",
+          "posicao": "esq"
+        },
+        {
+          "id": "lula",
+          "acao": "idle",
+          "posicao": "dir"
+        }
+      ],
+      "fatos": [
+        {
+          "texto": "No 2º turno, Band marca debate para 18/10",
+          "fonteIds": [
+            "f-poder-band-regras",
+            "f-gazeta-band"
+          ]
+        }
+      ],
+      "bloco": "3. Os debates que não aconteceram"
+    },
+    {
+      "id": "semana",
+      "tipo": "linhaDoTempo",
+      "narracao": "E, nesta semana, a ausência quase se repetiu. Na terça, Flávio disse que não iria. A Band avisou que o púlpito de quem faltasse ficaria vazio. Lula confirmou presença em vídeo.",
+      "dados": {
+        "eventos": [
+          {
+            "data": "13/10",
+            "rotulo": "Flávio: “não está previsto ir nesse debate domingo”",
+            "fonteIds": [
+              "f-cnn-flavio-nao",
+              "f-poder-flavio-nao"
+            ],
+            "fase": "antes"
+          },
+          {
+            "data": "13/10",
+            "rotulo": "Band: púlpito vazio para quem faltar",
+            "fonteIds": [
+              "f-metropoles-flavio-nao",
+              "f-cnn-flavio-nao"
+            ],
+            "fase": "antes"
+          },
+          {
+            "data": "13/10",
+            "rotulo": "Lula confirma presença em vídeo",
+            "fonteIds": [
+              "f-cnn-flavio-nao",
+              "f-poder-flavio-sim"
+            ],
+            "fase": "fato"
+          },
+          {
+            "data": "14/10",
+            "rotulo": "Flávio volta atrás e confirma",
+            "fonteIds": [
+              "f-poder-flavio-sim",
+              "f-carta-flavio-sim"
+            ],
+            "fase": "reacao"
+          }
+        ]
+      },
+      "bloco": "3. Os debates que não aconteceram"
+    },
+    {
+      "id": "confirmacoes",
+      "tipo": "debate",
+      "cenario": "pulpitos",
+      "narracao": "Lula disse: “espero que meu adversário compareça”. Na quarta, Flávio respondeu: “É claro que eu vou ao debate, eu só queria que você confirmasse”.",
+      "personagens": [
+        {
+          "id": "flavio",
+          "acao": "idle",
+          "posicao": "esq"
+        },
+        {
+          "id": "lula",
+          "acao": "idle",
+          "posicao": "dir"
+        }
+      ],
+      "atribuicoes": [
+        {
+          "quem": "lula",
+          "disse": "No domingo, eu estarei no debate da TV Bandeirantes e espero que meu adversário compareça",
+          "fonteId": "f-cnn-flavio-nao"
+        },
+        {
+          "quem": "flavio",
+          "disse": "É claro que eu vou ao debate, eu só queria que você confirmasse",
+          "fonteId": "f-poder-flavio-sim"
+        }
+      ],
+      "bloco": "3. Os debates que não aconteceram"
+    },
+    {
+      "id": "datafolha",
+      "tipo": "pesquisa",
+      "narracao": "Nas pesquisas, o Datafolha mostra Flávio com 47% dos votos totais e Lula com 45%.",
+      "dados": {
+        "instituto": "Datafolha",
+        "campo": {
+          "inicio": "2026-10-13",
+          "fim": "2026-10-15"
+        },
+        "registroTSE": "BR-00466/2026",
+        "margemErro": "2 p.p.",
+        "amostra": 2520,
+        "base": "totais",
+        "fonteId": "f-poder-pesquisas",
+        "resultados": [
+          {
+            "personagemId": "flavio",
+            "pct": 47
+          },
+          {
+            "personagemId": "lula",
+            "pct": 45
+          }
+        ]
+      },
+      "bloco": "4. Como os dois chegam: pesquisas"
+    },
+    {
+      "id": "quaest",
+      "tipo": "pesquisa",
+      "narracao": "Na Quaest, Flávio tem 46%, e Lula, 44%.",
+      "dados": {
+        "instituto": "Quaest",
+        "campo": {
+          "inicio": "2026-10-10",
+          "fim": "2026-10-13"
+        },
+        "registroTSE": "BR-08729/2026",
+        "margemErro": "2 p.p.",
+        "amostra": 2154,
+        "base": "totais",
+        "fonteId": "f-infomoney-quaest",
+        "resultados": [
+          {
+            "personagemId": "flavio",
+            "pct": 46
+          },
+          {
+            "personagemId": "lula",
+            "pct": 44
+          }
+        ]
+      },
+      "bloco": "4. Como os dois chegam: pesquisas"
+    },
+    {
+      "id": "ipespe",
+      "tipo": "pesquisa",
+      "narracao": "Nos votos válidos, que excluem brancos e nulos, o Ipespe mostra Flávio com 51,2% e Lula com 48,8%.",
+      "dados": {
+        "instituto": "Ipespe",
+        "campo": {
+          "inicio": "2026-10-13",
+          "fim": "2026-10-15"
+        },
+        "registroTSE": "BR-00223/2026",
+        "margemErro": "2,6 p.p.",
+        "amostra": 1500,
+        "base": "validos",
+        "fonteId": "f-oeste-ipespe",
+        "resultados": [
+          {
+            "personagemId": "flavio",
+            "pct": 51.2
+          },
+          {
+            "personagemId": "lula",
+            "pct": 48.8
+          }
+        ]
+      },
+      "bloco": "4. Como os dois chegam: pesquisas"
+    },
+    {
+      "id": "mda",
+      "tipo": "pesquisa",
+      "narracao": "Na CNT/MDA, Flávio tem 50,5%, e Lula, 49,5%.",
+      "dados": {
+        "instituto": "MDA",
+        "contratante": "CNT",
+        "campo": {
+          "inicio": "2026-10-13",
+          "fim": "2026-10-15"
+        },
+        "registroTSE": "BR-00652/2026",
+        "margemErro": "2,2 p.p.",
+        "amostra": 2014,
+        "base": "validos",
+        "fonteId": "f-correio-mda",
+        "resultados": [
+          {
+            "personagemId": "flavio",
+            "pct": 50.5
+          },
+          {
+            "personagemId": "lula",
+            "pct": 49.5
+          }
+        ]
+      },
+      "bloco": "4. Como os dois chegam: pesquisas"
+    },
+    {
+      "id": "empate",
+      "tipo": "fato",
+      "narracao": "As quatro pesquisas foram feitas entre 10 e 15 de outubro e estão registradas no TSE, com margens de erro de 2 a 2,6 pontos. Em todas, a diferença cabe na margem: é o chamado empate técnico.",
+      "fatos": [
+        {
+          "texto": "Empate técnico: a diferença cabe na margem de erro dos dois lados",
+          "fonteIds": [
+            "f-poder-pesquisas",
+            "f-carta-ipespe"
+          ]
+        }
+      ],
+      "bloco": "4. Como os dois chegam: pesquisas"
+    },
+    {
+      "id": "tendencia",
+      "tipo": "grafico",
+      "narracao": "Em relação à rodada anterior, a diferença caiu no Datafolha, de 4 para 2 pontos, e no Ipespe, de 5,4 para 2,4 pontos nos válidos. Na Quaest, ficou estável, mas a rodada anterior é de antes do primeiro turno.",
+      "dados": {
+        "grafico": "barras",
+        "titulo": "Diferença entre os dois, em pontos",
+        "unidade": " pts",
+        "fonteId": "f-poder-pesquisas",
+        "nota": "Rodadas anteriores: Gazeta do Povo e CNN Brasil (8/10), A Crítica (10/10). Datafolha em votos totais.",
+        "pontos": [
+          {
+            "rotulo": "Datafolha · 6 e 7/10 (totais)",
+            "valor": 4
+          },
+          {
+            "rotulo": "Datafolha · 13 a 15/10 (totais)",
+            "valor": 2
+          },
+          {
+            "rotulo": "Ipespe · 6 a 8/10 (válidos)",
+            "valor": 5.4
+          },
+          {
+            "rotulo": "Ipespe · 13 a 15/10 (válidos)",
+            "valor": 2.4
+          }
+        ]
+      },
+      "bloco": "4. Como os dois chegam: pesquisas"
+    },
+    {
+      "id": "bets-fato",
+      "tipo": "fato",
+      "cenario": "planalto",
+      "narracao": "Em 25 de setembro, nove dias antes do primeiro turno, Lula assinou a medida provisória que proíbe as bets, as apostas de quota fixa. Os sites saíram do ar em 6 de outubro.",
+      "personagens": [
+        {
+          "id": "lula",
+          "acao": "falar",
+          "posicao": "centro",
+          "acessorio": "documento"
+        }
+      ],
+      "fatos": [
+        {
+          "texto": "MP 1.394 proíbe apostas de quota fixa (25/09)",
+          "fonteIds": [
+            "f-senado-mp",
+            "f-agbr-mp",
+            "f-mj-mp"
+          ]
+        },
+        {
+          "texto": "Sites e aplicativos fora do ar desde 06/10",
+          "fonteIds": [
+            "f-senado-mp",
+            "f-agbr-mp"
+          ]
+        }
+      ],
+      "bloco": "5. Os assuntos que devem aparecer"
+    },
+    {
+      "id": "bets-lados",
+      "tipo": "ladoA_ladoB",
+      "narracao": "O governo justificou que os controles existentes não protegiam a saúde e os consumidores. O ministro da Fazenda, Dario Durigan, disse que o vício “está gerando angústia, vergonha”. Flávio chamou a medida de “atitude populista, hipócrita, eleitoreira” e disse que, se ela perder a validade, “as bets podem voltar com força total”.",
+      "atribuicoes": [
+        {
+          "quem": "flavio",
+          "disse": "É, mais uma vez, uma atitude populista, hipócrita, eleitoreira",
+          "fonteId": "f-istoe-flavio",
+          "termos": [
+            "populista",
+            "eleitoreira"
+          ]
+        },
+        {
+          "quem": "Dario Durigan, ministro da Fazenda",
+          "disse": "O vício está gerando angústia, vergonha",
+          "fonteId": "f-cnn-mp",
+          "termos": [
+            "vergonha"
+          ]
+        }
+      ],
+      "dados": {
+        "ladoA": {
+          "titulo": "Governo",
+          "personagemId": "lula",
+          "argumentos": [
+            {
+              "texto": "Controles existentes não protegiam a saúde e os consumidores",
+              "quem": "Governo federal",
+              "fonteId": "f-senado-mp"
+            },
+            {
+              "texto": "O vício “está gerando angústia, vergonha”",
+              "quem": "Dario Durigan, ministro da Fazenda",
+              "fonteId": "f-cnn-mp"
+            }
+          ]
+        },
+        "ladoB": {
+          "titulo": "Flávio Bolsonaro",
+          "personagemId": "flavio",
+          "argumentos": [
+            {
+              "texto": "“Atitude populista, hipócrita, eleitoreira”",
+              "quem": "Flávio Bolsonaro",
+              "fonteId": "f-istoe-flavio"
+            },
+            {
+              "texto": "Se a MP caducar, “as bets podem voltar com força total”",
+              "quem": "Flávio Bolsonaro",
+              "fonteId": "f-jp-flavio"
+            }
+          ]
+        }
+      },
+      "bloco": "5. Os assuntos que devem aparecer"
+    },
+    {
+      "id": "bets-justica",
+      "tipo": "fato",
+      "cenario": "tribunal",
+      "cenarioOpcoes": {
+        "rotulo": "STF"
+      },
+      "narracao": "As apostas foram criadas em 2018, no governo Temer, e regulamentadas em 2023, no governo Lula. Clubes e entidades pediram ao Supremo a suspensão da medida, e o ministro Luiz Fux pediu a manifestação da AGU.",
+      "fatos": [
+        {
+          "texto": "Apostas criadas em 2018 e regulamentadas em 2023 (Lei 14.790)",
+          "fonteIds": [
+            "f-migalhas-stf",
+            "f-senado-mp"
+          ]
+        },
+        {
+          "texto": "Clubes e entidades pedem ao STF a suspensão da MP",
+          "fonteIds": [
+            "f-migalhas-stf",
+            "f-poder-clubes"
+          ]
+        },
+        {
+          "texto": "Fux pede manifestação da AGU",
+          "fonteIds": [
+            "f-agbr-fux"
+          ]
+        }
+      ],
+      "bloco": "5. Os assuntos que devem aparecer"
+    },
+    {
+      "id": "6x1-votacao",
+      "tipo": "votacao",
+      "narracao": "O fim da escala 6 por 1 foi aprovado no Senado por 75 votos a 1 e promulgado pelo Congresso na sexta, 16. A jornada cai para 42 horas em 60 dias, e para 40 um ano depois, sem redução de salário.",
+      "dados": {
+        "orgao": "Senado Federal",
+        "etapa": "PEC do fim da escala 6x1",
+        "casa": "senado",
+        "placar": {
+          "sim": 75,
+          "nao": 1,
+          "abst": 0
+        }
+      },
+      "fatos": [
+        {
+          "texto": "Senado aprova por 75 a 1 (14/10)",
+          "fonteIds": [
+            "f-agbr-6x1",
+            "f-exame-6x1"
+          ]
+        },
+        {
+          "texto": "Emenda promulgada em 16/10",
+          "fonteIds": [
+            "f-metropoles-promulga"
+          ]
+        },
+        {
+          "texto": "42h em 60 dias; 40h um ano depois; sem redução de salário",
+          "fonteIds": [
+            "f-metropoles-promulga",
+            "f-agbr-6x1"
+          ]
+        }
+      ],
+      "bloco": "5. Os assuntos que devem aparecer"
+    },
+    {
+      "id": "6x1-flavio",
+      "tipo": "fato",
+      "narracao": "Flávio votou a favor. Em maio, ele tinha chamado a discussão de “inoportuna e eleitoreira”. Em 13 de outubro, a 12 dias do segundo turno, mudou de posição e disse que “a maioria dos trabalhadores brasileiros quer o fim da 6 por 1”.",
+      "personagens": [
+        {
+          "id": "flavio",
+          "acao": "falar",
+          "posicao": "centro",
+          "fala": true
+        }
+      ],
+      "fatos": [
+        {
+          "texto": "Flávio votou a favor da PEC no Senado",
+          "fonteIds": [
+            "f-exame-6x1",
+            "f-agbr-6x1"
+          ]
+        }
+      ],
+      "atribuicoes": [
+        {
+          "quem": "flavio",
+          "disse": "A maioria dos trabalhadores brasileiros quer o fim da 6 por 1",
+          "fonteId": "f-opovo-6x1"
+        },
+        {
+          "quem": "flavio",
+          "disse": "(em maio) A discussão é inoportuna e eleitoreira",
+          "fonteId": "f-opovo-6x1",
+          "termos": [
+            "eleitoreira"
+          ]
+        }
+      ],
+      "bloco": "5. Os assuntos que devem aparecer"
+    },
+    {
+      "id": "6x1-lados",
+      "tipo": "ladoA_ladoB",
+      "narracao": "Flávio também disse que “quem vai pagar essa conta vai ter de ser o governo”. Lula atribuiu a mudança do PL à pressão popular e chamou a promulgação de “vitória da sociedade brasileira”.",
+      "dados": {
+        "ladoA": {
+          "titulo": "Flávio Bolsonaro",
+          "personagemId": "flavio",
+          "argumentos": [
+            {
+              "texto": "“Quem vai pagar essa conta vai ter de ser o governo”",
+              "quem": "Flávio Bolsonaro",
+              "fonteId": "f-opovo-6x1"
+            },
+            {
+              "texto": "Quer “liberdade para o trabalhador montar sua escala”",
+              "quem": "Flávio Bolsonaro",
+              "fonteId": "f-opovo-6x1"
+            }
+          ]
+        },
+        "ladoB": {
+          "titulo": "Lula",
+          "personagemId": "lula",
+          "argumentos": [
+            {
+              "texto": "Pressão popular levou o PL a mudar de posição",
+              "quem": "Lula",
+              "fonteId": "f-poder-lula-6x1"
+            },
+            {
+              "texto": "“Vitória da sociedade brasileira”",
+              "quem": "Lula",
+              "fonteId": "f-metropoles-promulga"
+            }
+          ]
+        }
+      },
+      "bloco": "5. Os assuntos que devem aparecer",
+      "atribuicoes": [
+        {
+          "quem": "lula",
+          "disse": "Vitória da sociedade brasileira",
+          "fonteId": "f-metropoles-promulga"
+        }
+      ]
+    },
+    {
+      "id": "mei-fato",
+      "tipo": "fato",
+      "cenario": "planalto",
+      "narracao": "No mesmo dia, o governo anunciou o perdão de cerca de 12,6 bilhões de reais em dívidas de microempreendedores individuais, os MEIs, e um Pix de até 5 mil reais. No dia seguinte, a Câmara aprovou o perdão e o aumento do teto do MEI, por 461 votos a 4.",
+      "fatos": [
+        {
+          "texto": "Perdão de ~R$ 12,6 bi em dívidas de MEIs e Pix de até R$ 5 mil",
+          "fonteIds": [
+            "f-agbr-mei"
+          ]
+        },
+        {
+          "texto": "Câmara aprova perdão e novo teto por 461 a 4 (14/10)",
+          "fonteIds": [
+            "f-poder-mei"
+          ]
+        }
+      ],
+      "bloco": "5. Os assuntos que devem aparecer"
+    },
+    {
+      "id": "mei-lados",
+      "tipo": "ladoA_ladoB",
+      "narracao": "Lula disse: “Nós vamos ajudar vocês a saírem do sufoco”. E completou: “A palavra prosperidade não é privilégio, é direito de todo mundo”. Flávio perguntou: “Ele está achando que o povo é otário?”. E afirmou: “Vamos fazer tesouraço em impostos, sim”.",
+      "dados": {
+        "ladoA": {
+          "titulo": "Lula",
+          "personagemId": "lula",
+          "argumentos": [
+            {
+              "texto": "“Nós vamos ajudar vocês a saírem do sufoco”",
+              "quem": "Lula",
+              "fonteId": "f-agbr-mei"
+            },
+            {
+              "texto": "“A palavra prosperidade não é privilégio, é direito de todo mundo”",
+              "quem": "Lula",
+              "fonteId": "f-agbr-mei"
+            }
+          ]
+        },
+        "ladoB": {
+          "titulo": "Flávio Bolsonaro",
+          "personagemId": "flavio",
+          "argumentos": [
+            {
+              "texto": "“Ele está achando que o povo é otário?”",
+              "quem": "Flávio Bolsonaro",
+              "fonteId": "f-exame-mei"
+            },
+            {
+              "texto": "“Vamos fazer tesouraço em impostos, sim”",
+              "quem": "Flávio Bolsonaro",
+              "fonteId": "f-exame-mei"
+            }
+          ]
+        }
+      },
+      "bloco": "5. Os assuntos que devem aparecer"
+    },
+    {
+      "id": "nao-se-sabe",
+      "tipo": "naoSeSabe",
+      "narracao": "Ainda não se sabe se o Supremo vai suspender a medida das bets, quando o Congresso vai votá-la, nem que efeito o debate terá nas pesquisas.",
+      "dados": {
+        "itens": [
+          "Se o STF vai suspender a MP das bets",
+          "Quando o Congresso vai votar a MP",
+          "O efeito do debate nas pesquisas"
+        ]
+      },
+      "bloco": "5. Os assuntos que devem aparecer"
+    },
+    {
+      "id": "observar",
+      "tipo": "checklist",
+      "narracao": "No debate, vale observar quem traz proposta com número e prazo, quais dados cada um cita e quais perguntas ficam sem resposta. Na segunda, a gente checa o que cada um disse.",
+      "dados": {
+        "titulo": "O que observar no debate",
+        "itens": [
+          "Quem apresenta proposta concreta, com número e prazo",
+          "Quais dados cada um cita",
+          "Quais perguntas ficam sem resposta"
+        ]
+      },
+      "bloco": "6. O que observar no debate"
+    },
+    {
+      "id": "servico",
+      "tipo": "servico",
+      "narracao": "O debate começa às 20h, na Band, na BandNews TV, nas rádios BandNews FM e Bandeirantes e no YouTube do Band Jornalismo. A mediação é de Eduardo Oinegue e Adriana Araújo.",
+      "dados": {
+        "titulo": "Debate Band · 2º turno",
+        "linhas": [
+          {
+            "rotulo": "Quando",
+            "valor": "Domingo, 18/10, às 20h",
+            "fonteId": "f-poder-band-regras"
+          },
+          {
+            "rotulo": "Onde",
+            "valor": "Band TV, BandNews TV, rádios BandNews FM e Bandeirantes, YouTube do Band Jornalismo",
+            "fonteId": "f-exame-assistir"
+          },
+          {
+            "rotulo": "Parceiros",
+            "valor": "TV Cultura, TV Gazeta, Jovem Pan e Estadão",
+            "fonteId": "f-forum-regras"
+          },
+          {
+            "rotulo": "Mediação",
+            "valor": "Eduardo Oinegue e Adriana Araújo",
+            "fonteId": "f-exame-assistir"
+          },
+          {
+            "rotulo": "No estúdio",
+            "valor": "Flávio à esquerda, Lula à direita (sorteio)",
+            "fonteId": "f-forum-regras"
+          }
+        ]
+      },
+      "bloco": "7. Serviço e encerramento"
+    },
+    {
+      "id": "proximos",
+      "tipo": "fato",
+      "cenario": "urna",
+      "narracao": "O próximo debate é na sexta, 23, na Globo. Edinho Silva, do PT, disse que Lula deve participar. Flávio afirmou que a palavra final será da equipe técnica dele. Nenhum dos dois confirmou oficialmente.",
+      "fatos": [
+        {
+          "texto": "Debate na Globo: sexta, 23/10",
+          "fonteIds": [
+            "f-poder-globo23",
+            "f-opovo-globo23"
+          ]
+        },
+        {
+          "texto": "Nenhum dos dois confirmou oficialmente",
+          "fonteIds": [
+            "f-opovo-globo23"
+          ]
+        }
+      ],
+      "atribuicoes": [
+        {
+          "quem": "PT (Edinho Silva)",
+          "disse": "Lula deverá participar do debate da Globo",
+          "fonteId": "f-antagonista-edinho"
+        },
+        {
+          "quem": "flavio",
+          "disse": "Quem vai dar a palavra final será minha equipe técnica",
+          "fonteId": "f-cnn-flavio-nao"
+        }
+      ],
+      "bloco": "7. Serviço e encerramento"
+    },
+    {
+      "id": "fim",
+      "tipo": "encerramento",
+      "narracao": "Assista, compare e decida. As fontes estão na descrição.",
+      "bloco": "7. Serviço e encerramento"
+    }
+  ]
+}

@@ -15,18 +15,24 @@ export const LegendaQueimada: React.FC<{ timestamps: Timestamps }> = ({ timestam
   const s = f / fps;
   const bloco = blocos.find((b) => s >= b.inicio && s < b.fim);
   if (!bloco) return null;
-  const ativa = palavras.find((p) => s >= p.inicio && s < p.fim);
+  // destaque pela POSIÇÃO da palavra (não pelo texto: palavras repetidas no bloco não acendem juntas)
+  const ativaIdx = palavras.findIndex((p) => s >= p.inicio && s < p.fim);
+  const inicioBloco = palavras.findIndex((p) => p.inicio >= bloco.inicio - 1e-6);
+  let k = 0;
   // sempre dentro da zona reservada à legenda (a mesma área onde o YouTube mostra a .srt)
   return (
     <div style={{ position: "absolute", left: 0, right: 0, top: zonaLegenda.y, height: zonaLegenda.h, display: "flex", alignItems: "center", justifyContent: "center", padding: "0 6%" }}>
       <div style={{ background: `${cores.fundo}E6`, borderRadius: 18, padding: "14px 26px", textAlign: "center" }}>
         {bloco.linhas.map((l, i) => (
           <div key={i} style={{ fontFamily: fontes.corpo, fontWeight: 800, fontSize: t.corpo * 1.15, lineHeight: 1.3, color: cores.texto }}>
-            {l.split(" ").map((w, j) => (
-              <span key={j} style={{ color: ativa && ativa.texto === w ? cores.acento : cores.texto }}>
-                {w}{" "}
-              </span>
-            ))}
+            {l.split(" ").map((w, j) => {
+              const idx = inicioBloco + k++;
+              return (
+                <span key={j} style={{ color: idx === ativaIdx ? cores.acento : cores.texto }}>
+                  {w}{" "}
+                </span>
+              );
+            })}
           </div>
         ))}
       </div>
