@@ -1,7 +1,42 @@
+# Dependências
 node_modules/
+
+# Saídas de render e build
 out/
+dist/
+build/
+coverage/
+*.tsbuildinfo
+
+# Mídia gerada por episódio (narração, renders, thumbnails)
 public/episodes/
-.env
-*.log
-__pycache__/
 .cache-tts/
+*.mp4
+*.mov
+*.webm
+
+# Segredos — só o modelo vai pro repo
+.env
+.env.*
+!.env.example
+
+# Configuração local do Claude Code
+.claude/settings.local.json
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Logs e temporários
+*.log
+npm-debug.log*
+*.tmp
+
+# Editor e sistema operacional
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
